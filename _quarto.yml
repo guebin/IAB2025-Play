@@ -1,13 +1,13 @@
 project:
   type: website
-
+  output-dir: docs
 website:
-  title: "."
+  title: "IAB2025"
   navbar:
     right:
       - about.qmd
       - icon: github
-        href: https://github.com/
+        href: https://github.com/guebin/IAB2025
       - icon: twitter
         href: https://twitter.com
 format:
