@@ -1,14 +1,25 @@
 ---
-title: "."
+title: "IAB프로그램 (2025)"
 listing:
   contents: content
   sort: "date desc"
-  type: default
+  type: table
   categories: true
   sort-ui: false
   filter-ui: false
 page-layout: full
-title-block-banner: true
+title-block-banner: false
 ---
 
+**실습** 
 
+- <https://guebin.github.io/IAB2025-Play>
+
+**질문하는 방법**
+
+- 이메일: <guebin@jbnu.ac.kr>
+- 직접방문: 자연과학대학 본관 205호 
+- Zoom: *이메일로 미리 시간을 정할 것*
+- 카카오톡: <http://pf.kakao.com/_txeIFG/chat>
+
+**강의노트** 

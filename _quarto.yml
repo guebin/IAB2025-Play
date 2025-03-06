@@ -1,19 +1,16 @@
 project:
   type: website
   output-dir: docs
+
 website:
   title: "IAB2025"
   navbar:
     right:
-      - about.qmd
-      - icon: github
+      - icon: github    
         href: https://github.com/guebin/IAB2025
-      - icon: twitter
-        href: https://twitter.com
+      - icon: youtube
+        href: https://www.youtube.com/channel/UCQk9RyBNgXc7ORIsYlOfQrg/playlists?view=50&sort=dd&shelf_id=2
 format:
   html:
     theme: cosmo
     css: styles.css
-
-
-
