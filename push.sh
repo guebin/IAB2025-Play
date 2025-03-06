@@ -1,4 +1,5 @@
 quarto publish --no-browser --no-prompt 
+rm -rf _site
 git add .
 git commit -m .
 git push origin main 
