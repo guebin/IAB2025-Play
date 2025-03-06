@@ -1,0 +1,10 @@
+{
+  "jupyter-config-data": {
+    "disable_caching": true,
+    "litePluginSettings": {
+      "@jupyterlite/contents": {
+        "disableIndexedDB": true
+      }
+    }
+  }
+}
