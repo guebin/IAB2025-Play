@@ -217,48 +217,48 @@ window.Quarto = {
 <li><span class="math inline">\(5\)</span></li>
 </ol>
 <p>(풀이1)</p>
-<div id="c0685fc3-b316-4d52-b270-323783c7956b" class="cell" data-execution_count="57">
+<div id="c0685fc3-b316-4d52-b270-323783c7956b" class="cell" data-execution_count="144">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">=</span> <span class="fl">2.94</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cos</span>(pi<span class="sc">/</span><span class="dv">2</span><span class="sc">+</span> theta)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 -0.200229984721771
 </div>
 </div>
-<div id="6603d358-34f7-405f-a49b-8b1a6a71985e" class="cell" data-execution_count="58">
+<div id="6603d358-34f7-405f-a49b-8b1a6a71985e" class="cell" data-execution_count="145">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sin</span>(theta)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">cos</span>(theta)<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 4.99425698598313
 </div>
 </div>
 <p>(풀이2)</p>
-<div id="6fffaf4f-c87b-4fc4-a70d-a06744409a6b" class="cell" data-execution_count="59">
+<div id="6fffaf4f-c87b-4fc4-a70d-a06744409a6b" class="cell" data-execution_count="146">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">acos</span>(<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>) <span class="sc">-</span> pi<span class="sc">/</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 0.201357920790331
 </div>
 </div>
-<div id="7596732f-4991-4009-9393-cb58b62c52d2" class="cell" data-execution_count="60">
+<div id="7596732f-4991-4009-9393-cb58b62c52d2" class="cell" data-execution_count="147">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sin</span>(<span class="fl">0.201357920790331</span>)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">cos</span>(<span class="fl">0.201357920790331</span>)<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 5
 </div>
 </div>
 <p>이걸 하나로 묶으면..</p>
-<div id="831c6bd1-03ac-45fd-b1ff-2d2f1cff9216" class="cell" data-execution_count="133">
+<div id="831c6bd1-03ac-45fd-b1ff-2d2f1cff9216" class="cell" data-execution_count="148">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>solve <span class="ot">&lt;-</span> <span class="cf">function</span>(input){</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    theta <span class="ot">=</span> <span class="fu">acos</span>(input) <span class="sc">-</span> pi<span class="sc">/</span><span class="dv">2</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    output <span class="ot">=</span> <span class="fu">sin</span>(theta)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">cos</span>(theta)<span class="sc">^</span><span class="dv">2</span>)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(output)</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="74e011de-8be5-47a2-aae9-38255909f486" class="cell" data-execution_count="134">
+<div id="74e011de-8be5-47a2-aae9-38255909f486" class="cell" data-execution_count="149">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(<span class="sc">-</span><span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 5
 </div>
 </div>
 <p>(풀이3)</p>
-<div id="2d0fa7df-072b-4e92-9330-a2c6aa04245c" class="cell" data-execution_count="63">
+<div id="2d0fa7df-072b-4e92-9330-a2c6aa04245c" class="cell" data-execution_count="150">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># theta = c(0.0, 0.1, 0.2, 0,3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9,</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#           1.0, 1.1, 1.2, 1,3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9,</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#           2.0, 2.1, 2.2, 2,3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9)</span></span>
@@ -273,7 +273,7 @@ window.Quarto = {
 <ol class="list-inline"><li>0</li><li>0.01</li><li>0.02</li><li>0.03</li><li>0.04</li><li>0.05</li><li>0.06</li><li>0.07</li><li>0.08</li><li>0.09</li><li>0.1</li><li>0.11</li><li>0.12</li><li>0.13</li><li>0.14</li><li>0.15</li><li>0.16</li><li>0.17</li><li>0.18</li><li>0.19</li><li>0.2</li><li>0.21</li><li>0.22</li><li>0.23</li><li>0.24</li><li>0.25</li><li>0.26</li><li>0.27</li><li>0.28</li><li>0.29</li><li>0.3</li><li>0.31</li><li>0.32</li><li>0.33</li><li>0.34</li><li>0.35</li><li>0.36</li><li>0.37</li><li>0.38</li><li>0.39</li><li>0.4</li><li>0.41</li><li>0.42</li><li>0.43</li><li>0.44</li><li>0.45</li><li>0.46</li><li>0.47</li><li>0.48</li><li>0.49</li><li>0.5</li><li>0.51</li><li>0.52</li><li>0.53</li><li>0.54</li><li>0.55</li><li>0.56</li><li>0.57</li><li>0.58</li><li>0.59</li><li>0.6</li><li>0.61</li><li>0.62</li><li>0.63</li><li>0.64</li><li>0.65</li><li>0.66</li><li>0.67</li><li>0.68</li><li>0.69</li><li>0.7</li><li>0.71</li><li>0.72</li><li>0.73</li><li>0.74</li><li>0.75</li><li>0.76</li><li>0.77</li><li>0.78</li><li>0.79</li><li>0.8</li><li>0.81</li><li>0.82</li><li>0.83</li><li>0.84</li><li>0.85</li><li>0.86</li><li>0.87</li><li>0.88</li><li>0.89</li><li>0.9</li><li>0.91</li><li>0.92</li><li>0.93</li><li>0.94</li><li>0.95</li><li>0.96</li><li>0.97</li><li>0.98</li><li>0.99</li><li>1</li><li>1.01</li><li>1.02</li><li>1.03</li><li>1.04</li><li>1.05</li><li>1.06</li><li>1.07</li><li>1.08</li><li>1.09</li><li>1.1</li><li>1.11</li><li>1.12</li><li>1.13</li><li>1.14</li><li>1.15</li><li>1.16</li><li>1.17</li><li>1.18</li><li>1.19</li><li>1.2</li><li>1.21</li><li>1.22</li><li>1.23</li><li>1.24</li><li>1.25</li><li>1.26</li><li>1.27</li><li>1.28</li><li>1.29</li><li>1.3</li><li>1.31</li><li>1.32</li><li>1.33</li><li>1.34</li><li>1.35</li><li>1.36</li><li>1.37</li><li>1.38</li><li>1.39</li><li>1.4</li><li>1.41</li><li>1.42</li><li>1.43</li><li>1.44</li><li>1.45</li><li>1.46</li><li>1.47</li><li>1.48</li><li>1.49</li><li>1.5</li><li>1.51</li><li>1.52</li><li>1.53</li><li>1.54</li><li>1.55</li><li>1.56</li><li>1.57</li><li>1.58</li><li>1.59</li><li>1.6</li><li>1.61</li><li>1.62</li><li>1.63</li><li>1.64</li><li>1.65</li><li>1.66</li><li>1.67</li><li>1.68</li><li>1.69</li><li>1.7</li><li>1.71</li><li>1.72</li><li>1.73</li><li>1.74</li><li>1.75</li><li>1.76</li><li>1.77</li><li>1.78</li><li>1.79</li><li>1.8</li><li>1.81</li><li>1.82</li><li>1.83</li><li>1.84</li><li>1.85</li><li>1.86</li><li>1.87</li><li>1.88</li><li>1.89</li><li>1.9</li><li>1.91</li><li>1.92</li><li>1.93</li><li>1.94</li><li>1.95</li><li>1.96</li><li>1.97</li><li>1.98</li><li>1.99</li><li>2</li><li>2.01</li><li>2.02</li><li>2.03</li><li>2.04</li><li>2.05</li><li>2.06</li><li>2.07</li><li>2.08</li><li>2.09</li><li>2.1</li><li>2.11</li><li>2.12</li><li>2.13</li><li>2.14</li><li>2.15</li><li>2.16</li><li>2.17</li><li>2.18</li><li>2.19</li><li>2.2</li><li>2.21</li><li>2.22</li><li>2.23</li><li>2.24</li><li>2.25</li><li>2.26</li><li>2.27</li><li>2.28</li><li>2.29</li><li>2.3</li><li>2.31</li><li>2.32</li><li>2.33</li><li>2.34</li><li>2.35</li><li>2.36</li><li>2.37</li><li>2.38</li><li>2.39</li><li>2.4</li><li>2.41</li><li>2.42</li><li>2.43</li><li>2.44</li><li>2.45</li><li>2.46</li><li>2.47</li><li>2.48</li><li>2.49</li><li>2.5</li><li>2.51</li><li>2.52</li><li>2.53</li><li>2.54</li><li>2.55</li><li>2.56</li><li>2.57</li><li>2.58</li><li>2.59</li><li>2.6</li><li>2.61</li><li>2.62</li><li>2.63</li><li>2.64</li><li>2.65</li><li>2.66</li><li>2.67</li><li>2.68</li><li>2.69</li><li>2.7</li><li>2.71</li><li>2.72</li><li>2.73</li><li>2.74</li><li>2.75</li><li>2.76</li><li>2.77</li><li>2.78</li><li>2.79</li><li>2.8</li><li>2.81</li><li>2.82</li><li>2.83</li><li>2.84</li><li>2.85</li><li>2.86</li><li>2.87</li><li>2.88</li><li>2.89</li><li>2.9</li><li>2.91</li><li>2.92</li><li>2.93</li><li>2.94</li><li>2.95</li><li>2.96</li><li>2.97</li><li>2.98</li><li>2.99</li><li>3</li></ol>
 </div>
 </div>
-<div id="f1ad6b13-c077-4fc4-810e-30376e152cf2" class="cell" data-execution_count="72">
+<div id="f1ad6b13-c077-4fc4-810e-30376e152cf2" class="cell" data-execution_count="151">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(theta,<span class="fu">cos</span>(pi<span class="sc">/</span><span class="dv">2</span><span class="sc">+</span>theta))</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="sc">-</span><span class="fl">0.2</span>,<span class="at">col=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -291,36 +291,36 @@ window.Quarto = {
 <section id="a.-변수이름에-어떠한-값을-넣는-방법" class="level3">
 <h3 class="anchored" data-anchor-id="a.-변수이름에-어떠한-값을-넣는-방법">A. 변수이름에 어떠한 값을 넣는 방법</h3>
 <p><code>-</code> 방법1</p>
-<div id="ac16e0f2-49e1-4470-a598-b3140b0f7491" class="cell" data-execution_count="2">
+<div id="ac16e0f2-49e1-4470-a598-b3140b0f7491" class="cell" data-execution_count="152">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>d<span class="ot">=</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 방법2</p>
-<div id="809bd663-d26a-4516-8a76-46b26ff5f4df" class="cell" data-execution_count="65">
+<div id="809bd663-d26a-4516-8a76-46b26ff5f4df" class="cell" data-execution_count="153">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="b.-잘못된-변수명" class="level3">
 <h3 class="anchored" data-anchor-id="b.-잘못된-변수명">B. 잘못된 변수명</h3>
 <p><code># 예제1</code> – 특수문자 불가능</p>
-<div id="0a15134e-7e3d-45b4-b088-4e965049f476" class="cell" data-execution_count="4">
+<div id="0a15134e-7e3d-45b4-b088-4e965049f476" class="cell" data-execution_count="154">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>a<span class="sc">!</span> <span class="er">&lt;</span><span class="sc">-</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>ERROR: Error in parse(text = x, srcfile = src): &lt;text&gt;:1:2: unexpected '!'
+<pre><code>ERROR: Error in parse(text = input): &lt;text&gt;:1:2: unexpected '!'
 1: a!
      ^</code></pre>
 </div>
 </div>
 <p><code>#</code></p>
 <p><code># 예제2</code> – 숫자로 시작하는 변수이름 불가능</p>
-<div id="4c4a7144-2a12-4f2d-9627-9ff1902c45c5" class="cell" data-execution_count="5">
+<div id="4c4a7144-2a12-4f2d-9627-9ff1902c45c5" class="cell" data-execution_count="155">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>a <span class="ot">&lt;-</span> <span class="dv">3</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>ERROR: Error in parse(text = x, srcfile = src): &lt;text&gt;:1:2: unexpected symbol
+<pre><code>ERROR: Error in parse(text = input): &lt;text&gt;:1:2: unexpected symbol
 1: 2a
      ^</code></pre>
 </div>
 </div>
-<div id="46a56669-3afa-4784-b9c7-9defc2f7dc08" class="cell" data-execution_count="6">
+<div id="46a56669-3afa-4784-b9c7-9defc2f7dc08" class="cell" data-execution_count="156">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>a2 <span class="ot">&lt;-</span> <span class="dv">3</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
@@ -328,21 +328,21 @@ window.Quarto = {
 </ul>
 <p><code>#</code></p>
 <p><code># 예제3</code> – 띄어쓰기 불가능</p>
-<div id="cb585fc8-70ba-4a07-91e7-63d4fb9fabaf" class="cell" data-execution_count="7">
+<div id="cb585fc8-70ba-4a07-91e7-63d4fb9fabaf" class="cell" data-execution_count="157">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>Guebin Choi <span class="ot">&lt;-</span> <span class="dv">33</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>ERROR: Error in parse(text = x, srcfile = src): &lt;text&gt;:1:8: unexpected symbol
+<pre><code>ERROR: Error in parse(text = input): &lt;text&gt;:1:8: unexpected symbol
 1: Guebin Choi
            ^</code></pre>
 </div>
 </div>
-<div id="8ffc2e66-5e45-4d6d-a739-3721e082eeba" class="cell" data-execution_count="8">
+<div id="8ffc2e66-5e45-4d6d-a739-3721e082eeba" class="cell" data-execution_count="158">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>this_is_333 <span class="ot">&lt;-</span> <span class="dv">333</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>띄어쓰기 대신 언더바(_)를 활용한다.</li>
 </ul>
-<div id="0a8f9526-fe60-4092-aef9-93db0b7a3b9e" class="cell" data-execution_count="9">
+<div id="0a8f9526-fe60-4092-aef9-93db0b7a3b9e" class="cell" data-execution_count="159">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>this.is<span class="fl">.777</span> <span class="ot">&lt;-</span> <span class="dv">777</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
@@ -350,29 +350,29 @@ window.Quarto = {
 </ul>
 <p><code>#</code></p>
 <p><code># 예제4</code> – 언더바를 포함하는 것은 가능하지만, 언더바로 시작하는 변수명은 사용할 수 없다. `</p>
-<div id="8ad826df-f7a5-4408-b425-d5ce025e2fc0" class="cell" data-execution_count="10">
+<div id="8ad826df-f7a5-4408-b425-d5ce025e2fc0" class="cell" data-execution_count="160">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>_x <span class="ot">&lt;-</span> <span class="dv">33</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>ERROR: Error in parse(text = x, srcfile = src): &lt;text&gt;:1:1: unexpected input
-1: _
-    ^</code></pre>
+<pre><code>ERROR: Error in parse(text = input): &lt;text&gt;:1:2: unexpected symbol
+1: _x
+     ^</code></pre>
 </div>
 </div>
 <p><code>#</code></p>
 <p><code># 예제5</code> – 사용할 수는 있지만 권장하지 않는 변수이름</p>
-<div id="2a41998b-9052-4079-ae50-a3e4e2bd4962" class="cell" data-execution_count="11">
+<div id="2a41998b-9052-4079-ae50-a3e4e2bd4962" class="cell" data-execution_count="161">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>pi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<pre><code>[1] 3.141593</code></pre>
+3.14159265358979
 </div>
 </div>
-<div id="e21fbeee-8df7-4d0f-8e5e-6e5174bcb286" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>pi<span class="ot">&lt;-</span><span class="dv">333</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e21fbeee-8df7-4d0f-8e5e-6e5174bcb286" class="cell" data-execution_count="162">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>pi<span class="ot">&lt;-</span><span class="dv">333</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="d03fc273-e0eb-411b-a34d-8d680d334615" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>pi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="d03fc273-e0eb-411b-a34d-8d680d334615" class="cell" data-execution_count="163">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>pi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<pre><code>[1] 333</code></pre>
+333
 </div>
 </div>
 </section>
@@ -380,8 +380,8 @@ window.Quarto = {
 <section id="벡터의-선언" class="level2">
 <h2 class="anchored" data-anchor-id="벡터의-선언">3. 벡터의 선언</h2>
 <p><code># 예제1</code> – 직접 입력</p>
-<div id="03aee23a-036d-4907-88d6-b12062f6cd3d" class="cell" data-execution_count="73">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="03aee23a-036d-4907-88d6-b12062f6cd3d" class="cell" data-execution_count="164">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .list-inline {list-style: none; margin:0; padding: 0}
@@ -392,8 +392,8 @@ window.Quarto = {
 </div>
 </div>
 <p><code># 예제2</code> – <code>seq</code>를 이용</p>
-<div id="8d591965-e902-42f8-ab3b-ee918f2645b3" class="cell" data-execution_count="74">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">0</span>,<span class="at">to=</span><span class="dv">10</span>,<span class="at">by=</span><span class="fl">0.1</span>) <span class="co"># 0~10 까지 0.1의 간격으로 수열만들기 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8d591965-e902-42f8-ab3b-ee918f2645b3" class="cell" data-execution_count="165">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">0</span>,<span class="at">to=</span><span class="dv">10</span>,<span class="at">by=</span><span class="fl">0.1</span>) <span class="co"># 0~10 까지 0.1의 간격으로 수열만들기 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .list-inline {list-style: none; margin:0; padding: 0}
@@ -403,8 +403,8 @@ window.Quarto = {
 <ol class="list-inline"><li>0</li><li>0.1</li><li>0.2</li><li>0.3</li><li>0.4</li><li>0.5</li><li>0.6</li><li>0.7</li><li>0.8</li><li>0.9</li><li>1</li><li>1.1</li><li>1.2</li><li>1.3</li><li>1.4</li><li>1.5</li><li>1.6</li><li>1.7</li><li>1.8</li><li>1.9</li><li>2</li><li>2.1</li><li>2.2</li><li>2.3</li><li>2.4</li><li>2.5</li><li>2.6</li><li>2.7</li><li>2.8</li><li>2.9</li><li>3</li><li>3.1</li><li>3.2</li><li>3.3</li><li>3.4</li><li>3.5</li><li>3.6</li><li>3.7</li><li>3.8</li><li>3.9</li><li>4</li><li>4.1</li><li>4.2</li><li>4.3</li><li>4.4</li><li>4.5</li><li>4.6</li><li>4.7</li><li>4.8</li><li>4.9</li><li>5</li><li>5.1</li><li>5.2</li><li>5.3</li><li>5.4</li><li>5.5</li><li>5.6</li><li>5.7</li><li>5.8</li><li>5.9</li><li>6</li><li>6.1</li><li>6.2</li><li>6.3</li><li>6.4</li><li>6.5</li><li>6.6</li><li>6.7</li><li>6.8</li><li>6.9</li><li>7</li><li>7.1</li><li>7.2</li><li>7.3</li><li>7.4</li><li>7.5</li><li>7.6</li><li>7.7</li><li>7.8</li><li>7.9</li><li>8</li><li>8.1</li><li>8.2</li><li>8.3</li><li>8.4</li><li>8.5</li><li>8.6</li><li>8.7</li><li>8.8</li><li>8.9</li><li>9</li><li>9.1</li><li>9.2</li><li>9.3</li><li>9.4</li><li>9.5</li><li>9.6</li><li>9.7</li><li>9.8</li><li>9.9</li><li>10</li></ol>
 </div>
 </div>
-<div id="8da7bf5c-bd5c-40dc-99f2-b9ddb74ac33f" class="cell" data-execution_count="75">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">0</span>, <span class="at">to=</span><span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">27</span>) <span class="co"># 0~1 까지 등간격으로 총 27개의 수열만들기 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8da7bf5c-bd5c-40dc-99f2-b9ddb74ac33f" class="cell" data-execution_count="166">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">0</span>, <span class="at">to=</span><span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">27</span>) <span class="co"># 0~1 까지 등간격으로 총 27개의 수열만들기 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .list-inline {list-style: none; margin:0; padding: 0}
@@ -415,8 +415,8 @@ window.Quarto = {
 </div>
 </div>
 <p><code># 예제3</code> – <code>:</code> 를 이용</p>
-<div id="6cda8399-28dd-4431-a3de-8a463c46361d" class="cell" data-execution_count="76">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">22</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="6cda8399-28dd-4431-a3de-8a463c46361d" class="cell" data-execution_count="167">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">22</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .list-inline {list-style: none; margin:0; padding: 0}
@@ -427,8 +427,8 @@ window.Quarto = {
 </div>
 </div>
 <p>이 방법을 살짝 응용하면 0~1까지 57개의 변수를 넣는 방법을 아래와 같이 할 수 있다.</p>
-<div id="397fefb8-f0d9-43da-a3ca-f363ac12ab8c" class="cell" data-execution_count="81">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span><span class="sc">:</span><span class="dv">56</span> <span class="sc">/</span> <span class="dv">56</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="397fefb8-f0d9-43da-a3ca-f363ac12ab8c" class="cell" data-execution_count="168">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span><span class="sc">:</span><span class="dv">56</span> <span class="sc">/</span> <span class="dv">56</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .list-inline {list-style: none; margin:0; padding: 0}
@@ -439,8 +439,8 @@ window.Quarto = {
 </div>
 </div>
 <p>물론 아래와 같이하는것이 더 가독성이 좋다.</p>
-<div id="aaf9eea0-94dc-4f15-aa26-02a9f9a91772" class="cell" data-execution_count="80">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">0</span>,<span class="at">to=</span><span class="dv">1</span>,<span class="at">length.out =</span><span class="dv">57</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="aaf9eea0-94dc-4f15-aa26-02a9f9a91772" class="cell" data-execution_count="169">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">0</span>,<span class="at">to=</span><span class="dv">1</span>,<span class="at">length.out =</span><span class="dv">57</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .list-inline {list-style: none; margin:0; padding: 0}
@@ -452,8 +452,8 @@ window.Quarto = {
 </div>
 <p><code>#</code></p>
 <p><code># 예제4</code> – <code>rep</code> 를 이용</p>
-<div id="0a202f1b-822e-4590-a72e-a9d5763702f3" class="cell" data-execution_count="79">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="0a202f1b-822e-4590-a72e-a9d5763702f3" class="cell" data-execution_count="170">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .list-inline {list-style: none; margin:0; padding: 0}
@@ -468,54 +468,54 @@ window.Quarto = {
 <section id="함수사용하는-방법" class="level2">
 <h2 class="anchored" data-anchor-id="함수사용하는-방법">4. 함수사용하는 방법</h2>
 <p><code>-</code> 기본 구조</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>함수이름 <span class="ot">&lt;-</span> <span class="cf">function</span>(입력){</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    함수의 기능 </span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(출력)</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="d88afb49-5d53-46ba-82a1-032e686ff673" class="cell" data-execution_count="135">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>solve <span class="ot">&lt;-</span> <span class="cf">function</span>(input){</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    theta <span class="ot">=</span> <span class="fu">acos</span>(input) <span class="sc">-</span> pi<span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    output <span class="ot">=</span> <span class="fu">sin</span>(theta)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">cos</span>(theta)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(output)</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>함수이름 <span class="ot">&lt;-</span> <span class="cf">function</span>(입력){</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    함수의 기능 </span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(출력)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="d88afb49-5d53-46ba-82a1-032e686ff673" class="cell" data-execution_count="171">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>solve <span class="ot">&lt;-</span> <span class="cf">function</span>(input){</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    theta <span class="ot">=</span> <span class="fu">acos</span>(input) <span class="sc">-</span> pi<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    output <span class="ot">=</span> <span class="fu">sin</span>(theta)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">cos</span>(theta)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(output)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="d4b4e2fe-14f3-4ada-8c1a-355fc9766d66" class="cell" data-execution_count="138">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="d4b4e2fe-14f3-4ada-8c1a-355fc9766d66" class="cell" data-execution_count="172">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-5
+-1.02155038002469
 </div>
 </div>
 <p><code>-</code> 아래의 2개의 코드는 <code>거의</code> 같다.</p>
-<div id="e60e88c0-40c8-4862-bb63-6025d8901be2" class="cell" data-execution_count="141">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="do">### 1 </span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>solve <span class="ot">&lt;-</span> <span class="cf">function</span>(input){</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    theta <span class="ot">=</span> <span class="fu">acos</span>(input) <span class="sc">-</span> pi<span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    output <span class="ot">=</span> <span class="fu">sin</span>(theta)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">cos</span>(theta)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(output)</span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>)</span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="do">### 2</span></span>
-<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>input <span class="ot">=</span> <span class="sc">-</span><span class="dv">1</span><span class="sc">/</span><span class="dv">5</span> </span>
-<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">=</span> <span class="fu">acos</span>(input) <span class="sc">-</span> pi<span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>output <span class="ot">=</span> <span class="fu">sin</span>(theta)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">cos</span>(theta)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e60e88c0-40c8-4862-bb63-6025d8901be2" class="cell" data-execution_count="173">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="do">### 1 </span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>solve <span class="ot">&lt;-</span> <span class="cf">function</span>(input){</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    theta <span class="ot">=</span> <span class="fu">acos</span>(input) <span class="sc">-</span> pi<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    output <span class="ot">=</span> <span class="fu">sin</span>(theta)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">cos</span>(theta)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(output)</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>)</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="do">### 2</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>input <span class="ot">=</span> <span class="sc">-</span><span class="dv">1</span><span class="sc">/</span><span class="dv">5</span> </span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">=</span> <span class="fu">acos</span>(input) <span class="sc">-</span> pi<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>output <span class="ot">=</span> <span class="fu">sin</span>(theta)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">cos</span>(theta)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-5
+-1.02155038002469
 </div>
 <div class="cell-output cell-output-display">
-5
+-1.02155038002469
 </div>
 </div>
 <p><code>-</code> return을 생략해도 괜찮다.</p>
-<div id="8ed32d4e-8318-4c70-aca4-26e59fa87969" class="cell" data-execution_count="143">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>solve <span class="ot">&lt;-</span> <span class="cf">function</span>(input){</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    theta <span class="ot">=</span> <span class="fu">acos</span>(input) <span class="sc">-</span> pi<span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sin</span>(theta)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">cos</span>(theta)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8ed32d4e-8318-4c70-aca4-26e59fa87969" class="cell" data-execution_count="174">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>solve <span class="ot">&lt;-</span> <span class="cf">function</span>(input){</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    theta <span class="ot">=</span> <span class="fu">acos</span>(input) <span class="sc">-</span> pi<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sin</span>(theta)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">cos</span>(theta)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-5
+-1.02155038002469
 </div>
 </div>
 
