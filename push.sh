@@ -1,4 +1,4 @@
-quarto publish --no-browser --no-prompt 
+quarto publish gh-pages --no-browser --no-prompt 
 rm -rf _site
 git add .
 git commit -m .
