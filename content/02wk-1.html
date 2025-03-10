@@ -9,7 +9,7 @@
 <meta name="author" content="최규빈">
 <meta name="dcterms.date" content="2025-03-11">
 
-<title>02wk-1: 수능문제풀이, 벡터인덱싱 – IAB2025</title>
+<title>02wk-1: 문제풀이 I, Bool 자료형과 조건판단, 벡터인덱싱, 문제풀이 II – IAB2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -185,7 +185,8 @@ window.Quarto = {
   <li><a href="#문제풀이-i" id="toc-문제풀이-i" class="nav-link active" data-scroll-target="#문제풀이-i">1. 문제풀이 I</a></li>
   <li><a href="#bool-자료형과-조건판단" id="toc-bool-자료형과-조건판단" class="nav-link" data-scroll-target="#bool-자료형과-조건판단">2. Bool 자료형과 조건판단</a></li>
   <li><a href="#벡터인덱싱" id="toc-벡터인덱싱" class="nav-link" data-scroll-target="#벡터인덱싱">3. 벡터인덱싱</a></li>
-  <li><a href="#문제풀이-ii" id="toc-문제풀이-ii" class="nav-link" data-scroll-target="#문제풀이-ii">4. 문제풀이 II</a></li>
+  <li><a href="#조건문과-반복문" id="toc-조건문과-반복문" class="nav-link" data-scroll-target="#조건문과-반복문">4. 조건문과 반복문</a></li>
+  <li><a href="#문제풀이-ii" id="toc-문제풀이-ii" class="nav-link" data-scroll-target="#문제풀이-ii">5. 문제풀이 II</a></li>
   </ul>
 </nav>
     </div>
@@ -194,7 +195,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">02wk-1: 수능문제풀이, 벡터인덱싱</h1>
+<h1 class="title">02wk-1: 문제풀이 I, Bool 자료형과 조건판단, 벡터인덱싱, 문제풀이 II</h1>
 </div>
 
 
@@ -727,8 +728,81 @@ FALSE
 <p><code>#</code></p>
 </section>
 </section>
+<section id="조건문과-반복문" class="level2">
+<h2 class="anchored" data-anchor-id="조건문과-반복문">4. 조건문과 반복문</h2>
+<section id="a.-조건문" class="level3">
+<h3 class="anchored" data-anchor-id="a.-조건문">A. 조건문</h3>
+<p><code>-</code> 예시1</p>
+<div id="6268425d-7b0e-431e-afff-3af6ec9fafdd" class="cell" data-execution_count="192">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">0</span> </span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(x<span class="sc">&gt;</span><span class="dv">0</span>){</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"양수"</span>)</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span> <span class="cf">if</span>(x<span class="sc">&lt;</span><span class="dv">0</span>){</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"음수"</span>)</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span>{</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"0"</span>)</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "0"</code></pre>
+</div>
+</div>
+</section>
+<section id="b.-반복문" class="level3">
+<h3 class="anchored" data-anchor-id="b.-반복문">B. 반복문</h3>
+<p><code>-</code> 예시1</p>
+<div id="c90e586b-1c8f-44cc-a45b-55b6d6cf7b62" class="cell" data-execution_count="193">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(x <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(x)</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1
+[1] 2
+[1] 3
+[1] 4
+[1] 5
+[1] 6
+[1] 7
+[1] 8
+[1] 9
+[1] 10</code></pre>
+</div>
+</div>
+<p><code>-</code> 예시2</p>
+<div id="8e9bb06b-b407-4d8e-8822-e1bab5b63c4b" class="cell" data-execution_count="195">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(x <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(x<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1
+[1] 4
+[1] 9
+[1] 16
+[1] 25
+[1] 36
+[1] 49
+[1] 64
+[1] 81
+[1] 100</code></pre>
+</div>
+</div>
+<p><code>-</code> 예시3</p>
+<div id="6ed57849-24b7-4311-9a4b-7ff732a53ce3" class="cell" data-execution_count="196">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(x <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>( (x<span class="sc">^</span><span class="dv">2</span><span class="sc">&gt;</span><span class="dv">20</span>)<span class="sc">*</span>(x<span class="sc">^</span><span class="dv">2</span><span class="sc">&lt;</span><span class="dv">80</span>) ){</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(x<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 25
+[1] 36
+[1] 49
+[1] 64</code></pre>
+</div>
+</div>
+</section>
+</section>
 <section id="문제풀이-ii" class="level2">
-<h2 class="anchored" data-anchor-id="문제풀이-ii">4. 문제풀이 II</h2>
+<h2 class="anchored" data-anchor-id="문제풀이-ii">5. 문제풀이 II</h2>
 <p><code>2010(나)6월평가원-4</code>. 실수 <span class="math inline">\(a\)</span> 가<br>
 <span class="math display">\[
 \frac{2^a + 2^{-a}}{2^a - 2^{-a}} = -2
@@ -746,54 +820,54 @@ FALSE
 </ol>
 <p>(풀이)</p>
 <div id="82025833-6ad8-4c37-94a2-07a98386db1f" class="cell" data-execution_count="112">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">=</span> <span class="cf">function</span>(a){</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">2</span><span class="sc">^</span>a <span class="sc">+</span> <span class="dv">2</span><span class="sc">^</span>(<span class="sc">-</span>a))<span class="sc">/</span>(<span class="dv">2</span><span class="sc">^</span>a <span class="sc">-</span> <span class="dv">2</span><span class="sc">^</span>(<span class="sc">-</span>a))</span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>}                </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">=</span> <span class="cf">function</span>(a){</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">2</span><span class="sc">^</span>a <span class="sc">+</span> <span class="dv">2</span><span class="sc">^</span>(<span class="sc">-</span>a))<span class="sc">/</span>(<span class="dv">2</span><span class="sc">^</span>a <span class="sc">-</span> <span class="dv">2</span><span class="sc">^</span>(<span class="sc">-</span>a))</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>}                </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="ce606a2c-931e-4f8e-99c4-99d3dc36a8d2" class="cell" data-execution_count="123">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="sc">-</span><span class="dv">50</span><span class="sc">:</span><span class="dv">50</span><span class="sc">/</span><span class="dv">10</span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(a,<span class="fu">f</span>(a))</span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="sc">-</span><span class="dv">2</span>,<span class="at">col=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="sc">-</span><span class="dv">50</span><span class="sc">:</span><span class="dv">50</span><span class="sc">/</span><span class="dv">10</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(a,<span class="fu">f</span>(a))</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="sc">-</span><span class="dv">2</span>,<span class="at">col=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="02wk-1_files/figure-html/cell-48-output-1.png" width="420" height="420" class="figure-img"></p>
+<p><img src="02wk-1_files/figure-html/cell-52-output-1.png" width="420" height="420" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <div id="b1ba2088-03de-4925-8f6e-e59470f5ed96" class="cell" data-execution_count="146">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="sc">-</span><span class="dv">2</span>,<span class="at">to=</span><span class="sc">-</span><span class="fl">0.1</span>,<span class="at">by=</span><span class="fl">0.0001</span>)</span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(a,<span class="fu">f</span>(a),<span class="at">type=</span><span class="st">'l'</span>)</span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="sc">-</span><span class="dv">2</span>,<span class="at">col=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="sc">-</span><span class="dv">2</span>,<span class="at">to=</span><span class="sc">-</span><span class="fl">0.1</span>,<span class="at">by=</span><span class="fl">0.0001</span>)</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(a,<span class="fu">f</span>(a),<span class="at">type=</span><span class="st">'l'</span>)</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="sc">-</span><span class="dv">2</span>,<span class="at">col=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="02wk-1_files/figure-html/cell-49-output-1.png" width="420" height="420" class="figure-img"></p>
+<p><img src="02wk-1_files/figure-html/cell-53-output-1.png" width="420" height="420" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <div id="89ecc4d6-bced-4165-af7d-75b2ccc32114" class="cell" data-execution_count="147">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>a[<span class="fu">abs</span>(<span class="fu">f</span>(a)<span class="sc">+</span><span class="dv">2</span>) <span class="sc">==</span> <span class="fu">min</span>(<span class="fu">abs</span>(<span class="fu">f</span>(a)<span class="sc">+</span><span class="dv">2</span>))]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>a[<span class="fu">abs</span>(<span class="fu">f</span>(a)<span class="sc">+</span><span class="dv">2</span>) <span class="sc">==</span> <span class="fu">min</span>(<span class="fu">abs</span>(<span class="fu">f</span>(a)<span class="sc">+</span><span class="dv">2</span>))]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 -0.7925
 </div>
 </div>
 <div id="565e9ea4-f333-41ee-b25c-ba2bfff49990" class="cell" data-execution_count="151">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(<span class="sc">-</span><span class="fl">0.7925</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(<span class="sc">-</span><span class="fl">0.7925</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 -1.99996101223429
 </div>
 </div>
 <div id="4cbdfb6b-7d29-4132-a20a-c6c066d1ca91" class="cell" data-execution_count="152">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">^</span>(<span class="sc">-</span><span class="fl">0.7925</span>)<span class="sc">+</span><span class="dv">4</span><span class="sc">^</span>(<span class="fl">0.7925</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">^</span>(<span class="sc">-</span><span class="fl">0.7925</span>)<span class="sc">+</span><span class="dv">4</span><span class="sc">^</span>(<span class="fl">0.7925</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 3.33340264784444
 </div>
 </div>
 <div id="5a41b232-fe5a-4798-be9a-33addd2e4d74" class="cell" data-execution_count="153">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">5</span><span class="sc">/</span><span class="dv">2</span>, <span class="dv">10</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">17</span><span class="sc">/</span><span class="dv">4</span>, <span class="dv">26</span><span class="sc">/</span><span class="dv">5</span>, <span class="dv">37</span><span class="sc">/</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">5</span><span class="sc">/</span><span class="dv">2</span>, <span class="dv">10</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">17</span><span class="sc">/</span><span class="dv">4</span>, <span class="dv">26</span><span class="sc">/</span><span class="dv">5</span>, <span class="dv">37</span><span class="sc">/</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .list-inline {list-style: none; margin:0; padding: 0}
@@ -806,19 +880,19 @@ FALSE
 <p><code>2024수능-16</code>. 방정식 <span class="math inline">\(3^{x-8} = \left(\frac{1}{27}\right)^x\)</span> 을 만족시키는 실수 <span class="math inline">\(x\)</span>의 값을 구하시오. <strong>[3점]</strong></p>
 <p>(풀이)</p>
 <div id="5ceb64ec-32bf-4221-a974-2721560cf1e4" class="cell" data-execution_count="163">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="sc">-</span><span class="dv">5</span>, <span class="at">to =</span> <span class="dv">5</span>, <span class="at">by=</span><span class="fl">0.1</span>)</span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,<span class="dv">3</span><span class="sc">^</span>(x<span class="dv">-8</span>),<span class="at">type=</span><span class="st">'l'</span>)</span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,(<span class="dv">1</span><span class="sc">/</span><span class="dv">27</span>)<span class="sc">^</span>x,<span class="at">col=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="sc">-</span><span class="dv">5</span>, <span class="at">to =</span> <span class="dv">5</span>, <span class="at">by=</span><span class="fl">0.1</span>)</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,<span class="dv">3</span><span class="sc">^</span>(x<span class="dv">-8</span>),<span class="at">type=</span><span class="st">'l'</span>)</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,(<span class="dv">1</span><span class="sc">/</span><span class="dv">27</span>)<span class="sc">^</span>x,<span class="at">col=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="02wk-1_files/figure-html/cell-54-output-1.png" width="420" height="420" class="figure-img"></p>
+<p><img src="02wk-1_files/figure-html/cell-58-output-1.png" width="420" height="420" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <div id="c99f7993-f5d2-4b97-b983-863c97136552" class="cell" data-execution_count="171">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>x[(<span class="fu">abs</span>(<span class="dv">3</span><span class="sc">^</span>(x<span class="dv">-8</span>) <span class="sc">-</span> (<span class="dv">1</span><span class="sc">/</span><span class="dv">27</span>)<span class="sc">^</span>x)) <span class="sc">==</span> <span class="fu">min</span>(<span class="fu">abs</span>(<span class="dv">3</span><span class="sc">^</span>(x<span class="dv">-8</span>) <span class="sc">-</span> (<span class="dv">1</span><span class="sc">/</span><span class="dv">27</span>)<span class="sc">^</span>x))]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>x[(<span class="fu">abs</span>(<span class="dv">3</span><span class="sc">^</span>(x<span class="dv">-8</span>) <span class="sc">-</span> (<span class="dv">1</span><span class="sc">/</span><span class="dv">27</span>)<span class="sc">^</span>x)) <span class="sc">==</span> <span class="fu">min</span>(<span class="fu">abs</span>(<span class="dv">3</span><span class="sc">^</span>(x<span class="dv">-8</span>) <span class="sc">-</span> (<span class="dv">1</span><span class="sc">/</span><span class="dv">27</span>)<span class="sc">^</span>x))]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 2
 </div>
@@ -840,11 +914,11 @@ a_{n+1} + a_n = (-1)^{n+1} \times n
 </ol>
 <p>(풀이1)</p>
 <div id="01118827-86df-4109-8be0-4699aaa9a21f" class="cell" data-execution_count="178">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="dv">12</span></span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(n <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>    a <span class="ot">=</span> (<span class="sc">-</span><span class="dv">1</span>)<span class="sc">^</span>(n<span class="sc">+</span><span class="dv">1</span>) <span class="sc">*</span> n <span class="sc">-</span> a</span>
-<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(a)</span>
-<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="dv">12</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(n <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>    a <span class="ot">=</span> (<span class="sc">-</span><span class="dv">1</span>)<span class="sc">^</span>(n<span class="sc">+</span><span class="dv">1</span>) <span class="sc">*</span> n <span class="sc">-</span> a</span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(a)</span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -11
 [1] 9
@@ -860,12 +934,12 @@ a_{n+1} + a_n = (-1)^{n+1} \times n
 </div>
 <p>(풀이2)</p>
 <div id="62b195b2-f762-4127-8bfe-565cfaba3da0" class="cell" data-execution_count="186">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">c</span>()</span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>a[<span class="dv">1</span>]<span class="ot">=</span><span class="dv">12</span></span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(n <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
-<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>    a[n<span class="sc">+</span><span class="dv">1</span>] <span class="ot">=</span> (<span class="sc">-</span><span class="dv">1</span>)<span class="sc">^</span>(n<span class="sc">+</span><span class="dv">1</span>) <span class="sc">*</span> n <span class="sc">-</span> a[n]</span>
-<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">c</span>()</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>a[<span class="dv">1</span>]<span class="ot">=</span><span class="dv">12</span></span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(n <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>    a[n<span class="sc">+</span><span class="dv">1</span>] <span class="ot">=</span> (<span class="sc">-</span><span class="dv">1</span>)<span class="sc">^</span>(n<span class="sc">+</span><span class="dv">1</span>) <span class="sc">*</span> n <span class="sc">-</span> a[n]</span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .list-inline {list-style: none; margin:0; padding: 0}
@@ -876,7 +950,7 @@ a_{n+1} + a_n = (-1)^{n+1} \times n
 </div>
 </div>
 <div id="6d9db6c8-25b3-4f96-80fe-9119cc541b3d" class="cell" data-execution_count="189">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)[a<span class="sc">&gt;</span><span class="dv">12</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)[a<span class="sc">&gt;</span><span class="dv">12</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .list-inline {list-style: none; margin:0; padding: 0}
