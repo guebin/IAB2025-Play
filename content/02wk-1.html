@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
+<meta name="generator" content="quarto-1.4.533">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="최규빈">
 <meta name="dcterms.date" content="2025-03-11">
 
-<title>02wk-1: 문제풀이 I, Bool 자료형과 조건판단, 벡터인덱싱, 조건문과 반복문, 문제풀이 II – IAB2025</title>
+<title>IAB2025 - 02wk-1: 문제풀, Bool 자료형과 조건판단, 벡터인덱싱, 조건문과 반복문 // 숙제</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -35,7 +35,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -59,7 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -71,10 +71,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de84f8d6bb715db06a919283c2d1e787.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-3f453be5ec2ee49e579b43b94346acdb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -102,11 +102,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -151,7 +148,7 @@ window.Quarto = {
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -168,7 +165,7 @@ window.Quarto = {
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+          <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -182,11 +179,11 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#문제풀이-i" id="toc-문제풀이-i" class="nav-link active" data-scroll-target="#문제풀이-i">1. 문제풀이 I</a></li>
+  <li><a href="#문제풀이" id="toc-문제풀이" class="nav-link active" data-scroll-target="#문제풀이">1. 문제풀이</a></li>
   <li><a href="#bool-자료형과-조건판단" id="toc-bool-자료형과-조건판단" class="nav-link" data-scroll-target="#bool-자료형과-조건판단">2. Bool 자료형과 조건판단</a></li>
   <li><a href="#벡터인덱싱" id="toc-벡터인덱싱" class="nav-link" data-scroll-target="#벡터인덱싱">3. 벡터인덱싱</a></li>
   <li><a href="#조건문과-반복문" id="toc-조건문과-반복문" class="nav-link" data-scroll-target="#조건문과-반복문">4. 조건문과 반복문</a></li>
-  <li><a href="#문제풀이-ii" id="toc-문제풀이-ii" class="nav-link" data-scroll-target="#문제풀이-ii">5. 문제풀이 II</a></li>
+  <li><a href="#숙제" id="toc-숙제" class="nav-link" data-scroll-target="#숙제">5. 숙제</a></li>
   </ul>
 </nav>
     </div>
@@ -195,7 +192,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">02wk-1: 문제풀이 I, Bool 자료형과 조건판단, 벡터인덱싱, 조건문과 반복문, 문제풀이 II</h1>
+<h1 class="title">02wk-1: 문제풀, Bool 자료형과 조건판단, 벡터인덱싱, 조건문과 반복문 // 숙제</h1>
 </div>
 
 
@@ -224,193 +221,132 @@ window.Quarto = {
 </header>
 
 
-<section id="문제풀이-i" class="level2">
-<h2 class="anchored" data-anchor-id="문제풀이-i">1. 문제풀이 I</h2>
+<section id="문제풀이" class="level2">
+<h2 class="anchored" data-anchor-id="문제풀이">1. 문제풀이</h2>
 <p><strong><code>2024수능-19</code>.</strong> 함수 <span class="math inline">\(f(x) = \sin \frac{\pi}{4} x\)</span> 할 때, <span class="math inline">\(0 &lt; x &lt; 16\)</span>에서 부등식</p>
 <p><span class="math display">\[
 f(2+x) f(2-x) &lt; \frac{1}{4}
 \]</span></p>
 <p>을 만족시키는 모든 자연수 <span class="math inline">\(x\)</span>의 값의 합을 구하시오. <strong>[3점]</strong></p>
 <p>(풀이1)</p>
-<div id="2084602d-ff09-4e1d-8a20-28165912dbf2" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="dv">1</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sin</span>(pi<span class="sc">/</span><span class="dv">4</span><span class="sc">*</span>(<span class="dv">2</span><span class="sc">+</span>x)) <span class="sc">*</span> <span class="fu">sin</span>(pi<span class="sc">/</span><span class="dv">4</span><span class="sc">*</span>(<span class="dv">2</span><span class="sc">-</span>x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-0.5
+<div id="6743bdc2-c35b-4b7a-9de6-23c99038a541" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">=</span> <span class="cf">function</span>(x){</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">sin</span>(pi<span class="sc">/</span><span class="dv">4</span> <span class="sc">*</span>x) </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="5b49b2b7-ad04-4b9d-abed-7a36753db35e" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="dv">1</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(<span class="dv">2</span><span class="sc">+</span>x)<span class="sc">*</span><span class="fu">f</span>(<span class="dv">2</span><span class="sc">-</span>x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>[1] 0.5</code></pre>
 </div>
 </div>
 <p>…</p>
-<div id="0a5012b9-cc3d-4c15-9a6d-adb4f40d325e" class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="dv">15</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sin</span>(pi<span class="sc">/</span><span class="dv">4</span><span class="sc">*</span>(<span class="dv">2</span><span class="sc">+</span>x)) <span class="sc">*</span> <span class="fu">sin</span>(pi<span class="sc">/</span><span class="dv">4</span><span class="sc">*</span>(<span class="dv">2</span><span class="sc">-</span>x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-0.5
+<div id="bb5a875e-fb8e-4d8b-b6fe-9eb646348fe2" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="dv">15</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(<span class="dv">2</span><span class="sc">+</span>x)<span class="sc">*</span><span class="fu">f</span>(<span class="dv">2</span><span class="sc">-</span>x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>[1] 0.5</code></pre>
 </div>
 </div>
 <p>(풀이2)</p>
-<div id="3f87ddae-c044-492c-87bc-fbac1fb74610" class="cell" data-execution_count="33">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">15</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="9de9d3ae-f050-4ece-a9a1-c7632a5fb288" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">=</span> <span class="cf">function</span>(x){</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">sin</span>(pi<span class="sc">/</span><span class="dv">4</span> <span class="sc">*</span>x) </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="952d57c2-2fae-4c93-9f75-ed711ec06d45" class="cell" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">=</span> <span class="cf">function</span>(x){</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sin</span>(pi<span class="sc">/</span><span class="dv">4</span><span class="sc">*</span>x)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="14475fc3-db64-4e83-b0ea-79abf114791c" class="cell" data-execution_count="35">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">f</span>(<span class="dv">2</span><span class="sc">+</span>x)<span class="sc">*</span><span class="fu">f</span>(<span class="dv">2</span><span class="sc">-</span>x) <span class="sc">&lt;</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>2</li><li>6</li><li>10</li><li>14</li></ol>
+<div id="bd93dc62-534e-4b8b-96f4-ede899847887" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">15</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
+<pre><code> [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15</code></pre>
 </div>
 </div>
-<div id="008b67fa-446b-4b6c-b695-4b836d34d37b" class="cell" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x[<span class="fu">f</span>(<span class="dv">2</span><span class="sc">+</span>x)<span class="sc">*</span><span class="fu">f</span>(<span class="dv">2</span><span class="sc">-</span>x) <span class="sc">&lt;</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-32
+<div id="5b98bea3-3ef2-4ae8-91ca-c2b5aa865e2e" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
+<pre><code>[1] 1 5 2 3</code></pre>
+</div>
+</div>
+<div id="41a278b8-fa6c-47ef-a4ed-06633b6317af" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(<span class="dv">2</span><span class="sc">+</span>x) <span class="sc">*</span> <span class="fu">f</span>(<span class="dv">2</span><span class="sc">-</span>x) <span class="sc">&lt;</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
+<pre><code> [1] FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE
+[13] FALSE  TRUE FALSE</code></pre>
+</div>
+</div>
+<div id="f02741fe-7f17-40b9-8c8f-e4a8991506bc" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">f</span>(<span class="dv">2</span><span class="sc">+</span>x) <span class="sc">*</span> <span class="fu">f</span>(<span class="dv">2</span><span class="sc">-</span>x) <span class="sc">&lt;</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="48">
+<pre><code>[1]  2  6 10 14</code></pre>
+</div>
+</div>
+<div id="761792e9-6c82-4edc-a5c2-77fc2ed9cd50" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x[<span class="fu">f</span>(<span class="dv">2</span><span class="sc">+</span>x) <span class="sc">*</span> <span class="fu">f</span>(<span class="dv">2</span><span class="sc">-</span>x) <span class="sc">&lt;</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="49">
+<pre><code>[1] 32</code></pre>
 </div>
 </div>
 <p>(풀이3)</p>
-<div id="886d970b-e110-4649-a109-513a7a42f7c3" class="cell" data-execution_count="106">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">=</span> <span class="dv">0</span> </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(x <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>){</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">f</span>(<span class="dv">2</span><span class="sc">+</span>x)<span class="sc">*</span><span class="fu">f</span>(<span class="dv">2</span><span class="sc">-</span>x))</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5
-[1] 0
-[1] 0.5
-[1] 1
-[1] 0.5
-[1] 2.99952e-32
-[1] 0.5
-[1] 1
-[1] 0.5
-[1] 8.998559e-32
-[1] 0.5
-[1] 1
-[1] 0.5
-[1] 1.799712e-31
-[1] 0.5</code></pre>
-</div>
-</div>
-<div id="8ae7aeb9-abad-4a81-b037-80e65c4e00c3" class="cell" data-execution_count="105">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">=</span> <span class="dv">0</span> </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(x <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>){</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">f</span>(<span class="dv">2</span><span class="sc">+</span>x)<span class="sc">*</span><span class="fu">f</span>(<span class="dv">2</span><span class="sc">-</span>x) <span class="sc">&lt;</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE
-[1] TRUE
-[1] FALSE
-[1] FALSE
-[1] FALSE
-[1] TRUE
-[1] FALSE
-[1] FALSE
-[1] FALSE
-[1] TRUE
-[1] FALSE
-[1] FALSE
-[1] FALSE
-[1] TRUE
-[1] FALSE</code></pre>
-</div>
-</div>
-<div id="5a9c4c69-fb22-4e96-91eb-f41e846b1348" class="cell" data-execution_count="108">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">=</span> <span class="dv">0</span> </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(x <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>){</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">f</span>(<span class="dv">2</span><span class="sc">+</span>x)<span class="sc">*</span><span class="fu">f</span>(<span class="dv">2</span><span class="sc">-</span>x) <span class="sc">&lt;</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>){</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(x)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2
-[1] 6
-[1] 10
-[1] 14</code></pre>
-</div>
-</div>
-<div id="8f08d5c5-52cd-4f08-9a95-517a573938cc" class="cell" data-execution_count="110">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">=</span> <span class="dv">0</span> </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(x <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>){</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">f</span>(<span class="dv">2</span><span class="sc">+</span>x)<span class="sc">*</span><span class="fu">f</span>(<span class="dv">2</span><span class="sc">-</span>x) <span class="sc">&lt;</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>){</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>        s <span class="ot">=</span> s<span class="sc">+</span>x</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-32
+<div id="8f08d5c5-52cd-4f08-9a95-517a573938cc" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="96">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">=</span> <span class="dv">0</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(x <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>){</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">f</span>(<span class="dv">2</span><span class="sc">+</span>x)<span class="sc">*</span><span class="fu">f</span>(<span class="dv">2</span><span class="sc">-</span>x) <span class="sc">&lt;</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>){</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>        s <span class="ot">=</span> s<span class="sc">+</span>x</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="96">
+<pre><code>[1] 32</code></pre>
 </div>
 </div>
 </section>
 <section id="bool-자료형과-조건판단" class="level2">
 <h2 class="anchored" data-anchor-id="bool-자료형과-조건판단">2. Bool 자료형과 조건판단</h2>
 <p><code>-</code> 예시1</p>
-<div id="90411ade-f20a-4750-a60b-add84a2081a7" class="cell" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">&gt;</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-FALSE
+<div id="90411ade-f20a-4750-a60b-add84a2081a7" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="97">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">&gt;</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="97">
+<pre><code>[1] FALSE</code></pre>
 </div>
 </div>
 <p><code>-</code> 예시2</p>
-<div id="bf0edc54-c7d9-45d2-8bb2-7b707c355b58" class="cell" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>x<span class="sc">&gt;</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>TRUE</li><li>TRUE</li></ol>
+<div id="bf0edc54-c7d9-45d2-8bb2-7b707c355b58" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="99">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="99">
+<pre><code>[1] 1 2 3 4 5</code></pre>
 </div>
 </div>
-<div id="ed40645d-6096-4913-9737-a9760ad801b5" class="cell" data-execution_count="46">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">&lt;</span><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>TRUE</li><li>TRUE</li><li>TRUE</li><li>TRUE</li><li>FALSE</li></ol>
+<div id="db4a44c4-b57d-4ea3-ba27-5dd0e8836f49" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="101">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">&gt;</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="101">
+<pre><code>[1] FALSE FALSE FALSE  TRUE  TRUE</code></pre>
 </div>
 </div>
-<div id="080c8169-2f10-454f-af43-8ff7b5cfb068" class="cell" data-execution_count="47">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">&gt;=</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>FALSE</li><li>FALSE</li><li>TRUE</li><li>TRUE</li><li>TRUE</li></ol>
+<div id="ed40645d-6096-4913-9737-a9760ad801b5" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="102">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">&lt;</span><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="102">
+<pre><code>[1]  TRUE  TRUE  TRUE  TRUE FALSE</code></pre>
 </div>
 </div>
-<div id="5295e55d-2407-42f5-8006-3106682e35cc" class="cell" data-execution_count="48">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">&lt;=</span><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>TRUE</li><li>TRUE</li><li>TRUE</li><li>TRUE</li><li>TRUE</li></ol>
+<div id="080c8169-2f10-454f-af43-8ff7b5cfb068" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="103">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">&gt;=</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="103">
+<pre><code>[1] FALSE FALSE  TRUE  TRUE  TRUE</code></pre>
 </div>
 </div>
-<div id="6d5f5749-9028-4900-a2f7-0034ffae68f6" class="cell" data-execution_count="49">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">==</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>FALSE</li><li>FALSE</li><li>TRUE</li><li>FALSE</li><li>FALSE</li></ol>
+<div id="5295e55d-2407-42f5-8006-3106682e35cc" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="104">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">&lt;=</span><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="104">
+<pre><code>[1] TRUE TRUE TRUE TRUE TRUE</code></pre>
+</div>
+</div>
+<div id="6d5f5749-9028-4900-a2f7-0034ffae68f6" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="105">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">==</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="105">
+<pre><code>[1] FALSE FALSE  TRUE FALSE FALSE</code></pre>
 </div>
 </div>
 </section>
@@ -422,146 +358,102 @@ FALSE
 <p>벡터의 원소에 순서대로 번호를 매겨서 뽑는 방식</p>
 </blockquote>
 <p><code># 예제1</code>– 첫 원소를 뽑고싶다.</p>
-<div id="225963d7-92d9-4d33-8c69-8e4d64e6d45a" class="cell" data-execution_count="51">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="sc">-</span><span class="dv">5</span>,<span class="dv">6</span>)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>1</li><li>2</li><li>-2</li><li>4</li><li>5</li><li>-5</li><li>6</li></ol>
+<div id="225963d7-92d9-4d33-8c69-8e4d64e6d45a" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="107">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="sc">-</span><span class="dv">5</span>,<span class="dv">6</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="107">
+<pre><code>[1]  1  2 -2  4  5 -5  6</code></pre>
 </div>
 </div>
-<div id="71ad5ccf-8c25-4820-98fd-d689b98888bd" class="cell" data-execution_count="52">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-1
+<div id="71ad5ccf-8c25-4820-98fd-d689b98888bd" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="108">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="108">
+<pre><code>[1] 1</code></pre>
 </div>
 </div>
 <p><code>#</code></p>
 <p><code># 예제2</code> – 세번째 원소를 뽑고싶다.</p>
-<div id="927e5b69-3f95-4fa3-afa7-80b4a942e511" class="cell" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="sc">-</span><span class="dv">5</span>,<span class="dv">6</span>)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>1</li><li>2</li><li>-2</li><li>4</li><li>5</li><li>-5</li><li>6</li></ol>
+<div id="927e5b69-3f95-4fa3-afa7-80b4a942e511" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="109">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="sc">-</span><span class="dv">5</span>,<span class="dv">6</span>)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="109">
+<pre><code>[1]  1  2 -2  4  5 -5  6</code></pre>
 </div>
 </div>
-<div id="985634a2-979e-4f97-ac48-12d9bcf79e4a" class="cell" data-execution_count="54">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
--2
+<div id="985634a2-979e-4f97-ac48-12d9bcf79e4a" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="110">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="110">
+<pre><code>[1] -2</code></pre>
 </div>
 </div>
 <p><code>#</code></p>
 <p><code># 예제3</code> – 첫번째부터 세번째까지의 원소를 뽑고싶다.</p>
-<div id="8f027599-9a2d-486b-bd65-67a917275329" class="cell" data-execution_count="55">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="sc">-</span><span class="dv">5</span>,<span class="dv">6</span>)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>1</li><li>2</li><li>-2</li><li>4</li><li>5</li><li>-5</li><li>6</li></ol>
+<div id="8f027599-9a2d-486b-bd65-67a917275329" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="111">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="sc">-</span><span class="dv">5</span>,<span class="dv">6</span>)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="111">
+<pre><code>[1]  1  2 -2  4  5 -5  6</code></pre>
 </div>
 </div>
-<div id="dbf54330-d66c-4a3a-835b-70ce786e4933" class="cell" data-execution_count="56">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>1</li><li>2</li><li>-2</li></ol>
+<div id="dbf54330-d66c-4a3a-835b-70ce786e4933" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="119">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="119">
+<pre><code>[1]  1  2 -2</code></pre>
 </div>
 </div>
-<div id="e56e9a07-93e9-4cad-bf45-c1da57f9b3a1" class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
+<div id="e56e9a07-93e9-4cad-bf45-c1da57f9b3a1" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="120">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="120">
 <pre><code>[1]  1  2 -2</code></pre>
 </div>
 </div>
 <p><code>#</code></p>
 <p><code># 예제4</code> – 2,5,6 번째의 원소를 뽑고싶다면?</p>
-<div id="5b7b7a4a-9858-4c0c-a82e-6f7ea27a1094" class="cell" data-execution_count="57">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="sc">-</span><span class="dv">5</span>,<span class="dv">6</span>)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>1</li><li>2</li><li>-2</li><li>4</li><li>5</li><li>-5</li><li>6</li></ol>
+<div id="5b7b7a4a-9858-4c0c-a82e-6f7ea27a1094" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="122">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="sc">-</span><span class="dv">5</span>,<span class="dv">6</span>)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="122">
+<pre><code>[1]  1  2 -2  4  5 -5  6</code></pre>
 </div>
 </div>
-<div id="dc714293-844f-47a2-b323-032c69fafc01" class="cell" data-execution_count="58">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">6</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>2</li><li>5</li><li>-5</li></ol>
+<div id="dc714293-844f-47a2-b323-032c69fafc01" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="123">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">6</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="123">
+<pre><code>[1]  2  5 -5</code></pre>
 </div>
 </div>
 <p><code>#</code></p>
 <p><code># 예제5</code> – 3번째 원소를 제외하고 호출</p>
-<div id="4862f0bb-41f5-4f87-b137-5cf8771b742d" class="cell" data-execution_count="59">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="sc">-</span><span class="dv">5</span>,<span class="dv">6</span>)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>1</li><li>2</li><li>-2</li><li>4</li><li>5</li><li>-5</li><li>6</li></ol>
+<div id="4862f0bb-41f5-4f87-b137-5cf8771b742d" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="124">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="sc">-</span><span class="dv">5</span>,<span class="dv">6</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="124">
+<pre><code>[1]  1  2 -2  4  5 -5  6</code></pre>
 </div>
 </div>
-<div id="c081ccf6-3d15-496d-abd2-027fc31b3fce" class="cell" data-execution_count="60">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>x[<span class="sc">-</span><span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>1</li><li>2</li><li>4</li><li>5</li><li>-5</li><li>6</li></ol>
+<div id="513d22d5-8e6c-47e8-922f-19354705bc2f" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="125">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="125">
+<pre><code>[1]  1  2  4  5 -5  6</code></pre>
+</div>
+</div>
+<div id="c081ccf6-3d15-496d-abd2-027fc31b3fce" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="127">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>x[<span class="sc">-</span><span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="127">
+<pre><code>[1]  1  2  4  5 -5  6</code></pre>
 </div>
 </div>
 <p><code># 예제6</code> – 3,4번째의 원소를 제외하고 호출</p>
-<div id="66d1af5f-5695-4777-899a-d7938ee6141a" class="cell" data-execution_count="61">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>,<span class="sc">-</span><span class="dv">4</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>1</li><li>2</li><li>5</li><li>-5</li><li>6</li></ol>
+<div id="66d1af5f-5695-4777-899a-d7938ee6141a" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="135">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>,<span class="sc">-</span><span class="dv">4</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="135">
+<pre><code>[1]  1  2  5 -5  6</code></pre>
 </div>
 </div>
-<div id="99a0bf08-688a-47a7-bfdb-f70384a76e5d" class="cell" data-execution_count="62">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>x[<span class="sc">-</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>1</li><li>2</li><li>5</li><li>-5</li><li>6</li></ol>
+<div id="99a0bf08-688a-47a7-bfdb-f70384a76e5d" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="136">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>x[<span class="sc">-</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="136">
+<pre><code>[1]  1  2  5 -5  6</code></pre>
 </div>
 </div>
 </section>
@@ -571,158 +463,141 @@ FALSE
 <p>어떠한 조건을 주고, 그 조건에 만족하는 원소 (혹은 만족하지 않는 원소)를 뽑는 방식</p>
 </blockquote>
 <p><code># 예제1</code> – 양수의 원소를 뽑는다.</p>
-<div id="192f8b37-c6a1-49e3-8d09-dbfa4a4cf17d" class="cell" data-execution_count="63">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="sc">-</span><span class="dv">5</span>,<span class="dv">6</span>)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>1</li><li>2</li><li>-2</li><li>4</li><li>5</li><li>-5</li><li>6</li></ol>
+<div id="192f8b37-c6a1-49e3-8d09-dbfa4a4cf17d" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="137">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="sc">-</span><span class="dv">5</span>,<span class="dv">6</span>)</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="137">
+<pre><code>[1]  1  2 -2  4  5 -5  6</code></pre>
 </div>
 </div>
-<div id="2e8ef2a0-644f-455c-8699-ba790b497da2" class="cell" data-execution_count="64">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">&gt;</span><span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>TRUE</li><li>TRUE</li><li>FALSE</li><li>TRUE</li><li>TRUE</li><li>FALSE</li><li>TRUE</li></ol>
+<div id="2e8ef2a0-644f-455c-8699-ba790b497da2" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="141">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">&gt;</span><span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="141">
+<pre><code>[1]  TRUE  TRUE FALSE  TRUE  TRUE FALSE  TRUE</code></pre>
 </div>
 </div>
-<div id="8612821f-b2fa-4ce7-b3df-ed75f55bd8c7" class="cell" data-execution_count="38">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>x[x<span class="sc">&gt;</span><span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
+<div id="8612821f-b2fa-4ce7-b3df-ed75f55bd8c7" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="142">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>x[x<span class="sc">&gt;</span><span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="142">
 <pre><code>[1] 1 2 4 5 6</code></pre>
 </div>
 </div>
 <p><code>#</code></p>
 <p><code># 예제2</code> – 3보다 큰 원소를 뽑는 방법</p>
-<div id="3c08cb91-ef0c-4b91-87d0-ae4222f51594" class="cell" data-execution_count="65">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="sc">-</span><span class="dv">5</span>,<span class="dv">6</span>)</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>1</li><li>2</li><li>-2</li><li>4</li><li>5</li><li>-5</li><li>6</li></ol>
+<div id="3c08cb91-ef0c-4b91-87d0-ae4222f51594" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="143">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="sc">-</span><span class="dv">5</span>,<span class="dv">6</span>)</span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="143">
+<pre><code>[1]  1  2 -2  4  5 -5  6</code></pre>
 </div>
 </div>
-<div id="236dc6b4-6904-48f8-865e-a2d94b6fa98b" class="cell" data-execution_count="66">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>x[x<span class="sc">&gt;</span><span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>4</li><li>5</li><li>6</li></ol>
+<div id="236dc6b4-6904-48f8-865e-a2d94b6fa98b" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="149">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>x[x<span class="sc">&gt;</span><span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="149">
+<pre><code>[1] 4 5 6</code></pre>
 </div>
 </div>
 <p><code>#</code></p>
 <p><code># 예제3</code> – 3번째 원소를 뽑는방법</p>
-<div id="2a3ffc52-01d4-4d34-a2f2-b3dcc6d9d656" class="cell" data-execution_count="69">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="sc">-</span><span class="dv">5</span>,<span class="dv">6</span>)</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>1</li><li>2</li><li>-2</li><li>4</li><li>5</li><li>-5</li><li>6</li></ol>
+<div id="2a3ffc52-01d4-4d34-a2f2-b3dcc6d9d656" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="150">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="sc">-</span><span class="dv">5</span>,<span class="dv">6</span>)</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="150">
+<pre><code>[1]  1  2 -2  4  5 -5  6</code></pre>
 </div>
 </div>
-<div id="56e7d374-e7d6-4ebf-b354-5ebc5263f7fa" class="cell" data-execution_count="70">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>arr <span class="ot">=</span> <span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>)</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>arr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>FALSE</li><li>FALSE</li><li>TRUE</li><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>FALSE</li></ol>
+<div id="56e7d374-e7d6-4ebf-b354-5ebc5263f7fa" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="152">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>arr <span class="ot">=</span> <span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>)</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>arr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="152">
+<pre><code>[1] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE</code></pre>
 </div>
 </div>
-<div id="a657150e-2e09-4ff6-ba21-5745cc49d464" class="cell" data-execution_count="68">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>x[arr]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
--2
+<div id="a657150e-2e09-4ff6-ba21-5745cc49d464" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="153">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>x[arr]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="153">
+<pre><code>[1] -2</code></pre>
 </div>
 </div>
 <p><code>#</code></p>
 <p><code># 예제4</code> – 값이 -2인 원소를 뽑아라.</p>
-<div id="c8084914-277b-4122-994b-6c3add9afdfb" class="cell" data-execution_count="71">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="sc">-</span><span class="dv">5</span>,<span class="dv">6</span>)</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>1</li><li>2</li><li>-2</li><li>4</li><li>5</li><li>-5</li><li>6</li></ol>
+<div id="c8084914-277b-4122-994b-6c3add9afdfb" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="154">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="sc">-</span><span class="dv">5</span>,<span class="dv">6</span>)</span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="154">
+<pre><code>[1]  1  2 -2  4  5 -5  6</code></pre>
 </div>
 </div>
-<div id="30c86d57-6f7e-4d77-9f06-8b8c88187b94" class="cell" data-execution_count="72">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>x[x <span class="sc">==</span> <span class="sc">-</span><span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
--2
+<div id="30c86d57-6f7e-4d77-9f06-8b8c88187b94" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="157">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>x[x <span class="sc">==</span> <span class="sc">-</span><span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="157">
+<pre><code>[1] -2</code></pre>
 </div>
 </div>
 <p><code>#</code></p>
-<p><code># 예제4</code> – 값이 -1.5와 가장 가까운 원소를 뽑아라.</p>
-<div id="ba4d4afd-422b-49a4-8194-d28438ff7013" class="cell" data-execution_count="73">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="sc">-</span><span class="dv">5</span>,<span class="dv">6</span>)</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>1</li><li>2</li><li>-2</li><li>4</li><li>5</li><li>-5</li><li>6</li></ol>
+<p><code># 예제5</code> – 값이 -1.5와 가장 가까운 원소를 뽑아라.</p>
+<div id="30b4f079-5ac7-4de8-a2a1-c50ec415bffd" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="162">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">-</span> (<span class="sc">-</span><span class="fl">1.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="162">
+<pre><code>[1]  2.5  3.5 -0.5  5.5  6.5 -3.5  7.5</code></pre>
 </div>
 </div>
-<div id="2fa8c11e-7a9d-4458-9eb8-f2ddd2336751" class="cell" data-execution_count="88">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">abs</span>(x<span class="fl">+1.5</span>) <span class="sc">==</span> <span class="fu">min</span>(<span class="fu">abs</span>(x<span class="fl">+1.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>FALSE</li><li>FALSE</li><li>TRUE</li><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>FALSE</li></ol>
+<div id="e4777284-0e34-49b9-9ff4-12eac8cd0e15" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="163">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">abs</span>(x <span class="sc">-</span> (<span class="sc">-</span><span class="fl">1.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="163">
+<pre><code>[1] 2.5 3.5 0.5 5.5 6.5 3.5 7.5</code></pre>
 </div>
 </div>
-<div id="501c4ca9-6ad2-457e-ae1a-3d19dcb917dc" class="cell" data-execution_count="89">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">abs</span>(x<span class="fl">+1.5</span>) <span class="sc">==</span> <span class="fu">min</span>(<span class="fu">abs</span>(x<span class="fl">+1.5</span>))]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
--2
+<div id="3820cd95-18a7-4bf9-8224-54ba4163c6ea" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="164">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(<span class="fu">abs</span>(x <span class="sc">-</span> (<span class="sc">-</span><span class="fl">1.5</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="164">
+<pre><code>[1] 0.5</code></pre>
+</div>
+</div>
+<div id="370fe93b-7619-4ace-aec7-e516983b52a5" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="167">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">abs</span>(x <span class="sc">-</span> (<span class="sc">-</span><span class="fl">1.5</span>)) <span class="sc">==</span> <span class="fu">min</span>(<span class="fu">abs</span>(x <span class="sc">-</span> (<span class="sc">-</span><span class="fl">1.5</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="167">
+<pre><code>[1] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE</code></pre>
+</div>
+</div>
+<div id="896cb3e1-2eca-434c-a6b7-0a51b8667ff1" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="169">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">abs</span>(x <span class="sc">-</span> (<span class="sc">-</span><span class="fl">1.5</span>)) <span class="sc">==</span> <span class="fu">min</span>(<span class="fu">abs</span>(x <span class="sc">-</span> (<span class="sc">-</span><span class="fl">1.5</span>)))]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="169">
+<pre><code>[1] -2</code></pre>
 </div>
 </div>
 <p><code>#</code></p>
-<p><code># 예제5</code> – 값이 0.5와 가장 가까운 원소를 뽑아라.</p>
-<div id="c97b1ef1-b7b5-48e7-888b-4b52e25e4183" class="cell" data-execution_count="92">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code># 예제6</code> – 값이 0.5와 가장 가까운 원소를 뽑아라.</p>
+<div id="7955ea93-88cd-413c-b200-4d9fbe96750b" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="180">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="180">
+<pre><code>  [1] -0.311304729  0.196110860 -0.191987399  0.632793486  0.407982410
+  [6]  0.864718044 -0.352966617 -1.406632984  0.930323376 -0.211177345
+ [11]  0.174489842 -1.038388188 -1.130694552  0.162414718  0.857153460
+ [16]  0.405123384  0.026784113 -1.026959835 -0.462168583 -0.375374318
+ [21]  1.591985359 -0.064623494  0.478029165 -0.045583822  2.478326033
+ [26]  0.331902286  0.499881633  0.119367202  0.007451714  0.725801470
+ [31]  0.656933182  0.073287602 -1.415772205 -0.477024858  1.221302265
+ [36] -0.398021993  0.546331883 -0.324018146  0.330657882 -0.360152774
+ [41]  1.331364124 -0.672527606 -0.437897514  1.105811374 -0.232983468
+ [46]  0.793021899 -0.618798438 -0.654156632  1.826482099 -0.409432487
+ [51]  1.081860665  0.657260779  0.338851369  0.051188750  0.133293222
+ [56] -2.143363730 -0.932413327  1.259017917  0.560828441  0.549731458
+ [61]  0.374222028  1.212201517 -0.766937380  0.738233964 -0.213323397
+ [66]  0.449868009  0.834543548  1.008085221 -1.548439118 -0.162223345
+ [71] -0.294176392 -2.081089322  0.744885524  0.859101047  0.325550519
+ [76] -0.504631524 -0.053201153 -2.081642005  0.063341785 -0.032805806
+ [81]  0.890016964 -2.011684049  0.615605307  0.611636798 -1.394488649
+ [86] -0.665951804 -0.638994227  1.245491526  1.603119132 -1.859557340
+ [91] -1.349329167 -0.168900117  1.378241904 -0.663119091  0.016505925
+ [96] -0.808047477 -0.008849918 -1.174490950 -0.385805036  0.008856681</code></pre>
 </div>
-<div id="88f8e99f-3d30-40cb-abf8-68eb3dc81ae6" class="cell" data-execution_count="94">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(<span class="fu">abs</span>(x <span class="sc">-</span> <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-0.00530379035796191
 </div>
-</div>
-<div id="b3efcb64-3263-4285-b543-d23b4bf63e2a" class="cell" data-execution_count="97">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">abs</span>(x <span class="sc">-</span> <span class="fl">0.5</span>) <span class="sc">==</span> <span class="fu">min</span>(<span class="fu">abs</span>(x <span class="sc">-</span> <span class="fl">0.5</span>))]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-0.505303790357962
+<div id="29be426e-afce-4b62-83f2-c5ec66d52045" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="185">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">abs</span>(x <span class="sc">-</span> <span class="fl">0.5</span>) <span class="sc">==</span> <span class="fu">min</span>(<span class="fu">abs</span>(x <span class="sc">-</span> <span class="fl">0.5</span>))]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="185">
+<pre><code>[1] 0.4998816</code></pre>
 </div>
 </div>
 <p><code>#</code></p>
@@ -733,27 +608,34 @@ FALSE
 <section id="a.-조건문" class="level3">
 <h3 class="anchored" data-anchor-id="a.-조건문">A. 조건문</h3>
 <p><code>-</code> 예시1</p>
-<div id="6268425d-7b0e-431e-afff-3af6ec9fafdd" class="cell" data-execution_count="192">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">0</span> </span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(x<span class="sc">&gt;</span><span class="dv">0</span>){</span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"양수"</span>)</span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span> <span class="cf">if</span>(x<span class="sc">&lt;</span><span class="dv">0</span>){</span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"음수"</span>)</span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span>{</span>
-<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"0"</span>)</span>
-<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="6268425d-7b0e-431e-afff-3af6ec9fafdd" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="189">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="sc">-</span><span class="dv">3</span></span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(x<span class="sc">&gt;</span><span class="dv">0</span>){</span>
+<span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"양수"</span>)</span>
+<span id="cb95-4"><a href="#cb95-4" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span> <span class="cf">if</span>(x<span class="sc">&lt;</span><span class="dv">0</span>){</span>
+<span id="cb95-5"><a href="#cb95-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"음수"</span>)</span>
+<span id="cb95-6"><a href="#cb95-6" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span>{</span>
+<span id="cb95-7"><a href="#cb95-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"0"</span>)</span>
+<span id="cb95-8"><a href="#cb95-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "0"</code></pre>
+<pre><code>[1] "음수"</code></pre>
 </div>
 </div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">0</span>  </span>
+<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>만약, x<span class="sc">&gt;</span><span class="dv">0</span> 이면, </span>
+<span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"양수"</span>)</span>
+<span id="cb97-4"><a href="#cb97-4" aria-hidden="true" tabindex="-1"></a>그렇지않고, 만약 x<span class="sc">&lt;</span><span class="dv">0</span> 이면,</span>
+<span id="cb97-5"><a href="#cb97-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"음수"</span>)</span>
+<span id="cb97-6"><a href="#cb97-6" aria-hidden="true" tabindex="-1"></a>그외의 모든 경우는</span>
+<span id="cb97-7"><a href="#cb97-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"0"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="b.-반복문" class="level3">
 <h3 class="anchored" data-anchor-id="b.-반복문">B. 반복문</h3>
 <p><code>-</code> 예시1</p>
-<div id="c90e586b-1c8f-44cc-a45b-55b6d6cf7b62" class="cell" data-execution_count="193">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(x <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(x)</span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="c90e586b-1c8f-44cc-a45b-55b6d6cf7b62" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="194">
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(x <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
+<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(x)</span>
+<span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1
 [1] 2
@@ -768,10 +650,10 @@ FALSE
 </div>
 </div>
 <p><code>-</code> 예시2</p>
-<div id="8e9bb06b-b407-4d8e-8822-e1bab5b63c4b" class="cell" data-execution_count="195">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(x <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(x<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8e9bb06b-b407-4d8e-8822-e1bab5b63c4b" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="195">
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(x <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
+<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(x<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1
 [1] 4
@@ -785,13 +667,13 @@ FALSE
 [1] 100</code></pre>
 </div>
 </div>
-<p><code>-</code> 예시3</p>
-<div id="6ed57849-24b7-4311-9a4b-7ff732a53ce3" class="cell" data-execution_count="196">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(x <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>( (x<span class="sc">^</span><span class="dv">2</span><span class="sc">&gt;</span><span class="dv">20</span>)<span class="sc">*</span>(x<span class="sc">^</span><span class="dv">2</span><span class="sc">&lt;</span><span class="dv">80</span>) ){</span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(x<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>-</code> 예시3 – <span class="math inline">\(1,4,9,\dots,100\)</span> 에서 <span class="math inline">\(20\)</span>보다 크고 <span class="math inline">\(80\)</span>보다 작은 수를 출력</p>
+<div id="6ed57849-24b7-4311-9a4b-7ff732a53ce3" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="215">
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(x <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
+<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>( (x<span class="sc">^</span><span class="dv">2</span><span class="sc">&gt;</span><span class="dv">20</span>)<span class="sc">*</span>(x<span class="sc">^</span><span class="dv">2</span><span class="sc">&lt;</span><span class="dv">80</span>) ){</span>
+<span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(x<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb102-4"><a href="#cb102-4" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb102-5"><a href="#cb102-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 25
 [1] 36
@@ -801,165 +683,20 @@ FALSE
 </div>
 </section>
 </section>
-<section id="문제풀이-ii" class="level2">
-<h2 class="anchored" data-anchor-id="문제풀이-ii">5. 문제풀이 II</h2>
-<p><code>2010(나)6월평가원-4</code>. 실수 <span class="math inline">\(a\)</span> 가<br>
-<span class="math display">\[
-\frac{2^a + 2^{-a}}{2^a - 2^{-a}} = -2
-\]</span> 를 만족시킬 때, <span class="math inline">\(4^a + 4^{-a}\)</span> 의 값은?</p>
-<ol type="1">
-<li>$ $<br>
-</li>
-<li>$ $<br>
-</li>
-<li>$ $<br>
-</li>
-<li>$ $<br>
-</li>
-<li>$ $</li>
-</ol>
-<p>(풀이)</p>
-<div id="82025833-6ad8-4c37-94a2-07a98386db1f" class="cell" data-execution_count="112">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">=</span> <span class="cf">function</span>(a){</span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">2</span><span class="sc">^</span>a <span class="sc">+</span> <span class="dv">2</span><span class="sc">^</span>(<span class="sc">-</span>a))<span class="sc">/</span>(<span class="dv">2</span><span class="sc">^</span>a <span class="sc">-</span> <span class="dv">2</span><span class="sc">^</span>(<span class="sc">-</span>a))</span>
-<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>}                </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="ce606a2c-931e-4f8e-99c4-99d3dc36a8d2" class="cell" data-execution_count="123">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="sc">-</span><span class="dv">50</span><span class="sc">:</span><span class="dv">50</span><span class="sc">/</span><span class="dv">10</span></span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(a,<span class="fu">f</span>(a))</span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="sc">-</span><span class="dv">2</span>,<span class="at">col=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="02wk-1_files/figure-html/cell-52-output-1.png" width="420" height="420" class="figure-img"></p>
-</figure>
+<section id="숙제" class="level2">
+<h2 class="anchored" data-anchor-id="숙제">5. 숙제</h2>
+<p><code>1</code>. 아래와 같은 벡터 <code>x</code> 를 선언하였다고 하자.</p>
+<div id="c2a256ac-1dfd-453a-ba5b-cf5da5c51aa4" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="229">
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">43053</span>)</span>
+<span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb104-3"><a href="#cb104-3" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="229">
+<pre><code> [1]  0.4553673 -0.7687380  1.1783003  0.4023584 -0.4353551  0.1719379
+ [7]  0.7200204 -2.3899837  1.6949456 -0.3216081</code></pre>
 </div>
 </div>
-</div>
-<div id="b1ba2088-03de-4925-8f6e-e59470f5ed96" class="cell" data-execution_count="146">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="sc">-</span><span class="dv">2</span>,<span class="at">to=</span><span class="sc">-</span><span class="fl">0.1</span>,<span class="at">by=</span><span class="fl">0.0001</span>)</span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(a,<span class="fu">f</span>(a),<span class="at">type=</span><span class="st">'l'</span>)</span>
-<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="sc">-</span><span class="dv">2</span>,<span class="at">col=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="02wk-1_files/figure-html/cell-53-output-1.png" width="420" height="420" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div id="89ecc4d6-bced-4165-af7d-75b2ccc32114" class="cell" data-execution_count="147">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>a[<span class="fu">abs</span>(<span class="fu">f</span>(a)<span class="sc">+</span><span class="dv">2</span>) <span class="sc">==</span> <span class="fu">min</span>(<span class="fu">abs</span>(<span class="fu">f</span>(a)<span class="sc">+</span><span class="dv">2</span>))]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
--0.7925
-</div>
-</div>
-<div id="565e9ea4-f333-41ee-b25c-ba2bfff49990" class="cell" data-execution_count="151">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(<span class="sc">-</span><span class="fl">0.7925</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
--1.99996101223429
-</div>
-</div>
-<div id="4cbdfb6b-7d29-4132-a20a-c6c066d1ca91" class="cell" data-execution_count="152">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">^</span>(<span class="sc">-</span><span class="fl">0.7925</span>)<span class="sc">+</span><span class="dv">4</span><span class="sc">^</span>(<span class="fl">0.7925</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-3.33340264784444
-</div>
-</div>
-<div id="5a41b232-fe5a-4798-be9a-33addd2e4d74" class="cell" data-execution_count="153">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">5</span><span class="sc">/</span><span class="dv">2</span>, <span class="dv">10</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">17</span><span class="sc">/</span><span class="dv">4</span>, <span class="dv">26</span><span class="sc">/</span><span class="dv">5</span>, <span class="dv">37</span><span class="sc">/</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>2.5</li><li>3.33333333333333</li><li>4.25</li><li>5.2</li><li>6.16666666666667</li></ol>
-</div>
-</div>
-<p><code>2024수능-16</code>. 방정식 <span class="math inline">\(3^{x-8} = \left(\frac{1}{27}\right)^x\)</span> 을 만족시키는 실수 <span class="math inline">\(x\)</span>의 값을 구하시오. <strong>[3점]</strong></p>
-<p>(풀이)</p>
-<div id="5ceb64ec-32bf-4221-a974-2721560cf1e4" class="cell" data-execution_count="163">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="sc">-</span><span class="dv">5</span>, <span class="at">to =</span> <span class="dv">5</span>, <span class="at">by=</span><span class="fl">0.1</span>)</span>
-<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,<span class="dv">3</span><span class="sc">^</span>(x<span class="dv">-8</span>),<span class="at">type=</span><span class="st">'l'</span>)</span>
-<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,(<span class="dv">1</span><span class="sc">/</span><span class="dv">27</span>)<span class="sc">^</span>x,<span class="at">col=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="02wk-1_files/figure-html/cell-58-output-1.png" width="420" height="420" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div id="c99f7993-f5d2-4b97-b983-863c97136552" class="cell" data-execution_count="171">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>x[(<span class="fu">abs</span>(<span class="dv">3</span><span class="sc">^</span>(x<span class="dv">-8</span>) <span class="sc">-</span> (<span class="dv">1</span><span class="sc">/</span><span class="dv">27</span>)<span class="sc">^</span>x)) <span class="sc">==</span> <span class="fu">min</span>(<span class="fu">abs</span>(<span class="dv">3</span><span class="sc">^</span>(x<span class="dv">-8</span>) <span class="sc">-</span> (<span class="dv">1</span><span class="sc">/</span><span class="dv">27</span>)<span class="sc">^</span>x))]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-2
-</div>
-</div>
-<p><code>2021(가)9월평가원-10</code>. 수열 <span class="math inline">\(\{a_n\}\)</span>은 <span class="math inline">\(a_1 = 12\)</span>이고, 모든 자연수 <span class="math inline">\(n\)</span>에 대하여<br>
-<span class="math display">\[
-a_{n+1} + a_n = (-1)^{n+1} \times n
-\]</span> 을 만족시킨다. <span class="math inline">\(a_k &gt; a_1\)</span>인 자연수 <span class="math inline">\(k\)</span>의 최소값은?</p>
-<ol type="1">
-<li>2<br>
-</li>
-<li>4<br>
-</li>
-<li>6<br>
-</li>
-<li>8<br>
-</li>
-<li>10</li>
-</ol>
-<p>(풀이1)</p>
-<div id="01118827-86df-4109-8be0-4699aaa9a21f" class="cell" data-execution_count="178">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="dv">12</span></span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(n <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
-<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>    a <span class="ot">=</span> (<span class="sc">-</span><span class="dv">1</span>)<span class="sc">^</span>(n<span class="sc">+</span><span class="dv">1</span>) <span class="sc">*</span> n <span class="sc">-</span> a</span>
-<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(a)</span>
-<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -11
-[1] 9
-[1] -6
-[1] 2
-[1] 3
-[1] -9
-[1] 16
-[1] -24
-[1] 33
-[1] -43</code></pre>
-</div>
-</div>
-<p>(풀이2)</p>
-<div id="62b195b2-f762-4127-8bfe-565cfaba3da0" class="cell" data-execution_count="186">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">c</span>()</span>
-<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>a[<span class="dv">1</span>]<span class="ot">=</span><span class="dv">12</span></span>
-<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(n <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
-<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>    a[n<span class="sc">+</span><span class="dv">1</span>] <span class="ot">=</span> (<span class="sc">-</span><span class="dv">1</span>)<span class="sc">^</span>(n<span class="sc">+</span><span class="dv">1</span>) <span class="sc">*</span> n <span class="sc">-</span> a[n]</span>
-<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>12</li><li>-11</li><li>9</li><li>-6</li><li>2</li><li>3</li><li>-9</li><li>16</li><li>-24</li><li>33</li><li>-43</li></ol>
-</div>
-</div>
-<div id="6d9db6c8-25b3-4f96-80fe-9119cc541b3d" class="cell" data-execution_count="189">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)[a<span class="sc">&gt;</span><span class="dv">12</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>8</li><li>10</li></ol>
-</div>
-</div>
+<p>값이 -0.1 보다 크고 0.5 보다 작은 원소들의 합을 구하여라.</p>
+<p><code>2</code>. <code>for</code>를 이용하여 1부터 100까지 더하는 코드를 작성하여라.</p>
 
 
 </section>
@@ -1000,7 +737,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1032,45 +780,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/guebin\.github\.io\/IAB2025-Play\/");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -1105,11 +815,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
+      return note.innerHTML;
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -1157,11 +863,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
+      return note.innerHTML;
     }
   }
   for (var i=0; i<xrefs.length; i++) {
