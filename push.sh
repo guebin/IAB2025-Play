@@ -1,3 +1,5 @@
+git add .
+git commit -m .
 git switch gh-pages
 rm index.html
 git add .
