@@ -218,13 +218,13 @@ window.Quarto = {
 </header>
 
 
+<p>—title: “02wk-2: 문제풀이 (벡터인덱싱, if, for 연습) // 숙제”author: “최규빈”date: “03/13/2025”draft: false—</p>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/playlist?list=PLQqh36zP38-xE8ABnVBnudTo_c3nlDgyY&amp;si=D-u_v0RUgwYxZoJZ" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <section id="문제풀이" class="level2">
 <h2 class="anchored" data-anchor-id="문제풀이">1. 문제풀이</h2>
 <p><code># 예제</code> – 아래의 벡터를 고려하자.</p>
 <div id="30e1235e-de8d-4918-a2d8-1aaa6c22d9e2" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">43052</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">43052</span>)x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>(1)</code> <code>x</code>의 원소중 그 값이 양수인 것은 모두 몇개인가?</p>
 <div id="2544bf5c-6d5a-40ce-a83b-95a611712ee9" class="cell" data-execution_count="14">
@@ -243,13 +243,10 @@ window.Quarto = {
 <p><code>(3)</code> <code>x</code>의 원소중 평균과 가장 가까운 값을 구하여라.</p>
 <p><code>(풀이1)</code></p>
 <div id="676fc387-7057-4657-b500-3b6f5131f2a8" class="cell" data-execution_count="51">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dist <span class="ot">=</span> <span class="fu">abs</span>(x <span class="sc">-</span> <span class="fu">mean</span>(x)) </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># dist는 x와 x의 평균간의 차이를 나타내는 벡터</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dist <span class="ot">=</span> <span class="fu">abs</span>(x <span class="sc">-</span> <span class="fu">mean</span>(x)) <span class="co"># dist는 x와 x의 평균간의 차이를 나타내는 벡터</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="22962c2e-d633-4eee-9e51-5824d382c635" class="cell" data-execution_count="52">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tf_array <span class="ot">&lt;-</span> (dist <span class="sc">==</span> <span class="fu">min</span>(dist))</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># tf_array 는 길이가 100이고 true, false로만 구성된 array </span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 그런데 이 tf_array는 하나의 true값만 있고, 그 true값은 dist가 가장 작은 지점에서 true를 가짐</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tf_array <span class="ot">&lt;-</span> (dist <span class="sc">==</span> <span class="fu">min</span>(dist))<span class="co"># tf_array 는 길이가 100이고 true, false로만 구성된 array # 그런데 이 tf_array는 하나의 true값만 있고, 그 true값은 dist가 가장 작은 지점에서 true를 가짐</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="3d1e8a49-3b26-4737-9eae-6d77adc3a281" class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x[tf_array]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -259,8 +256,7 @@ window.Quarto = {
 </div>
 <p><code>(풀이2)</code></p>
 <div id="48225d35-060a-49d7-b22d-916253f520ec" class="cell" data-execution_count="60">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>idx <span class="ot">=</span> <span class="fu">which.min</span>(dist)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># idx 는 dist의 최소값이 존재하는 위치(index)가 저장되어 있음</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>idx <span class="ot">=</span> <span class="fu">which.min</span>(dist)<span class="co"># idx 는 dist의 최소값이 존재하는 위치(index)가 저장되어 있음</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="36825445-72cc-4d63-89d0-0cef1bd34b26" class="cell" data-execution_count="61">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x[idx]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -284,9 +280,7 @@ window.Quarto = {
 <p><code>#</code></p>
 <p><code># 예제</code> – 아래의 벡터를 고려하자.</p>
 <div id="e9cd2533-40f8-48ae-aabd-2a6f6143bffe" class="cell" data-execution_count="96">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">43052</span>)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,<span class="dv">50</span>)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">43052</span>)x <span class="ot">=</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,<span class="dv">50</span>)x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="96">
 <pre><code> [1]  8 55 56 41 88 39 59 65 51 87 49 14 98 78  4 11 64  9 16 33 60 22 53 76 45
 [26] 63 13 95 80 81 21 38 12 28  3 73 93 97 96 90  7 84 10 32 18 79 57 89 68 31</code></pre>
@@ -313,32 +307,10 @@ window.Quarto = {
 </div>
 </div>
 <p><code>#</code></p>
-<p><code>2010(나)6월평가원-4</code>. 실수 <span class="math inline">\(a\)</span> 가<br>
-<span class="math display">\[
-\frac{2^a + 2^{-a}}{2^a - 2^{-a}} = -2
-\]</span> 를 만족시킬 때, <span class="math inline">\(4^a + 4^{-a}\)</span> 의 값은?</p>
-<ol type="1">
-<li>$ $<br>
-</li>
-<li>$ $<br>
-</li>
-<li>$ $<br>
-</li>
-<li>$ $<br>
-</li>
-<li>$ $</li>
-</ol>
+<p><code>2010(나)6월평가원-4</code>. 실수 <span class="math inline">\(a\)</span> 가 <span class="math display">\[\frac{2^a + 2^{-a}}{2^a - 2^{-a}} = -2\]</span>를 만족시킬 때, <span class="math inline">\(4^a + 4^{-a}\)</span> 의 값은?1. $ $ 2. $ $ 3. $ $ 4. $ $ 5. $ $</p>
 <p>(풀이)</p>
 <div id="fca89a38-9f60-4907-a55b-996ca884a0f9" class="cell" data-execution_count="122">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="sc">-</span><span class="dv">2</span>, <span class="at">to =</span><span class="sc">-</span><span class="fl">0.1</span>, <span class="fl">0.0001</span>)</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>f<span class="ot">&lt;-</span> <span class="cf">function</span>(a){</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    up <span class="ot">=</span> <span class="dv">2</span><span class="sc">^</span>(a) <span class="sc">+</span> <span class="dv">2</span><span class="sc">^</span>(<span class="sc">-</span>a)</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    down <span class="ot">=</span> <span class="dv">2</span><span class="sc">^</span>(a) <span class="sc">-</span> <span class="dv">2</span><span class="sc">^</span>(<span class="sc">-</span>a) </span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    up<span class="sc">/</span>down </span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(a,<span class="fu">f</span>(a))</span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="sc">-</span><span class="dv">2</span>,<span class="at">col=</span><span class="dv">2</span>)</span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="co">#( 2^(a) + 2^(-a) ) / (2^(a) - 2^(-a))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="sc">-</span><span class="dv">2</span>, <span class="at">to =</span><span class="sc">-</span><span class="fl">0.1</span>, <span class="fl">0.0001</span>)f<span class="ot">&lt;-</span> <span class="cf">function</span>(a){    up <span class="ot">=</span> <span class="dv">2</span><span class="sc">^</span>(a) <span class="sc">+</span> <span class="dv">2</span><span class="sc">^</span>(<span class="sc">-</span>a)    down <span class="ot">=</span> <span class="dv">2</span><span class="sc">^</span>(a) <span class="sc">-</span> <span class="dv">2</span><span class="sc">^</span>(<span class="sc">-</span>a)     up<span class="sc">/</span>down }<span class="fu">plot</span>(a,<span class="fu">f</span>(a))<span class="fu">abline</span>(<span class="at">h=</span><span class="sc">-</span><span class="dv">2</span>,<span class="at">col=</span><span class="dv">2</span>)<span class="co">#( 2^(a) + 2^(-a) ) / (2^(a) - 2^(-a))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -374,42 +346,21 @@ window.Quarto = {
 <p><code>2024수능-16</code>. 방정식 <span class="math inline">\(3^{x-8} = \left(\frac{1}{27}\right)^x\)</span> 을 만족시키는 실수 <span class="math inline">\(x\)</span>의 값을 구하시오. <strong>[3점]</strong></p>
 <p><code>(풀이)</code></p>
 <div id="99fbaa4b-176b-44cb-b741-393774ff6107" class="cell" data-execution_count="133">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="sc">-</span><span class="dv">5</span>, <span class="at">to=</span><span class="dv">5</span>, <span class="at">by =</span><span class="fl">0.1</span>)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>l <span class="ot">=</span> <span class="dv">3</span><span class="sc">^</span>(x<span class="dv">-8</span>) <span class="sc">-</span> (<span class="dv">1</span><span class="sc">/</span><span class="dv">27</span>)<span class="sc">^</span>x</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">which.min</span>(<span class="fu">abs</span>(l))]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="sc">-</span><span class="dv">5</span>, <span class="at">to=</span><span class="dv">5</span>, <span class="at">by =</span><span class="fl">0.1</span>)l <span class="ot">=</span> <span class="dv">3</span><span class="sc">^</span>(x<span class="dv">-8</span>) <span class="sc">-</span> (<span class="dv">1</span><span class="sc">/</span><span class="dv">27</span>)<span class="sc">^</span>xx[<span class="fu">which.min</span>(<span class="fu">abs</span>(l))]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="133">
 <pre><code>[1] 2</code></pre>
 </div>
 </div>
-<p><code>2021(가)9월평가원-10</code>. 수열 <span class="math inline">\(\{a_n\}\)</span>은 <span class="math inline">\(a_1 = 12\)</span>이고, 모든 자연수 <span class="math inline">\(n\)</span>에 대하여<br>
-<span class="math display">\[
-a_{n+1} + a_n = (-1)^{n+1} \times n
-\]</span> 을 만족시킨다. <span class="math inline">\(a_k &gt; a_1\)</span>인 자연수 <span class="math inline">\(k\)</span>의 최소값은?</p>
-<ol type="1">
-<li>2<br>
-</li>
-<li>4<br>
-</li>
-<li>6<br>
-</li>
-<li>8</li>
-<li>10</li>
-</ol>
+<p><code>2021(가)9월평가원-10</code>. 수열 <span class="math inline">\(\{a_n\}\)</span>은 <span class="math inline">\(a_1 = 12\)</span>이고, 모든 자연수 <span class="math inline">\(n\)</span>에 대하여 <span class="math display">\[a_{n+1} + a_n = (-1)^{n+1} \times n\]</span>을 만족시킨다. <span class="math inline">\(a_k &gt; a_1\)</span>인 자연수 <span class="math inline">\(k\)</span>의 최소값은?1. 2 2. 4 3. 6 4. 8 5. 10</p>
 <p><code>(풀이)</code></p>
 <div id="62c066d3-9343-4a1d-9808-4cd00300266a" class="cell" data-execution_count="138">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">c</span>()</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">c</span>()a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="138">
 <pre><code>NULL</code></pre>
 </div>
 </div>
 <div id="45b960c8-21dc-41b0-b1b4-058ec22c3447" class="cell" data-execution_count="143">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">c</span>() </span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>a[<span class="dv">1</span>] <span class="ot">=</span> <span class="dv">12</span></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(n <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    a[n<span class="sc">+</span><span class="dv">1</span>] <span class="ot">=</span> <span class="sc">-</span> a[n] <span class="sc">+</span> (<span class="sc">-</span><span class="dv">1</span>)<span class="sc">^</span>(n<span class="sc">+</span><span class="dv">1</span>) <span class="sc">*</span> n </span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>)[a<span class="sc">&gt;</span>a[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">c</span>() a[<span class="dv">1</span>] <span class="ot">=</span> <span class="dv">12</span><span class="fu">for</span>(n <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){    a[n<span class="sc">+</span><span class="dv">1</span>] <span class="ot">=</span> <span class="sc">-</span> a[n] <span class="sc">+</span> (<span class="sc">-</span><span class="dv">1</span>)<span class="sc">^</span>(n<span class="sc">+</span><span class="dv">1</span>) <span class="sc">*</span> n }(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>)[a<span class="sc">&gt;</span>a[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="143">
 <pre><code> [1]   8  10  12  14  16  18  20  22  24  26  28  30  32  34  36  38  40  42  44
 [20]  46  48  50  52  54  56  58  60  62  64  66  68  70  72  74  76  78  80  82
@@ -417,32 +368,10 @@ a_{n+1} + a_n = (-1)^{n+1} \times n
 </div>
 </div>
 <p>답은 8</p>
-<p><code>2007(나)6월평가원-14</code>. 다음은 어느 회사의 연봉에 대한 규정이다.</p>
-<p>(가) 입사 첫째 해 연봉은 <span class="math inline">\(a\)</span>원이고, 입사 19년째 해까지의 연봉은 해마다 직전 연봉에서 8%씩 인상된다.</p>
-<p>(나) 입사 20년째 해부터의 연봉은 입사 19년째 해 연봉의 <span class="math inline">\(2/3\)</span>로 한다.</p>
-<p>이 회사에 입사한 사람이 28년 동안 근무하여 받는 연봉의 총합은? (단, <span class="math inline">\(1.08^{18} = 4\)</span>로 계산한다.)</p>
-<ol type="1">
-<li><span class="math inline">\(\frac{101}{2} a\)</span><br>
-</li>
-<li><span class="math inline">\(\frac{111}{2} a\)</span><br>
-</li>
-<li><span class="math inline">\(\frac{121}{2} a\)</span><br>
-</li>
-<li><span class="math inline">\(\frac{131}{2} a\)</span></li>
-<li><span class="math inline">\(\frac{141}{2} a\)</span></li>
-</ol>
+<p><code>2007(나)6월평가원-14</code>. 다음은 어느 회사의 연봉에 대한 규정이다. (가) 입사 첫째 해 연봉은 <span class="math inline">\(a\)</span>원이고, 입사 19년째 해까지의 연봉은 해마다 직전 연봉에서 8%씩 인상된다. (나) 입사 20년째 해부터의 연봉은 입사 19년째 해 연봉의 <span class="math inline">\(2/3\)</span>로 한다. 이 회사에 입사한 사람이 28년 동안 근무하여 받는 연봉의 총합은? (단, <span class="math inline">\(1.08^{18} = 4\)</span>로 계산한다.) 1. <span class="math inline">\(\frac{101}{2} a\)</span> 2. <span class="math inline">\(\frac{111}{2} a\)</span> 3. <span class="math inline">\(\frac{121}{2} a\)</span> 4. <span class="math inline">\(\frac{131}{2} a\)</span> 5. <span class="math inline">\(\frac{141}{2} a\)</span></p>
 <p><code>(풀이)</code></p>
 <div id="e0ec6e8b-13ff-4242-991a-a2997f7ce9ed" class="cell" data-execution_count="151">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>sal <span class="ot">=</span> <span class="fu">c</span>()</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>sal[<span class="dv">1</span>] <span class="ot">=</span> a</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(y <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">19</span>){</span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    sal[y] <span class="ot">&lt;-</span> sal[y<span class="dv">-1</span>] <span class="sc">*</span> <span class="fl">1.08</span> </span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(y <span class="cf">in</span> <span class="dv">20</span><span class="sc">:</span><span class="dv">28</span>){</span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    sal[y] <span class="ot">&lt;-</span> sal[<span class="dv">19</span>] <span class="sc">*</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">3</span> </span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(sal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="dv">1</span>sal <span class="ot">=</span> <span class="fu">c</span>()sal[<span class="dv">1</span>] <span class="ot">=</span> <span class="fu">afor</span>(y <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">19</span>){    sal[y] <span class="ot">&lt;-</span> sal[y<span class="dv">-1</span>] <span class="sc">*</span> <span class="fl">1.08</span> }<span class="cf">for</span>(y <span class="cf">in</span> <span class="dv">20</span><span class="sc">:</span><span class="dv">28</span>){    sal[y] <span class="ot">&lt;-</span> sal[<span class="dv">19</span>] <span class="sc">*</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">3</span> }<span class="fu">sum</span>(sal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="151">
 <pre><code>[1] 65.42238</code></pre>
 </div>
@@ -451,20 +380,30 @@ a_{n+1} + a_n = (-1)^{n+1} \times n
 <section id="숙제" class="level2">
 <h2 class="anchored" data-anchor-id="숙제">2. 숙제</h2>
 <p><code>1</code>. <span class="math inline">\(\frac{3}{2}&lt; \theta &lt; 2\pi\)</span> 인 <span class="math inline">\(\theta\)</span> 에 대하여 <span class="math inline">\(\cos(\theta)= \frac{\sqrt{6}}{3}\)</span> 을 만족하는 <span class="math inline">\(\theta\)</span> 값을 구하라.</p>
-<p><code>2</code>. 어떤 회사에서는 연봉이 매년 일정한 규칙에 따라 인상된다.</p>
-<ol type="1">
-<li>입사 첫해 연봉은 4000만 원이다.<br>
-</li>
-<li>다음 해부터는 전년도 연봉의 8%를 인상한 후, 추가로 100만 원을 더해 결정한다.</li>
-</ol>
-<p>즉, 연봉을 <span class="math inline">\(a_n\)</span>이라 하면 다음과 같은 관계식을 따른다. (단위는 만원)</p>
-<p><span class="math display">\[
-\begin{cases}
-a_1 = 4000 &amp; \\
-a_n = a_{n-1} \times 1.08 + 100 &amp; n=2,3,\dots
-\end{cases}
-\]</span></p>
-<p>이 회사에서 20년 동안 근무했을 때, 받는 총 연봉의 합은 얼마인가?</p>
+<p><code>(풀이)</code></p>
+<div id="c9d0ef03-7f13-40c1-82bf-e44b50f3a84c" class="cell" data-trusted="true" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">=</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">3</span><span class="sc">/</span><span class="dv">2</span>,<span class="at">to=</span><span class="dv">2</span><span class="sc">*</span>pi,<span class="at">length=</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="47c73321-6438-4e66-b7c9-196eeb8318e3" class="cell" data-trusted="true" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(theta, cos(theta), type='l')# abline(h=sqrt(6)/3,col=2)# 5~6사이에 답이 있는듯 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<pre><code>NULL</code></pre>
+</div>
+</div>
+<div id="1f58cd56-f913-4791-9337-e3f1953598d9" class="cell" data-trusted="true" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>theta[<span class="fu">abs</span>(<span class="fu">cos</span>(theta)<span class="sc">-</span><span class="fu">sqrt</span>(<span class="dv">6</span>)<span class="sc">/</span><span class="dv">3</span>) <span class="sc">==</span> <span class="fu">min</span>(<span class="fu">abs</span>(<span class="fu">cos</span>(theta)<span class="sc">-</span><span class="fu">sqrt</span>(<span class="dv">6</span>)<span class="sc">/</span><span class="dv">3</span>))]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>[1] 5.65509</code></pre>
+</div>
+</div>
+<p><code>2</code>. 어떤 회사에서는 연봉이 매년 일정한 규칙에 따라 인상된다.1. 입사 첫해 연봉은 4000만 원이다. 2. 다음 해부터는 전년도 연봉의 8%를 인상한 후, 추가로 100만 원을 더해 결정한다. 즉, 연봉을 <span class="math inline">\(a_n\)</span>이라 하면 다음과 같은 관계식을 따른다. (단위는 만원)<span class="math display">\[\begin{cases}a_1 = 4000 &amp; \\a_n = a_{n-1} \times 1.08 + 100 &amp; n=2,3,\dots \end{cases}\]</span>이 회사에서 20년 동안 근무했을 때, 받는 총 연봉의 합은 얼마인가?</p>
+<p><code>(풀이)</code></p>
+<div id="5f882a36-63d3-4fc8-9103-429e520ecb7d" class="cell" data-trusted="true" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">c</span>()a[<span class="dv">1</span>] <span class="ot">=</span> <span class="dv">4000</span> <span class="cf">for</span>(n <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">20</span>){    a[n] <span class="ot">=</span> a[n<span class="dv">-1</span>] <span class="sc">*</span> <span class="fl">1.08</span> <span class="sc">+</span> <span class="dv">100</span> }<span class="fu">sum</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<pre><code>[1] 215250.3</code></pre>
+</div>
+</div>
 
 
 </section>

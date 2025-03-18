@@ -154,6 +154,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul class="collapse">
   <li><a href="#문제풀이" id="toc-문제풀이" class="nav-link active" data-scroll-target="#문제풀이">1. 문제풀이</a></li>
+  <li><a href="#숙제" id="toc-숙제" class="nav-link" data-scroll-target="#숙제">2. 숙제</a></li>
   </ul>
 </nav>
     </div>
@@ -191,20 +192,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="8d0959d8-6dfe-437d-afc8-7faebab5ae29" class="cell" data-execution_count="106">
+<div id="8d0959d8-6dfe-437d-afc8-7faebab5ae29" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="106">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#{{&lt;video https://youtu.be/playlist?list=PLQqh36zP38-xE8ABnVBnudTo_c3nlDgyY&amp;si=D-u_v0RUgwYxZoJZ &gt;}}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="문제풀이" class="level2">
 <h2 class="anchored" data-anchor-id="문제풀이">1. 문제풀이</h2>
 <p><code># 예제 1</code> – 아홉개의 공</p>
-<p>아홉개의 공이있다. 이 가운데 여덟개는 무게가 같고 하나는 남은 하나는 좀 더 무겁다. 우리에게는 저울이 하나 있는데 이 저울로는 왼쪽의 공들이 무거운지 오른쪽의 공들이 무거운지밖에 알아낼 수 없다. 이 저울을 딱 두번만 사용하여 가장 무거운 공을 찾아내는 알고리즘을 <code>solution</code> 함수로 정리하여 제시하라. 공들의 무게는 길이가 9인 리스트로 온다고 가정한다. 출력은 가장 무거운 공이 위치한 index를 리턴하도록 한다.</p>
+<p>아홉개의 공이있다. 이 가운데 여덟개는 무게가 같고 하나는 남은 하나는 좀 더 무겁다. 우리에게는 저울이 하나 있는데 이 저울로는 왼쪽의 공들이 무거운지 오른쪽의 공들이 무거운지밖에 알아낼 수 없다. 이 저울을 딱 두번만 사용하여 가장 무거운 공을 찾아내는 알고리즘을 <code>solution</code> 함수로 정리하여 제시하라. 공들의 무게는 길이가 9인 벡터로 온다고 가정한다. 출력은 가장 무거운 공이 위치한 index를 리턴하도록 한다.</p>
 <p>다음은 <code>solution</code> 함수를 실제로 구현하여 사용한 예시이다.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solution</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solution</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>))</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>(풀이)</code></p>
-<div id="f6d55e50-f659-4b72-9cf1-fa1015e552d5" class="cell" data-execution_count="117">
+<div id="f6d55e50-f659-4b72-9cf1-fa1015e552d5" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="117">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>solution <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    l <span class="ot">=</span> x[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    m <span class="ot">=</span> x[<span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>]</span>
@@ -237,62 +238,83 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(idx)</span>
 <span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="e39a24cf-94d4-4f56-a55f-618e92c68f8d" class="cell" data-execution_count="120">
+<div id="e39a24cf-94d4-4f56-a55f-618e92c68f8d" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="120">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solution</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 1
 </div>
 </div>
-<div id="69760874-b825-4f6a-9c3a-856c0787755e" class="cell" data-execution_count="121">
+<div id="69760874-b825-4f6a-9c3a-856c0787755e" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="121">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solution</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 3
 </div>
 </div>
 <p><code>#</code></p>
-<p><code>예제 2</code> – 100개의 라커</p>
+<p><code># 예제 2</code> – 100개의 라커</p>
 <p>복도에 100개의 라커가 있다. 복도를 어떤 남자가 100개의 라커 문을 전부 연다. 그리고 나서 짝수 번호의 라커를 전부 닫는다. 그 다음에는 번호가 3의 배수인 라커를 순서대로 찾아다니며 열려 있으면 닫고, 닫혀 있으면 연다. 그 다음에는 번호가 4의 배수인 라커를 순서대로 찾아다니며 열려있으면 닫고, 닫혀있으면 연다. 이후에 5의 배수, 6의 배수 .. 인 라커를 순서대로 찾아다니며 행동을 반복한다. 이런식으로 복도를 100번 지나가면 열린 라커의 문은 몇개가 되겠는가?</p>
+<div id="0679f679-c94e-41fd-9848-36a2543a8cc4" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#     라커1 라커2 라커3 라커4 라커5 라커6  ..... 라커100 </span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1회  열    열    열   열   열    열    ..... 열 </span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 2회  열    닫    열   닫   열    닫    ..... 닫 </span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 3회  열    닫    닫   닫   열    열    ..... 닫 </span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 4회  열    닫    닫   열   열    열    ..... 닫 </span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># ...</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 알고리즘 </span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. 100개의 TRUE가 있는 벡터를 만듦. </span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. 100개의 TRUE가 있는 벡터에서 2,4,6,...,100 번쨰 원소를 선택하여 그 값을 반전시킴</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. 100개의 TRUE가 있는 벡터에서 3,6,9,...,99 번쨰 원소를 선택하여 그 값을 반전시킴</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co"># ...</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 100. 100개의 TRUE가 있는 벡터에서 100 번쨰 원소를 선택하여 그 값을 반전시킴</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="91">
+<pre><code>NULL</code></pre>
+</div>
+</div>
 <p><code>(예비학습)</code></p>
-<div id="e8f555f4-dba5-4aa3-a13f-e68a2281466a" class="cell" data-execution_count="151">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="cn">TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e8f555f4-dba5-4aa3-a13f-e68a2281466a" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="cn">TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="09fce1b1-e13d-4c8e-b40a-b48c7e5f18aa" class="cell" data-execution_count="152">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-FALSE
-</div>
-</div>
-<div id="e962efa8-8233-4205-b2f6-60863375297d" class="cell" data-execution_count="153">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="8fb5cf5b-0504-4f51-9a6f-3ee91cbbfcc8" class="cell" data-execution_count="154">
+<div id="09fce1b1-e13d-4c8e-b40a-b48c7e5f18aa" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="58">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>FALSE</li><li>FALSE</li><li>TRUE</li></ol>
+<div class="cell-output cell-output-display" data-execution_count="58">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<div id="e962efa8-8233-4205-b2f6-60863375297d" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="8fb5cf5b-0504-4f51-9a6f-3ee91cbbfcc8" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="61">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="61">
+<pre><code>[1] FALSE FALSE  TRUE</code></pre>
 </div>
 </div>
 <p><code>(풀이)</code></p>
-<div id="7ab65c1d-ca9c-4897-b0da-927d1d6e3dd3" class="cell" data-execution_count="183">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>flip <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span>x</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="7ab65c1d-ca9c-4897-b0da-927d1d6e3dd3" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="92">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>flip <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span>x</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="ada9150b-202b-44aa-9255-1f7243af8ff5" class="cell" data-execution_count="180">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>doors <span class="ot">=</span> <span class="fu">rep</span>(<span class="cn">TRUE</span>,<span class="dv">100</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">100</span>){</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    doors[(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) <span class="sc">%%</span> i <span class="sc">==</span> <span class="dv">0</span>] <span class="ot">=</span> <span class="fu">flip</span>(doors[(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) <span class="sc">%%</span> i <span class="sc">==</span> <span class="dv">0</span>])</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(doors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-10
+<div id="ada9150b-202b-44aa-9255-1f7243af8ff5" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="93">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>doors <span class="ot">=</span> <span class="fu">rep</span>(<span class="cn">TRUE</span>,<span class="dv">100</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">100</span>){</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    doors[(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) <span class="sc">%%</span> i <span class="sc">==</span> <span class="dv">0</span>] <span class="ot">=</span> <span class="fu">flip</span>(doors[(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) <span class="sc">%%</span> i <span class="sc">==</span> <span class="dv">0</span>])</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(doors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="93">
+<pre><code>[1] 10</code></pre>
 </div>
 </div>
 <p><code>#</code></p>
+</section>
+<section id="숙제" class="level2">
+<h2 class="anchored" data-anchor-id="숙제">2. 숙제</h2>
+<p><code>1</code> – 세 개의 공</p>
+<p>세 개의 공이 있다. 이 중 두 개는 무게가 같고, 하나는 더 가볍다. 우리는 저울을 한 번만 사용하여 가장 가벼운 공이 위치한 index를 찾아야 한다.</p>
+<p>이 문제를 해결하는 solution 함수를 작성하라. 공들의 무게는 길이가 3인 벡터로 주어진다고 가정한다. 출력은 가장 가벼운 공의 index가 되어야 한다.</p>
+<p><code>2</code> - 10개의 라커</p>
+<p>복도에 10개의 라커가 있다. 복도를 어떤 남자가 10개의 라커 문을 전부 연다. 그리고 나서 짝수 번호의 라커를 전부 닫는다. 그 다음에는 번호가 3의 배수인 라커를 순서대로 찾아다니며 열려 있으면 닫고, 닫혀 있으면 연다. 그 다음에는 번호가 4의 배수인 라커를 순서대로 찾아다니며 열려있으면 닫고, 닫혀있으면 연다. 열린 라커의 문은 몇개가 되겠는가?</p>
 
 
 </section>
