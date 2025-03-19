@@ -251,7 +251,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><code>#</code></p>
 <p><code># 예제 2</code> – 100개의 라커</p>
 <p>복도에 100개의 라커가 있다. 복도를 어떤 남자가 100개의 라커 문을 전부 연다. 그리고 나서 짝수 번호의 라커를 전부 닫는다. 그 다음에는 번호가 3의 배수인 라커를 순서대로 찾아다니며 열려 있으면 닫고, 닫혀 있으면 연다. 그 다음에는 번호가 4의 배수인 라커를 순서대로 찾아다니며 열려있으면 닫고, 닫혀있으면 연다. 이후에 5의 배수, 6의 배수 .. 인 라커를 순서대로 찾아다니며 행동을 반복한다. 이런식으로 복도를 100번 지나가면 열린 라커의 문은 몇개가 되겠는가?</p>
-<div id="0679f679-c94e-41fd-9848-36a2543a8cc4" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
+<div id="0679f679-c94e-41fd-9848-36a2543a8cc4" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#     라커1 라커2 라커3 라커4 라커5 라커6  ..... 라커100 </span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1회  열    열    열   열   열    열    ..... 열 </span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 2회  열    닫    열   닫   열    닫    ..... 닫 </span></span>
@@ -270,31 +270,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p><code>(예비학습)</code></p>
-<div id="e8f555f4-dba5-4aa3-a13f-e68a2281466a" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="57">
+<div id="e8f555f4-dba5-4aa3-a13f-e68a2281466a" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="57">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="cn">TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="09fce1b1-e13d-4c8e-b40a-b48c7e5f18aa" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="58">
+<div id="09fce1b1-e13d-4c8e-b40a-b48c7e5f18aa" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="58">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="58">
 <pre><code>[1] FALSE</code></pre>
 </div>
 </div>
-<div id="e962efa8-8233-4205-b2f6-60863375297d" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="59">
+<div id="e962efa8-8233-4205-b2f6-60863375297d" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="59">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="8fb5cf5b-0504-4f51-9a6f-3ee91cbbfcc8" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="61">
+<div id="8fb5cf5b-0504-4f51-9a6f-3ee91cbbfcc8" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="61">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="61">
 <pre><code>[1] FALSE FALSE  TRUE</code></pre>
 </div>
 </div>
 <p><code>(풀이)</code></p>
-<div id="7ab65c1d-ca9c-4897-b0da-927d1d6e3dd3" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="92">
+<div id="7ab65c1d-ca9c-4897-b0da-927d1d6e3dd3" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="92">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>flip <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span>x</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="ada9150b-202b-44aa-9255-1f7243af8ff5" class="cell" data-trusted="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="93">
+<div id="ada9150b-202b-44aa-9255-1f7243af8ff5" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="93">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>doors <span class="ot">=</span> <span class="fu">rep</span>(<span class="cn">TRUE</span>,<span class="dv">100</span>)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">100</span>){</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    doors[(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) <span class="sc">%%</span> i <span class="sc">==</span> <span class="dv">0</span>] <span class="ot">=</span> <span class="fu">flip</span>(doors[(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) <span class="sc">%%</span> i <span class="sc">==</span> <span class="dv">0</span>])</span>
