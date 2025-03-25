@@ -220,13 +220,13 @@ window.Quarto = {
 </header>
 
 
+<p>—title: “03wk-2: if, if-else, if-elseif-else // 숙제”author: “최규빈”date: “03/20/2025”draft: false—</p>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/playlist?list=PLQqh36zP38-zqBbIkuYq0MZhlr1Edvs3E&amp;si=ldRRpcc2ZFr5fIjD" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <section id="if" class="level2">
 <h2 class="anchored" data-anchor-id="if">1. <code>if</code></h2>
 <p><code># 예제1</code> – if문은 <code>if (조건문) 표현식</code>의 형태로 사용한다.</p>
 <div id="0982f16a-1951-4efc-9a1b-d5dae4436e69" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="dv">2</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (a<span class="sc">&gt;</span><span class="dv">0</span>) <span class="fu">print</span>(<span class="st">'a는 양수'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="dv">2</span><span class="fu">if</span> (a<span class="sc">&gt;</span><span class="dv">0</span>) <span class="fu">print</span>(<span class="st">'a는 양수'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "a는 양수"</code></pre>
 </div>
@@ -234,22 +234,19 @@ window.Quarto = {
 <p><code>#</code></p>
 <p><code># 예제2</code> – space를 임의로 넣어도 OK</p>
 <div id="4e98b98d-5d60-4342-9741-3928d2be1b77" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="dv">10</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>    (a<span class="sc">&gt;</span><span class="dv">0</span>)    <span class="fu">print</span>(<span class="st">'a는 양수'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="dv">10</span><span class="fu">if</span>    (a<span class="sc">&gt;</span><span class="dv">0</span>)    <span class="fu">print</span>(<span class="st">'a는 양수'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "a는 양수"</code></pre>
 </div>
 </div>
 <div id="83941bd6-c02a-4971-8c04-a46d03836528" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="dv">10</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>  (a<span class="sc">&gt;</span><span class="dv">0</span>)    <span class="fu">print</span>(<span class="st">'a는 양수'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="dv">10</span><span class="fu">if</span>  (a<span class="sc">&gt;</span><span class="dv">0</span>)    <span class="fu">print</span>(<span class="st">'a는 양수'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "a는 양수"</code></pre>
 </div>
 </div>
 <div id="80f3c152-104f-48a4-bceb-4fd323f4e701" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="dv">10</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(a<span class="sc">&gt;</span><span class="dv">0</span>)    <span class="fu">print</span>(<span class="st">'a는 양수'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="dv">10</span><span class="fu">if</span>(a<span class="sc">&gt;</span><span class="dv">0</span>)    <span class="fu">print</span>(<span class="st">'a는 양수'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "a는 양수"</code></pre>
 </div>
@@ -257,32 +254,19 @@ window.Quarto = {
 <p><code>#</code></p>
 <p><code># 예제3</code> – enter 를 임의로 넣어도 OK</p>
 <div id="7c73e1bc-7b7a-4313-83cc-1620996b1256" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="dv">10</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (a<span class="sc">&gt;</span><span class="dv">0</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'a는양수'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="dv">10</span><span class="fu">if</span> (a<span class="sc">&gt;</span><span class="dv">0</span>)    <span class="fu">print</span>(<span class="st">'a는양수'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "a는양수"</code></pre>
 </div>
 </div>
 <div id="f5e08975-4173-46d7-a2bd-2ab7f1f21b24" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="dv">10</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (a<span class="sc">&gt;</span><span class="dv">0</span>) </span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'a는양수'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="dv">10</span><span class="fu">if</span> (a<span class="sc">&gt;</span><span class="dv">0</span>)             <span class="fu">print</span>(<span class="st">'a는양수'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "a는양수"</code></pre>
 </div>
 </div>
 <div id="406ac215-1556-4e67-b132-e206f85e0aad" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="dv">10</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> </span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    (a<span class="sc">&gt;</span><span class="dv">0</span>) </span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'a는양수'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="dv">10</span><span class="fu">if</span>             (a<span class="sc">&gt;</span><span class="dv">0</span>)             <span class="fu">print</span>(<span class="st">'a는양수'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "a는양수"</code></pre>
 </div>
@@ -291,26 +275,18 @@ window.Quarto = {
 <p><code># 예제4</code> – if가 만족될때 내릴 명령이 2개이상이면 중괄호를 이용하라.</p>
 <p><em>잘못된 사용</em></p>
 <div id="0289bc77-e038-4030-8ef3-aad3c00d1950" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="dv">10</span> </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (a<span class="sc">&gt;</span><span class="dv">0</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'a는양수'</span>)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'양수인 a의 값은 아래와 같다.'</span>) </span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(a) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="dv">10</span> <span class="cf">if</span> (a<span class="sc">&gt;</span><span class="dv">0</span>)    <span class="fu">print</span>(<span class="st">'a는양수'</span>)    <span class="fu">print</span>(<span class="st">'양수인 a의 값은 아래와 같다.'</span>)     <span class="fu">print</span>(a) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "a는양수"
-[1] "양수인 a의 값은 아래와 같다."
-[1] 10</code></pre>
+,[1] "양수인 a의 값은 아래와 같다."
+,[1] 10</code></pre>
 </div>
 </div>
 <div id="a128607f-66fd-4f7a-8efd-5aadddbba2c3" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="sc">-</span><span class="dv">10</span> </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (a<span class="sc">&gt;</span><span class="dv">0</span>)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'a는양수'</span>)</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'양수인 a의 값은 아래와 같다.'</span>) </span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(a) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="sc">-</span><span class="dv">10</span> <span class="cf">if</span> (a<span class="sc">&gt;</span><span class="dv">0</span>)    <span class="fu">print</span>(<span class="st">'a는양수'</span>)    <span class="fu">print</span>(<span class="st">'양수인 a의 값은 아래와 같다.'</span>)     <span class="fu">print</span>(a) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "양수인 a의 값은 아래와 같다."
-[1] -10</code></pre>
+,[1] -10</code></pre>
 </div>
 </div>
 <blockquote class="blockquote">
@@ -318,72 +294,41 @@ window.Quarto = {
 </blockquote>
 <p><em>올바른 사용법: <code>{}</code>를 이용하여 명령들을 묶는다.</em></p>
 <div id="38d6a25a-45a5-480b-b843-e4850f4e3627" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="dv">10</span> </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (a<span class="sc">&gt;</span><span class="dv">0</span>){</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'a는양수'</span>)</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'양수인 a의 값은 아래와 같다.'</span>) </span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(a) </span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="dv">10</span> <span class="cf">if</span> (a<span class="sc">&gt;</span><span class="dv">0</span>){    <span class="fu">print</span>(<span class="st">'a는양수'</span>)    <span class="fu">print</span>(<span class="st">'양수인 a의 값은 아래와 같다.'</span>)     <span class="fu">print</span>(a) }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "a는양수"
-[1] "양수인 a의 값은 아래와 같다."
-[1] 10</code></pre>
+,[1] "양수인 a의 값은 아래와 같다."
+,[1] 10</code></pre>
 </div>
 </div>
 <div id="79016f3c-eb1d-4c26-8022-a3611fb7200d" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="sc">-</span><span class="dv">10</span> </span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (a<span class="sc">&gt;</span><span class="dv">0</span>){</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'a는양수'</span>) <span class="do">## </span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'양수인 a의 값은 아래와 같다.'</span>) </span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(a)</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="sc">-</span><span class="dv">10</span> <span class="cf">if</span> (a<span class="sc">&gt;</span><span class="dv">0</span>){    <span class="fu">print</span>(<span class="st">'a는양수'</span>) <span class="do">##     print('양수인 a의 값은 아래와 같다.')     print(a)}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>#</code></p>
 <p><code># 예제5</code> – 중괄호를 묶는 방식</p>
 <p>아래와 같이 중괄호를 묶어도 상관없다.</p>
 <div id="a4bab9e4-57b0-4905-9d05-6a940fdf612b" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="dv">10</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (a<span class="sc">&gt;</span><span class="dv">0</span>)</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'a는양수'</span>)</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'양수인 a의 값은 아래와 같다.'</span>) </span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(a) </span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="dv">10</span><span class="fu">if</span> (a<span class="sc">&gt;</span><span class="dv">0</span>){    <span class="fu">print</span>(<span class="st">'a는양수'</span>)    <span class="fu">print</span>(<span class="st">'양수인 a의 값은 아래와 같다.'</span>)     <span class="fu">print</span>(a) }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "a는양수"
-[1] "양수인 a의 값은 아래와 같다."
-[1] 10</code></pre>
+,[1] "양수인 a의 값은 아래와 같다."
+,[1] 10</code></pre>
 </div>
 </div>
 <div id="a483b6c2-7e5e-4d98-af31-27acb2fbf8ea" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="dv">10</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (a<span class="sc">&gt;</span><span class="dv">0</span>)</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'a는양수'</span>)</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'양수인 a의 값은 아래와 같다.'</span>) </span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(a)}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="dv">10</span><span class="fu">if</span> (a<span class="sc">&gt;</span><span class="dv">0</span>){    <span class="fu">print</span>(<span class="st">'a는양수'</span>)        <span class="fu">print</span>(<span class="st">'양수인 a의 값은 아래와 같다.'</span>)             <span class="fu">print</span>(a)}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "a는양수"
-[1] "양수인 a의 값은 아래와 같다."
-[1] 10</code></pre>
+,[1] "양수인 a의 값은 아래와 같다."
+,[1] 10</code></pre>
 </div>
 </div>
 <div id="dea9df36-a14b-42eb-9cc2-33363e5c85cc" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="dv">10</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (a<span class="sc">&gt;</span><span class="dv">0</span>){</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'a는양수'</span>)</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>            <span class="fu">print</span>(<span class="st">'양수인 a의 값은 아래와 같다.'</span>) </span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>       </span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(a)</span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>                }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="dv">10</span><span class="fu">if</span> (a<span class="sc">&gt;</span><span class="dv">0</span>){    <span class="fu">print</span>(<span class="st">'a는양수'</span>)                <span class="fu">print</span>(<span class="st">'양수인 a의 값은 아래와 같다.'</span>)        <span class="fu">print</span>(a)                }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "a는양수"
-[1] "양수인 a의 값은 아래와 같다."
-[1] 10</code></pre>
+,[1] "양수인 a의 값은 아래와 같다."
+,[1] 10</code></pre>
 </div>
 </div>
 <ul>
@@ -395,22 +340,19 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="if-else">2. <code>if-else</code></h2>
 <p><code># 예제1</code> – if문은 <code>if (조건문) 표현식1 else 표현식2</code>의 형태로 실행한다.</p>
 <div id="9c4f4985-a881-4bb4-b1de-1c860073f34e" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="47">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="dv">2</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x<span class="sc">&gt;</span><span class="dv">0</span>) <span class="fu">log</span>(x) <span class="cf">else</span> <span class="fu">print</span>(<span class="st">'x는양수이어야함'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="dv">2</span><span class="fu">if</span> (x<span class="sc">&gt;</span><span class="dv">0</span>) <span class="fu">log</span>(x) <span class="cf">else</span> <span class="fu">print</span>(<span class="st">'x는양수이어야함'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="47">
 <pre><code>[1] 0.6931472</code></pre>
 </div>
 </div>
 <div id="1faec6dd-27cf-455e-84e3-386321a1a20d" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="48">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="dv">0</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x<span class="sc">&gt;</span><span class="dv">0</span>) <span class="fu">log</span>(x) <span class="cf">else</span> <span class="fu">print</span>(<span class="st">'x는양수이어야함'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="dv">0</span><span class="fu">if</span> (x<span class="sc">&gt;</span><span class="dv">0</span>) <span class="fu">log</span>(x) <span class="cf">else</span> <span class="fu">print</span>(<span class="st">'x는양수이어야함'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "x는양수이어야함"</code></pre>
 </div>
 </div>
 <div id="23927b26-79b8-4a9b-9df8-c8c334ce2502" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="49">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span> <span class="sc">-</span><span class="dv">1</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x<span class="sc">&gt;</span><span class="dv">0</span>) <span class="fu">log</span>(x) <span class="cf">else</span> <span class="fu">print</span>(<span class="st">'x는양수이어야함'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span> <span class="sc">-</span><span class="dv">1</span><span class="fu">if</span> (x<span class="sc">&gt;</span><span class="dv">0</span>) <span class="fu">log</span>(x) <span class="cf">else</span> <span class="fu">print</span>(<span class="st">'x는양수이어야함'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "x는양수이어야함"</code></pre>
 </div>
@@ -419,16 +361,12 @@ window.Quarto = {
 <p><code># 예제2</code> – <code>if</code> 문과 <code>if~else</code> 문은 다른기능이다. (<span class="math inline">\(\star\star\star\)</span>)</p>
 <p><code>-</code> 아래와 같이 사용해보자.</p>
 <div id="0eedc267-2481-4d0e-af59-640be1e6a3e9" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="71">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="dv">10</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x<span class="sc">&gt;</span><span class="dv">0</span>)</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">log</span>(x) </span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span> </span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'x는 양수이어야함'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="dv">10</span><span class="fu">if</span> (x<span class="sc">&gt;</span><span class="dv">0</span>)    <span class="fu">log</span>(x) <span class="cf">else</span>     <span class="fu">print</span>(<span class="st">'x는 양수이어야함'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Error: Error in Unknown source: &lt;text&gt;:4:1: unexpected 'else'
-3:     log(x) 
-4: else
-   ^</code></pre>
+,3:     log(x) 
+,4: else
+,   ^</code></pre>
 </div>
 </div>
 <ul>
@@ -442,20 +380,14 @@ window.Quarto = {
 </div>
 </div>
 <div id="2a1cb6bf-b92d-411e-82a8-5882f34f655c" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="74">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x<span class="sc">&gt;</span><span class="dv">0</span>)    <span class="fu">log</span>(x)     <span class="cf">else</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'x는양수이어야함'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x<span class="sc">&gt;</span><span class="dv">0</span>)    <span class="fu">log</span>(x)     <span class="cf">else</span>    <span class="fu">print</span>(<span class="st">'x는양수이어야함'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="74">
 <pre><code>[1] 2.302585</code></pre>
 </div>
 </div>
 <p><code>-</code> 보통은 아래와 같이 사용한다.</p>
 <div id="9e334e7e-1bf5-449e-a45b-6edd6e36cce1" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="76">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="dv">0</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(x<span class="sc">&gt;</span><span class="dv">0</span>){</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">log</span>(x) </span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span>{</span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'x는 양수이어야함'</span>)</span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="dv">0</span><span class="fu">if</span>(x<span class="sc">&gt;</span><span class="dv">0</span>){    <span class="fu">log</span>(x) }<span class="cf">else</span>{    <span class="fu">print</span>(<span class="st">'x는 양수이어야함'</span>)}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "x는 양수이어야함"</code></pre>
 </div>
@@ -463,31 +395,19 @@ window.Quarto = {
 <p><code>-</code> 결국 한줄에 다 말하거나, 말을 하다가 끊어버리면 된다. // 한줄씩 끊어서 컴퓨터가 읽을떄 <code>if</code>문이 완성되면 안된다..</p>
 <p><code>-</code> 아래와 같은것들도 가능</p>
 <div id="f7a0e6d9-656b-4588-8b89-7ee1912ad7a1" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="78">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="dv">0</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x<span class="sc">&gt;</span><span class="dv">0</span>){</span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(x) </span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>    }<span class="cf">else</span>{</span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">'x는 양수이어야함'</span>)</span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>        }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="dv">0</span><span class="fu">if</span> (x<span class="sc">&gt;</span><span class="dv">0</span>){    <span class="fu">log</span>(x)     }<span class="cf">else</span>{<span class="fu">print</span>(<span class="st">'x는 양수이어야함'</span>)        }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "x는 양수이어야함"</code></pre>
 </div>
 </div>
 <p><code>-</code> 아래는 불가능</p>
 <div id="f2d2a625-a1a7-4f86-a047-952ed4702850" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="79">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="dv">0</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x<span class="sc">&gt;</span><span class="dv">0</span>){</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">log</span>(x) </span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>{</span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'x는 양수이어야함'</span>)</span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="dv">0</span><span class="fu">if</span> (x<span class="sc">&gt;</span><span class="dv">0</span>){    <span class="fu">log</span>(x) }<span class="cf">else</span>{    <span class="fu">print</span>(<span class="st">'x는 양수이어야함'</span>)}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Error: Error in Unknown source: &lt;text&gt;:5:1: unexpected 'else'
-4: }
-5: else
-   ^</code></pre>
+,4: }
+,5: else
+,   ^</code></pre>
 </div>
 </div>
 <ul>
@@ -495,12 +415,7 @@ window.Quarto = {
 </ul>
 <p><code>-</code> 결국 아래와 같은 코드를 권장함. (저는 무조건 이렇게만 씁니당)</p>
 <div id="a678bd5a-e51e-49f5-9483-e38b1e42aced" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="80">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="dv">0</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(x<span class="sc">&gt;</span><span class="dv">0</span>){</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">log</span>(x) </span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span>{</span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'x는 양수이어야함'</span>)</span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="dv">0</span><span class="fu">if</span>(x<span class="sc">&gt;</span><span class="dv">0</span>){    <span class="fu">log</span>(x) }<span class="cf">else</span>{    <span class="fu">print</span>(<span class="st">'x는 양수이어야함'</span>)}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "x는 양수이어야함"</code></pre>
 </div>
@@ -511,53 +426,20 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="if-elseif-else">3. <code>if-elseif-else</code></h2>
 <p><code># 예제1</code></p>
 <div id="706affc3-ac5e-4284-b27c-f4979f3d8a29" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="89">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="dv">10</span> </span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x<span class="sc">&gt;</span><span class="dv">0</span>){</span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">log</span>(x))</span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span>{</span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(x<span class="sc">==</span><span class="dv">0</span>){</span>
-<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>        x<span class="ot">=</span><span class="fl">1e-100</span></span>
-<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(<span class="st">'x=0에서는 log(x)가 정의되지 않으므로 x=1e-100의 값으로 바꾸어 계산하겠습니다.'</span>)</span>
-<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(<span class="fu">log</span>(x))</span>
-<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>    }<span class="cf">else</span>{ </span>
-<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(<span class="st">'x가음수입니다.'</span>)</span>
-<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="dv">10</span> <span class="cf">if</span> (x<span class="sc">&gt;</span><span class="dv">0</span>){    <span class="fu">print</span>(<span class="fu">log</span>(x))}<span class="cf">else</span>{    <span class="cf">if</span>(x<span class="sc">==</span><span class="dv">0</span>){        x<span class="ot">=</span><span class="fl">1e-100</span>        <span class="fu">print</span>(<span class="st">'x=0에서는 log(x)가 정의되지 않으므로 x=1e-100의 값으로 바꾸어 계산하겠습니다.'</span>)        <span class="fu">print</span>(<span class="fu">log</span>(x))    }<span class="cf">else</span>{         <span class="fu">print</span>(<span class="st">'x가음수입니다.'</span>)    }}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.302585</code></pre>
 </div>
 </div>
 <div id="3f188f09-cb8f-45c9-9ed3-029d37d75c74" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="93">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="dv">0</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x<span class="sc">&gt;</span><span class="dv">0</span>){</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">log</span>(x))</span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span>{</span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(x<span class="sc">==</span><span class="dv">0</span>){</span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>        x<span class="ot">=</span><span class="fl">1e-100</span></span>
-<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(<span class="st">'x=0에서는 log(x)가 정의되지 않으므로 x=1e-100의 값으로 바꾸어 계산하겠습니다.'</span>)</span>
-<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(<span class="fu">log</span>(x))</span>
-<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>    }<span class="cf">else</span>{ </span>
-<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(<span class="st">'x가음수입니다.'</span>)</span>
-<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="dv">0</span><span class="fu">if</span> (x<span class="sc">&gt;</span><span class="dv">0</span>){    <span class="fu">print</span>(<span class="fu">log</span>(x))}<span class="cf">else</span>{    <span class="cf">if</span>(x<span class="sc">==</span><span class="dv">0</span>){        x<span class="ot">=</span><span class="fl">1e-100</span>        <span class="fu">print</span>(<span class="st">'x=0에서는 log(x)가 정의되지 않으므로 x=1e-100의 값으로 바꾸어 계산하겠습니다.'</span>)        <span class="fu">print</span>(<span class="fu">log</span>(x))    }<span class="cf">else</span>{         <span class="fu">print</span>(<span class="st">'x가음수입니다.'</span>)    }}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "x=0에서는 log(x)가 정의되지 않으므로 x=1e-100의 값으로 바꾸어 계산하겠습니다."
-[1] -230.2585</code></pre>
+,[1] -230.2585</code></pre>
 </div>
 </div>
 <div id="7125a6be-7b65-4ed8-bd7f-27117cfe014f" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="94">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="sc">-</span><span class="dv">1</span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x<span class="sc">&gt;</span><span class="dv">0</span>){</span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">log</span>(x))</span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span>{</span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(x<span class="sc">==</span><span class="dv">0</span>){</span>
-<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>        x<span class="ot">=</span><span class="fl">1e-100</span></span>
-<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(<span class="st">'x=0에서는 log(x)가 정의되지 않으므로 x=1e-100의 값으로 바꾸어 계산하겠습니다.'</span>)</span>
-<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(<span class="fu">log</span>(x))</span>
-<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>    }<span class="cf">else</span>{</span>
-<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(<span class="st">'x가음수입니다.'</span>)</span>
-<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="sc">-</span><span class="dv">1</span><span class="fu">if</span> (x<span class="sc">&gt;</span><span class="dv">0</span>){    <span class="fu">print</span>(<span class="fu">log</span>(x))}<span class="cf">else</span>{    <span class="cf">if</span>(x<span class="sc">==</span><span class="dv">0</span>){        x<span class="ot">=</span><span class="fl">1e-100</span>        <span class="fu">print</span>(<span class="st">'x=0에서는 log(x)가 정의되지 않으므로 x=1e-100의 값으로 바꾸어 계산하겠습니다.'</span>)        <span class="fu">print</span>(<span class="fu">log</span>(x))    }<span class="cf">else</span>{        <span class="fu">print</span>(<span class="st">'x가음수입니다.'</span>)    }}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "x가음수입니다."</code></pre>
 </div>
@@ -565,47 +447,20 @@ window.Quarto = {
 <p><code>#</code></p>
 <p><code># 예제2</code> – 예제1과 아래는 같은 코드이다.</p>
 <div id="9f0be66e-0fea-4166-8441-a4dc65ed6c65" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="100">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="dv">10</span> </span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x<span class="sc">&gt;</span><span class="dv">0</span>){</span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">log</span>(x))</span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span> <span class="cf">if</span>(x<span class="sc">==</span><span class="dv">0</span>){</span>
-<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>    x<span class="ot">=</span><span class="fl">1e-100</span></span>
-<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'x=0에서는 log(x)가 정의되지 않으므로 x=1e-100의 값으로 바꾸어 계산하겠습니다.'</span>)</span>
-<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">log</span>(x))</span>
-<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span>{ </span>
-<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'x가음수입니다.'</span>)</span>
-<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="dv">10</span> <span class="cf">if</span> (x<span class="sc">&gt;</span><span class="dv">0</span>){    <span class="fu">print</span>(<span class="fu">log</span>(x))}<span class="cf">else</span> <span class="cf">if</span>(x<span class="sc">==</span><span class="dv">0</span>){    x<span class="ot">=</span><span class="fl">1e-100</span>    <span class="fu">print</span>(<span class="st">'x=0에서는 log(x)가 정의되지 않으므로 x=1e-100의 값으로 바꾸어 계산하겠습니다.'</span>)    <span class="fu">print</span>(<span class="fu">log</span>(x))}<span class="cf">else</span>{     <span class="fu">print</span>(<span class="st">'x가음수입니다.'</span>)}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.302585</code></pre>
 </div>
 </div>
 <div id="8a73f147-5511-4853-b0fa-f2ad5016620f" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="101">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="dv">0</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x<span class="sc">&gt;</span><span class="dv">0</span>){</span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">log</span>(x))</span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span> <span class="cf">if</span>(x<span class="sc">==</span><span class="dv">0</span>){</span>
-<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>    x<span class="ot">=</span><span class="fl">1e-100</span></span>
-<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'x=0에서는 log(x)가 정의되지 않으므로 x=1e-100의 값으로 바꾸어 계산하겠습니다.'</span>)</span>
-<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">log</span>(x))</span>
-<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span>{ </span>
-<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'x가음수입니다.'</span>)</span>
-<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="dv">0</span><span class="fu">if</span> (x<span class="sc">&gt;</span><span class="dv">0</span>){    <span class="fu">print</span>(<span class="fu">log</span>(x))}<span class="cf">else</span> <span class="cf">if</span>(x<span class="sc">==</span><span class="dv">0</span>){    x<span class="ot">=</span><span class="fl">1e-100</span>    <span class="fu">print</span>(<span class="st">'x=0에서는 log(x)가 정의되지 않으므로 x=1e-100의 값으로 바꾸어 계산하겠습니다.'</span>)    <span class="fu">print</span>(<span class="fu">log</span>(x))}<span class="cf">else</span>{     <span class="fu">print</span>(<span class="st">'x가음수입니다.'</span>)}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "x=0에서는 log(x)가 정의되지 않으므로 x=1e-100의 값으로 바꾸어 계산하겠습니다."
-[1] -230.2585</code></pre>
+,[1] -230.2585</code></pre>
 </div>
 </div>
 <div id="c0b6a4db-f397-4005-ac1f-1802c6d7413d" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="102">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="sc">-</span><span class="dv">1</span></span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x<span class="sc">&gt;</span><span class="dv">0</span>){</span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">log</span>(x))</span>
-<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span> <span class="cf">if</span>(x<span class="sc">==</span><span class="dv">0</span>){</span>
-<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>    x<span class="ot">=</span><span class="fl">1e-100</span></span>
-<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'x=0에서는 log(x)가 정의되지 않으므로 x=1e-100의 값으로 바꾸어 계산하겠습니다.'</span>)</span>
-<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">log</span>(x))</span>
-<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span>{ </span>
-<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'x가음수입니다.'</span>)</span>
-<span id="cb58-10"><a href="#cb58-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="sc">-</span><span class="dv">1</span><span class="fu">if</span> (x<span class="sc">&gt;</span><span class="dv">0</span>){    <span class="fu">print</span>(<span class="fu">log</span>(x))}<span class="cf">else</span> <span class="cf">if</span>(x<span class="sc">==</span><span class="dv">0</span>){    x<span class="ot">=</span><span class="fl">1e-100</span>    <span class="fu">print</span>(<span class="st">'x=0에서는 log(x)가 정의되지 않으므로 x=1e-100의 값으로 바꾸어 계산하겠습니다.'</span>)    <span class="fu">print</span>(<span class="fu">log</span>(x))}<span class="cf">else</span>{     <span class="fu">print</span>(<span class="st">'x가음수입니다.'</span>)}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "x가음수입니다."</code></pre>
 </div>
@@ -615,18 +470,8 @@ window.Quarto = {
 <section id="숙제" class="level2">
 <h2 class="anchored" data-anchor-id="숙제">4. 숙제</h2>
 <p><code>1</code>. 아래의 코드를 관찰하고 올바르게 고쳐라.</p>
-<div id="3e2adbea-7964-47d9-ab10-bbf871fb9200" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="sc">-</span><span class="dv">1</span></span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x<span class="sc">&gt;</span><span class="dv">0</span>){</span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">log</span>(x))</span>
-<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span> <span class="cf">if</span>(x<span class="sc">==</span><span class="dv">0</span>){</span>
-<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>    x<span class="ot">=</span><span class="fl">1e-100</span></span>
-<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'x=0에서는 log(x)가 정의되지 않으므로 x=1e-100의 값으로 바꾸어 계산하겠습니다.'</span>)</span>
-<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">log</span>(x))</span>
-<span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span>{ </span>
-<span id="cb60-10"><a href="#cb60-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'x가음수입니다.'</span>)</span>
-<span id="cb60-11"><a href="#cb60-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="3e2adbea-7964-47d9-ab10-bbf871fb9200" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-trusted="true" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="sc">-</span><span class="dv">1</span><span class="fu">if</span> (x<span class="sc">&gt;</span><span class="dv">0</span>){    <span class="fu">print</span>(<span class="fu">log</span>(x))}<span class="cf">else</span> <span class="cf">if</span>(x<span class="sc">==</span><span class="dv">0</span>){    x<span class="ot">=</span><span class="fl">1e-100</span>    <span class="fu">print</span>(<span class="st">'x=0에서는 log(x)가 정의되지 않으므로 x=1e-100의 값으로 바꾸어 계산하겠습니다.'</span>)    <span class="fu">print</span>(<span class="fu">log</span>(x))}<span class="cf">else</span>{     <span class="fu">print</span>(<span class="st">'x가음수입니다.'</span>)}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Error: Error in Unknown source: &lt;text&gt;:5:1: unexpected 'else'
 4: }
@@ -634,47 +479,78 @@ window.Quarto = {
    ^</code></pre>
 </div>
 </div>
-<p><code>2</code>. 함수 <code>check</code>가 올바르게 동작하도록 코드를 수정하라.</p>
-<div id="c09c3520-9b42-4664-82fd-548db4fa704e" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="59">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>check<span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(x<span class="sc">%%</span><span class="dv">2</span><span class="sc">==</span><span class="dv">0</span>){</span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(<span class="st">"x는 2의 배수"</span>)</span>
-<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>    }<span class="cf">else</span> <span class="cf">if</span>(x<span class="sc">%%</span><span class="dv">3</span><span class="sc">==</span><span class="dv">0</span>){</span>
-<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(<span class="st">"x는 3의 배수"</span>)</span>
-<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>    }<span class="cf">else</span> <span class="cf">if</span>(x<span class="sc">%%</span><span class="dv">6</span><span class="sc">==</span><span class="dv">0</span>){</span>
-<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(<span class="st">"x는 2의 배수"</span>)</span>
-<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(<span class="st">"x는 3의 배수"</span>)</span>
-<span id="cb62-9"><a href="#cb62-9" aria-hidden="true" tabindex="-1"></a>    }<span class="cf">else</span>{</span>
-<span id="cb62-10"><a href="#cb62-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(<span class="st">"x는 3의 배수도 아니고, 2의 배수도 아니다"</span>)</span>
-<span id="cb62-11"><a href="#cb62-11" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb62-12"><a href="#cb62-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>(풀이)</code></p>
+<div id="ccdba6ec-eb1f-41ab-a607-e8f3fc3da690" class="cell" data-trusted="true" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="sc">-</span><span class="dv">1</span><span class="fu">if</span> (x<span class="sc">&gt;</span><span class="dv">0</span>){    <span class="fu">print</span>(<span class="fu">log</span>(x))}<span class="cf">else</span> <span class="cf">if</span>(x<span class="sc">==</span><span class="dv">0</span>){    x<span class="ot">=</span><span class="fl">1e-100</span>    <span class="fu">print</span>(<span class="st">'x=0에서는 log(x)가 정의되지 않으므로 x=1e-100의 값으로 바꾸어 계산하겠습니다.'</span>)    <span class="fu">print</span>(<span class="fu">log</span>(x))}<span class="cf">else</span>{     <span class="fu">print</span>(<span class="st">'x가음수입니다.'</span>)}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "x가음수입니다."</code></pre>
 </div>
-<div id="9106f504-465b-4294-9dbc-f2be51764643" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="60">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>2</code>. 함수 <code>check</code>가 올바르게 동작하도록 코드를 수정하라.</p>
+<div id="c09c3520-9b42-4664-82fd-548db4fa704e" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-trusted="true" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>check<span class="ot">&lt;-</span> <span class="cf">function</span>(x){    <span class="cf">if</span>(x<span class="sc">%%</span><span class="dv">2</span><span class="sc">==</span><span class="dv">0</span>){        <span class="fu">print</span>(<span class="st">"x는 2의 배수"</span>)    }<span class="cf">else</span> <span class="cf">if</span>(x<span class="sc">%%</span><span class="dv">3</span><span class="sc">==</span><span class="dv">0</span>){        <span class="fu">print</span>(<span class="st">"x는 3의 배수"</span>)    }<span class="cf">else</span> <span class="cf">if</span>(x<span class="sc">%%</span><span class="dv">6</span><span class="sc">==</span><span class="dv">0</span>){        <span class="fu">print</span>(<span class="st">"x는 2의 배수"</span>)        <span class="fu">print</span>(<span class="st">"x는 3의 배수"</span>)    }<span class="cf">else</span>{        <span class="fu">print</span>(<span class="st">"x는 3의 배수도 아니고, 2의 배수도 아니다"</span>)    }}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="9106f504-465b-4294-9dbc-f2be51764643" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-trusted="true" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "x는 3의 배수"</code></pre>
 </div>
 </div>
-<div id="5bf89489-0e47-4ad3-a466-38ea3650ca76" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="61">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="5bf89489-0e47-4ad3-a466-38ea3650ca76" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-trusted="true" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "x는 2의 배수"</code></pre>
 </div>
 </div>
-<div id="ca26ee4c-8fe3-4d5d-83f5-462b9bb26fcf" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="62">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ca26ee4c-8fe3-4d5d-83f5-462b9bb26fcf" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-trusted="true" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "x는 3의 배수도 아니고, 2의 배수도 아니다"</code></pre>
 </div>
 </div>
-<div id="0543a60f-ceff-4e4a-8c0a-6a0e8cb2586c" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check</span>(<span class="dv">6</span>) <span class="co"># 여기가 이상하게 나옴..</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="0543a60f-ceff-4e4a-8c0a-6a0e8cb2586c" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-trusted="true" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check</span>(<span class="dv">6</span>) <span class="co"># 여기가 이상하게 나옴..</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "x는 2의 배수"</code></pre>
 </div>
 </div>
-<div id="b7ecd1cf-d912-4df4-8ab9-9a7db3b2b4d8" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="64">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check</span>(<span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="b7ecd1cf-d912-4df4-8ab9-9a7db3b2b4d8" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-trusted="true" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check</span>(<span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "x는 3의 배수도 아니고, 2의 배수도 아니다"</code></pre>
+</div>
+</div>
+<p><code>(풀이)</code></p>
+<div id="983185b5-b427-445a-8ff3-c8e4e6ae3649" class="cell" data-trusted="true" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>check<span class="ot">&lt;-</span> <span class="cf">function</span>(x){    <span class="cf">if</span>(x<span class="sc">%%</span><span class="dv">6</span><span class="sc">==</span><span class="dv">0</span>){        <span class="fu">print</span>(<span class="st">"x는 2의 배수"</span>)        <span class="fu">print</span>(<span class="st">"x는 3의 배수"</span>)    }<span class="cf">else</span> <span class="cf">if</span>(x<span class="sc">%%</span><span class="dv">2</span><span class="sc">==</span><span class="dv">0</span>){        <span class="fu">print</span>(<span class="st">"x는 2의 배수"</span>)    }<span class="cf">else</span> <span class="cf">if</span>(x<span class="sc">%%</span><span class="dv">3</span><span class="sc">==</span><span class="dv">0</span>){        <span class="fu">print</span>(<span class="st">"x는 3의 배수"</span>)    }<span class="cf">else</span>{        <span class="fu">print</span>(<span class="st">"x는 3의 배수도 아니고, 2의 배수도 아니다"</span>)    }}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="b3c972ca-86c2-47ad-bda9-6a463d1d1f71" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-trusted="true" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "x는 3의 배수"</code></pre>
+</div>
+</div>
+<div id="fd76a2a5-f39c-4a10-bdc8-6bd46c207065" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-trusted="true" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "x는 2의 배수"</code></pre>
+</div>
+</div>
+<div id="84bb9257-335d-4c4a-a55d-7319a246f3ed" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-trusted="true" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "x는 3의 배수도 아니고, 2의 배수도 아니다"</code></pre>
+</div>
+</div>
+<div id="27c0efd8-c45f-4d9c-b394-865e9b45e878" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-trusted="true" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check</span>(<span class="dv">6</span>) <span class="co"># 이제 잘나옴</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "x는 2의 배수"
+[1] "x는 3의 배수"</code></pre>
+</div>
+</div>
+<div id="207f77bb-c688-48e0-a0f3-4501af289b92" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-trusted="true" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check</span>(<span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "x는 3의 배수도 아니고, 2의 배수도 아니다"</code></pre>
 </div>
