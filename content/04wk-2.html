@@ -9,7 +9,7 @@
 <meta name="author" content="최규빈">
 <meta name="dcterms.date" content="2025-03-27">
 
-<title>04wk-2: [R] – 벡터와 행렬의 결합, 벡터관련 연산, 자료의 변환 // 숙제 – IAB2025</title>
+<title>04wk-2: 벡터와 행렬의 결합, 벡터관련 연산, 자료의 변환 // 숙제 – IAB2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -162,7 +162,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">04wk-2: [R] – 벡터와 행렬의 결합, 벡터관련 연산, 자료의 변환 // 숙제</h1>
+<h1 class="title">04wk-2: 벡터와 행렬의 결합, 벡터관련 연산, 자료의 변환 // 숙제</h1>
 </div>
 
 
@@ -585,7 +585,7 @@ y    1    2    1    2</code></pre>
 <section id="숙제" class="level2">
 <h2 class="anchored" data-anchor-id="숙제">4. 숙제</h2>
 <p><code>1</code>. 아래와 같은 벡터가 있다고 하자.</p>
-<div id="cell-99" class="cell" data-execution_count="168">
+<div id="cell-99" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">5</span><span class="sc">:</span><span class="dv">0</span> </span>
 <span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -596,18 +596,32 @@ y    1    2    1    2</code></pre>
 <pre><code> [1] -5 -4 -3 -2 -1  0  1  2  3  4  5</code></pre>
 </div>
 </div>
+<p><code>(풀이)</code></p>
+<div id="cell-103" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code> [1] -5 -4 -3 -2 -1  0  1  2  3  4  5</code></pre>
+</div>
+</div>
 <p><code>2</code>. 아래와 같은 벡터가 있다고 하자.</p>
-<div id="cell-103" class="cell" data-execution_count="175">
-<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>)</span>
-<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="175">
+<div id="cell-105" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>)</span>
+<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>[1] 1 0 1 1 0</code></pre>
 </div>
 </div>
 <p>1을 TRUE로 0을 FALSE로 바꾸라. 즉 아래의 결과를 얻어라.</p>
-<div id="cell-105" class="cell" data-execution_count="176">
-<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 출력예시</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-107" class="cell" data-execution_count="176">
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 출력예시</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="176">
+<pre><code>[1]  TRUE FALSE  TRUE  TRUE FALSE</code></pre>
+</div>
+</div>
+<p><code>(풀이)</code></p>
+<div id="cell-109" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.logical</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>[1]  TRUE FALSE  TRUE  TRUE FALSE</code></pre>
 </div>
 </div>
