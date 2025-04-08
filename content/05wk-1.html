@@ -1011,50 +1011,71 @@ Cell <span class="ansi-green-fg">In[212], line 1</span>
 <section id="숙제" class="level2">
 <h2 class="anchored" data-anchor-id="숙제">4. 숙제</h2>
 <p><code>1</code>. 아래와 같은 문자열이 있다고 하자.</p>
-<div id="4cda11c7-d997-40e5-be9e-916a73380ee5" class="cell" data-execution_count="26">
+<div id="4cda11c7-d997-40e5-be9e-916a73380ee5" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb165"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb165-1"><a href="#cb165-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="st">'Jeonbuk National University'</span></span>
 <span id="cb165-2"><a href="#cb165-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="26">
+<div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>'Jeonbuk National University'</code></pre>
 </div>
 </div>
 <p>적당한 인덱싱을 통하여 출력결과가 아래와 같도록 하라.</p>
-<div id="4b47508d-3c35-470a-9a89-4272ebea6ed3" class="cell" data-execution_count="19">
+<div id="4b47508d-3c35-470a-9a89-4272ebea6ed3" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb167"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb167-1"><a href="#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="co">'University'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="19">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>'University'</code></pre>
 </div>
 </div>
 <ul>
 <li>hint: University는 10글자이다.</li>
 </ul>
+<p><code>(풀이)</code></p>
+<div id="1764c512-f436-4e78-861b-7c419b34b47f" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb169"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb169-1"><a href="#cb169-1" aria-hidden="true" tabindex="-1"></a>a[<span class="op">-</span><span class="dv">10</span>:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>'University'</code></pre>
+</div>
+</div>
 <p><code>2</code>. 아래와 같은 문자열이 있다고 하자.</p>
-<div id="ecc0b231-a375-4035-aadb-ea9cf3f8b4b8" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb169"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb169-1"><a href="#cb169-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="st">'ASDF'</span></span>
-<span id="cb169-2"><a href="#cb169-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="25">
+<div id="ecc0b231-a375-4035-aadb-ea9cf3f8b4b8" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb171"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb171-1"><a href="#cb171-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="st">'ASDF'</span></span>
+<span id="cb171-2"><a href="#cb171-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>'ASDF'</code></pre>
 </div>
 </div>
 <p>출력결과가 아래와 같도록 하는 코드를 작성하라. (lower 함수를 이용할 것)</p>
-<div id="aed605d5-dfe0-440c-8426-b33479ee477d" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb171"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb171-1"><a href="#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="co">'asdf'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="21">
+<div id="aed605d5-dfe0-440c-8426-b33479ee477d" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb173"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb173-1"><a href="#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="co">'asdf'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>'asdf'</code></pre>
+</div>
+</div>
+<p><code>(풀이)</code></p>
+<div id="c26b9765-8749-4128-9e42-fcb2d0729630" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb175"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb175-1"><a href="#cb175-1" aria-hidden="true" tabindex="-1"></a>a.lower()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>'asdf'</code></pre>
 </div>
 </div>
 <p><code>3</code>. 아래와 같은 문자열을 고려하라.</p>
-<div id="da44badd-39b2-4c3f-9cbf-3f8316b49276" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb173"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb173-1"><a href="#cb173-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="st">'2021. 01. 05.'</span></span>
-<span id="cb173-2"><a href="#cb173-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="24">
+<div id="da44badd-39b2-4c3f-9cbf-3f8316b49276" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb177"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb177-1"><a href="#cb177-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="st">'2021. 01. 05.'</span></span>
+<span id="cb177-2"><a href="#cb177-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>'2021. 01. 05.'</code></pre>
 </div>
 </div>
 <p>띄어쓰기를 제거하는 코드를 구현하라. 즉 출력결과가 아래와 같도록 만드는 코드를 구현하라. (<code>.replace()</code> 를 이용할 것)</p>
 <div id="5ac02567-0d56-4dc9-9f2a-5b6bbac8836a" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb175"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb175-1"><a href="#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="co">'2021.01.05.'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb179"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb179-1"><a href="#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="co">'2021.01.05.'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>'2021.01.05.'</code></pre>
+</div>
+</div>
+<p><code>(풀이)</code></p>
+<div id="5723e442-bb80-4a9e-bfaa-0149bdfa54d6" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb181"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb181-1"><a href="#cb181-1" aria-hidden="true" tabindex="-1"></a>a.replace(<span class="st">" "</span>, <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>'2021.01.05.'</code></pre>
 </div>
 </div>

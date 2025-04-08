@@ -1511,11 +1511,17 @@ The reverse flag can be set to sort in descending order.
 <span id="cb282-5"><a href="#cb282-5" aria-hidden="true" tabindex="-1"></a><span class="ex">19x17=323</span></span>
 <span id="cb282-6"><a href="#cb282-6" aria-hidden="true" tabindex="-1"></a><span class="ex">19x18=342</span></span>
 <span id="cb282-7"><a href="#cb282-7" aria-hidden="true" tabindex="-1"></a><span class="ex">19x19=361</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>(풀이)</code></p>
+<div id="c7c373da-09b8-4aca-b4b9-1632b4cb676e" class="cell" data-execution_count="688">
+<div class="sourceCode cell-code" id="cb283"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb283-1"><a href="#cb283-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for j in range(11,20):</span></span>
+<span id="cb283-2"><a href="#cb283-2" aria-hidden="true" tabindex="-1"></a><span class="co">#     for i in range(1,20):</span></span>
+<span id="cb283-3"><a href="#cb283-3" aria-hidden="true" tabindex="-1"></a><span class="co">#         print(f"{j}x{i}={j*i}")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p><code>2</code>. 아래와 같은 리스트를 관찰하라.</p>
-<div id="2a9eb0cd-a682-4337-8174-f494e332ccb0" class="cell" data-execution_count="675">
-<div class="sourceCode cell-code" id="cb283"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb283-1"><a href="#cb283-1" aria-hidden="true" tabindex="-1"></a>lst <span class="op">=</span> [<span class="st">'2022/09/21'</span>,<span class="st">'2022/10/30'</span>,<span class="st">'2022/12/25'</span>,<span class="st">'2023/01/01'</span>,<span class="st">'2023/01/31'</span>,<span class="st">'2023/03/20'</span>]</span>
-<span id="cb283-2"><a href="#cb283-2" aria-hidden="true" tabindex="-1"></a>lst</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="675">
+<div id="2a9eb0cd-a682-4337-8174-f494e332ccb0" class="cell" data-execution_count="689">
+<div class="sourceCode cell-code" id="cb284"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb284-1"><a href="#cb284-1" aria-hidden="true" tabindex="-1"></a>lst <span class="op">=</span> [<span class="st">'2022/09/21'</span>,<span class="st">'2022/10/30'</span>,<span class="st">'2022/12/25'</span>,<span class="st">'2023/01/01'</span>,<span class="st">'2023/01/31'</span>,<span class="st">'2023/03/20'</span>]</span>
+<span id="cb284-2"><a href="#cb284-2" aria-hidden="true" tabindex="-1"></a>lst</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="689">
 <pre><code>['2022/09/21',
  '2022/10/30',
  '2022/12/25',
@@ -1525,9 +1531,16 @@ The reverse flag can be set to sort in descending order.
 </div>
 </div>
 <p>이러한 리스트를 아래와 같은 리스트로 변환하는 코드를 작성하라.</p>
-<div id="5486929d-b6e0-420b-917d-9f1c01e6fdf6" class="cell" data-execution_count="682">
-<div class="sourceCode cell-code" id="cb285"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb285-1"><a href="#cb285-1" aria-hidden="true" tabindex="-1"></a>[<span class="st">'22-09-21.'</span>,<span class="st">'22-10-30.'</span>,<span class="st">'22-12-25.'</span>,<span class="st">'23-01-01.'</span>,<span class="st">'23-01-31.'</span>,<span class="st">'23-03-20.'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="682">
+<div id="5486929d-b6e0-420b-917d-9f1c01e6fdf6" class="cell" data-execution_count="690">
+<div class="sourceCode cell-code" id="cb286"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb286-1"><a href="#cb286-1" aria-hidden="true" tabindex="-1"></a>[<span class="st">'22-09-21.'</span>,<span class="st">'22-10-30.'</span>,<span class="st">'22-12-25.'</span>,<span class="st">'23-01-01.'</span>,<span class="st">'23-01-31.'</span>,<span class="st">'23-03-20.'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="690">
+<pre><code>['22-09-21.', '22-10-30.', '22-12-25.', '23-01-01.', '23-01-31.', '23-03-20.']</code></pre>
+</div>
+</div>
+<p><code>(풀이)</code></p>
+<div id="e3b78e02-ef93-4794-8ff3-ed04712007d0" class="cell" data-execution_count="697">
+<div class="sourceCode cell-code" id="cb288"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb288-1"><a href="#cb288-1" aria-hidden="true" tabindex="-1"></a>[l[<span class="dv">2</span>:].replace(<span class="st">"/"</span>,<span class="st">"-"</span>)<span class="op">+</span><span class="st">"."</span> <span class="cf">for</span> l <span class="kw">in</span> lst]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="697">
 <pre><code>['22-09-21.', '22-10-30.', '22-12-25.', '23-01-01.', '23-01-31.', '23-03-20.']</code></pre>
 </div>
 </div>
