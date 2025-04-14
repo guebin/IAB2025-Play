@@ -9,7 +9,7 @@
 <meta name="author" content="최규빈">
 <meta name="dcterms.date" content="2025-04-15">
 
-<title>07wk-1: [Python] – ??? – IAB2025</title>
+<title>07wk-1: [Python] – Oxford-III, 딕셔너리 – IAB2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -103,6 +103,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -145,15 +174,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#oxford-iii" id="toc-oxford-iii" class="nav-link active" data-scroll-target="#oxford-iii">1. Oxford-III</a></li>
+  <li><a href="#딕셔너리" id="toc-딕셔너리" class="nav-link" data-scroll-target="#딕셔너리">2. 딕셔너리</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">07wk-1: [Python] – ???</h1>
+<h1 class="title">07wk-1: [Python] – Oxford-III, 딕셔너리</h1>
 </div>
 
 
@@ -182,6 +218,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="oxford-iii" class="level2">
+<h2 class="anchored" data-anchor-id="oxford-iii">1. Oxford-III</h2>
 <p><code>Oxford-III</code>: // <a href="https://www.robots.ox.ac.uk/~vgg/data/pets/">reference</a></p>
 <p>아래는 이미지 파일명들이 저장된 string을 불러오는 코드이다.</p>
 <div id="a9d71dbf-0530-4601-a6ce-2cd0076acbe9" class="cell" data-tags="[]" data-execution_count="55">
@@ -265,8 +303,489 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a> (<span class="st">'great_pyrenees'</span>, <span class="dv">200</span>),</span>
 <span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a> (<span class="st">'Egyptian_Mau'</span>, <span class="dv">200</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>(풀이)</p>
+</section>
+<section id="딕셔너리" class="level2">
+<h2 class="anchored" data-anchor-id="딕셔너리">2. 딕셔너리</h2>
+<section id="a.-선언" class="level3">
+<h3 class="anchored" data-anchor-id="a.-선언">A. 선언</h3>
+<p><code>-</code> 방법1: 가장 일반적</p>
+<div id="55dc0758-d11c-4502-bcab-a6a24fe1d8bc" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>dct <span class="op">=</span> {<span class="st">'guebin'</span>:<span class="dv">49</span>, <span class="st">'hanni'</span>:<span class="dv">80</span>}</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>{'guebin': 49, 'hanni': 80}</code></pre>
+</div>
+</div>
+<p><code>-</code> 방법2: <code>dict()</code> 이용</p>
+<div id="5febe8ee-cdd4-4eb7-9dbf-d19dbc238d7d" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>dct <span class="op">=</span> <span class="bu">dict</span>(guebin<span class="op">=</span><span class="dv">49</span>, hanni<span class="op">=</span><span class="dv">80</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>{'guebin': 49, 'hanni': 80}</code></pre>
+</div>
+</div>
+<p><code>-</code> 방법3: 중첩된 리스트를 만든 뒤에 형태변환</p>
+<div id="fec5e49b-fef4-4290-8abe-2621ef7e4f3b" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>_lst <span class="op">=</span> [[<span class="st">'guebin'</span>,<span class="dv">49</span>],[<span class="st">'hanni'</span>,<span class="dv">80</span>]]</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>_lst </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>[['guebin', 49], ['hanni', 80]]</code></pre>
+</div>
+</div>
+<div id="e7fc40ef-6b41-4683-bc7d-61af3dce0c82" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">dict</span>(_lst)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>{'guebin': 49, 'hanni': 80}</code></pre>
+</div>
+</div>
+<p><code>-</code> 방법4: 중첩된 튜플을 만든 뒤에 형태변환</p>
+<div id="1438bc72-f90c-404f-80e6-71e402579c46" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>_tpl <span class="op">=</span> (<span class="st">'guebin'</span>,<span class="dv">49</span>), (<span class="st">'hanni'</span>,<span class="dv">80</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>_tpl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>(('guebin', 49), ('hanni', 80))</code></pre>
+</div>
+</div>
+<div id="6f9eec27-4ad3-4631-8af7-21345674de77" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">dict</span>(_tpl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>{'guebin': 49, 'hanni': 80}</code></pre>
+</div>
+</div>
+</section>
+<section id="b.-원소추출" class="level3">
+<h3 class="anchored" data-anchor-id="b.-원소추출">B. 원소추출</h3>
+<p><code>-</code> 원소의 위치로 추출할 수 없고, key로 추출해야 한다.</p>
+<div id="6d3222bc-709f-4d64-91ba-5d00b57641cf" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>dct <span class="op">=</span> {<span class="st">'guebin'</span>:<span class="dv">49</span>, <span class="st">'hanni'</span>:<span class="dv">80</span>}</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>{'guebin': 49, 'hanni': 80}</code></pre>
+</div>
+</div>
+<p>guebin의 점수를 추출하고 싶다면?</p>
+<div id="df7079e7-b0dc-4704-b786-355f9f749b4b" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>dct[<span class="st">'guebin'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>49</code></pre>
+</div>
+</div>
+<p><code>-</code> 만약에 dict가 아니라 list로 정보를 저장했다면?</p>
+<p>(예제) 아래와 같은 리스트에서 guebin의 점수를 추출하고 싶다면?</p>
+<div id="3cde2d41-d7cd-485f-81fc-6b910efb8b6e" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>lst<span class="op">=</span>[[<span class="st">'guebin'</span>,<span class="dv">49</span>],[<span class="st">'hanni'</span>,<span class="dv">80</span>]]</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>lst</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>[['guebin', 49], ['hanni', 80]]</code></pre>
+</div>
+</div>
+<p>(풀이1)</p>
+<div id="3f56e091-4a98-4336-beaf-42215af05784" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>lst[<span class="dv">0</span>][<span class="dv">1</span>] <span class="co"># guebin의 점수를 출력하란 의미</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>49</code></pre>
+</div>
+</div>
+<p>(풀이2) – 진짜 최악</p>
+<div id="8f27e3af-948c-4c2c-b064-c8176c544eb9" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>[lst[i][<span class="dv">1</span>] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(lst)) <span class="cf">if</span> lst[i][<span class="dv">0</span>] <span class="op">==</span> <span class="st">'guebin'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>[49]</code></pre>
+</div>
+</div>
+<p>(풀이3) – 덜 최악</p>
+<div id="a7d485e3-26fb-4a5a-b99d-d9f8f0561e57" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>[score <span class="cf">for</span> name,score <span class="kw">in</span> lst <span class="cf">if</span> name <span class="op">==</span> <span class="st">'guebin'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>[49]</code></pre>
+</div>
+</div>
+<p><code>-</code> ’guebin’의 점수를 추출하는 코드 비교</p>
+<div id="8e74e45c-b8d7-4025-9d01-630edc480e54" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>dct[<span class="st">'guebin'</span>] <span class="co"># 코드1: 단순하고, 가독성있음</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>49</code></pre>
+</div>
+</div>
+<div id="2c318702-3e56-4a14-9c2c-266b576b03f9" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>lst[<span class="dv">0</span>][<span class="dv">1</span>] <span class="co"># 코드2: 단순하지만, 가독성이 있는건 아님</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>49</code></pre>
+</div>
+</div>
+<div id="63b312f2-e7f9-4579-b801-efbe8a40218c" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>[lst[i][<span class="dv">1</span>] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(lst)) <span class="cf">if</span> lst[i][<span class="dv">0</span>] <span class="op">==</span><span class="st">'guebin'</span>] <span class="co"># 코드3: 단순하지도 않고, 가독성도 없음.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>[49]</code></pre>
+</div>
+</div>
+<div id="e6be9770-96d7-4550-902e-5c51e91ec225" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>[score <span class="cf">for</span> name,score <span class="kw">in</span> lst <span class="cf">if</span> name<span class="op">==</span><span class="st">'guebin'</span> ] <span class="co"># 코드4: 단순하지 않지만, 가독성은 있음</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>[49]</code></pre>
+</div>
+</div>
+</section>
+<section id="c.-원소추가-변경-삭제" class="level3">
+<h3 class="anchored" data-anchor-id="c.-원소추가-변경-삭제">C. 원소추가, 변경, 삭제</h3>
+<div id="1b80f180-9c53-411f-884d-1877d449b9b5" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>dct<span class="op">=</span>{<span class="st">'guebin'</span>:<span class="dv">49</span>, <span class="st">'hanni'</span>:<span class="dv">80</span>}</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>{'guebin': 49, 'hanni': 80}</code></pre>
+</div>
+</div>
+<p><code>-</code> 원소에 접근: guebin의 점수 출력</p>
+<div id="ae385e25-cfb4-4e1b-9c85-6ee1f9ed4c5d" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>dct[<span class="st">'guebin'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>49</code></pre>
+</div>
+</div>
+<p><code>-</code> 추가: hynn학생의 점수를 추가</p>
+<div id="714ec0a2-599b-4856-a4d5-8daa6e6076c8" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>dct[<span class="st">'hynn'</span>] <span class="op">=</span> <span class="dv">99</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="f3e13eba-ee90-4a6e-b13e-05befd792a19" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>{'guebin': 49, 'hanni': 80, 'hynn': 99}</code></pre>
+</div>
+</div>
+<p><code>-</code> 변경: hanni의 점수를 변경</p>
+<div id="e34f201e-f496-4aa3-bbc4-41a21a2af40e" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>dct[<span class="st">'hanni'</span>] <span class="op">=</span> <span class="dv">100</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="2614f49f-2bf4-4076-8d92-b9b090070aea" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<pre><code>{'guebin': 49, 'hanni': 100, 'hynn': 99}</code></pre>
+</div>
+</div>
+</section>
+<section id="d.-연산" class="level3">
+<h3 class="anchored" data-anchor-id="d.-연산">D. 연산</h3>
+<p><code>-</code> in연산 정도만 기억해도 좋음</p>
+<div id="0d039cb2-8aad-4bc0-81f2-e556de875e07" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>dct <span class="op">=</span> {<span class="st">'guebin'</span>:<span class="dv">49</span>, <span class="st">'hanni'</span>:<span class="dv">80</span>} </span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>{'guebin': 49, 'hanni': 80}</code></pre>
+</div>
+</div>
+<div id="d9ca34ee-a184-4ae1-b69a-dd69013f799c" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co">'guebin'</span> <span class="kw">in</span> dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>True</code></pre>
+</div>
+</div>
+<div id="c86be92d-a4c7-47e0-bba3-a6b40b254ee9" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co">'hanni'</span> <span class="kw">in</span> dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<pre><code>True</code></pre>
+</div>
+</div>
+<div id="977dd5a6-1bc0-4b4b-8a00-cff154b630ad" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co">'hynn'</span> <span class="kw">in</span> dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>False</code></pre>
+</div>
+</div>
+<p><code>-</code> in은 사실 다른자료형도 가능했음</p>
+<p>(관찰1)</p>
+<div id="8573601c-8f74-4603-a329-2c4f4efe3fd6" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co">'a'</span> <span class="kw">in</span> <span class="st">'guebin'</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="29">
+<pre><code>False</code></pre>
+</div>
+</div>
+<div id="6ddb7895-8e58-404c-8dbe-03d45a31847e" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co">'b'</span> <span class="kw">in</span> <span class="st">'guebin'</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<pre><code>True</code></pre>
+</div>
+</div>
+<div id="4dcb4047-4af6-471a-beaf-6d3b0ee63f40" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co">'c'</span> <span class="kw">in</span> <span class="st">'guebin'</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<pre><code>False</code></pre>
+</div>
+</div>
+<p>(관찰2)</p>
+<div id="c3b33cd0-8f18-4ade-9a27-18b3721bd89f" class="cell" data-execution_count="155">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>tpl <span class="op">=</span> <span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span> </span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>tpl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="155">
+<pre><code>(1, 2, 3)</code></pre>
+</div>
+</div>
+<div id="dea8e8de-6d7a-4bbb-9424-328675d24b46" class="cell" data-execution_count="156">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="kw">in</span> tpl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="156">
+<pre><code>True</code></pre>
+</div>
+</div>
+<div id="62a314e1-f94c-4b0a-84e1-3d724aa1d1fe" class="cell" data-execution_count="157">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> <span class="kw">in</span> tpl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="157">
+<pre><code>False</code></pre>
+</div>
+</div>
+<p>(관찰3)</p>
+<div id="a5441443-7870-45e7-87b6-cbd4aa71ed26" class="cell" data-execution_count="135">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>lst <span class="op">=</span> [[<span class="st">'guebin'</span>,<span class="dv">49</span>],[<span class="st">'hanni'</span>,<span class="dv">80</span>],[<span class="st">'hynn'</span>,<span class="dv">99</span>]] </span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>lst</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="135">
+<pre><code>[['guebin', 49], ['hanni', 80], ['hynn', 99]]</code></pre>
+</div>
+</div>
+<div id="810e7192-94f2-4d03-887b-b8ac9e363233" class="cell" data-execution_count="158">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>[<span class="st">'guebin'</span>,<span class="dv">49</span>] <span class="kw">in</span> lst</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="158">
+<pre><code>True</code></pre>
+</div>
+</div>
+<p><code>-</code> in연산자가 dict형에 사용되면 key를 기준으로 True, False를 판단한다.</p>
+</section>
+<section id="e.-딕셔너리-특수기능" class="level3">
+<h3 class="anchored" data-anchor-id="e.-딕셔너리-특수기능">E. 딕셔너리 특수기능</h3>
+<p><strong>(pop)</strong></p>
+<div id="f4f15679-6eec-4028-8e3a-c365f4075363" class="cell" data-execution_count="164">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>dct <span class="op">=</span> {<span class="st">'guebin'</span>:<span class="dv">49</span>, <span class="st">'hanni'</span>:<span class="dv">80</span>} </span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>dct.pop(<span class="st">'hanni'</span>)</span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="164">
+<pre><code>{'guebin': 49}</code></pre>
+</div>
+</div>
+<p><strong>(get)</strong></p>
+<div id="c334c2fc-a1a4-4506-bfa6-6080c84621ca" class="cell" data-execution_count="165">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>dct <span class="op">=</span> {<span class="st">'guebin'</span>:<span class="dv">49</span>, <span class="st">'hanni'</span>:<span class="dv">80</span>} </span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="165">
+<pre><code>{'guebin': 49, 'hanni': 80}</code></pre>
+</div>
+</div>
+<div id="b7d46a09-8390-42ea-8c84-1c85d65eed6f" class="cell" data-execution_count="149">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>dct.get(<span class="st">'guebin'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="149">
+<pre><code>49</code></pre>
+</div>
+</div>
+<p>아래와 같은 기능</p>
+<div id="200195d2-b5e9-4c6c-a5f8-9ea5a3dd4d78" class="cell" data-execution_count="150">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>dct[<span class="st">'guebin'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="150">
+<pre><code>49</code></pre>
+</div>
+</div>
+<p>미묘한 차이점이 존재함</p>
+<div id="962da2c4-1b6e-47e9-b48f-afaabfab3117" class="cell" data-execution_count="151">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>dct[<span class="st">'hynn'</span>] <span class="co"># hynn이 없어서 키에러 출력, 그런 key는 없다.. </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">KeyError</span>                                  Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[151], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">dct</span><span class="ansi-yellow-bg">[</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">'</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">hynn</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">'</span><span class="ansi-yellow-bg">]</span> <span style="font-style:italic;color:rgb(95,135,135)"># hynn이 없어서 키에러 출력, 그런 key는 없다.. </span>
+
+<span class="ansi-red-fg">KeyError</span>: 'hynn'</pre>
+</div>
+</div>
+</div>
+<div id="56d222e7-bc31-4dc3-9d23-1aea9dda5d30" class="cell" data-execution_count="152">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>dct.get(<span class="st">'hynn'</span>) <span class="co"># hynn이 없으면 아무것도 출력안함 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>(keys,values,items)</strong></p>
+<p><code>-</code> .keys()는 딕셔너리의 키를 리턴한다.</p>
+<div id="fdb760f8-bc53-406e-a7ae-a97d5a533ec2" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>dct <span class="op">=</span> {<span class="st">'guebin'</span>:<span class="dv">49</span>, <span class="st">'hanni'</span>:<span class="dv">80</span>} </span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
+<pre><code>{'guebin': 49, 'hanni': 80}</code></pre>
+</div>
+</div>
+<div id="0de79218-5f7e-4fdb-8e6c-2ea176bb32c4" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>keys<span class="op">=</span>dct.keys()</span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a>keys</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
+<pre><code>dict_keys(['guebin', 'hanni'])</code></pre>
+</div>
+</div>
+<p><code>-</code> .values()는 딕셔너리의 값들을 리턴한다.</p>
+<div id="f76e4f3a-76a8-4012-a5dd-a072db88ce7e" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>values <span class="op">=</span> dct.values()</span>
+<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>values </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
+<pre><code>dict_values([49, 80])</code></pre>
+</div>
+</div>
+<div id="17125319-20fb-42af-af39-accc504db7c0" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(values)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+<pre><code>dict_values</code></pre>
+</div>
+</div>
+<div id="1f1c6521-d5c9-4cc4-9f8d-d4fc2a04a6d7" class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(values)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="38">
+<pre><code>[49, 80]</code></pre>
+</div>
+</div>
+<p><code>-</code> .items()는 딕셔너리의 (키,값)을 리턴한다.</p>
+<div id="c10fc308-61c0-4a89-9af1-d536c6eed756" class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>items <span class="op">=</span> dct.items()</span>
+<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>items </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="39">
+<pre><code>dict_items([('guebin', 49), ('hanni', 80)])</code></pre>
+</div>
+</div>
+<div id="9db91763-3016-41cc-b032-581f7b1d83ae" class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(items)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="40">
+<pre><code>dict_items</code></pre>
+</div>
+</div>
+<div id="4f76bb4e-9040-4f44-bb1f-edcf5fb6931d" class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(items)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="41">
+<pre><code>[('guebin', 49), ('hanni', 80)]</code></pre>
+</div>
+</div>
+</section>
+<section id="f.-for문과-dict-star" class="level3">
+<h3 class="anchored" data-anchor-id="f.-for문과-dict-star">F. for문과 dict (<span class="math inline">\(\star\)</span>)</h3>
+<div id="b8dde23b-504d-4a28-9e71-37d51616c6b0" class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>dct <span class="op">=</span> {<span class="st">'guebin'</span>: <span class="dv">49</span>, <span class="st">'hanni'</span>: <span class="dv">80</span>}</span>
+<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="42">
+<pre><code>{'guebin': 49, 'hanni': 80}</code></pre>
+</div>
+</div>
+<p>(예시1)</p>
+<div id="d0e47066-f831-4797-8964-0b590533635f" class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> dct.keys():</span>
+<span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(k)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>guebin
+hanni</code></pre>
+</div>
+</div>
+<div id="39958ba3-8622-452c-b287-8ed59a9e3fdf" class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> dct:</span>
+<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(k)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>guebin
+hanni</code></pre>
+</div>
+</div>
+<p>(예시2)</p>
+<div id="1bb4bb86-9b42-4fcd-a3a0-a38bdbd9db87" class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> v <span class="kw">in</span> dct.values():</span>
+<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(v)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>49
+80</code></pre>
+</div>
+</div>
+<p>(예시3)</p>
+<div id="139eaad4-f706-47c0-9a8e-a8aa629a331f" class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> dct.items():</span>
+<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>('guebin', 49)
+('hanni', 80)</code></pre>
+</div>
+</div>
+<p>(예시4)</p>
+<div id="34473685-a25c-4729-8de0-64bce66312c5" class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k,v <span class="kw">in</span> dct.items(): <span class="co"># 다중할당</span></span>
+<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(k,v)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>guebin 49
+hanni 80</code></pre>
+</div>
+</div>
+<p>(예시5) – {}의 중간고사 점수는 {}점 입니다.</p>
+<div id="0205df8e-4ec0-4f4f-b1b0-caa361534123" class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name,score <span class="kw">in</span> dct.items():</span>
+<span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">의 중간고사 점수는 </span><span class="sc">{</span>score<span class="sc">}</span><span class="ss">점 입니다.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>guebin의 중간고사 점수는 49점 입니다.
+hanni의 중간고사 점수는 80점 입니다.</code></pre>
+</div>
+</div>
+</section>
+<section id="g.-dict에서-key혹은-value만-뽑아내기" class="level3">
+<h3 class="anchored" data-anchor-id="g.-dict에서-key혹은-value만-뽑아내기">G. dict에서 key혹은 value만 뽑아내기</h3>
+<p><code>-</code> 예제: 아래의 dict에서 key만 뽑아내고 싶다.</p>
+<div id="d8b56f1b-77d0-49e5-bc11-b49016468a08" class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a>dct <span class="op">=</span> {<span class="st">'guebin'</span>:<span class="dv">49</span>, <span class="st">'hanni'</span>:<span class="dv">80</span>} </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>(풀이1)</p>
+<div id="b9cb2892-d892-4939-93a2-f95e926309a9" class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(dct)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="52">
+<pre><code>['guebin', 'hanni']</code></pre>
+</div>
+</div>
+<p>(풀이2)</p>
+<div id="7e2e0a28-cc1e-4da9-8993-ce65d6f3f003" class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(dct.keys())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="53">
+<pre><code>['guebin', 'hanni']</code></pre>
+</div>
+</div>
+<p>(풀이3)</p>
+<div id="7cddce96-e414-4dca-b35e-222b7c8f7cce" class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a>[k <span class="cf">for</span> k <span class="kw">in</span> dct]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="54">
+<pre><code>['guebin', 'hanni']</code></pre>
+</div>
+</div>
+<p>(풀이4)</p>
+<div id="8ed1d32e-fd2d-434e-9760-091b731df1fd" class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a>[k <span class="cf">for</span> k,v <span class="kw">in</span> dct.items()]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="55">
+<pre><code>['guebin', 'hanni']</code></pre>
+</div>
+</div>
+<p><code>-</code> 예제: 아래의 dict에서 value만 뽑아내고 싶다.</p>
+<div id="7b5dc3e3-7a1c-4582-a4b1-1765768d1566" class="cell" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a>dct <span class="op">=</span> {<span class="st">'guebin'</span>:<span class="dv">49</span>, <span class="st">'hanni'</span>:<span class="dv">80</span>} </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>(풀이1)</p>
+<div id="e3a5b239-800b-4373-924e-686bf71dd2e4" class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(dct.values())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="57">
+<pre><code>[49, 80]</code></pre>
+</div>
+</div>
+<p>(풀이2)</p>
+<div id="5105f6ab-68ac-4f4f-a568-4e9f34fba44b" class="cell" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a>[dct[k] <span class="cf">for</span> k <span class="kw">in</span> dct]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="58">
+<pre><code>[49, 80]</code></pre>
+</div>
+</div>
+<p>(풀이3)</p>
+<div id="ace73f42-7ac1-432a-a3f7-200f900dbb03" class="cell" data-execution_count="106">
+<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a>[v <span class="cf">for</span> v <span class="kw">in</span> dct.values()]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="106">
+<pre><code>[49, 80]</code></pre>
+</div>
+</div>
+<p>(풀이4)</p>
+<div id="3aa499ff-da82-4ac4-a89b-58115b08c323" class="cell" data-execution_count="107">
+<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>[v <span class="cf">for</span> k,v <span class="kw">in</span> dct.items()]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="107">
+<pre><code>[49, 80]</code></pre>
+</div>
+</div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
