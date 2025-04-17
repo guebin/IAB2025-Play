@@ -194,7 +194,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="oxford-iii">1. Oxford-III</h2>
 <p><code>Oxford-III</code>: // <a href="https://www.robots.ox.ac.uk/~vgg/data/pets/">reference</a></p>
 <p>아래는 이미지 파일명들이 저장된 string을 불러오는 코드이다.</p>
-<div id="a9d71dbf-0530-4601-a6ce-2cd0076acbe9" class="cell" data-tags="[]" data-execution_count="110">
+<div id="a9d71dbf-0530-4601-a6ce-2cd0076acbe9" class="cell" data-tags="[]" data-execution_count="137">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/guebin/PP2023/main/posts/01_PythonBasic/Oxford-IIIT.txt'</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>txt <span class="op">=</span> requests.get(url).content.decode()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -205,8 +205,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fname_list 의 출력결과는 아래와 같아야 한다. </span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>[<span class="st">'Abyssinian_1.jpg'</span>,<span class="st">'Abyssinian_10.jpg'</span>, ... ,<span class="st">'yorkshire_terrier_98.jpg'</span>, <span class="st">'yorkshire_terrier_99.jpg'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>(풀이)</p>
+<div id="342c23e2-399e-4fec-99f9-cb249bd25b3e" class="cell" data-execution_count="143">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fname_txt <span class="op">=</span> txt.split()</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#fname_txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p><code>(2)</code> <code>fname_list</code> 에는 총 몇개의 이미지파일명이 있는가?</p>
 <p>(풀이)</p>
+<div id="d40bc08b-3aed-4871-84e3-39ca5482db58" class="cell" data-execution_count="146">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(fname_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="146">
+<pre><code>7393</code></pre>
+</div>
+</div>
 <p><code>(3)</code> 각 이미지파일명은 아래와 같은 규칙으로 저장되어 있다.</p>
 <ul>
 <li>파일명의 첫글자가 대문자이면 고양이를 의미하고 첫글자가 소문자이면 강아지를 의미한다.</li>
@@ -214,80 +224,157 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>이미지 파일명이 입력으로 오면 강아지인지 고양이인지 판단하여 ‘cat’ or ’dog’를 리턴하는 함수 <code>f</code>를 구현하라.</p>
 <p>(함수사용예시)</p>
 <div id="6d3232fb-a74e-49e4-8abc-6390b1c013d0" class="cell" data-tags="[]" data-execution_count="52">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>f(<span class="st">'yorkshire_terrier_99.jpg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>f(<span class="st">'yorkshire_terrier_99.jpg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="52">
 <pre><code>'dog'</code></pre>
 </div>
 </div>
 <div id="2936950a-75de-4bc9-b1f8-c8bd4149aceb" class="cell" data-tags="[]" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>f(<span class="st">'Abyssinian_1.jpg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>f(<span class="st">'Abyssinian_1.jpg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="53">
 <pre><code>'cat'</code></pre>
 </div>
 </div>
 <p>(풀이)</p>
+<div id="b00ff210-1f6a-4154-8007-23ad9b8b31cd" class="cell" data-execution_count="164">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(fname):</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"cat"</span> <span class="cf">if</span> fname[<span class="dv">0</span>].isupper() <span class="cf">else</span> <span class="st">"dog"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="d09e720d-4ad0-45a6-9b23-97c34f23936f" class="cell" data-execution_count="165">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>f(<span class="st">'yorkshire_terrier_99.jpg'</span>),f(<span class="st">'Abyssinian_1.jpg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="165">
+<pre><code>('dog', 'cat')</code></pre>
+</div>
+</div>
 <p><code>(4)</code> 위의 결과로 나온 <code>fname_list</code>를 입력으로 하고 리스트의 각 원소가 고양이를 의미하는 그림인지 강아지를 의미하는 그림인지 나타내는 리스트를 만들어라.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">## 입력예시 </span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>[<span class="st">'Abyssinian_1.jpg'</span>,<span class="st">'Abyssinian_10.jpg'</span>,...,<span class="st">'yorkshire_terrier_98.jpg'</span>, <span class="st">'yorkshire_terrier_99.jpg'</span>]</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">## 출력예시</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>[<span class="st">'cat'</span>, <span class="st">'cat'</span>, ... , <span class="st">'dog'</span>, <span class="st">'dog'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>(풀이)</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">## 입력예시 </span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>[<span class="st">'Abyssinian_1.jpg'</span>,<span class="st">'Abyssinian_10.jpg'</span>,...,<span class="st">'yorkshire_terrier_98.jpg'</span>, <span class="st">'yorkshire_terrier_99.jpg'</span>]</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">## 출력예시</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>[<span class="st">'cat'</span>, <span class="st">'cat'</span>, ... , <span class="st">'dog'</span>, <span class="st">'dog'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>(풀이1)</p>
+<div id="bf72eed1-733c-4775-9d7a-06e9a1e2b76b" class="cell" data-execution_count="169">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># [f(l) for l in fname_list]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>(풀이2)</p>
+<div id="645895da-aad3-40f6-9eb4-f0b851b136fc" class="cell" data-execution_count="172">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#[(lambda x: "cat" if x[0].isupper() else "dog")(l) for l in fname_list]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>(풀이3)</p>
+<div id="e74fe639-593b-4cd8-81e5-46c51af3cb23" class="cell" data-execution_count="185">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#[{True:"고양이", False:"개"}[l[0].isupper()]   for l in fname_list]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p><code>(5)</code> 강아지 그림과 고양이 그림이 각각 몇 장씩 포함되어 있는지 파악하는 코드를 구현하라.</p>
-<p>(풀이)</p>
+<p>(풀이1)</p>
+<div id="98c4edfa-d54f-497f-9784-8a2a7e8aefe6" class="cell" data-execution_count="189">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>[f(l) <span class="cf">for</span> l <span class="kw">in</span> fname_list].count(<span class="st">"dog"</span>), [f(l) <span class="cf">for</span> l <span class="kw">in</span> fname_list].count(<span class="st">"cat"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="189">
+<pre><code>(4990, 2403)</code></pre>
+</div>
+</div>
+<p>(풀이2)</p>
+<div id="4f54f3e5-531f-453b-b2c0-857fcc32309e" class="cell" data-execution_count="194">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(fname_list) <span class="op">-</span> <span class="bu">sum</span>([l[<span class="dv">0</span>].isupper() <span class="cf">for</span> l <span class="kw">in</span> fname_list]),  <span class="bu">sum</span>([l[<span class="dv">0</span>].isupper() <span class="cf">for</span> l <span class="kw">in</span> fname_list])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="194">
+<pre><code>(4990, 2403)</code></pre>
+</div>
+</div>
 <p><code>(6)</code> 고양이 혹은 강아지의 각 종이 몇 장씩 포함되어있는지 구하라.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 출력예시</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>[(<span class="st">'havanese'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a> (<span class="st">'Abyssinian'</span>, <span class="dv">203</span>),</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a> (<span class="st">'keeshond'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a> (<span class="st">'american_pit_bull_terrier'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a> (<span class="st">'pug'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a> (<span class="st">'Birman'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a> (<span class="st">'saint_bernard'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a> (<span class="st">'samoyed'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a> (<span class="st">'wheaten_terrier'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a> (<span class="st">'Ragdoll'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a> (<span class="st">'Bengal'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a> (<span class="st">'basset_hound'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a> (<span class="st">'beagle'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a> (<span class="st">'staffordshire_bull_terrier'</span>, <span class="dv">191</span>),</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a> (<span class="st">'english_cocker_spaniel'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a> (<span class="st">'scottish_terrier'</span>, <span class="dv">199</span>),</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a> (<span class="st">'yorkshire_terrier'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a> (<span class="st">'British_Shorthair'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a> (<span class="st">'boxer'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a> (<span class="st">'english_setter'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a> (<span class="st">'newfoundland'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a> (<span class="st">'Siamese'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a> (<span class="st">'miniature_pinscher'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a> (<span class="st">'Bombay'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a> (<span class="st">'japanese_chin'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a> (<span class="st">'Persian'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a> (<span class="st">'chihuahua'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a> (<span class="st">'Russian_Blue'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a> (<span class="st">'Maine_Coon'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a> (<span class="st">'american_bulldog'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a> (<span class="st">'leonberger'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a> (<span class="st">'german_shorthaired'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a> (<span class="st">'Sphynx'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a> (<span class="st">'shiba_inu'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a> (<span class="st">'pomeranian'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a> (<span class="st">'great_pyrenees'</span>, <span class="dv">200</span>),</span>
-<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a> (<span class="st">'Egyptian_Mau'</span>, <span class="dv">200</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 출력예시</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>[(<span class="st">'havanese'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a> (<span class="st">'Abyssinian'</span>, <span class="dv">203</span>),</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a> (<span class="st">'keeshond'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a> (<span class="st">'american_pit_bull_terrier'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a> (<span class="st">'pug'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a> (<span class="st">'Birman'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a> (<span class="st">'saint_bernard'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a> (<span class="st">'samoyed'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a> (<span class="st">'wheaten_terrier'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a> (<span class="st">'Ragdoll'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a> (<span class="st">'Bengal'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a> (<span class="st">'basset_hound'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a> (<span class="st">'beagle'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a> (<span class="st">'staffordshire_bull_terrier'</span>, <span class="dv">191</span>),</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a> (<span class="st">'english_cocker_spaniel'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a> (<span class="st">'scottish_terrier'</span>, <span class="dv">199</span>),</span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a> (<span class="st">'yorkshire_terrier'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a> (<span class="st">'British_Shorthair'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a> (<span class="st">'boxer'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a> (<span class="st">'english_setter'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a> (<span class="st">'newfoundland'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a> (<span class="st">'Siamese'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a> (<span class="st">'miniature_pinscher'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a> (<span class="st">'Bombay'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a> (<span class="st">'japanese_chin'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a> (<span class="st">'Persian'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a> (<span class="st">'chihuahua'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a> (<span class="st">'Russian_Blue'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a> (<span class="st">'Maine_Coon'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a> (<span class="st">'american_bulldog'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a> (<span class="st">'leonberger'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a> (<span class="st">'german_shorthaired'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a> (<span class="st">'Sphynx'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a> (<span class="st">'shiba_inu'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a> (<span class="st">'pomeranian'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a> (<span class="st">'great_pyrenees'</span>, <span class="dv">200</span>),</span>
+<span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a> (<span class="st">'Egyptian_Mau'</span>, <span class="dv">200</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>(풀이)</p>
+<div id="382ecefa-732d-45c9-9a4e-24372e2e09b0" class="cell" data-execution_count="223">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>lst <span class="op">=</span> [<span class="st">"_"</span>.join(l.split(<span class="st">"_"</span>)[:<span class="op">-</span><span class="dv">1</span>])   <span class="cf">for</span> l <span class="kw">in</span> fname_list]</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>[(s,lst.count(s)) <span class="cf">for</span> s <span class="kw">in</span> <span class="bu">set</span>(lst)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="223">
+<pre><code>[('basset_hound', 200),
+ ('Birman', 200),
+ ('Ragdoll', 200),
+ ('american_pit_bull_terrier', 200),
+ ('boxer', 200),
+ ('keeshond', 200),
+ ('Russian_Blue', 200),
+ ('wheaten_terrier', 200),
+ ('Siamese', 200),
+ ('chihuahua', 200),
+ ('miniature_pinscher', 200),
+ ('leonberger', 200),
+ ('Egyptian_Mau', 200),
+ ('beagle', 200),
+ ('american_bulldog', 200),
+ ('Abyssinian', 203),
+ ('saint_bernard', 200),
+ ('Persian', 200),
+ ('yorkshire_terrier', 200),
+ ('pomeranian', 200),
+ ('english_cocker_spaniel', 200),
+ ('scottish_terrier', 199),
+ ('staffordshire_bull_terrier', 191),
+ ('Bombay', 200),
+ ('samoyed', 200),
+ ('english_setter', 200),
+ ('Sphynx', 200),
+ ('german_shorthaired', 200),
+ ('pug', 200),
+ ('Maine_Coon', 200),
+ ('British_Shorthair', 200),
+ ('great_pyrenees', 200),
+ ('Bengal', 200),
+ ('japanese_chin', 200),
+ ('shiba_inu', 200),
+ ('newfoundland', 200),
+ ('havanese', 200)]</code></pre>
+</div>
+</div>
 </section>
 <section id="숙제" class="level2">
 <h2 class="anchored" data-anchor-id="숙제">2. 숙제</h2>
-<div id="9edf56d8-1d71-488e-8a84-19779b3f6f6b" class="cell" data-execution_count="107">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/guebin/PP2023/main/posts/01_PythonBasic/Oxford-IIIT.txt'</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>fnames <span class="op">=</span> requests.get(url).content.decode().split()</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>random.shuffle(fnames)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>txt <span class="op">=</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join(fnames[::<span class="dv">300</span>])</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="107">
-<pre><code>'saint_bernard_17.jpg\nenglish_cocker_spaniel_15.jpg\nEgyptian_Mau_81.jpg\nstaffordshire_bull_terrier_149.jpg\namerican_pit_bull_terrier_49.jpg\nleonberger_125.jpg\nminiature_pinscher_131.jpg\nstaffordshire_bull_terrier_37.jpg\namerican_bulldog_54.jpg\nsaint_bernard_78.jpg\nSiamese_176.jpg\nboxer_131.jpg\nAbyssinian_154.jpg\nSiamese_145.jpg\npug_77.jpg\nbeagle_32.jpg\nhavanese_45.jpg\namerican_pit_bull_terrier_126.jpg\nnewfoundland_49.jpg\nenglish_setter_52.jpg\nhavanese_73.jpg\ngreat_pyrenees_131.jpg\nBritish_Shorthair_15.jpg\nbeagle_58.jpg\nhavanese_175.jpg'</code></pre>
+<div id="9edf56d8-1d71-488e-8a84-19779b3f6f6b" class="cell" data-execution_count="224">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/guebin/PP2023/main/posts/01_PythonBasic/Oxford-IIIT.txt'</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>fnames <span class="op">=</span> requests.get(url).content.decode().split()</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>random.shuffle(fnames)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>txt <span class="op">=</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join(fnames[::<span class="dv">300</span>])</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="224">
+<pre><code>'beagle_185.jpg\nenglish_cocker_spaniel_58.jpg\nminiature_pinscher_52.jpg\nAbyssinian_101.jpg\nbasset_hound_41.jpg\nSphynx_103.jpg\nminiature_pinscher_31.jpg\nEgyptian_Mau_11.jpg\nkeeshond_147.jpg\njapanese_chin_79.jpg\nminiature_pinscher_18.jpg\npomeranian_60.jpg\nscottish_terrier_31.jpg\nshiba_inu_76.jpg\nRagdoll_67.jpg\npomeranian_42.jpg\nboxer_87.jpg\nnewfoundland_18.jpg\nbeagle_13.jpg\nbasset_hound_122.jpg\nRussian_Blue_199.jpg\njapanese_chin_67.jpg\nwheaten_terrier_14.jpg\ngreat_pyrenees_93.jpg\nsaint_bernard_159.jpg'</code></pre>
 </div>
 </div>
 <p>각 이미지파일명은 아래와 같은 규칙으로 저장되어 있다.</p>
@@ -296,6 +383,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>파일명의 첫글자가 대문자이면 고양이를 의미하고 첫글자가 소문자이면 강아지를 의미한다.</li>
 </ul>
 <p>이 이미지에서 강아지는 모두 몇마리 있는가?</p>
+<p>(풀이)</p>
+<div id="a83a4c98-2962-4a01-ae00-f4a5876049cd" class="cell" data-execution_count="229">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>([l.islower() <span class="cf">for</span> l <span class="kw">in</span> txt.split()])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="229">
+<pre><code>20</code></pre>
+</div>
+</div>
 
 
 </section>
