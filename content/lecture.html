@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="최규빈">
+<meta name="dcterms.date" content="2025-04-21">
 
-<title>IAB프로그램 (2025) – IAB2025</title>
+<title>08wk-2: [Python] – XXX – IAB2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +22,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-de84f8d6bb715db06a919283c2d1e787.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-251ce1ae7a9effd692ba97c003cecf85.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de84f8d6bb715db06a919283c2d1e787.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-251ce1ae7a9effd692ba97c003cecf85.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,67 +102,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -138,7 +114,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">IAB2025</span>
     </a>
   </div>
@@ -166,25 +142,37 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(15)</span></div></div></div>
+    </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">IAB프로그램 (2025)</h1>
+<h1 class="title">08wk-2: [Python] – XXX</h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page-left">
+<div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>최규빈 </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 21, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -194,209 +182,13 @@ window.Quarto = {
 </header>
 
 
-<p><strong>실습</strong></p>
-<ul>
-<li><a href="https://guebin.github.io/IAB2025-Play" class="uri">https://guebin.github.io/IAB2025-Play</a></li>
-</ul>
-<p><strong>질문하는 방법</strong></p>
-<ul>
-<li>이메일: <a href="mailto:guebin@jbnu.ac.kr" class="email">guebin@jbnu.ac.kr</a></li>
-<li>직접방문: 자연과학대학 본관 205호</li>
-<li>Zoom: <em>이메일로 미리 시간을 정할 것</em></li>
-<li>카카오톡: <a href="http://pf.kakao.com/_txeIFG/chat" class="uri">http://pf.kakao.com/_txeIFG/chat</a></li>
-</ul>
-<p><strong>강의노트</strong></p>
-
-
-
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-Date
-</th>
-<th>
-Title
-</th>
-<th>
-Author
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-listing-date-sort="1745161200000" data-listing-file-modified-sort="1745318576167" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="216" data-listing-title-sort="08wk-1: [Python] -- 네오와 프로도, 딕셔너리를 이용한 치환 // 숙제" data-listing-filename-sort="08wk-1.ipynb">
-<td>
-<span class="listing-date">Apr 21, 2025</span>
-</td>
-<td>
-<a href="./content/08wk-1.html" class="title listing-title">08wk-1: [Python] – 네오와 프로도, 딕셔너리를 이용한 치환 // 숙제</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-<tr data-index="1" data-listing-date-sort="1745161200000" data-listing-file-modified-sort="1745318576167" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="08wk-2: [Python] -- XXX" data-listing-filename-sort="lecture.ipynb">
-<td>
-<span class="listing-date">Apr 21, 2025</span>
-</td>
-<td>
-<a href="./content/lecture.html" class="title listing-title">08wk-2: [Python] – XXX</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-<tr data-index="2" data-listing-date-sort="1744642800000" data-listing-file-modified-sort="1745318576167" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="194" data-listing-title-sort="07wk-2: [Python] -- 딕셔너리 // 숙제" data-listing-filename-sort="07wk-2.ipynb">
-<td>
-<span class="listing-date">Apr 15, 2025</span>
-</td>
-<td>
-<a href="./content/07wk-2.html" class="title listing-title">07wk-2: [Python] – 딕셔너리 // 숙제</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-<tr data-index="3" data-listing-date-sort="1744642800000" data-listing-file-modified-sort="1745318576167" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="226" data-listing-title-sort="07wk-1: [Python] -- Oxford-III // 숙제" data-listing-filename-sort="07wk-1.ipynb">
-<td>
-<span class="listing-date">Apr 15, 2025</span>
-</td>
-<td>
-<a href="./content/07wk-1.html" class="title listing-title">07wk-1: [Python] – Oxford-III // 숙제</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-<tr data-index="4" data-listing-date-sort="1744297200000" data-listing-file-modified-sort="1745318576167" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="944" data-listing-title-sort="06wk-2: [Python] -- 잡기술, 집합, 연습문제 // 숙제" data-listing-filename-sort="06wk-2.ipynb">
-<td>
-<span class="listing-date">Apr 11, 2025</span>
-</td>
-<td>
-<a href="./content/06wk-2.html" class="title listing-title">06wk-2: [Python] – 잡기술, 집합, 연습문제 // 숙제</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-<tr data-index="5" data-listing-date-sort="1744038000000" data-listing-file-modified-sort="1745318576167" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="417" data-listing-title-sort="06wk-1: [Python] -- tuple // 숙제" data-listing-filename-sort="06wk-1.ipynb">
-<td>
-<span class="listing-date">Apr 8, 2025</span>
-</td>
-<td>
-<a href="./content/06wk-1.html" class="title listing-title">06wk-1: [Python] – tuple // 숙제</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-<tr data-index="6" data-listing-date-sort="1743606000000" data-listing-file-modified-sort="1745318576167" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="592" data-listing-title-sort="05wk-2: [Python] -- str, list // 숙제" data-listing-filename-sort="05wk-2.ipynb">
-<td>
-<span class="listing-date">Apr 3, 2025</span>
-</td>
-<td>
-<a href="./content/05wk-2.html" class="title listing-title">05wk-2: [Python] – str, list // 숙제</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-<tr data-index="7" data-listing-date-sort="1743433200000" data-listing-file-modified-sort="1745318576166" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="413" data-listing-title-sort="05wk-1: [Python] -- int, float, bool, str // 숙제" data-listing-filename-sort="05wk-1.ipynb">
-<td>
-<span class="listing-date">Apr 1, 2025</span>
-</td>
-<td>
-<a href="./content/05wk-1.html" class="title listing-title">05wk-1: [Python] – int, float, bool, str // 숙제</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-<tr data-index="8" data-listing-date-sort="1743001200000" data-listing-file-modified-sort="1745318576166" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="88" data-listing-title-sort="04wk-2: [Python] 벡터와 행렬의 결합, 벡터관련 연산, 자료의 변환 // 숙제" data-listing-filename-sort="04wk-2.ipynb">
-<td>
-<span class="listing-date">Mar 27, 2025</span>
-</td>
-<td>
-<a href="./content/04wk-2.html" class="title listing-title">04wk-2: [Python] 벡터와 행렬의 결합, 벡터관련 연산, 자료의 변환 // 숙제</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-<tr data-index="9" data-listing-date-sort="1742828400000" data-listing-file-modified-sort="1745318576166" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="332" data-listing-title-sort="04wk-1: [R] -- 10개의 라커, 매트릭스, 파이프연산자 // 숙제" data-listing-filename-sort="04wk-1.ipynb">
-<td>
-<span class="listing-date">Mar 25, 2025</span>
-</td>
-<td>
-<a href="./content/04wk-1.html" class="title listing-title">04wk-1: [R] – 10개의 라커, 매트릭스, 파이프연산자 // 숙제</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-<tr data-index="10" data-listing-date-sort="1742396400000" data-listing-file-modified-sort="1745318576166" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="179" data-listing-title-sort="03wk-2: [R] -- if, if-else, if-elseif-else // 숙제" data-listing-filename-sort="03wk-2.ipynb">
-<td>
-<span class="listing-date">Mar 20, 2025</span>
-</td>
-<td>
-<a href="./content/03wk-2.html" class="title listing-title">03wk-2: [R] – if, if-else, if-elseif-else // 숙제</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-<tr data-index="11" data-listing-date-sort="1742223600000" data-listing-file-modified-sort="1745318576166" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="254" data-listing-title-sort="03wk-1: [R] -- 문제풀이 (아홉개의 공, 100개의 라커) // 숙제" data-listing-filename-sort="03wk-1.ipynb">
-<td>
-<span class="listing-date">Mar 18, 2025</span>
-</td>
-<td>
-<a href="./content/03wk-1.html" class="title listing-title">03wk-1: [R] – 문제풀이 (아홉개의 공, 100개의 라커) // 숙제</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-<tr data-index="12" data-listing-date-sort="1741791600000" data-listing-file-modified-sort="1745318576166" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="300" data-listing-title-sort="02wk-2: [R] -- 문제풀이 (벡터인덱싱, if, for 연습) // 숙제" data-listing-filename-sort="02wk-2.ipynb">
-<td>
-<span class="listing-date">Mar 13, 2025</span>
-</td>
-<td>
-<a href="./content/02wk-2.html" class="title listing-title">02wk-2: [R] – 문제풀이 (벡터인덱싱, if, for 연습) // 숙제</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-<tr data-index="13" data-listing-date-sort="1741618800000" data-listing-file-modified-sort="1745318576165" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="229" data-listing-title-sort="02wk-1: [R] -- 문제풀이, Bool 자료형과 조건판단, 벡터인덱싱, 조건문과 반복문 // 숙제" data-listing-filename-sort="02wk-1.ipynb">
-<td>
-<span class="listing-date">Mar 11, 2025</span>
-</td>
-<td>
-<a href="./content/02wk-1.html" class="title listing-title">02wk-1: [R] – 문제풀이, Bool 자료형과 조건판단, 벡터인덱싱, 조건문과 반복문 // 숙제</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-<tr data-index="14" data-listing-date-sort="1741186800000" data-listing-file-modified-sort="1745318576165" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="189" data-listing-title-sort="01wk-2: [R] -- 문제풀이, 변수 이름 선언, 벡터의 선언, 함수의 선언" data-listing-filename-sort="01wk-2.ipynb">
-<td>
-<span class="listing-date">Mar 6, 2025</span>
-</td>
-<td>
-<a href="./content/01wk-2.html" class="title listing-title">01wk-2: [R] – 문제풀이, 변수 이름 선언, 벡터의 선언, 함수의 선언</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="listing-no-matching d-none">
-No matching items
+<div id="409b95c5-427e-4c59-b0e6-01c5242a7e4f" class="cell" data-execution_count="183">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># {{&lt;video https://youtu.be/playlist?list=PLQqh36zP38-xlMJPOl9X5hXk3uG40e_3y&amp;si=zTAWSTEEvACV1X_9&gt;}}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div></main> <!-- /main -->
+
+
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
