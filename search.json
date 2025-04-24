@@ -88,7 +88,7 @@
     "href": "content/02wk-1.html#문제풀이",
     "title": "02wk-1: [R] – 문제풀이, Bool 자료형과 조건판단, 벡터인덱싱, 조건문과 반복문 // 숙제",
     "section": "1. 문제풀이",
-    "text": "1. 문제풀이\n2024수능-19. 함수 \\(f(x) = \\sin \\frac{\\pi}{4} x\\) 할 때, \\(0 &lt; x &lt; 16\\)에서 부등식\n\\[\nf(2+x) f(2-x) &lt; \\frac{1}{4}\n\\]\n을 만족시키는 모든 자연수 \\(x\\)의 값의 합을 구하시오. [3점]\n(풀이1)\n\nf = function(x){\n   sin(pi/4 *x) \n}\n\n\nx=1\nf(2+x)*f(2-x)\n\n[1] 0.5\n\n\n…\n\nx=15\nf(2+x)*f(2-x)\n\n[1] 0.5\n\n\n(풀이2)\n\nf = function(x){\n   sin(pi/4 *x) \n}\n\n\nx = 1:15\nx\n\n [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15\n\n\n\ny = c(1,5,2,3)\ny\n\n[1] 1 5 2 3\n\n\n\nf(2+x) * f(2-x) &lt; 1/4\n\n [1] FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE\n[13] FALSE  TRUE FALSE\n\n\n\nx[f(2+x) * f(2-x) &lt; 1/4]\n\n[1]  2  6 10 14\n\n\n\nsum(x[f(2+x) * f(2-x) &lt; 1/4])\n\n[1] 32\n\n\n(풀이3)\n\ns = 0 \nfor(x in 1:15){\n    if(f(2+x)*f(2-x) &lt; 1/4){\n        s = s+x\n    }\n}\ns\n\n[1] 32"
+    "text": "1. 문제풀이\n2024수능-19. 함수 \\(f(x) = \\sin \\frac{\\pi}{4} x\\) 할 때, \\(0 &lt; x &lt; 16\\)에서 부등식\n\\[\nf(2+x) f(2-x) &lt; \\frac{1}{4}\n\\]\n을 만족시키는 모든 자연수 \\(x\\)의 값의 합을 구하시오. [3점]\n(풀이1)\n\nf = function(x){\n   sin(pi/4 *x) \n}\n\n\nx=1\nf(2+x)*f(2-x)\n\n[1] 0.5\n\n\n…\n\nx=15\nf(2+x)*f(2-x)\n\n[1] 0.5\n\n\n(풀이2)\n\nf = function(x){\n   sin(pi/4 *x) \n}\n\n\nx = 1:15\nx\n\n [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15\n\n\n\nf(2+x) * f(2-x) &lt; 1/4\n\n [1] FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE\n[13] FALSE  TRUE FALSE\n\n\n\nx[f(2+x) * f(2-x) &lt; 1/4]\n\n[1]  2  6 10 14\n\n\n\nsum(x[f(2+x) * f(2-x) &lt; 1/4])\n\n[1] 32\n\n\n(풀이3)\n\ns = 0 \nfor(x in 1:15){\n    if(f(2+x)*f(2-x) &lt; 1/4){\n        s = s+x\n    }\n}\ns\n\n[1] 32"
   },
   {
     "objectID": "content/02wk-1.html#bool-자료형과-조건판단",
@@ -147,6 +147,48 @@
     "text": "4. HW\n복도에 100개의 라커가 있다. 복도를 어떤 남자가 100개의 라커 문을 전부 연다. 그리고 나서 짝수 번호의 라커를 전부 닫는다. 그 다음에는 번호가 3의 배수인 라커를 순서대로 찾아다니며 열려 있으면 닫고, 닫혀 있으면 연다. 그 다음에는 번호가 4의 배수인 라커를 순서대로 찾아다니며 열려있으면 닫고, 닫혀있으면 연다. 이러한 방식으로 50회차까지 진행한다. 48번 라커는 몇번의 열고 닫힘이 있는가?"
   },
   {
+    "objectID": "content/08wk-2.html",
+    "href": "content/08wk-2.html",
+    "title": "08wk-1: [Python] – R문법 복습?",
+    "section": "",
+    "text": "import numpy as np"
+  },
+  {
+    "objectID": "content/08wk-2.html#수능문제",
+    "href": "content/08wk-2.html#수능문제",
+    "title": "08wk-1: [Python] – R문법 복습?",
+    "section": "1. 수능문제",
+    "text": "1. 수능문제\n2024수능-19. 함수 \\(f(x) = \\sin \\frac{\\pi}{4} x\\) 할 때, \\(0 &lt; x &lt; 16\\)에서 부등식\n\\[\nf(2+x) f(2-x) &lt; \\frac{1}{4}\n\\]\n을 만족시키는 모든 자연수 \\(x\\)의 값의 합을 구하시오. [3점]\n(풀이)\n\nf = function(x){\n   sin(pi/4 *x) \n}\n\n\nx = 1:15\nx\n\n [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15\n\n\n\nf(2+x) * f(2-x) &lt; 1/4\n\n [1] FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE\n[13] FALSE  TRUE FALSE\n\n\n\nx[f(2+x) * f(2-x) &lt; 1/4]\n\n[1]  2  6 10 14\n\n\n\nsum(x[f(2+x) * f(2-x) &lt; 1/4])\n\n[1] 32\n\n\n2025수능-6. \\(\\cos \\left(\\frac{\\pi}{2} + \\theta \\right) = -\\frac{1}{5}\\) 일 때, \\(\\frac{\\sin\\theta}{1 - \\cos^2\\theta}\\) 의 값은? [3점]\n\n\\(-5\\)\n\n\\(-\\sqrt{5}\\)\n\n\\(0\\)\n\\(\\sqrt{5}\\)\n\\(5\\)\n\n(풀이)\n\ntheta = 2.94\n\n\ncos(pi/2+theta) # 이 값이 -0.2 정도가 되어야 할텐데?\n\n[1] -0.20023\n\n\n반복계산을 하다보니까 \\(\\theta \\approx 2.94\\) 인듯\n\nsin(theta)/(1-cos(theta)^2)\n\n[1] 4.994257"
+  },
+  {
+    "objectID": "content/08wk-2.html#벡터인덱싱",
+    "href": "content/08wk-2.html#벡터인덱싱",
+    "title": "08wk-1: [Python] – R문법 복습?",
+    "section": "2. 벡터인덱싱",
+    "text": "2. 벡터인덱싱\n# 예제1 – 양수의 원소를 뽑는다.\n\nx&lt;-c(1,2,-2,4,5,-5,6)\nx\n\n[1]  1  2 -2  4  5 -5  6\n\n\n\nx&gt;0\n\n[1]  TRUE  TRUE FALSE  TRUE  TRUE FALSE  TRUE\n\n\n\nx[x&gt;0]\n\n[1] 1 2 4 5 6\n\n\n#\n# 예제2 – 3보다 큰 원소를 뽑는 방법\n\nx&lt;-c(1,2,-2,4,5,-5,6)\nx\n\n[1]  1  2 -2  4  5 -5  6\n\n\n\nx[x&gt;3]\n\n[1] 4 5 6\n\n\n#\n# 예제3 – 3번째 원소를 뽑는방법\n\nx&lt;-c(1,2,-2,4,5,-5,6)\nx\n\n[1]  1  2 -2  4  5 -5  6\n\n\n\narr = c(FALSE, FALSE, TRUE, FALSE, FALSE, FALSE, FALSE)\narr\n\n[1] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE\n\n\n\nx[arr]\n\n[1] -2\n\n\n#\n# 예제4 – 값이 -2인 원소를 뽑아라.\n\nx&lt;-c(1,2,-2,4,5,-5,6)\nx\n\n[1]  1  2 -2  4  5 -5  6\n\n\n\nx[x == -2]\n\n[1] -2\n\n\n#\n# 예제5 – 값이 -1.5와 가장 가까운 원소를 뽑아라.\n\nx - (-1.5)\n\n[1]  2.5  3.5 -0.5  5.5  6.5 -3.5  7.5\n\n\n\nabs(x - (-1.5))\n\n[1] 2.5 3.5 0.5 5.5 6.5 3.5 7.5\n\n\n\nmin(abs(x - (-1.5)))\n\n[1] 0.5\n\n\n\nabs(x - (-1.5)) == min(abs(x - (-1.5)))\n\n[1] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE\n\n\n\nx[abs(x - (-1.5)) == min(abs(x - (-1.5)))]\n\n[1] -2\n\n\n#\n# 예제6 – 값이 0.5와 가장 가까운 원소를 뽑아라.\n\nx = rnorm(100)\nx\n\n  [1] -0.311304729  0.196110860 -0.191987399  0.632793486  0.407982410\n  [6]  0.864718044 -0.352966617 -1.406632984  0.930323376 -0.211177345\n [11]  0.174489842 -1.038388188 -1.130694552  0.162414718  0.857153460\n [16]  0.405123384  0.026784113 -1.026959835 -0.462168583 -0.375374318\n [21]  1.591985359 -0.064623494  0.478029165 -0.045583822  2.478326033\n [26]  0.331902286  0.499881633  0.119367202  0.007451714  0.725801470\n [31]  0.656933182  0.073287602 -1.415772205 -0.477024858  1.221302265\n [36] -0.398021993  0.546331883 -0.324018146  0.330657882 -0.360152774\n [41]  1.331364124 -0.672527606 -0.437897514  1.105811374 -0.232983468\n [46]  0.793021899 -0.618798438 -0.654156632  1.826482099 -0.409432487\n [51]  1.081860665  0.657260779  0.338851369  0.051188750  0.133293222\n [56] -2.143363730 -0.932413327  1.259017917  0.560828441  0.549731458\n [61]  0.374222028  1.212201517 -0.766937380  0.738233964 -0.213323397\n [66]  0.449868009  0.834543548  1.008085221 -1.548439118 -0.162223345\n [71] -0.294176392 -2.081089322  0.744885524  0.859101047  0.325550519\n [76] -0.504631524 -0.053201153 -2.081642005  0.063341785 -0.032805806\n [81]  0.890016964 -2.011684049  0.615605307  0.611636798 -1.394488649\n [86] -0.665951804 -0.638994227  1.245491526  1.603119132 -1.859557340\n [91] -1.349329167 -0.168900117  1.378241904 -0.663119091  0.016505925\n [96] -0.808047477 -0.008849918 -1.174490950 -0.385805036  0.008856681\n\n\n\nx[abs(x - 0.5) == min(abs(x - 0.5))]\n\n[1] 0.4998816\n\n\n#"
+  },
+  {
+    "objectID": "content/08wk-2.html#연산",
+    "href": "content/08wk-2.html#연산",
+    "title": "08wk-1: [Python] – R문법 복습?",
+    "section": "3. 연산",
+    "text": "3. 연산\n# 예제 – 아래의 벡터를 고려하자.\n\nset.seed(43052)\nx = rnorm(100)\n\n(1) x의 원소중 그 값이 양수인 것은 모두 몇개인가?\n\nsum(x&gt;0)\n\n[1] 59\n\n\n(2) x의 평균을 구하여라.\n\nmean(x)\n\n[1] 0.1044026\n\n\n(3) x의 원소중 평균과 가장 가까운 값을 구하여라.\n\nidx = which.min(dist)\n# idx 는 dist의 최소값이 존재하는 위치(index)가 저장되어 있음\n\n\nx[idx]\n\n[1] 0.102093\n\n\n# 예제 – 아래의 벡터를 고려하자.\n\nset.seed(43052)\nx = sample(1:100,50)\nx\n\n [1]  8 55 56 41 88 39 59 65 51 87 49 14 98 78  4 11 64  9 16 33 60 22 53 76 45\n[26] 63 13 95 80 81 21 38 12 28  3 73 93 97 96 90  7 84 10 32 18 79 57 89 68 31\n\n\n(1) x의 원소중 짝수는 몇개 있는가?\n\n50 - sum(x %% 2)\n\n[1] 23\n\n\n\nsum((x %% 2) == 0)\n\n[1] 23\n\n\n(2) x의 원소중 가장 작은 홀수는 무엇인가?\n\nmin(x[(x %% 2) == 1])\n\n[1] 3\n\n\n2010(나)6월평가원-4. 실수 \\(a\\) 가\n\\[\n\\frac{2^a + 2^{-a}}{2^a - 2^{-a}} = -2\n\\] 를 만족시킬 때, \\(4^a + 4^{-a}\\) 의 값은?\n\n$ $\n\n$ $\n\n$ $\n\n$ $\n\n$ $\n\n(풀이)\n\na = seq(from=-2, to =-0.1, 0.0001)\nf&lt;- function(a){\n    up = 2^(a) + 2^(-a)\n    down = 2^(a) - 2^(-a) \n    up/down \n}\nplot(a,f(a))\nabline(h=-2,col=2)\n#( 2^(a) + 2^(-a) ) / (2^(a) - 2^(-a))\n\n\n\n\n\n\n\n\n\na[which.min(abs(f(a)+2))]\n\n[1] -0.7925\n\n\n\nf(-0.7925)\n\n[1] -1.999961\n\n\n\n4^(-0.7925) + 4^(0.7925)\n\n[1] 3.333403\n\n\n\nc(5/2,10/3,17/4, 26/5, 37/6)\n\n[1] 2.500000 3.333333 4.250000 5.200000 6.166667\n\n\n2024수능-16. 방정식 \\(3^{x-8} = \\left(\\frac{1}{27}\\right)^x\\) 을 만족시키는 실수 \\(x\\)의 값을 구하시오. [3점]\n(풀이)\n\nx = seq(from = -5, to=5, by =0.1)\nl = 3^(x-8) - (1/27)^x\nx[which.min(abs(l))]\n\n[1] 2\n\n\n\nx = np.linspace(-5,5,101)\nx\n\narray([-5. , -4.9, -4.8, -4.7, -4.6, -4.5, -4.4, -4.3, -4.2, -4.1, -4. ,\n       -3.9, -3.8, -3.7, -3.6, -3.5, -3.4, -3.3, -3.2, -3.1, -3. , -2.9,\n       -2.8, -2.7, -2.6, -2.5, -2.4, -2.3, -2.2, -2.1, -2. , -1.9, -1.8,\n       -1.7, -1.6, -1.5, -1.4, -1.3, -1.2, -1.1, -1. , -0.9, -0.8, -0.7,\n       -0.6, -0.5, -0.4, -0.3, -0.2, -0.1,  0. ,  0.1,  0.2,  0.3,  0.4,\n        0.5,  0.6,  0.7,  0.8,  0.9,  1. ,  1.1,  1.2,  1.3,  1.4,  1.5,\n        1.6,  1.7,  1.8,  1.9,  2. ,  2.1,  2.2,  2.3,  2.4,  2.5,  2.6,\n        2.7,  2.8,  2.9,  3. ,  3.1,  3.2,  3.3,  3.4,  3.5,  3.6,  3.7,\n        3.8,  3.9,  4. ,  4.1,  4.2,  4.3,  4.4,  4.5,  4.6,  4.7,  4.8,\n        4.9,  5. ])"
+  },
+  {
+    "objectID": "content/08wk-2.html#반복문",
+    "href": "content/08wk-2.html#반복문",
+    "title": "08wk-1: [Python] – R문법 복습?",
+    "section": "4. 반복문",
+    "text": "4. 반복문\n2021(가)9월평가원-10. 수열 \\(\\{a_n\\}\\)은 \\(a_1 = 12\\)이고, 모든 자연수 \\(n\\)에 대하여\n\\[\na_{n+1} + a_n = (-1)^{n+1} \\times n\n\\] 을 만족시킨다. \\(a_k &gt; a_1\\)인 자연수 \\(k\\)의 최소값은?\n\n2\n\n4\n\n6\n\n8\n10\n\n(풀이)\n\na = c()\na\n\nNULL\n\n\n\na = c() \na[1] = 12\nfor(n in 1:100){\n    a[n+1] = - a[n] + (-1)^(n+1) * n \n}\n(1:100)[a&gt;a[1]]\n\n [1]   8  10  12  14  16  18  20  22  24  26  28  30  32  34  36  38  40  42  44\n[20]  46  48  50  52  54  56  58  60  62  64  66  68  70  72  74  76  78  80  82\n[39]  84  86  88  90  92  94  96  98 100\n\n\n답은 8\n2007(나)6월평가원-14. 다음은 어느 회사의 연봉에 대한 규정이다.\n(가) 입사 첫째 해 연봉은 \\(a\\)원이고, 입사 19년째 해까지의 연봉은 해마다 직전 연봉에서 8%씩 인상된다.\n(나) 입사 20년째 해부터의 연봉은 입사 19년째 해 연봉의 \\(2/3\\)로 한다.\n이 회사에 입사한 사람이 28년 동안 근무하여 받는 연봉의 총합은? (단, \\(1.08^{18} = 4\\)로 계산한다.)\n\n\\(\\frac{101}{2} a\\)\n\n\\(\\frac{111}{2} a\\)\n\n\\(\\frac{121}{2} a\\)\n\n\\(\\frac{131}{2} a\\)\n\\(\\frac{141}{2} a\\)\n\n(풀이)\n\na = 1\nsal = c()\nsal[1] = a\nfor(y in 2:19){\n    sal[y] &lt;- sal[y-1] * 1.08 \n}\nfor(y in 20:28){\n    sal[y] &lt;- sal[19] * 2/3 \n}\nsum(sal)\n\n[1] 65.42238"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "IAB프로그램 (2025)",
+    "section": "",
+    "text": "실습\n\nhttps://guebin.github.io/IAB2025-Play\n\n질문하는 방법\n\n이메일: guebin@jbnu.ac.kr\n직접방문: 자연과학대학 본관 205호\nZoom: 이메일로 미리 시간을 정할 것\n카카오톡: http://pf.kakao.com/_txeIFG/chat\n\n강의노트\n\n\n\n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nApr 24, 2025\n\n\n08wk-1: [Python] – R문법 복습?\n\n\n최규빈 \n\n\n\n\nApr 22, 2025\n\n\n08wk-1: [Python] – 네오와 프로도, 딕셔너리를 이용한 치환 // 숙제\n\n\n최규빈 \n\n\n\n\nApr 21, 2025\n\n\n08wk-2: [Python] – XXX\n\n\n최규빈 \n\n\n\n\nApr 15, 2025\n\n\n07wk-2: [Python] – 딕셔너리 // 숙제\n\n\n최규빈 \n\n\n\n\nApr 15, 2025\n\n\n07wk-1: [Python] – Oxford-III // 숙제\n\n\n최규빈 \n\n\n\n\nApr 11, 2025\n\n\n06wk-2: [Python] – 잡기술, 집합, 연습문제 // 숙제\n\n\n최규빈 \n\n\n\n\nApr 8, 2025\n\n\n06wk-1: [Python] – tuple // 숙제\n\n\n최규빈 \n\n\n\n\nApr 3, 2025\n\n\n05wk-2: [Python] – str, list // 숙제\n\n\n최규빈 \n\n\n\n\nApr 1, 2025\n\n\n05wk-1: [Python] – int, float, bool, str // 숙제\n\n\n최규빈 \n\n\n\n\nMar 27, 2025\n\n\n04wk-2: [Python] 벡터와 행렬의 결합, 벡터관련 연산, 자료의 변환 // 숙제\n\n\n최규빈 \n\n\n\n\nMar 25, 2025\n\n\n04wk-1: [R] – 10개의 라커, 매트릭스, 파이프연산자 // 숙제\n\n\n최규빈 \n\n\n\n\nMar 20, 2025\n\n\n03wk-2: [R] – if, if-else, if-elseif-else // 숙제\n\n\n최규빈 \n\n\n\n\nMar 18, 2025\n\n\n03wk-1: [R] – 문제풀이 (아홉개의 공, 100개의 라커) // 숙제\n\n\n최규빈 \n\n\n\n\nMar 13, 2025\n\n\n02wk-2: [R] – 문제풀이 (벡터인덱싱, if, for 연습) // 숙제\n\n\n최규빈 \n\n\n\n\nMar 11, 2025\n\n\n02wk-1: [R] – 문제풀이, Bool 자료형과 조건판단, 벡터인덱싱, 조건문과 반복문 // 숙제\n\n\n최규빈 \n\n\n\n\nMar 6, 2025\n\n\n01wk-2: [R] – 문제풀이, 변수 이름 선언, 벡터의 선언, 함수의 선언\n\n\n최규빈 \n\n\n\n\n\nNo matching items"
+  },
+  {
     "objectID": "content/07wk-2.html#딕셔너리",
     "href": "content/07wk-2.html#딕셔너리",
     "title": "07wk-2: [Python] – 딕셔너리 // 숙제",
@@ -159,13 +201,6 @@
     "title": "07wk-2: [Python] – 딕셔너리 // 숙제",
     "section": "2. 숙제",
     "text": "2. 숙제\n아래는 학생들의 성적을 기록한 것이다.\n\ndct = {'iu': 50, 'guebin':20 , 'hanni':90, 'hodong':95}\n\n(1) 채점실수로 모든 학생들의 점수를 5점씩 감점하고 싶다. 5점감점된 점수들을 정리하는 아래와 같은 dictionary를 만드는 코드를 제시하라. (dict 컴프리헨션이용)\n(풀이)\n\n{k:(v-5) for k,v in dct.items()}\n\n{'iu': 45, 'guebin': 15, 'hanni': 85, 'hodong': 90}\n\n\n(2) 성적이 50점 이상인 학생들을 출력하는 코드를 제시하라.\n\nfor k,v in dct.items():\n    if v&gt; 50:\n        print(k)\n\nhanni\nhodong\n\n\n\n[k for k,v in dct.items() if v&gt;50]\n\n['hanni', 'hodong']"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "IAB프로그램 (2025)",
-    "section": "",
-    "text": "실습\n\nhttps://guebin.github.io/IAB2025-Play\n\n질문하는 방법\n\n이메일: guebin@jbnu.ac.kr\n직접방문: 자연과학대학 본관 205호\nZoom: 이메일로 미리 시간을 정할 것\n카카오톡: http://pf.kakao.com/_txeIFG/chat\n\n강의노트\n\n\n\n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nApr 21, 2025\n\n\n08wk-1: [Python] – 네오와 프로도, 딕셔너리를 이용한 치환 // 숙제\n\n\n최규빈 \n\n\n\n\nApr 21, 2025\n\n\n08wk-2: [Python] – XXX\n\n\n최규빈 \n\n\n\n\nApr 15, 2025\n\n\n07wk-2: [Python] – 딕셔너리 // 숙제\n\n\n최규빈 \n\n\n\n\nApr 15, 2025\n\n\n07wk-1: [Python] – Oxford-III // 숙제\n\n\n최규빈 \n\n\n\n\nApr 11, 2025\n\n\n06wk-2: [Python] – 잡기술, 집합, 연습문제 // 숙제\n\n\n최규빈 \n\n\n\n\nApr 8, 2025\n\n\n06wk-1: [Python] – tuple // 숙제\n\n\n최규빈 \n\n\n\n\nApr 3, 2025\n\n\n05wk-2: [Python] – str, list // 숙제\n\n\n최규빈 \n\n\n\n\nApr 1, 2025\n\n\n05wk-1: [Python] – int, float, bool, str // 숙제\n\n\n최규빈 \n\n\n\n\nMar 27, 2025\n\n\n04wk-2: [Python] 벡터와 행렬의 결합, 벡터관련 연산, 자료의 변환 // 숙제\n\n\n최규빈 \n\n\n\n\nMar 25, 2025\n\n\n04wk-1: [R] – 10개의 라커, 매트릭스, 파이프연산자 // 숙제\n\n\n최규빈 \n\n\n\n\nMar 20, 2025\n\n\n03wk-2: [R] – if, if-else, if-elseif-else // 숙제\n\n\n최규빈 \n\n\n\n\nMar 18, 2025\n\n\n03wk-1: [R] – 문제풀이 (아홉개의 공, 100개의 라커) // 숙제\n\n\n최규빈 \n\n\n\n\nMar 13, 2025\n\n\n02wk-2: [R] – 문제풀이 (벡터인덱싱, if, for 연습) // 숙제\n\n\n최규빈 \n\n\n\n\nMar 11, 2025\n\n\n02wk-1: [R] – 문제풀이, Bool 자료형과 조건판단, 벡터인덱싱, 조건문과 반복문 // 숙제\n\n\n최규빈 \n\n\n\n\nMar 6, 2025\n\n\n01wk-2: [R] – 문제풀이, 변수 이름 선언, 벡터의 선언, 함수의 선언\n\n\n최규빈 \n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "content/05wk-1.html#intro",
