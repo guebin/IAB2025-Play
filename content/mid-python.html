@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="최규빈">
+<meta name="dcterms.date" content="2025-05-08">
 
-<title>IAB프로그램 (2025) – IAB2025</title>
+<title>중간고사 - Python – IAB2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +22,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-de84f8d6bb715db06a919283c2d1e787.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-251ce1ae7a9effd692ba97c003cecf85.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de84f8d6bb715db06a919283c2d1e787.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-251ce1ae7a9effd692ba97c003cecf85.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,35 +102,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -128,7 +133,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -138,7 +143,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">IAB2025</span>
     </a>
   </div>
@@ -166,25 +171,45 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(18)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#기본문법-10점" id="toc-기본문법-10점" class="nav-link active" data-scroll-target="#기본문법-10점">1. 기본문법 – 10점</a></li>
+  <li><a href="#겹쳐서-그리기-10점" id="toc-겹쳐서-그리기-10점" class="nav-link" data-scroll-target="#겹쳐서-그리기-10점">2. 겹쳐서 그리기 – 10점</a></li>
+  <li><a href="#oxford-iii-30점" id="toc-oxford-iii-30점" class="nav-link" data-scroll-target="#oxford-iii-30점">3. Oxford-III – 30점</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">IAB프로그램 (2025)</h1>
+<h1 class="title">중간고사 - Python</h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page-left">
+<div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>최규빈 </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 8, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -194,242 +219,66 @@ window.Quarto = {
 </header>
 
 
-<p><strong>실습</strong></p>
-<ul>
-<li><a href="https://guebin.github.io/IAB2025-Play" class="uri">https://guebin.github.io/IAB2025-Play</a></li>
-</ul>
-<p><strong>질문하는 방법</strong></p>
-<ul>
-<li>이메일: <a href="mailto:guebin@jbnu.ac.kr" class="email">guebin@jbnu.ac.kr</a></li>
-<li>직접방문: 자연과학대학 본관 205호</li>
-<li>Zoom: <em>이메일로 미리 시간을 정할 것</em></li>
-<li>카카오톡: <a href="http://pf.kakao.com/_txeIFG/chat" class="uri">http://pf.kakao.com/_txeIFG/chat</a></li>
-</ul>
-<p><strong>강의노트</strong></p>
-
-
-
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-Date
-</th>
-<th>
-Title
-</th>
-<th>
-Author
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-listing-date-sort="1746630000000" data-listing-file-modified-sort="1746160816339" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="86" data-listing-title-sort="중간고사 - Python" data-listing-filename-sort="mid-python.ipynb">
-<td>
-<span class="listing-date">May 8, 2025</span>
-</td>
-<td>
-<a href="./content/mid-python.html" class="title listing-title">중간고사 - Python</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-<tr data-index="1" data-listing-date-sort="1746630000000" data-listing-file-modified-sort="1746160816339" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="96" data-listing-title-sort="중간고사 - R" data-listing-filename-sort="mid-R.ipynb">
-<td>
-<span class="listing-date">May 8, 2025</span>
-</td>
-<td>
-<a href="./content/mid-R.html" class="title listing-title">중간고사 - R</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-<tr data-index="2" data-listing-date-sort="1745852400000" data-listing-file-modified-sort="1746160816339" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="231" data-listing-title-sort="09wk-1: [Python] -- numpy 중요문법, 시각화" data-listing-filename-sort="09wk-1.ipynb">
-<td>
-<span class="listing-date">Apr 29, 2025</span>
-</td>
-<td>
-<a href="./content/09wk-1.html" class="title listing-title">09wk-1: [Python] – numpy 중요문법, 시각화</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-<tr data-index="3" data-listing-date-sort="1745420400000" data-listing-file-modified-sort="1746160816337" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="338" data-listing-title-sort="08wk-2: [Python] -- R복습 / numpy intro" data-listing-filename-sort="08wk-2.ipynb">
-<td>
-<span class="listing-date">Apr 24, 2025</span>
-</td>
-<td>
-<a href="./content/08wk-2.html" class="title listing-title">08wk-2: [Python] – R복습 / numpy intro</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-<tr data-index="4" data-listing-date-sort="1745247600000" data-listing-file-modified-sort="1746160816337" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="216" data-listing-title-sort="08wk-1: [Python] -- 네오와 프로도, 딕셔너리를 이용한 치환 // 숙제" data-listing-filename-sort="08wk-1.ipynb">
-<td>
-<span class="listing-date">Apr 22, 2025</span>
-</td>
-<td>
-<a href="./content/08wk-1.html" class="title listing-title">08wk-1: [Python] – 네오와 프로도, 딕셔너리를 이용한 치환 // 숙제</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-<tr data-index="5" data-listing-date-sort="1744642800000" data-listing-file-modified-sort="1746160816337" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="194" data-listing-title-sort="07wk-2: [Python] -- 딕셔너리 // 숙제" data-listing-filename-sort="07wk-2.ipynb">
-<td>
-<span class="listing-date">Apr 15, 2025</span>
-</td>
-<td>
-<a href="./content/07wk-2.html" class="title listing-title">07wk-2: [Python] – 딕셔너리 // 숙제</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-<tr data-index="6" data-listing-date-sort="1744642800000" data-listing-file-modified-sort="1746160816337" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="226" data-listing-title-sort="07wk-1: [Python] -- Oxford-III // 숙제" data-listing-filename-sort="07wk-1.ipynb">
-<td>
-<span class="listing-date">Apr 15, 2025</span>
-</td>
-<td>
-<a href="./content/07wk-1.html" class="title listing-title">07wk-1: [Python] – Oxford-III // 숙제</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-<tr data-index="7" data-listing-date-sort="1744297200000" data-listing-file-modified-sort="1746160816336" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="944" data-listing-title-sort="06wk-2: [Python] -- 잡기술, 집합, 연습문제 // 숙제" data-listing-filename-sort="06wk-2.ipynb">
-<td>
-<span class="listing-date">Apr 11, 2025</span>
-</td>
-<td>
-<a href="./content/06wk-2.html" class="title listing-title">06wk-2: [Python] – 잡기술, 집합, 연습문제 // 숙제</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-<tr data-index="8" data-listing-date-sort="1744038000000" data-listing-file-modified-sort="1746160816336" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="417" data-listing-title-sort="06wk-1: [Python] -- tuple // 숙제" data-listing-filename-sort="06wk-1.ipynb">
-<td>
-<span class="listing-date">Apr 8, 2025</span>
-</td>
-<td>
-<a href="./content/06wk-1.html" class="title listing-title">06wk-1: [Python] – tuple // 숙제</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-<tr data-index="9" data-listing-date-sort="1743606000000" data-listing-file-modified-sort="1746160816336" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="592" data-listing-title-sort="05wk-2: [Python] -- str, list // 숙제" data-listing-filename-sort="05wk-2.ipynb">
-<td>
-<span class="listing-date">Apr 3, 2025</span>
-</td>
-<td>
-<a href="./content/05wk-2.html" class="title listing-title">05wk-2: [Python] – str, list // 숙제</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-<tr data-index="10" data-listing-date-sort="1743433200000" data-listing-file-modified-sort="1746160816336" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="413" data-listing-title-sort="05wk-1: [Python] -- int, float, bool, str // 숙제" data-listing-filename-sort="05wk-1.ipynb">
-<td>
-<span class="listing-date">Apr 1, 2025</span>
-</td>
-<td>
-<a href="./content/05wk-1.html" class="title listing-title">05wk-1: [Python] – int, float, bool, str // 숙제</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-<tr data-index="11" data-listing-date-sort="1743001200000" data-listing-file-modified-sort="1746160816336" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="88" data-listing-title-sort="04wk-2: [R] 벡터와 행렬의 결합, 벡터관련 연산, 자료의 변환 // 숙제" data-listing-filename-sort="04wk-2.ipynb">
-<td>
-<span class="listing-date">Mar 27, 2025</span>
-</td>
-<td>
-<a href="./content/04wk-2.html" class="title listing-title">04wk-2: [R] 벡터와 행렬의 결합, 벡터관련 연산, 자료의 변환 // 숙제</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-<tr data-index="12" data-listing-date-sort="1742828400000" data-listing-file-modified-sort="1746160816335" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="332" data-listing-title-sort="04wk-1: [R] -- 10개의 라커, 매트릭스, 파이프연산자 // 숙제" data-listing-filename-sort="04wk-1.ipynb">
-<td>
-<span class="listing-date">Mar 25, 2025</span>
-</td>
-<td>
-<a href="./content/04wk-1.html" class="title listing-title">04wk-1: [R] – 10개의 라커, 매트릭스, 파이프연산자 // 숙제</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-<tr data-index="13" data-listing-date-sort="1742396400000" data-listing-file-modified-sort="1746160816335" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="179" data-listing-title-sort="03wk-2: [R] -- if, if-else, if-elseif-else // 숙제" data-listing-filename-sort="03wk-2.ipynb">
-<td>
-<span class="listing-date">Mar 20, 2025</span>
-</td>
-<td>
-<a href="./content/03wk-2.html" class="title listing-title">03wk-2: [R] – if, if-else, if-elseif-else // 숙제</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-<tr data-index="14" data-listing-date-sort="1742223600000" data-listing-file-modified-sort="1746160816335" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="254" data-listing-title-sort="03wk-1: [R] -- 문제풀이 (아홉개의 공, 100개의 라커) // 숙제" data-listing-filename-sort="03wk-1.ipynb">
-<td>
-<span class="listing-date">Mar 18, 2025</span>
-</td>
-<td>
-<a href="./content/03wk-1.html" class="title listing-title">03wk-1: [R] – 문제풀이 (아홉개의 공, 100개의 라커) // 숙제</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-<tr data-index="15" data-listing-date-sort="1741791600000" data-listing-file-modified-sort="1746160816335" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="300" data-listing-title-sort="02wk-2: [R] -- 문제풀이 (벡터인덱싱, if, for 연습) // 숙제" data-listing-filename-sort="02wk-2.ipynb">
-<td>
-<span class="listing-date">Mar 13, 2025</span>
-</td>
-<td>
-<a href="./content/02wk-2.html" class="title listing-title">02wk-2: [R] – 문제풀이 (벡터인덱싱, if, for 연습) // 숙제</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-<tr data-index="16" data-listing-date-sort="1741618800000" data-listing-file-modified-sort="1746160816335" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="229" data-listing-title-sort="02wk-1: [R] -- 문제풀이, Bool 자료형과 조건판단, 벡터인덱싱, 조건문과 반복문 // 숙제" data-listing-filename-sort="02wk-1.ipynb">
-<td>
-<span class="listing-date">Mar 11, 2025</span>
-</td>
-<td>
-<a href="./content/02wk-1.html" class="title listing-title">02wk-1: [R] – 문제풀이, Bool 자료형과 조건판단, 벡터인덱싱, 조건문과 반복문 // 숙제</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-<tr data-index="17" data-listing-date-sort="1741186800000" data-listing-file-modified-sort="1746160816334" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="189" data-listing-title-sort="01wk-2: [R] -- 문제풀이, 변수 이름 선언, 벡터의 선언, 함수의 선언" data-listing-filename-sort="01wk-2.ipynb">
-<td>
-<span class="listing-date">Mar 6, 2025</span>
-</td>
-<td>
-<a href="./content/01wk-2.html" class="title listing-title">01wk-2: [R] – 문제풀이, 변수 이름 선언, 벡터의 선언, 함수의 선언</a>
-</td>
-<td>
-<span class="listing-author">최규빈 </span>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="listing-no-matching d-none">
-No matching items
+<div id="809caeb9-1f94-46f8-9bc5-8761e95fe745" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div></main> <!-- /main -->
+<section id="기본문법-10점" class="level2">
+<h2 class="anchored" data-anchor-id="기본문법-10점">1. 기본문법 – 10점</h2>
+<p><code>(1)</code> 아래와 같이 두 변수 a,b에 값이 저장되어있다. 두 값을 임시변수 없이 교환하라.</p>
+<div id="f3da1a63-774c-4093-9a64-d5c432ab03a4" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">10</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>(2)</code> 컴프리헨션을 이용하여 아래와 같은 수열을 생성하라.</p>
+<p><span class="math display">\[x_n = [2,4,6,\dots,100]\]</span></p>
+<p><code>(3)</code> 아래와 같은 수열을 고려하자.</p>
+<div id="5b190858-42fc-4a74-8c65-024184ab80df" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.randn(<span class="dv">10</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<pre><code>array([-0.23821509,  0.57162727,  0.11575414,  0.17799491, -0.19623315,
+       -0.86258475, -1.60482998,  0.73842897,  0.4646222 , -0.13338644])</code></pre>
+</div>
+</div>
+<p><code>x</code>의 각 원소가 양수인지 음수인지 판단하여 아래와 같은 list <code>y</code> 만들어라.</p>
+<div id="45c37221-83ea-409d-8201-232cf6759cab" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>[<span class="st">'음수'</span>, <span class="st">'양수'</span>, <span class="st">'양수'</span>, <span class="st">'양수'</span>, <span class="st">'음수'</span>, <span class="st">'음수'</span>, <span class="st">'음수'</span>, <span class="st">'양수'</span>, <span class="st">'양수'</span>, <span class="st">'음수'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<pre><code>['음수', '양수', '양수', '양수', '음수', '음수', '음수', '양수', '양수', '음수']</code></pre>
+</div>
+</div>
+<p><code>(4)</code></p>
+<p><code>(5)</code></p>
+</section>
+<section id="겹쳐서-그리기-10점" class="level2">
+<h2 class="anchored" data-anchor-id="겹쳐서-그리기-10점">2. 겹쳐서 그리기 – 10점</h2>
+<p><code>(1)</code> <span class="math inline">\(-2&lt;x&lt;2\)</span> 에서 <span class="math inline">\(\cos(2x)\)</span> 의 그래프와 <span class="math inline">\(\frac{1}{3}x-1\)</span>의 그래프를 겹쳐 그려라.</p>
+<p><code>(2)</code></p>
+<p><code>#</code></p>
+</section>
+<section id="oxford-iii-30점" class="level2">
+<h2 class="anchored" data-anchor-id="oxford-iii-30점">3. Oxford-III – 30점</h2>
+<p><code>Oxford-III</code>: // <a href="https://www.robots.ox.ac.uk/~vgg/data/pets/">reference</a></p>
+<p>아래는 이미지 파일명을 불러오는 코드이다.</p>
+<div id="8a67a526-4757-4d37-9928-b0167534b50b" class="cell" data-tags="[]" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/guebin/PP2023/main/posts/01_PythonBasic/Oxford-IIIT.txt'</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>txt <span class="op">=</span> requests.get(url).content.decode()</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>flist <span class="op">=</span> txt.split()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>(1)</code> 각 이미지파일명은 아래와 같은 규칙으로 저장되어 있다.</p>
+<ul>
+<li>파일명의 첫글자가 대문자이면 고양이를 의미하고 첫글자가 소문자이면 강아지를 의미한다.</li>
+</ul>
+<p>고양이와 강아지는 각각 몇개의 종이 있는가?</p>
+<p><code>(2)</code></p>
+<p><code>(3)</code></p>
+
+
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
