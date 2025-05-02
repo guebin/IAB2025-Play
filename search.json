@@ -86,28 +86,28 @@
   {
     "objectID": "content/mid-python.html",
     "href": "content/mid-python.html",
-    "title": "중간고사 - Python",
+    "title": "중간고사 - Python 예상문제",
     "section": "",
     "text": "import numpy as np\nimport matplotlib.pyplot as plt"
   },
   {
     "objectID": "content/mid-python.html#기본문법-10점",
     "href": "content/mid-python.html#기본문법-10점",
-    "title": "중간고사 - Python",
+    "title": "중간고사 - Python 예상문제",
     "section": "1. 기본문법 – 10점",
     "text": "1. 기본문법 – 10점\n(1) 아래와 같이 두 변수 a,b에 값이 저장되어있다. 두 값을 임시변수 없이 교환하라.\n\na = 10 \nb = 5\n\n(2) 컴프리헨션을 이용하여 아래와 같은 수열을 생성하라.\n\\[x_n = [2,4,6,\\dots,100]\\]\n(3) 아래와 같은 수열을 고려하자.\n\nx = np.random.randn(10)\nx\n\narray([-0.23821509,  0.57162727,  0.11575414,  0.17799491, -0.19623315,\n       -0.86258475, -1.60482998,  0.73842897,  0.4646222 , -0.13338644])\n\n\nx의 각 원소가 양수인지 음수인지 판단하여 아래와 같은 list y 만들어라.\n\n['음수', '양수', '양수', '양수', '음수', '음수', '음수', '양수', '양수', '음수']\n\n['음수', '양수', '양수', '양수', '음수', '음수', '음수', '양수', '양수', '음수']\n\n\n(4)\n(5)"
   },
   {
     "objectID": "content/mid-python.html#겹쳐서-그리기-10점",
     "href": "content/mid-python.html#겹쳐서-그리기-10점",
-    "title": "중간고사 - Python",
+    "title": "중간고사 - Python 예상문제",
     "section": "2. 겹쳐서 그리기 – 10점",
     "text": "2. 겹쳐서 그리기 – 10점\n(1) \\(-2&lt;x&lt;2\\) 에서 \\(\\cos(2x)\\) 의 그래프와 \\(\\frac{1}{3}x-1\\)의 그래프를 겹쳐 그려라.\n(2)\n#"
   },
   {
     "objectID": "content/mid-python.html#oxford-iii-30점",
     "href": "content/mid-python.html#oxford-iii-30점",
-    "title": "중간고사 - Python",
+    "title": "중간고사 - Python 예상문제",
     "section": "3. Oxford-III – 30점",
     "text": "3. Oxford-III – 30점\nOxford-III: // reference\n아래는 이미지 파일명을 불러오는 코드이다.\n\nimport requests\nurl = 'https://raw.githubusercontent.com/guebin/PP2023/main/posts/01_PythonBasic/Oxford-IIIT.txt'\ntxt = requests.get(url).content.decode()\nflist = txt.split()\n\n(1) 각 이미지파일명은 아래와 같은 규칙으로 저장되어 있다.\n\n파일명의 첫글자가 대문자이면 고양이를 의미하고 첫글자가 소문자이면 강아지를 의미한다.\n\n고양이와 강아지는 각각 몇개의 종이 있는가?\n(2)\n(3)"
   },
@@ -214,7 +214,7 @@
     "href": "index.html",
     "title": "IAB프로그램 (2025)",
     "section": "",
-    "text": "실습\n\nhttps://guebin.github.io/IAB2025-Play\n\n질문하는 방법\n\n이메일: guebin@jbnu.ac.kr\n직접방문: 자연과학대학 본관 205호\nZoom: 이메일로 미리 시간을 정할 것\n카카오톡: http://pf.kakao.com/_txeIFG/chat\n\n강의노트\n\n\n\n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nMay 8, 2025\n\n\n중간고사 - Python\n\n\n최규빈 \n\n\n\n\nMay 8, 2025\n\n\n중간고사 - R\n\n\n최규빈 \n\n\n\n\nApr 29, 2025\n\n\n09wk-1: [Python] – numpy 중요문법, 시각화\n\n\n최규빈 \n\n\n\n\nApr 24, 2025\n\n\n08wk-2: [Python] – R복습 / numpy intro\n\n\n최규빈 \n\n\n\n\nApr 22, 2025\n\n\n08wk-1: [Python] – 네오와 프로도, 딕셔너리를 이용한 치환 // 숙제\n\n\n최규빈 \n\n\n\n\nApr 15, 2025\n\n\n07wk-2: [Python] – 딕셔너리 // 숙제\n\n\n최규빈 \n\n\n\n\nApr 15, 2025\n\n\n07wk-1: [Python] – Oxford-III // 숙제\n\n\n최규빈 \n\n\n\n\nApr 11, 2025\n\n\n06wk-2: [Python] – 잡기술, 집합, 연습문제 // 숙제\n\n\n최규빈 \n\n\n\n\nApr 8, 2025\n\n\n06wk-1: [Python] – tuple // 숙제\n\n\n최규빈 \n\n\n\n\nApr 3, 2025\n\n\n05wk-2: [Python] – str, list // 숙제\n\n\n최규빈 \n\n\n\n\nApr 1, 2025\n\n\n05wk-1: [Python] – int, float, bool, str // 숙제\n\n\n최규빈 \n\n\n\n\nMar 27, 2025\n\n\n04wk-2: [R] 벡터와 행렬의 결합, 벡터관련 연산, 자료의 변환 // 숙제\n\n\n최규빈 \n\n\n\n\nMar 25, 2025\n\n\n04wk-1: [R] – 10개의 라커, 매트릭스, 파이프연산자 // 숙제\n\n\n최규빈 \n\n\n\n\nMar 20, 2025\n\n\n03wk-2: [R] – if, if-else, if-elseif-else // 숙제\n\n\n최규빈 \n\n\n\n\nMar 18, 2025\n\n\n03wk-1: [R] – 문제풀이 (아홉개의 공, 100개의 라커) // 숙제\n\n\n최규빈 \n\n\n\n\nMar 13, 2025\n\n\n02wk-2: [R] – 문제풀이 (벡터인덱싱, if, for 연습) // 숙제\n\n\n최규빈 \n\n\n\n\nMar 11, 2025\n\n\n02wk-1: [R] – 문제풀이, Bool 자료형과 조건판단, 벡터인덱싱, 조건문과 반복문 // 숙제\n\n\n최규빈 \n\n\n\n\nMar 6, 2025\n\n\n01wk-2: [R] – 문제풀이, 변수 이름 선언, 벡터의 선언, 함수의 선언\n\n\n최규빈 \n\n\n\n\n\nNo matching items"
+    "text": "실습\n\nhttps://guebin.github.io/IAB2025-Play\n\n질문하는 방법\n\n이메일: guebin@jbnu.ac.kr\n직접방문: 자연과학대학 본관 205호\nZoom: 이메일로 미리 시간을 정할 것\n카카오톡: http://pf.kakao.com/_txeIFG/chat\n\n강의노트\n\n\n\n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nMay 8, 2025\n\n\n중간고사 - Python 예상문제\n\n\n최규빈 \n\n\n\n\nMay 8, 2025\n\n\n중간고사 - R 예상문제\n\n\n최규빈 \n\n\n\n\nApr 29, 2025\n\n\n09wk-1: [Python] – numpy 중요문법, 시각화\n\n\n최규빈 \n\n\n\n\nApr 24, 2025\n\n\n08wk-2: [Python] – R복습 / numpy intro\n\n\n최규빈 \n\n\n\n\nApr 22, 2025\n\n\n08wk-1: [Python] – 네오와 프로도, 딕셔너리를 이용한 치환 // 숙제\n\n\n최규빈 \n\n\n\n\nApr 15, 2025\n\n\n07wk-2: [Python] – 딕셔너리 // 숙제\n\n\n최규빈 \n\n\n\n\nApr 15, 2025\n\n\n07wk-1: [Python] – Oxford-III // 숙제\n\n\n최규빈 \n\n\n\n\nApr 11, 2025\n\n\n06wk-2: [Python] – 잡기술, 집합, 연습문제 // 숙제\n\n\n최규빈 \n\n\n\n\nApr 8, 2025\n\n\n06wk-1: [Python] – tuple // 숙제\n\n\n최규빈 \n\n\n\n\nApr 3, 2025\n\n\n05wk-2: [Python] – str, list // 숙제\n\n\n최규빈 \n\n\n\n\nApr 1, 2025\n\n\n05wk-1: [Python] – int, float, bool, str // 숙제\n\n\n최규빈 \n\n\n\n\nMar 27, 2025\n\n\n04wk-2: [R] 벡터와 행렬의 결합, 벡터관련 연산, 자료의 변환 // 숙제\n\n\n최규빈 \n\n\n\n\nMar 25, 2025\n\n\n04wk-1: [R] – 10개의 라커, 매트릭스, 파이프연산자 // 숙제\n\n\n최규빈 \n\n\n\n\nMar 20, 2025\n\n\n03wk-2: [R] – if, if-else, if-elseif-else // 숙제\n\n\n최규빈 \n\n\n\n\nMar 18, 2025\n\n\n03wk-1: [R] – 문제풀이 (아홉개의 공, 100개의 라커) // 숙제\n\n\n최규빈 \n\n\n\n\nMar 13, 2025\n\n\n02wk-2: [R] – 문제풀이 (벡터인덱싱, if, for 연습) // 숙제\n\n\n최규빈 \n\n\n\n\nMar 11, 2025\n\n\n02wk-1: [R] – 문제풀이, Bool 자료형과 조건판단, 벡터인덱싱, 조건문과 반복문 // 숙제\n\n\n최규빈 \n\n\n\n\nMar 6, 2025\n\n\n01wk-2: [R] – 문제풀이, 변수 이름 선언, 벡터의 선언, 함수의 선언\n\n\n최규빈 \n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "content/08wk-2.html",
@@ -345,35 +345,35 @@
   {
     "objectID": "content/mid-R.html",
     "href": "content/mid-R.html",
-    "title": "중간고사 - R",
+    "title": "중간고사 - R 예상문제",
     "section": "",
     "text": "문제의 조건에 맞는 수열을 100개 생성하라. 즉 \\(a_1,a_2,\\dots,a_{100}\\)을 생성하라.\n(1) \\(a_n = n+1\\)\n(2) \\(a_n = 2^{n-1}\\)\n(3) \\(a_n = \\begin{cases} 2n-1 &  n=3,6,9,...,99 \\\\ (0.8)^n & n=1,2,4,5,7,8,\\dots,100 \\end{cases}\\)\n(4) \\(a_1=1, a_2=2\\); \\(a_n = a_{n-1} + a_{n-2} , n \\geq 3\\)\n(5)"
   },
   {
     "objectID": "content/mid-R.html#수열생성-10점",
     "href": "content/mid-R.html#수열생성-10점",
-    "title": "중간고사 - R",
+    "title": "중간고사 - R 예상문제",
     "section": "",
     "text": "문제의 조건에 맞는 수열을 100개 생성하라. 즉 \\(a_1,a_2,\\dots,a_{100}\\)을 생성하라.\n(1) \\(a_n = n+1\\)\n(2) \\(a_n = 2^{n-1}\\)\n(3) \\(a_n = \\begin{cases} 2n-1 &  n=3,6,9,...,99 \\\\ (0.8)^n & n=1,2,4,5,7,8,\\dots,100 \\end{cases}\\)\n(4) \\(a_1=1, a_2=2\\); \\(a_n = a_{n-1} + a_{n-2} , n \\geq 3\\)\n(5)"
   },
   {
     "objectID": "content/mid-R.html#인덱싱-10점",
     "href": "content/mid-R.html#인덱싱-10점",
-    "title": "중간고사 - R",
+    "title": "중간고사 - R 예상문제",
     "section": "2. 인덱싱 – 10점",
     "text": "2. 인덱싱 – 10점\n아래의 벡터를 고려하자.\n\nset.seed(43052)\nx = rnorm(100)\nx\n\n  [1] -0.724154332 -0.786807067  0.322143867  1.245215545  0.541298135\n  [6]  1.644425736  1.010839968 -0.041093855  0.566219689  0.322589945\n [11]  0.744257098  1.318771443  1.741644032 -0.481877777 -0.212304360\n [16] -0.038340064 -0.670476111  1.116346318 -1.017367268 -2.764108407\n [21] -1.691021535 -0.286386675 -0.293329723 -0.439574695  1.187215542\n [26]  0.619075484  1.725469680  0.387946245  2.014429677 -1.858183602\n [31]  0.475627218 -1.522483833 -1.221104431  0.526176114  0.300794693\n [36]  0.419955219  0.774111400  1.118417590 -0.003518173 -1.339826327\n [41]  0.689804767  1.241655279  0.540903204 -0.090689478  0.899004061\n [46]  0.277964244  0.102093035  0.026743749 -1.366798404  1.725945031\n [51]  0.016568963  2.435175155  0.660768741  0.586336164  0.915387917\n [56]  1.032858015  0.487488367  0.983191955 -1.672555500 -2.391719134\n [61] -0.653742759  1.169355804  1.187078729 -1.099769071  0.175000573\n [66] -1.806541369  1.137909229 -0.041377066  1.669815049  1.063072588\n [71]  1.590954249 -1.385275254  1.108154509  1.154914467 -2.167338566\n [76] -0.174894345  1.213979381  0.722172855 -1.839824680  1.565277416\n [81]  0.883058660 -0.193202697 -0.805387640  0.115174290 -1.419227107\n [86] -1.347685370  0.338432430 -1.511701575 -0.969561843  1.854438960\n [91] -0.376556809  1.228923415 -1.326004497 -0.608823772  0.424967512\n [96]  1.027977993  0.143027357  1.539912811 -2.705749561 -2.271813360\n\n\n(1) 양수인 원소를 출력하라.\n(2) 양수인 원소와 음수인 원소의 수를 구하라.\n(3) \\(-0.2 &lt;x &lt;0.1\\)의 범위에 있는 원소의 합을 구하라.\n(4) 평균과 가장 가까운 원소를 출력하라.\n(5)"
   },
   {
     "objectID": "content/mid-R.html#matrix-15점",
     "href": "content/mid-R.html#matrix-15점",
-    "title": "중간고사 - R",
+    "title": "중간고사 - R 예상문제",
     "section": "3. Matrix – 15점",
     "text": "3. Matrix – 15점\n아래의 matrix를 고려하자.\n\nX = rnorm(200); \ndim(X) = c(20,10)\n\n(1) 행별로 양수를 count하라. 가장 많은 숫자의 양수를 보유한 행은 무엇인가?\n(2)\n(3)"
   },
   {
     "objectID": "content/mid-R.html#미공개-문제-15점",
     "href": "content/mid-R.html#미공개-문제-15점",
-    "title": "중간고사 - R",
+    "title": "중간고사 - R 예상문제",
     "section": "4. 미공개 문제 – 15점",
     "text": "4. 미공개 문제 – 15점"
   },
