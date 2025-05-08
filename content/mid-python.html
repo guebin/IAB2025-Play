@@ -219,61 +219,224 @@ window.Quarto = {
 </header>
 
 
-<div id="809caeb9-1f94-46f8-9bc5-8761e95fe745" class="cell" data-execution_count="4">
+<div id="809caeb9-1f94-46f8-9bc5-8761e95fe745" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="기본문법-10점" class="level2">
 <h2 class="anchored" data-anchor-id="기본문법-10점">1. 기본문법 – 10점</h2>
-<p><code>(1)</code> 아래와 같이 두 변수 a,b에 값이 저장되어있다. 두 값을 임시변수 없이 교환하라.</p>
-<div id="f3da1a63-774c-4093-9a64-d5c432ab03a4" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">10</span> </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>(1)</code> 아래와 같이 두 변수 a,b에 값이 저장되어있다. 두 값을 임시변수 없이 교환하라. – 2점</p>
+<div id="e3ae561f-9032-4b44-ae76-15f9322dc389" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">1</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><code>(2)</code> 컴프리헨션을 이용하여 아래와 같은 수열을 생성하라.</p>
-<p><span class="math display">\[x_n = [2,4,6,\dots,100]\]</span></p>
-<p><code>(3)</code> 아래와 같은 수열을 고려하자.</p>
-<div id="5b190858-42fc-4a74-8c65-024184ab80df" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.randn(<span class="dv">10</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="24">
-<pre><code>array([-0.23821509,  0.57162727,  0.11575414,  0.17799491, -0.19623315,
-       -0.86258475, -1.60482998,  0.73842897,  0.4646222 , -0.13338644])</code></pre>
+<p><code>(2)</code> 컴프리헨션을 이용하여 아래와 같은 수열을 생성하라. – 2점</p>
+<p><span class="math display">\[x_n = [3,6,9,\dots,30]\]</span></p>
+<p><code>(3)</code> 짝수가 입력으로오면 “짝수” 를 리턴하고 홀수가 입력으로 오면 “홀수”를 리턴하는 함수를 구현하라. 아래는 구현된 함수를 사용한 예시이다. – 2점</p>
+<div id="f4361ef4-8854-45ad-85aa-d1f08dca963a" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>func(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>'짝수'</code></pre>
 </div>
 </div>
-<p><code>x</code>의 각 원소가 양수인지 음수인지 판단하여 아래와 같은 list <code>y</code> 만들어라.</p>
-<div id="45c37221-83ea-409d-8201-232cf6759cab" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>[<span class="st">'음수'</span>, <span class="st">'양수'</span>, <span class="st">'양수'</span>, <span class="st">'양수'</span>, <span class="st">'음수'</span>, <span class="st">'음수'</span>, <span class="st">'음수'</span>, <span class="st">'양수'</span>, <span class="st">'양수'</span>, <span class="st">'음수'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="27">
-<pre><code>['음수', '양수', '양수', '양수', '음수', '음수', '음수', '양수', '양수', '음수']</code></pre>
+<div id="297b9b5b-30b8-4581-b408-e0df020188f6" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>func(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>'홀수'</code></pre>
 </div>
 </div>
-<p><code>(4)</code></p>
-<p><code>(5)</code></p>
+<p><code>(4)</code> (2)에서 만든 <span class="math inline">\(x_n\)</span>에 (3)의 함수를 적용하여 각 원소가 짝수인지 홀수인지 판단한뒤 그 결과를 아래와 같은 리스트로 만들어라. – 2점</p>
+<div id="1ca27051-9148-435b-b11b-2324de517474" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>[<span class="st">'홀수'</span>, <span class="st">'짝수'</span>, <span class="st">'홀수'</span>, <span class="st">'짝수'</span>, <span class="st">'홀수'</span>, <span class="st">'짝수'</span>, <span class="st">'홀수'</span>, <span class="st">'짝수'</span>, <span class="st">'홀수'</span>, <span class="st">'짝수'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>['홀수', '짝수', '홀수', '짝수', '홀수', '짝수', '홀수', '짝수', '홀수', '짝수']</code></pre>
+</div>
+</div>
+<p><code>(5)</code> 아래와 같은 array가 있다고 하자. – 2점</p>
+<div id="5b190858-42fc-4a74-8c65-024184ab80df" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.randn(<span class="dv">100</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.random.randn(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><span class="math inline">\(x_i &gt; y_i\)</span> 를 만족하는 원소는 몇개있는가?</p>
 </section>
 <section id="겹쳐서-그리기-10점" class="level2">
 <h2 class="anchored" data-anchor-id="겹쳐서-그리기-10점">2. 겹쳐서 그리기 – 10점</h2>
-<p><code>(1)</code> <span class="math inline">\(-2&lt;x&lt;2\)</span> 에서 <span class="math inline">\(\cos(2x)\)</span> 의 그래프와 <span class="math inline">\(\frac{1}{3}x-1\)</span>의 그래프를 겹쳐 그려라.</p>
-<p><code>(2)</code></p>
+<p><code>(1)</code> <span class="math inline">\(-2&lt;x&lt;2\)</span> 에서 <span class="math inline">\(\cos(2x)\)</span> 의 그래프와 <span class="math inline">\(\frac{1}{20}x+0.5\)</span>의 그래프를 겹쳐 그려라. 교점의 수가 몇개인가? – 2점</p>
+<p><code>(2)</code> <span class="math inline">\(-2&lt;x&lt;2\)</span> 에서 <span class="math inline">\(\cos(2x)\)</span> 의 그래프와 <span class="math inline">\(\frac{1}{20}x+k\)</span>의 그래프를 겹쳐 그렸을때 두 그래프가 많은 교점을 같도록 상수 <span class="math inline">\(k\)</span>의 값을 적절히 선택하라. (“교점의 수$$2” 를 점수로 인정, 최대 8점까지 획득가능) – 8점</p>
 <p><code>#</code></p>
 </section>
 <section id="oxford-iii-30점" class="level2">
 <h2 class="anchored" data-anchor-id="oxford-iii-30점">3. Oxford-III – 30점</h2>
+<blockquote class="blockquote">
+<p>(1), (2) 를 풀지않고 바로 (3)만 풀어도 정답으로 인정함</p>
+</blockquote>
 <p><code>Oxford-III</code>: // <a href="https://www.robots.ox.ac.uk/~vgg/data/pets/">reference</a></p>
 <p>아래는 이미지 파일명을 불러오는 코드이다.</p>
-<div id="8a67a526-4757-4d37-9928-b0167534b50b" class="cell" data-tags="[]" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/guebin/PP2023/main/posts/01_PythonBasic/Oxford-IIIT.txt'</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>txt <span class="op">=</span> requests.get(url).content.decode()</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>flist <span class="op">=</span> txt.split()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8a67a526-4757-4d37-9928-b0167534b50b" class="cell" data-tags="[]" data-execution_count="217">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/guebin/PP2023/main/posts/01_PythonBasic/Oxford-IIIT.txt'</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>txt <span class="op">=</span> requests.get(url).content.decode()</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>flist <span class="op">=</span> txt.split()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><code>(1)</code> 각 이미지파일명은 아래와 같은 규칙으로 저장되어 있다.</p>
+<div id="669ca66c-5138-4052-ab7b-4266457a82f6" class="cell" data-execution_count="218">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>flist[:<span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="218">
+<pre><code>['Abyssinian_1.jpg',
+ 'Abyssinian_10.jpg',
+ 'Abyssinian_100.jpg',
+ 'Abyssinian_100.mat',
+ 'Abyssinian_101.jpg',
+ 'Abyssinian_101.mat',
+ 'Abyssinian_102.jpg',
+ 'Abyssinian_102.mat',
+ 'Abyssinian_103.jpg',
+ 'Abyssinian_104.jpg']</code></pre>
+</div>
+</div>
+<p><code>(1)</code> 각 이미지파일명은 아래와 같은 규칙으로 저장되어 있다. – 10점</p>
 <ul>
 <li>파일명의 첫글자가 대문자이면 고양이를 의미하고 첫글자가 소문자이면 강아지를 의미한다.</li>
 </ul>
-<p>고양이와 강아지는 각각 몇개의 종이 있는가?</p>
-<p><code>(2)</code></p>
-<p><code>(3)</code></p>
+<p>이와 같은 규칙을 명확하게 하기 위하여 고양이일 경우 앞에 파일명의 앞에 “고양이_” 를 붙이고 강아지일 경우 “강아지_”를 붙이고 싶다. 이를 구현하는 코드를 작성하라.</p>
+<div id="9dcd745a-064b-40e1-a469-0b2fc821450a" class="cell" data-execution_count="219">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 출력예시</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>flist[:<span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="219">
+<pre><code>['고양이_Abyssinian_1.jpg',
+ '고양이_Abyssinian_10.jpg',
+ '고양이_Abyssinian_100.jpg',
+ '고양이_Abyssinian_100.mat',
+ '고양이_Abyssinian_101.jpg',
+ '고양이_Abyssinian_101.mat',
+ '고양이_Abyssinian_102.jpg',
+ '고양이_Abyssinian_102.mat',
+ '고양이_Abyssinian_103.jpg',
+ '고양이_Abyssinian_104.jpg']</code></pre>
+</div>
+</div>
+<p><code>(2)</code> 아래의 딕셔너리를 이용하여 (1)에서 얻은 리스트의 각 원소에 해당하는 종의 이름을 한글로 바꾸는 함수를 구현하라. – 10점</p>
+<div id="dba7cde3-ca7c-4d86-8bb5-86cb266a27ed" class="cell" data-execution_count="220">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>breed_ko_dict <span class="op">=</span> {</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Abyssinian'</span>: <span class="st">'아비시니안'</span>,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Bengal'</span>: <span class="st">'벵갈'</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Birman'</span>: <span class="st">'버만'</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Bombay'</span>: <span class="st">'봄베이'</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'British_Shorthair'</span>: <span class="st">'브리티시쇼트헤어'</span>,</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Egyptian_Mau'</span>: <span class="st">'이집션마우'</span>,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Maine_Coon'</span>: <span class="st">'메인쿤'</span>,</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Persian'</span>: <span class="st">'페르시안'</span>,</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Ragdoll'</span>: <span class="st">'랙돌'</span>,</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Russian_Blue'</span>: <span class="st">'러시안블루'</span>,</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Siamese'</span>: <span class="st">'샴'</span>,</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Sphynx'</span>: <span class="st">'스핑크스'</span>,</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">'american_bulldog'</span>: <span class="st">'아메리칸불도그'</span>,</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">'american_pit_bull_terrier'</span>: <span class="st">'아메리칸핏불테리어'</span>,</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">'basset_hound'</span>: <span class="st">'바셋하운드'</span>,</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">'beagle'</span>: <span class="st">'비글'</span>,</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">'boxer'</span>: <span class="st">'복서'</span>,</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">'chihuahua'</span>: <span class="st">'치와와'</span>,</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">'english_cocker_spaniel'</span>: <span class="st">'잉글리시코커스패니얼'</span>,</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">'english_setter'</span>: <span class="st">'잉글리시세터'</span>,</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">'german_shorthaired'</span>: <span class="st">'저먼쇼트헤어드포인터'</span>,</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">'great_pyrenees'</span>: <span class="st">'그레이트피레니즈'</span>,</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">'havanese'</span>: <span class="st">'하바니즈'</span>,</span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">'japanese_chin'</span>: <span class="st">'재패니즈친'</span>,</span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">'keeshond'</span>: <span class="st">'키스혼드'</span>,</span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">'leonberger'</span>: <span class="st">'레온버거'</span>,</span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">'miniature_pinscher'</span>: <span class="st">'미니어처핀셔'</span>,</span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">'newfoundland'</span>: <span class="st">'뉴펀들랜드'</span>,</span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">'pomeranian'</span>: <span class="st">'포메라니안'</span>,</span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">'pug'</span>: <span class="st">'퍼그'</span>,</span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">'saint_bernard'</span>: <span class="st">'세인트버나드'</span>,</span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">'samoyed'</span>: <span class="st">'사모예드'</span>,</span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>    <span class="st">'scottish_terrier'</span>: <span class="st">'스코티시테리어'</span>,</span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">'shiba_inu'</span>: <span class="st">'시바이누'</span>,</span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>    <span class="st">'staffordshire_bull_terrier'</span>: <span class="st">'스태퍼드셔불테리어'</span>,</span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>    <span class="st">'wheaten_terrier'</span>: <span class="st">'휘튼테리어'</span>,</span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a>    <span class="st">'yorkshire_terrier'</span>: <span class="st">'요크셔테리어'</span></span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>구현예시는 아래와 같다.</p>
+<div id="9dbbd2dc-ce2a-4ead-b9dc-43a1d965263d" class="cell" data-execution_count="221">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 출력예시1</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>func( <span class="st">'강아지_scottish_terrier_98.jpg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="221">
+<pre><code>'강아지_스코티시테리어_98.jpg'</code></pre>
+</div>
+</div>
+<div id="b53b027f-0b85-4f34-9e4b-5fd6833739e1" class="cell" data-execution_count="222">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 출력예시2</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>func(<span class="st">'고양이_British_Shorthair_97.jpg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="222">
+<pre><code>'고양이_브리티시쇼트헤어_97.jpg'</code></pre>
+</div>
+</div>
+<p><strong>hint</strong> 아래의 코드를 관찰하라.</p>
+<div id="f8e9e8c5-cd72-4579-9e69-3325fe990696" class="cell" data-execution_count="223">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>fname_list <span class="op">=</span> [<span class="st">'강아지'</span>, <span class="st">'english'</span>, <span class="st">'cocker'</span>, <span class="st">'spaniel'</span>, <span class="st">'97.jpg'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="2ab5ca15-3815-4f09-a840-44b24f0f46b2" class="cell" data-execution_count="224">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>fname_list[<span class="dv">1</span>:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="224">
+<pre><code>['english', 'cocker', 'spaniel', '97.jpg']</code></pre>
+</div>
+</div>
+<div id="6a7950e1-3f7d-4227-b9fd-6d606cc9ea45" class="cell" data-execution_count="225">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>fname_list[<span class="dv">1</span>:][:<span class="op">-</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="225">
+<pre><code>['english', 'cocker', 'spaniel']</code></pre>
+</div>
+</div>
+<div id="a2d59ebd-f28b-4a90-bec7-e298d37f365b" class="cell" data-execution_count="226">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">"_"</span>.join(fname_list[<span class="dv">1</span>:][:<span class="op">-</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="226">
+<pre><code>'english_cocker_spaniel'</code></pre>
+</div>
+</div>
+<p><code>(3)</code> (2)에서 구현한 함수를 이용하여 flist의 모든 원소를 바꾸어라.</p>
+<div id="dfdfe7d5-a600-43ba-a903-5462884311e9" class="cell" data-execution_count="229">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 출력예시</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>flist[::<span class="dv">200</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="229">
+<pre><code>['고양이_아비시니안_1.jpg',
+ '고양이_아비시니안_97.jpg',
+ '고양이_벵갈_97.jpg',
+ '고양이_버만_97.jpg',
+ '고양이_봄베이_97.jpg',
+ '고양이_브리티시쇼트헤어_97.jpg',
+ '고양이_이집션마우_97.jpg',
+ '고양이_메인쿤_97.jpg',
+ '고양이_페르시안_97.jpg',
+ '고양이_랙돌_97.jpg',
+ '고양이_러시안블루_97.jpg',
+ '고양이_샴_97.jpg',
+ '고양이_스핑크스_96.jpg',
+ '강아지_아메리칸불도그_97.jpg',
+ '강아지_아메리칸핏불테리어_97.jpg',
+ '강아지_바셋하운드_97.jpg',
+ '강아지_비글_97.jpg',
+ '강아지_복서_97.jpg',
+ '강아지_치와와_97.jpg',
+ '강아지_잉글리시코커스패니얼_97.jpg',
+ '강아지_잉글리시세터_97.jpg',
+ '강아지_저먼쇼트헤어드포인터_97.jpg',
+ '강아지_그레이트피레니즈_97.jpg',
+ '강아지_하바니즈_97.jpg',
+ '강아지_재패니즈친_97.jpg',
+ '강아지_키스혼드_97.jpg',
+ '강아지_레온버거_97.jpg',
+ '강아지_미니어처핀셔_97.jpg',
+ '강아지_뉴펀들랜드_97.jpg',
+ '강아지_포메라니안_97.jpg',
+ '강아지_퍼그_97.jpg',
+ '강아지_세인트버나드_97.jpg',
+ '강아지_사모예드_97.jpg',
+ '강아지_스코티시테리어_98.jpg',
+ '강아지_시바이누_98.jpg',
+ '강아지_휘튼테리어_105.jpg',
+ '강아지_요크셔테리어_105.jpg']</code></pre>
+</div>
+</div>
 
 
 </section>

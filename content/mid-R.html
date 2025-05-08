@@ -179,10 +179,9 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#수열생성-10점" id="toc-수열생성-10점" class="nav-link active" data-scroll-target="#수열생성-10점">1. 수열생성 – 10점</a></li>
-  <li><a href="#인덱싱-10점" id="toc-인덱싱-10점" class="nav-link" data-scroll-target="#인덱싱-10점">2. 인덱싱 – 10점</a></li>
-  <li><a href="#matrix-15점" id="toc-matrix-15점" class="nav-link" data-scroll-target="#matrix-15점">3. Matrix – 15점</a></li>
-  <li><a href="#미공개-문제-15점" id="toc-미공개-문제-15점" class="nav-link" data-scroll-target="#미공개-문제-15점">4. 미공개 문제 – 15점</a></li>
+  <li><a href="#수열생성-15점" id="toc-수열생성-15점" class="nav-link active" data-scroll-target="#수열생성-15점">1. 수열생성 – 15점</a></li>
+  <li><a href="#인덱싱-15점" id="toc-인덱싱-15점" class="nav-link" data-scroll-target="#인덱싱-15점">2. 인덱싱 – 15점</a></li>
+  <li><a href="#matrix-20점" id="toc-matrix-20점" class="nav-link" data-scroll-target="#matrix-20점">3. Matrix – 20점</a></li>
   </ul>
 </nav>
     </div>
@@ -220,17 +219,23 @@ window.Quarto = {
 </header>
 
 
-<section id="수열생성-10점" class="level2">
-<h2 class="anchored" data-anchor-id="수열생성-10점">1. 수열생성 – 10점</h2>
+<section id="수열생성-15점" class="level2">
+<h2 class="anchored" data-anchor-id="수열생성-15점">1. 수열생성 – 15점</h2>
+<blockquote class="blockquote">
+<p>문항당 3점</p>
+</blockquote>
 <p>문제의 조건에 맞는 수열을 100개 생성하라. 즉 <span class="math inline">\(a_1,a_2,\dots,a_{100}\)</span>을 생성하라.</p>
-<p><code>(1)</code> <span class="math inline">\(a_n = n+1\)</span></p>
-<p><code>(2)</code> <span class="math inline">\(a_n = 2^{n-1}\)</span></p>
-<p><code>(3)</code> <span class="math inline">\(a_n = \begin{cases} 2n-1 &amp;  n=3,6,9,...,99 \\ (0.8)^n &amp; n=1,2,4,5,7,8,\dots,100 \end{cases}\)</span></p>
-<p><code>(4)</code> <span class="math inline">\(a_1=1, a_2=2\)</span>; <span class="math inline">\(a_n = a_{n-1} + a_{n-2} , n \geq 3\)</span></p>
-<p><code>(5)</code></p>
+<p><code>(1)</code> <span class="math inline">\(a_n = 2n-1\)</span></p>
+<p><code>(2)</code> <span class="math inline">\(a_n=\frac{1}{n}\)</span></p>
+<p><code>(3)</code> <span class="math inline">\(a_n = (1/2)^{n}\)</span></p>
+<p><code>(4)</code> <span class="math inline">\(a_n = \begin{cases} 0 &amp;  n=2,4,6,...,100 \\ (1/2)^n &amp; n=1,3,5,7,\dots,99 \end{cases}\)</span></p>
+<p><code>(5)</code> <span class="math inline">\(a_1=1, a_2=2\)</span>; <span class="math inline">\(a_n = a_{n-1} + a_{n-2} , n \geq 3\)</span></p>
 </section>
-<section id="인덱싱-10점" class="level2">
-<h2 class="anchored" data-anchor-id="인덱싱-10점">2. 인덱싱 – 10점</h2>
+<section id="인덱싱-15점" class="level2">
+<h2 class="anchored" data-anchor-id="인덱싱-15점">2. 인덱싱 – 15점</h2>
+<blockquote class="blockquote">
+<p>문항당 3점</p>
+</blockquote>
 <p>아래의 벡터를 고려하자.</p>
 <div id="2a2319f9-5d1f-4f66-b8e4-dc60b51f1124" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">43052</span>)</span>
@@ -259,25 +264,26 @@ window.Quarto = {
  [96]  1.027977993  0.143027357  1.539912811 -2.705749561 -2.271813360</code></pre>
 </div>
 </div>
-<p><code>(1)</code> 양수인 원소를 출력하라.</p>
-<p><code>(2)</code> 양수인 원소와 음수인 원소의 수를 구하라.</p>
-<p><code>(3)</code> <span class="math inline">\(-0.2 &lt;x &lt;0.1\)</span>의 범위에 있는 원소의 합을 구하라.</p>
-<p><code>(4)</code> 평균과 가장 가까운 원소를 출력하라.</p>
-<p><code>(5)</code></p>
+<p><code>(1)</code> 양수인 원소의 갯수를 count하라.</p>
+<p><code>(2)</code> 양수인 원소의 합과 음수인 원소의 합을 구하라. 두 값의 절대값은 어느쪽이 더 큰가?</p>
+<p><code>(3)</code> <span class="math inline">\(-0.2 &lt;x &lt;0.1\)</span>의 범위에 있는 원소의 수를 count 하라.</p>
+<p><code>(4)</code> 0.5와 가장 가까운 원소를 출력하라 .</p>
+<p><code>(5)</code> 평균과 가장 멀리있는 원소를 출력하라.</p>
 </section>
-<section id="matrix-15점" class="level2">
-<h2 class="anchored" data-anchor-id="matrix-15점">3. Matrix – 15점</h2>
+<section id="matrix-20점" class="level2">
+<h2 class="anchored" data-anchor-id="matrix-20점">3. Matrix – 20점</h2>
+<blockquote class="blockquote">
+<p>문항당 5점</p>
+</blockquote>
 <p>아래의 matrix를 고려하자.</p>
-<div id="31a1934b-b5cb-45c2-8397-6687748d2e69" class="cell" data-execution_count="16">
+<div id="31a1934b-b5cb-45c2-8397-6687748d2e69" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">200</span>); </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(X) <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><code>(1)</code> 행별로 양수를 count하라. 가장 많은 숫자의 양수를 보유한 행은 무엇인가?</p>
-<p><code>(2)</code></p>
-<p><code>(3)</code></p>
-</section>
-<section id="미공개-문제-15점" class="level2">
-<h2 class="anchored" data-anchor-id="미공개-문제-15점">4. 미공개 문제 – 15점</h2>
+<p><code>(1)</code> 열별로 양수를 count하라.</p>
+<p><code>(2)</code> 가장 많은 숫자의 양수를 보유한 열은?</p>
+<p><code>(3)</code> 행별로 최대값과 최소값을 구하라.</p>
+<p><code>(4)</code> 최대값과 최소값이 차이가 가장 큰 행은?</p>
 
 
 </section>
