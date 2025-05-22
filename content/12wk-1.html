@@ -971,10 +971,10 @@ File <span class="ansi-green-fg">/lib/python3.12/site-packages/pandas/core/index
 </section>
 <section id="숙제" class="level2">
 <h2 class="anchored" data-anchor-id="숙제">2. 숙제</h2>
-<div id="1b341435-45c4-4e68-97e4-f52c34f62f59" class="cell" data-execution_count="5">
+<div id="1b341435-45c4-4e68-97e4-f52c34f62f59" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"titanic.csv"</span>)</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 
 
@@ -1170,9 +1170,9 @@ File <span class="ansi-green-fg">/lib/python3.12/site-packages/pandas/core/index
 </div>
 </div>
 <p>3세미만의 승객들의 Age, Survived, Name 을 출력하라.</p>
-<div id="79c3f98a-8502-4f91-ba07-a754b0335874" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 출력예시</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div id="79c3f98a-8502-4f91-ba07-a754b0335874" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'Survived'</span>, <span class="st">'Age'</span>, <span class="st">'Name'</span>]][df.Age<span class="op">&lt;</span><span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
 <div>
 
 
@@ -1180,154 +1180,154 @@ File <span class="ansi-green-fg">/lib/python3.12/site-packages/pandas/core/index
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Age</th>
 <th data-quarto-table-cell-role="th">Survived</th>
+<th data-quarto-table-cell-role="th">Age</th>
 <th data-quarto-table-cell-role="th">Name</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">7</td>
-<td>2.00</td>
 <td>0</td>
+<td>2.00</td>
 <td>Palsson, Master. Gosta Leonard</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">16</td>
-<td>2.00</td>
 <td>0</td>
+<td>2.00</td>
 <td>Rice, Master. Eugene</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">78</td>
-<td>0.83</td>
 <td>1</td>
+<td>0.83</td>
 <td>Caldwell, Master. Alden Gates</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">119</td>
-<td>2.00</td>
 <td>0</td>
+<td>2.00</td>
 <td>Andersson, Miss. Ellis Anna Maria</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">164</td>
-<td>1.00</td>
 <td>0</td>
+<td>1.00</td>
 <td>Panula, Master. Eino Viljami</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">172</td>
-<td>1.00</td>
 <td>1</td>
+<td>1.00</td>
 <td>Johnson, Miss. Eleanor Ileen</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">183</td>
-<td>1.00</td>
 <td>1</td>
+<td>1.00</td>
 <td>Becker, Master. Richard F</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">205</td>
-<td>2.00</td>
 <td>0</td>
+<td>2.00</td>
 <td>Strom, Miss. Telma Matilda</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">297</td>
-<td>2.00</td>
 <td>0</td>
+<td>2.00</td>
 <td>Allison, Miss. Helen Loraine</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">305</td>
-<td>0.92</td>
 <td>1</td>
+<td>0.92</td>
 <td>Allison, Master. Hudson Trevor</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">340</td>
-<td>2.00</td>
 <td>1</td>
+<td>2.00</td>
 <td>Navratil, Master. Edmond Roger</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">381</td>
-<td>1.00</td>
 <td>1</td>
+<td>1.00</td>
 <td>Nakid, Miss. Maria ("Mary")</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">386</td>
-<td>1.00</td>
 <td>0</td>
+<td>1.00</td>
 <td>Goodwin, Master. Sidney Leonard</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">469</td>
-<td>0.75</td>
 <td>1</td>
+<td>0.75</td>
 <td>Baclini, Miss. Helene Barbara</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">479</td>
-<td>2.00</td>
 <td>1</td>
+<td>2.00</td>
 <td>Hirvonen, Miss. Hildur E</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">530</td>
-<td>2.00</td>
 <td>1</td>
+<td>2.00</td>
 <td>Quick, Miss. Phyllis May</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">642</td>
-<td>2.00</td>
 <td>0</td>
+<td>2.00</td>
 <td>Skoog, Miss. Margit Elizabeth</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">644</td>
-<td>0.75</td>
 <td>1</td>
+<td>0.75</td>
 <td>Baclini, Miss. Eugenie</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">755</td>
-<td>0.67</td>
 <td>1</td>
+<td>0.67</td>
 <td>Hamalainen, Master. Viljo</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">788</td>
-<td>1.00</td>
 <td>1</td>
+<td>1.00</td>
 <td>Dean, Master. Bertram Vere</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">803</td>
-<td>0.42</td>
 <td>1</td>
+<td>0.42</td>
 <td>Thomas, Master. Assad Alexander</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">824</td>
-<td>2.00</td>
 <td>0</td>
+<td>2.00</td>
 <td>Panula, Master. Urho Abraham</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">827</td>
-<td>1.00</td>
 <td>1</td>
+<td>1.00</td>
 <td>Mallet, Master. Andre</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">831</td>
-<td>0.83</td>
 <td>1</td>
+<td>0.83</td>
 <td>Richards, Master. George Sibley</td>
 </tr>
 </tbody>
