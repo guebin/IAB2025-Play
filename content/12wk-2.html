@@ -192,11 +192,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/playlist?list=PLQqh36zP38-y-Km1X4z1_ArZ4QrACEHFq&amp;si=HjKg-rdkcJUVHjqt" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<div id="861241da-bfa8-4d52-8fe4-3fc60fa629fc" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># {{&lt;video https://youtu.be/playlist?list=PLQqh36zP38-y-Km1X4z1_ArZ4QrACEHFq&amp;si=HjKg-rdkcJUVHjqt&gt;}}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div id="497c7c74-6cba-43d8-b908-dd069b931374" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="fifa데이터" class="level2">
 <h2 class="anchored" data-anchor-id="fifa데이터">1. FIFA데이터</h2>
@@ -204,8 +206,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="a.-data">A. Data</h3>
 <p><code>-</code> 데이터 load</p>
 <div id="c4d4d13a-6df8-44c9-a673-7d4ffafb4c6d" class="cell" data-tags="[]" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/guebin/DV2022/master/posts/FIFA23_official_data.csv'</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'FIFA23_official_data.csv'</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 
@@ -368,9 +370,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="b.-df.t" class="level3">
 <h3 class="anchored" data-anchor-id="b.-df.t">B. <code>df.T</code></h3>
-<p><code>-</code> <code>df.T</code>를 이용하여 데이터를 살피면 편리함</p>
+<p><code>-</code> <code>df.T</code>를 이용하여 데이터를 살피면 편리한 경우도 있음</p>
 <div id="b39af168-a077-4209-870e-f39fac7221f4" class="cell" data-tags="[]" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df.T.iloc[:,:<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df.T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 
@@ -381,6 +383,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">0</th>
 <th data-quarto-table-cell-role="th">1</th>
+<th data-quarto-table-cell-role="th">2</th>
+<th data-quarto-table-cell-role="th">3</th>
+<th data-quarto-table-cell-role="th">4</th>
+<th data-quarto-table-cell-role="th">5</th>
+<th data-quarto-table-cell-role="th">6</th>
+<th data-quarto-table-cell-role="th">7</th>
+<th data-quarto-table-cell-role="th">8</th>
+<th data-quarto-table-cell-role="th">9</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">17650</th>
+<th data-quarto-table-cell-role="th">17651</th>
+<th data-quarto-table-cell-role="th">17652</th>
+<th data-quarto-table-cell-role="th">17653</th>
+<th data-quarto-table-cell-role="th">17654</th>
+<th data-quarto-table-cell-role="th">17655</th>
+<th data-quarto-table-cell-role="th">17656</th>
+<th data-quarto-table-cell-role="th">17657</th>
+<th data-quarto-table-cell-role="th">17658</th>
+<th data-quarto-table-cell-role="th">17659</th>
 </tr>
 </thead>
 <tbody>
@@ -388,114 +409,551 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">ID</td>
 <td>209658</td>
 <td>212198</td>
+<td>224334</td>
+<td>192985</td>
+<td>224232</td>
+<td>212622</td>
+<td>197445</td>
+<td>187961</td>
+<td>208333</td>
+<td>210514</td>
+<td>...</td>
+<td>256879</td>
+<td>269546</td>
+<td>267647</td>
+<td>253186</td>
+<td>267461</td>
+<td>269526</td>
+<td>267946</td>
+<td>270567</td>
+<td>256624</td>
+<td>256376</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Name</td>
 <td>L. Goretzka</td>
 <td>Bruno Fernandes</td>
+<td>M. Acuña</td>
+<td>K. De Bruyne</td>
+<td>N. Barella</td>
+<td>J. Kimmich</td>
+<td>D. Alaba</td>
+<td>22&nbsp;Paulinho</td>
+<td>E. Can</td>
+<td>João Cancelo</td>
+<td>...</td>
+<td>22&nbsp;G. Leijon</td>
+<td>Wu Fei</td>
+<td>22&nbsp;E. Grosz</td>
+<td>22&nbsp;S. Booth</td>
+<td>22&nbsp;L. Grimpe</td>
+<td>Deng Xiongtao</td>
+<td>22&nbsp;Lim Jun Sub</td>
+<td>A. Demir</td>
+<td>21&nbsp;S. Czajor</td>
+<td>21&nbsp;F. Jakobsson</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Age</td>
 <td>27</td>
 <td>27</td>
+<td>30</td>
+<td>31</td>
+<td>25</td>
+<td>27</td>
+<td>30</td>
+<td>32</td>
+<td>28</td>
+<td>28</td>
+<td>...</td>
+<td>19</td>
+<td>32</td>
+<td>18</td>
+<td>20</td>
+<td>17</td>
+<td>19</td>
+<td>17</td>
+<td>25</td>
+<td>18</td>
+<td>20</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Photo</td>
 <td>https://cdn.sofifa.net/players/209/658/23_60.png</td>
 <td>https://cdn.sofifa.net/players/212/198/23_60.png</td>
+<td>https://cdn.sofifa.net/players/224/334/23_60.png</td>
+<td>https://cdn.sofifa.net/players/192/985/23_60.png</td>
+<td>https://cdn.sofifa.net/players/224/232/23_60.png</td>
+<td>https://cdn.sofifa.net/players/212/622/23_60.png</td>
+<td>https://cdn.sofifa.net/players/197/445/23_60.png</td>
+<td>https://cdn.sofifa.net/players/187/961/22_60.png</td>
+<td>https://cdn.sofifa.net/players/208/333/23_60.png</td>
+<td>https://cdn.sofifa.net/players/210/514/23_60.png</td>
+<td>...</td>
+<td>https://cdn.sofifa.net/players/256/879/22_60.png</td>
+<td>https://cdn.sofifa.net/players/269/546/23_60.png</td>
+<td>https://cdn.sofifa.net/players/267/647/22_60.png</td>
+<td>https://cdn.sofifa.net/players/253/186/22_60.png</td>
+<td>https://cdn.sofifa.net/players/267/461/22_60.png</td>
+<td>https://cdn.sofifa.net/players/269/526/23_60.png</td>
+<td>https://cdn.sofifa.net/players/267/946/22_60.png</td>
+<td>https://cdn.sofifa.net/players/270/567/23_60.png</td>
+<td>https://cdn.sofifa.net/players/256/624/21_60.png</td>
+<td>https://cdn.sofifa.net/players/256/376/21_60.png</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Nationality</td>
 <td>Germany</td>
 <td>Portugal</td>
+<td>Argentina</td>
+<td>Belgium</td>
+<td>Italy</td>
+<td>Germany</td>
+<td>Austria</td>
+<td>Brazil</td>
+<td>Germany</td>
+<td>Portugal</td>
+<td>...</td>
+<td>Sweden</td>
+<td>China PR</td>
+<td>Romania</td>
+<td>England</td>
+<td>Germany</td>
+<td>China PR</td>
+<td>Korea Republic</td>
+<td>Turkey</td>
+<td>Poland</td>
+<td>Sweden</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Flag</td>
 <td>https://cdn.sofifa.net/flags/de.png</td>
 <td>https://cdn.sofifa.net/flags/pt.png</td>
+<td>https://cdn.sofifa.net/flags/ar.png</td>
+<td>https://cdn.sofifa.net/flags/be.png</td>
+<td>https://cdn.sofifa.net/flags/it.png</td>
+<td>https://cdn.sofifa.net/flags/de.png</td>
+<td>https://cdn.sofifa.net/flags/at.png</td>
+<td>https://cdn.sofifa.net/flags/br.png</td>
+<td>https://cdn.sofifa.net/flags/de.png</td>
+<td>https://cdn.sofifa.net/flags/pt.png</td>
+<td>...</td>
+<td>https://cdn.sofifa.net/flags/se.png</td>
+<td>https://cdn.sofifa.net/flags/cn.png</td>
+<td>https://cdn.sofifa.net/flags/ro.png</td>
+<td>https://cdn.sofifa.net/flags/gb-eng.png</td>
+<td>https://cdn.sofifa.net/flags/de.png</td>
+<td>https://cdn.sofifa.net/flags/cn.png</td>
+<td>https://cdn.sofifa.net/flags/kr.png</td>
+<td>https://cdn.sofifa.net/flags/tr.png</td>
+<td>https://cdn.sofifa.net/flags/pl.png</td>
+<td>https://cdn.sofifa.net/flags/se.png</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Overall</td>
 <td>87</td>
 <td>86</td>
+<td>85</td>
+<td>91</td>
+<td>86</td>
+<td>89</td>
+<td>86</td>
+<td>83</td>
+<td>82</td>
+<td>88</td>
+<td>...</td>
+<td>52</td>
+<td>51</td>
+<td>52</td>
+<td>51</td>
+<td>54</td>
+<td>48</td>
+<td>48</td>
+<td>51</td>
+<td>50</td>
+<td>50</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Potential</td>
 <td>88</td>
 <td>87</td>
+<td>85</td>
+<td>91</td>
+<td>89</td>
+<td>90</td>
+<td>86</td>
+<td>83</td>
+<td>82</td>
+<td>88</td>
+<td>...</td>
+<td>62</td>
+<td>51</td>
+<td>70</td>
+<td>60</td>
+<td>68</td>
+<td>61</td>
+<td>64</td>
+<td>56</td>
+<td>65</td>
+<td>61</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Club</td>
 <td>FC Bayern München</td>
 <td>Manchester United</td>
+<td>Sevilla FC</td>
+<td>Manchester City</td>
+<td>Inter</td>
+<td>FC Bayern München</td>
+<td>Real Madrid CF</td>
+<td>Al Ahli</td>
+<td>Borussia Dortmund</td>
+<td>Manchester City</td>
+<td>...</td>
+<td>Örebro SK</td>
+<td>Wuhan Three Towns</td>
+<td>Gaz Metan Mediaş</td>
+<td>Crewe Alexandra</td>
+<td>RB Leipzig</td>
+<td>Meizhou Hakka</td>
+<td>Jeju United FC</td>
+<td>Ümraniyespor</td>
+<td>Fleetwood Town</td>
+<td>IFK Norrköping</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Club Logo</td>
 <td>https://cdn.sofifa.net/teams/21/30.png</td>
 <td>https://cdn.sofifa.net/teams/11/30.png</td>
+<td>https://cdn.sofifa.net/teams/481/30.png</td>
+<td>https://cdn.sofifa.net/teams/10/30.png</td>
+<td>https://cdn.sofifa.net/teams/44/30.png</td>
+<td>https://cdn.sofifa.net/teams/21/30.png</td>
+<td>https://cdn.sofifa.net/teams/243/30.png</td>
+<td>https://cdn.sofifa.net/teams/112387/30.png</td>
+<td>https://cdn.sofifa.net/teams/22/30.png</td>
+<td>https://cdn.sofifa.net/teams/10/30.png</td>
+<td>...</td>
+<td>https://cdn.sofifa.net/teams/705/30.png</td>
+<td>https://cdn.sofifa.net/teams/116361/30.png</td>
+<td>https://cdn.sofifa.net/teams/112637/30.png</td>
+<td>https://cdn.sofifa.net/teams/121/30.png</td>
+<td>https://cdn.sofifa.net/teams/112172/30.png</td>
+<td>https://cdn.sofifa.net/teams/114628/30.png</td>
+<td>https://cdn.sofifa.net/teams/1478/30.png</td>
+<td>https://cdn.sofifa.net/teams/113796/30.png</td>
+<td>https://cdn.sofifa.net/teams/112260/30.png</td>
+<td>https://cdn.sofifa.net/teams/702/30.png</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Value</td>
 <td>€91M</td>
 <td>€78.5M</td>
+<td>€46.5M</td>
+<td>€107.5M</td>
+<td>€89.5M</td>
+<td>€105.5M</td>
+<td>€55.5M</td>
+<td>€28.5M</td>
+<td>€30.5M</td>
+<td>€82.5M</td>
+<td>...</td>
+<td>€150K</td>
+<td>€30K</td>
+<td>€180K</td>
+<td>€110K</td>
+<td>€210K</td>
+<td>€100K</td>
+<td>€100K</td>
+<td>€70K</td>
+<td>€90K</td>
+<td>€90K</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Wage</td>
 <td>€115K</td>
 <td>€190K</td>
+<td>€46K</td>
+<td>€350K</td>
+<td>€110K</td>
+<td>€130K</td>
+<td>€220K</td>
+<td>€61K</td>
+<td>€63K</td>
+<td>€250K</td>
+<td>...</td>
+<td>€500</td>
+<td>€2K</td>
+<td>€500</td>
+<td>€850</td>
+<td>€500</td>
+<td>€500</td>
+<td>€500</td>
+<td>€2K</td>
+<td>€500</td>
+<td>€500</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Special</td>
 <td>2312</td>
 <td>2305</td>
+<td>2303</td>
+<td>2303</td>
+<td>2296</td>
+<td>2283</td>
+<td>2277</td>
+<td>2273</td>
+<td>2271</td>
+<td>2262</td>
+<td>...</td>
+<td>779</td>
+<td>777</td>
+<td>775</td>
+<td>768</td>
+<td>767</td>
+<td>762</td>
+<td>761</td>
+<td>759</td>
+<td>758</td>
+<td>749</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Preferred Foot</td>
 <td>Right</td>
 <td>Right</td>
+<td>Left</td>
+<td>Right</td>
+<td>Right</td>
+<td>Right</td>
+<td>Left</td>
+<td>Right</td>
+<td>Right</td>
+<td>Right</td>
+<td>...</td>
+<td>Right</td>
+<td>Right</td>
+<td>Right</td>
+<td>Right</td>
+<td>Right</td>
+<td>Right</td>
+<td>Right</td>
+<td>Right</td>
+<td>Right</td>
+<td>Left</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">International Reputation</td>
 <td>4.0</td>
 <td>3.0</td>
+<td>2.0</td>
+<td>4.0</td>
+<td>3.0</td>
+<td>4.0</td>
+<td>4.0</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>...</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Weak Foot</td>
 <td>4.0</td>
 <td>3.0</td>
+<td>3.0</td>
+<td>5.0</td>
+<td>3.0</td>
+<td>4.0</td>
+<td>4.0</td>
+<td>4.0</td>
+<td>4.0</td>
+<td>4.0</td>
+<td>...</td>
+<td>3.0</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>2.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Skill Moves</td>
 <td>3.0</td>
 <td>4.0</td>
+<td>3.0</td>
+<td>4.0</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>4.0</td>
+<td>3.0</td>
+<td>4.0</td>
+<td>...</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Work Rate</td>
 <td>High/ Medium</td>
 <td>High/ High</td>
+<td>High/ High</td>
+<td>High/ High</td>
+<td>High/ High</td>
+<td>High/ Medium</td>
+<td>Medium/ Medium</td>
+<td>High/ High</td>
+<td>Medium/ High</td>
+<td>High/ Medium</td>
+<td>...</td>
+<td>Medium/ Medium</td>
+<td>Medium/ Medium</td>
+<td>Medium/ Medium</td>
+<td>Medium/ Medium</td>
+<td>Medium/ Medium</td>
+<td>Medium/ Medium</td>
+<td>Medium/ Medium</td>
+<td>Medium/ Medium</td>
+<td>Medium/ Medium</td>
+<td>Medium/ Medium</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Body Type</td>
 <td>Unique</td>
 <td>Unique</td>
+<td>Stocky (170-185)</td>
+<td>Unique</td>
+<td>Normal (170-)</td>
+<td>Normal (170-185)</td>
+<td>Normal (170-185)</td>
+<td>Normal (170-185)</td>
+<td>Stocky (185+)</td>
+<td>Unique</td>
+<td>...</td>
+<td>Normal (185+)</td>
+<td>Normal (185+)</td>
+<td>Lean (185+)</td>
+<td>Lean (185+)</td>
+<td>Lean (185+)</td>
+<td>Normal (185+)</td>
+<td>Lean (185+)</td>
+<td>Lean (185+)</td>
+<td>Normal (185+)</td>
+<td>Normal (185+)</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Real Face</td>
 <td>Yes</td>
 <td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>...</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Position</td>
 <td>&lt;span class="pos pos28"&gt;SUB</td>
 <td>&lt;span class="pos pos15"&gt;LCM</td>
+<td>&lt;span class="pos pos7"&gt;LB</td>
+<td>&lt;span class="pos pos13"&gt;RCM</td>
+<td>&lt;span class="pos pos13"&gt;RCM</td>
+<td>&lt;span class="pos pos9"&gt;RDM</td>
+<td>&lt;span class="pos pos6"&gt;LCB</td>
+<td>&lt;span class="pos pos15"&gt;LCM</td>
+<td>&lt;span class="pos pos28"&gt;SUB</td>
+<td>&lt;span class="pos pos7"&gt;LB</td>
+<td>...</td>
+<td>&lt;span class="pos pos28"&gt;SUB</td>
+<td>&lt;span class="pos pos28"&gt;SUB</td>
+<td>&lt;span class="pos pos28"&gt;SUB</td>
+<td>&lt;span class="pos pos29"&gt;RES</td>
+<td>&lt;span class="pos pos29"&gt;RES</td>
+<td>&lt;span class="pos pos29"&gt;RES</td>
+<td>&lt;span class="pos pos29"&gt;RES</td>
+<td>&lt;span class="pos pos29"&gt;RES</td>
+<td>&lt;span class="pos pos29"&gt;RES</td>
+<td>&lt;span class="pos pos29"&gt;RES</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Joined</td>
 <td>Jul 1, 2018</td>
 <td>Jan 30, 2020</td>
+<td>Sep 14, 2020</td>
+<td>Aug 30, 2015</td>
+<td>Sep 1, 2020</td>
+<td>Jul 1, 2015</td>
+<td>Jul 1, 2021</td>
+<td>Jul 22, 2021</td>
+<td>Feb 18, 2020</td>
+<td>Aug 7, 2019</td>
+<td>...</td>
+<td>Jun 14, 2020</td>
+<td>Feb 15, 2019</td>
+<td>Jul 1, 2020</td>
+<td>Jul 1, 2019</td>
+<td>Feb 7, 2022</td>
+<td>Apr 11, 2022</td>
+<td>Jan 1, 2022</td>
+<td>Jun 6, 2021</td>
+<td>Jan 1, 2020</td>
+<td>Jan 8, 2020</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Loaned From</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
 <td>NaN</td>
 <td>NaN</td>
 </tr>
@@ -503,43 +961,158 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">Contract Valid Until</td>
 <td>2026</td>
 <td>2026</td>
+<td>2024</td>
+<td>2025</td>
+<td>2026</td>
+<td>2025</td>
+<td>2026</td>
+<td>2024</td>
+<td>2024</td>
+<td>2027</td>
+<td>...</td>
+<td>2022</td>
+<td>2022</td>
+<td>2022</td>
+<td>2022</td>
+<td>2023</td>
+<td>2027</td>
+<td>2026</td>
+<td>2023</td>
+<td>2021</td>
+<td>2021</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Height</td>
 <td>189cm</td>
 <td>179cm</td>
+<td>172cm</td>
+<td>181cm</td>
+<td>172cm</td>
+<td>177cm</td>
+<td>180cm</td>
+<td>183cm</td>
+<td>186cm</td>
+<td>182cm</td>
+<td>...</td>
+<td>188cm</td>
+<td>186cm</td>
+<td>190cm</td>
+<td>195cm</td>
+<td>186cm</td>
+<td>190cm</td>
+<td>195cm</td>
+<td>190cm</td>
+<td>187cm</td>
+<td>186cm</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Weight</td>
 <td>82kg</td>
 <td>69kg</td>
+<td>69kg</td>
+<td>70kg</td>
+<td>68kg</td>
+<td>75kg</td>
+<td>78kg</td>
+<td>80kg</td>
+<td>86kg</td>
+<td>74kg</td>
+<td>...</td>
+<td>81kg</td>
+<td>78kg</td>
+<td>70kg</td>
+<td>80kg</td>
+<td>78kg</td>
+<td>78kg</td>
+<td>84kg</td>
+<td>82kg</td>
+<td>79kg</td>
+<td>78kg</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Release Clause</td>
 <td>€157M</td>
 <td>€155M</td>
+<td>€97.7M</td>
+<td>€198.9M</td>
+<td>€154.4M</td>
+<td>€182M</td>
+<td>€113.8M</td>
+<td>€48.5M</td>
+<td>€51.9M</td>
+<td>€152.6M</td>
+<td>...</td>
+<td>€218K</td>
+<td>€47K</td>
+<td>€356K</td>
+<td>€215K</td>
+<td>€488K</td>
+<td>€218K</td>
+<td>€188K</td>
+<td>€142K</td>
+<td>€214K</td>
+<td>€131K</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Kit Number</td>
 <td>8.0</td>
 <td>8.0</td>
+<td>19.0</td>
+<td>17.0</td>
+<td>23.0</td>
+<td>6.0</td>
+<td>4.0</td>
+<td>15.0</td>
+<td>23.0</td>
+<td>7.0</td>
+<td>...</td>
+<td>33.0</td>
+<td>1.0</td>
+<td>99.0</td>
+<td>27.0</td>
+<td>43.0</td>
+<td>35.0</td>
+<td>21.0</td>
+<td>12.0</td>
+<td>40.0</td>
+<td>30.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Best Overall Rating</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
 <td>NaN</td>
 <td>NaN</td>
 </tr>
 </tbody>
 </table>
 
+<p>29 rows × 17660 columns</p>
 </div>
 </div>
 </div>
 <p><code>-</code> 출력옵션 조정</p>
 <div id="2ab6a3fb-6df3-4efb-93c0-ab760ca7b70b" class="cell" data-tags="[]" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pd.options.display.max_rows <span class="op">=</span> <span class="dv">12</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>display(df.T.iloc[:,:<span class="dv">2</span>])</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>pd.reset_option(<span class="st">"display.max_rows"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pd.options.display.max_rows <span class="op">=</span> <span class="dv">29</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>display(df.T)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>pd.reset_option(<span class="st">"display.max_rows"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 
@@ -550,6 +1123,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">0</th>
 <th data-quarto-table-cell-role="th">1</th>
+<th data-quarto-table-cell-role="th">2</th>
+<th data-quarto-table-cell-role="th">3</th>
+<th data-quarto-table-cell-role="th">4</th>
+<th data-quarto-table-cell-role="th">5</th>
+<th data-quarto-table-cell-role="th">6</th>
+<th data-quarto-table-cell-role="th">7</th>
+<th data-quarto-table-cell-role="th">8</th>
+<th data-quarto-table-cell-role="th">9</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">17650</th>
+<th data-quarto-table-cell-role="th">17651</th>
+<th data-quarto-table-cell-role="th">17652</th>
+<th data-quarto-table-cell-role="th">17653</th>
+<th data-quarto-table-cell-role="th">17654</th>
+<th data-quarto-table-cell-role="th">17655</th>
+<th data-quarto-table-cell-role="th">17656</th>
+<th data-quarto-table-cell-role="th">17657</th>
+<th data-quarto-table-cell-role="th">17658</th>
+<th data-quarto-table-cell-role="th">17659</th>
 </tr>
 </thead>
 <tbody>
@@ -557,838 +1149,712 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">ID</td>
 <td>209658</td>
 <td>212198</td>
+<td>224334</td>
+<td>192985</td>
+<td>224232</td>
+<td>212622</td>
+<td>197445</td>
+<td>187961</td>
+<td>208333</td>
+<td>210514</td>
+<td>...</td>
+<td>256879</td>
+<td>269546</td>
+<td>267647</td>
+<td>253186</td>
+<td>267461</td>
+<td>269526</td>
+<td>267946</td>
+<td>270567</td>
+<td>256624</td>
+<td>256376</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Name</td>
 <td>L. Goretzka</td>
 <td>Bruno Fernandes</td>
+<td>M. Acuña</td>
+<td>K. De Bruyne</td>
+<td>N. Barella</td>
+<td>J. Kimmich</td>
+<td>D. Alaba</td>
+<td>22&nbsp;Paulinho</td>
+<td>E. Can</td>
+<td>João Cancelo</td>
+<td>...</td>
+<td>22&nbsp;G. Leijon</td>
+<td>Wu Fei</td>
+<td>22&nbsp;E. Grosz</td>
+<td>22&nbsp;S. Booth</td>
+<td>22&nbsp;L. Grimpe</td>
+<td>Deng Xiongtao</td>
+<td>22&nbsp;Lim Jun Sub</td>
+<td>A. Demir</td>
+<td>21&nbsp;S. Czajor</td>
+<td>21&nbsp;F. Jakobsson</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Age</td>
 <td>27</td>
 <td>27</td>
+<td>30</td>
+<td>31</td>
+<td>25</td>
+<td>27</td>
+<td>30</td>
+<td>32</td>
+<td>28</td>
+<td>28</td>
+<td>...</td>
+<td>19</td>
+<td>32</td>
+<td>18</td>
+<td>20</td>
+<td>17</td>
+<td>19</td>
+<td>17</td>
+<td>25</td>
+<td>18</td>
+<td>20</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Photo</td>
 <td>https://cdn.sofifa.net/players/209/658/23_60.png</td>
 <td>https://cdn.sofifa.net/players/212/198/23_60.png</td>
+<td>https://cdn.sofifa.net/players/224/334/23_60.png</td>
+<td>https://cdn.sofifa.net/players/192/985/23_60.png</td>
+<td>https://cdn.sofifa.net/players/224/232/23_60.png</td>
+<td>https://cdn.sofifa.net/players/212/622/23_60.png</td>
+<td>https://cdn.sofifa.net/players/197/445/23_60.png</td>
+<td>https://cdn.sofifa.net/players/187/961/22_60.png</td>
+<td>https://cdn.sofifa.net/players/208/333/23_60.png</td>
+<td>https://cdn.sofifa.net/players/210/514/23_60.png</td>
+<td>...</td>
+<td>https://cdn.sofifa.net/players/256/879/22_60.png</td>
+<td>https://cdn.sofifa.net/players/269/546/23_60.png</td>
+<td>https://cdn.sofifa.net/players/267/647/22_60.png</td>
+<td>https://cdn.sofifa.net/players/253/186/22_60.png</td>
+<td>https://cdn.sofifa.net/players/267/461/22_60.png</td>
+<td>https://cdn.sofifa.net/players/269/526/23_60.png</td>
+<td>https://cdn.sofifa.net/players/267/946/22_60.png</td>
+<td>https://cdn.sofifa.net/players/270/567/23_60.png</td>
+<td>https://cdn.sofifa.net/players/256/624/21_60.png</td>
+<td>https://cdn.sofifa.net/players/256/376/21_60.png</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Nationality</td>
 <td>Germany</td>
 <td>Portugal</td>
+<td>Argentina</td>
+<td>Belgium</td>
+<td>Italy</td>
+<td>Germany</td>
+<td>Austria</td>
+<td>Brazil</td>
+<td>Germany</td>
+<td>Portugal</td>
+<td>...</td>
+<td>Sweden</td>
+<td>China PR</td>
+<td>Romania</td>
+<td>England</td>
+<td>Germany</td>
+<td>China PR</td>
+<td>Korea Republic</td>
+<td>Turkey</td>
+<td>Poland</td>
+<td>Sweden</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
+<td data-quarto-table-cell-role="th">Flag</td>
+<td>https://cdn.sofifa.net/flags/de.png</td>
+<td>https://cdn.sofifa.net/flags/pt.png</td>
+<td>https://cdn.sofifa.net/flags/ar.png</td>
+<td>https://cdn.sofifa.net/flags/be.png</td>
+<td>https://cdn.sofifa.net/flags/it.png</td>
+<td>https://cdn.sofifa.net/flags/de.png</td>
+<td>https://cdn.sofifa.net/flags/at.png</td>
+<td>https://cdn.sofifa.net/flags/br.png</td>
+<td>https://cdn.sofifa.net/flags/de.png</td>
+<td>https://cdn.sofifa.net/flags/pt.png</td>
 <td>...</td>
+<td>https://cdn.sofifa.net/flags/se.png</td>
+<td>https://cdn.sofifa.net/flags/cn.png</td>
+<td>https://cdn.sofifa.net/flags/ro.png</td>
+<td>https://cdn.sofifa.net/flags/gb-eng.png</td>
+<td>https://cdn.sofifa.net/flags/de.png</td>
+<td>https://cdn.sofifa.net/flags/cn.png</td>
+<td>https://cdn.sofifa.net/flags/kr.png</td>
+<td>https://cdn.sofifa.net/flags/tr.png</td>
+<td>https://cdn.sofifa.net/flags/pl.png</td>
+<td>https://cdn.sofifa.net/flags/se.png</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Overall</td>
+<td>87</td>
+<td>86</td>
+<td>85</td>
+<td>91</td>
+<td>86</td>
+<td>89</td>
+<td>86</td>
+<td>83</td>
+<td>82</td>
+<td>88</td>
 <td>...</td>
+<td>52</td>
+<td>51</td>
+<td>52</td>
+<td>51</td>
+<td>54</td>
+<td>48</td>
+<td>48</td>
+<td>51</td>
+<td>50</td>
+<td>50</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Potential</td>
+<td>88</td>
+<td>87</td>
+<td>85</td>
+<td>91</td>
+<td>89</td>
+<td>90</td>
+<td>86</td>
+<td>83</td>
+<td>82</td>
+<td>88</td>
+<td>...</td>
+<td>62</td>
+<td>51</td>
+<td>70</td>
+<td>60</td>
+<td>68</td>
+<td>61</td>
+<td>64</td>
+<td>56</td>
+<td>65</td>
+<td>61</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Club</td>
+<td>FC Bayern München</td>
+<td>Manchester United</td>
+<td>Sevilla FC</td>
+<td>Manchester City</td>
+<td>Inter</td>
+<td>FC Bayern München</td>
+<td>Real Madrid CF</td>
+<td>Al Ahli</td>
+<td>Borussia Dortmund</td>
+<td>Manchester City</td>
+<td>...</td>
+<td>Örebro SK</td>
+<td>Wuhan Three Towns</td>
+<td>Gaz Metan Mediaş</td>
+<td>Crewe Alexandra</td>
+<td>RB Leipzig</td>
+<td>Meizhou Hakka</td>
+<td>Jeju United FC</td>
+<td>Ümraniyespor</td>
+<td>Fleetwood Town</td>
+<td>IFK Norrköping</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Club Logo</td>
+<td>https://cdn.sofifa.net/teams/21/30.png</td>
+<td>https://cdn.sofifa.net/teams/11/30.png</td>
+<td>https://cdn.sofifa.net/teams/481/30.png</td>
+<td>https://cdn.sofifa.net/teams/10/30.png</td>
+<td>https://cdn.sofifa.net/teams/44/30.png</td>
+<td>https://cdn.sofifa.net/teams/21/30.png</td>
+<td>https://cdn.sofifa.net/teams/243/30.png</td>
+<td>https://cdn.sofifa.net/teams/112387/30.png</td>
+<td>https://cdn.sofifa.net/teams/22/30.png</td>
+<td>https://cdn.sofifa.net/teams/10/30.png</td>
+<td>...</td>
+<td>https://cdn.sofifa.net/teams/705/30.png</td>
+<td>https://cdn.sofifa.net/teams/116361/30.png</td>
+<td>https://cdn.sofifa.net/teams/112637/30.png</td>
+<td>https://cdn.sofifa.net/teams/121/30.png</td>
+<td>https://cdn.sofifa.net/teams/112172/30.png</td>
+<td>https://cdn.sofifa.net/teams/114628/30.png</td>
+<td>https://cdn.sofifa.net/teams/1478/30.png</td>
+<td>https://cdn.sofifa.net/teams/113796/30.png</td>
+<td>https://cdn.sofifa.net/teams/112260/30.png</td>
+<td>https://cdn.sofifa.net/teams/702/30.png</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Value</td>
+<td>€91M</td>
+<td>€78.5M</td>
+<td>€46.5M</td>
+<td>€107.5M</td>
+<td>€89.5M</td>
+<td>€105.5M</td>
+<td>€55.5M</td>
+<td>€28.5M</td>
+<td>€30.5M</td>
+<td>€82.5M</td>
+<td>...</td>
+<td>€150K</td>
+<td>€30K</td>
+<td>€180K</td>
+<td>€110K</td>
+<td>€210K</td>
+<td>€100K</td>
+<td>€100K</td>
+<td>€70K</td>
+<td>€90K</td>
+<td>€90K</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Wage</td>
+<td>€115K</td>
+<td>€190K</td>
+<td>€46K</td>
+<td>€350K</td>
+<td>€110K</td>
+<td>€130K</td>
+<td>€220K</td>
+<td>€61K</td>
+<td>€63K</td>
+<td>€250K</td>
+<td>...</td>
+<td>€500</td>
+<td>€2K</td>
+<td>€500</td>
+<td>€850</td>
+<td>€500</td>
+<td>€500</td>
+<td>€500</td>
+<td>€2K</td>
+<td>€500</td>
+<td>€500</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Special</td>
+<td>2312</td>
+<td>2305</td>
+<td>2303</td>
+<td>2303</td>
+<td>2296</td>
+<td>2283</td>
+<td>2277</td>
+<td>2273</td>
+<td>2271</td>
+<td>2262</td>
+<td>...</td>
+<td>779</td>
+<td>777</td>
+<td>775</td>
+<td>768</td>
+<td>767</td>
+<td>762</td>
+<td>761</td>
+<td>759</td>
+<td>758</td>
+<td>749</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Preferred Foot</td>
+<td>Right</td>
+<td>Right</td>
+<td>Left</td>
+<td>Right</td>
+<td>Right</td>
+<td>Right</td>
+<td>Left</td>
+<td>Right</td>
+<td>Right</td>
+<td>Right</td>
+<td>...</td>
+<td>Right</td>
+<td>Right</td>
+<td>Right</td>
+<td>Right</td>
+<td>Right</td>
+<td>Right</td>
+<td>Right</td>
+<td>Right</td>
+<td>Right</td>
+<td>Left</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">International Reputation</td>
+<td>4.0</td>
+<td>3.0</td>
+<td>2.0</td>
+<td>4.0</td>
+<td>3.0</td>
+<td>4.0</td>
+<td>4.0</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>...</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Weak Foot</td>
+<td>4.0</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>5.0</td>
+<td>3.0</td>
+<td>4.0</td>
+<td>4.0</td>
+<td>4.0</td>
+<td>4.0</td>
+<td>4.0</td>
+<td>...</td>
+<td>3.0</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>2.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Skill Moves</td>
+<td>3.0</td>
+<td>4.0</td>
+<td>3.0</td>
+<td>4.0</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>4.0</td>
+<td>3.0</td>
+<td>4.0</td>
+<td>...</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Work Rate</td>
+<td>High/ Medium</td>
+<td>High/ High</td>
+<td>High/ High</td>
+<td>High/ High</td>
+<td>High/ High</td>
+<td>High/ Medium</td>
+<td>Medium/ Medium</td>
+<td>High/ High</td>
+<td>Medium/ High</td>
+<td>High/ Medium</td>
+<td>...</td>
+<td>Medium/ Medium</td>
+<td>Medium/ Medium</td>
+<td>Medium/ Medium</td>
+<td>Medium/ Medium</td>
+<td>Medium/ Medium</td>
+<td>Medium/ Medium</td>
+<td>Medium/ Medium</td>
+<td>Medium/ Medium</td>
+<td>Medium/ Medium</td>
+<td>Medium/ Medium</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Body Type</td>
+<td>Unique</td>
+<td>Unique</td>
+<td>Stocky (170-185)</td>
+<td>Unique</td>
+<td>Normal (170-)</td>
+<td>Normal (170-185)</td>
+<td>Normal (170-185)</td>
+<td>Normal (170-185)</td>
+<td>Stocky (185+)</td>
+<td>Unique</td>
+<td>...</td>
+<td>Normal (185+)</td>
+<td>Normal (185+)</td>
+<td>Lean (185+)</td>
+<td>Lean (185+)</td>
+<td>Lean (185+)</td>
+<td>Normal (185+)</td>
+<td>Lean (185+)</td>
+<td>Lean (185+)</td>
+<td>Normal (185+)</td>
+<td>Normal (185+)</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Real Face</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>...</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Position</td>
+<td>&lt;span class="pos pos28"&gt;SUB</td>
+<td>&lt;span class="pos pos15"&gt;LCM</td>
+<td>&lt;span class="pos pos7"&gt;LB</td>
+<td>&lt;span class="pos pos13"&gt;RCM</td>
+<td>&lt;span class="pos pos13"&gt;RCM</td>
+<td>&lt;span class="pos pos9"&gt;RDM</td>
+<td>&lt;span class="pos pos6"&gt;LCB</td>
+<td>&lt;span class="pos pos15"&gt;LCM</td>
+<td>&lt;span class="pos pos28"&gt;SUB</td>
+<td>&lt;span class="pos pos7"&gt;LB</td>
+<td>...</td>
+<td>&lt;span class="pos pos28"&gt;SUB</td>
+<td>&lt;span class="pos pos28"&gt;SUB</td>
+<td>&lt;span class="pos pos28"&gt;SUB</td>
+<td>&lt;span class="pos pos29"&gt;RES</td>
+<td>&lt;span class="pos pos29"&gt;RES</td>
+<td>&lt;span class="pos pos29"&gt;RES</td>
+<td>&lt;span class="pos pos29"&gt;RES</td>
+<td>&lt;span class="pos pos29"&gt;RES</td>
+<td>&lt;span class="pos pos29"&gt;RES</td>
+<td>&lt;span class="pos pos29"&gt;RES</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Joined</td>
+<td>Jul 1, 2018</td>
+<td>Jan 30, 2020</td>
+<td>Sep 14, 2020</td>
+<td>Aug 30, 2015</td>
+<td>Sep 1, 2020</td>
+<td>Jul 1, 2015</td>
+<td>Jul 1, 2021</td>
+<td>Jul 22, 2021</td>
+<td>Feb 18, 2020</td>
+<td>Aug 7, 2019</td>
+<td>...</td>
+<td>Jun 14, 2020</td>
+<td>Feb 15, 2019</td>
+<td>Jul 1, 2020</td>
+<td>Jul 1, 2019</td>
+<td>Feb 7, 2022</td>
+<td>Apr 11, 2022</td>
+<td>Jan 1, 2022</td>
+<td>Jun 6, 2021</td>
+<td>Jan 1, 2020</td>
+<td>Jan 8, 2020</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Loaned From</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Contract Valid Until</td>
+<td>2026</td>
+<td>2026</td>
+<td>2024</td>
+<td>2025</td>
+<td>2026</td>
+<td>2025</td>
+<td>2026</td>
+<td>2024</td>
+<td>2024</td>
+<td>2027</td>
+<td>...</td>
+<td>2022</td>
+<td>2022</td>
+<td>2022</td>
+<td>2022</td>
+<td>2023</td>
+<td>2027</td>
+<td>2026</td>
+<td>2023</td>
+<td>2021</td>
+<td>2021</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Height</td>
 <td>189cm</td>
 <td>179cm</td>
+<td>172cm</td>
+<td>181cm</td>
+<td>172cm</td>
+<td>177cm</td>
+<td>180cm</td>
+<td>183cm</td>
+<td>186cm</td>
+<td>182cm</td>
+<td>...</td>
+<td>188cm</td>
+<td>186cm</td>
+<td>190cm</td>
+<td>195cm</td>
+<td>186cm</td>
+<td>190cm</td>
+<td>195cm</td>
+<td>190cm</td>
+<td>187cm</td>
+<td>186cm</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Weight</td>
 <td>82kg</td>
 <td>69kg</td>
+<td>69kg</td>
+<td>70kg</td>
+<td>68kg</td>
+<td>75kg</td>
+<td>78kg</td>
+<td>80kg</td>
+<td>86kg</td>
+<td>74kg</td>
+<td>...</td>
+<td>81kg</td>
+<td>78kg</td>
+<td>70kg</td>
+<td>80kg</td>
+<td>78kg</td>
+<td>78kg</td>
+<td>84kg</td>
+<td>82kg</td>
+<td>79kg</td>
+<td>78kg</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Release Clause</td>
 <td>€157M</td>
 <td>€155M</td>
+<td>€97.7M</td>
+<td>€198.9M</td>
+<td>€154.4M</td>
+<td>€182M</td>
+<td>€113.8M</td>
+<td>€48.5M</td>
+<td>€51.9M</td>
+<td>€152.6M</td>
+<td>...</td>
+<td>€218K</td>
+<td>€47K</td>
+<td>€356K</td>
+<td>€215K</td>
+<td>€488K</td>
+<td>€218K</td>
+<td>€188K</td>
+<td>€142K</td>
+<td>€214K</td>
+<td>€131K</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Kit Number</td>
 <td>8.0</td>
 <td>8.0</td>
+<td>19.0</td>
+<td>17.0</td>
+<td>23.0</td>
+<td>6.0</td>
+<td>4.0</td>
+<td>15.0</td>
+<td>23.0</td>
+<td>7.0</td>
+<td>...</td>
+<td>33.0</td>
+<td>1.0</td>
+<td>99.0</td>
+<td>27.0</td>
+<td>43.0</td>
+<td>35.0</td>
+<td>21.0</td>
+<td>12.0</td>
+<td>40.0</td>
+<td>30.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Best Overall Rating</td>
 <td>NaN</td>
 <td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
 </tr>
 </tbody>
 </table>
 
-<p>29 rows × 2 columns</p>
+<p>29 rows × 17660 columns</p>
 </div>
 </div>
 </div>
-<ul>
-<li>이 예제에서는 줄이는 옵션을 사용했지만 보통은 늘려서 사용함</li>
-</ul>
 </section>
-<section id="c.-df.dtypes-s.dtype-df.select_dtypes" class="level3">
-<h3 class="anchored" data-anchor-id="c.-df.dtypes-s.dtype-df.select_dtypes">C. <code>df.dtypes</code>, <code>s.dtype</code>, <code>df.select_dtypes()</code></h3>
-<p><code>-</code> <code>df.dtypes</code></p>
-<div id="60f9f90a-732b-4b58-9e9a-78828676916d" class="cell" data-tags="[]" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>ID                            int64
-Name                         object
-Age                           int64
-Photo                        object
-Nationality                  object
-Flag                         object
-Overall                       int64
-Potential                     int64
-Club                         object
-Club Logo                    object
-Value                        object
-Wage                         object
-Special                       int64
-Preferred Foot               object
-International Reputation    float64
-Weak Foot                   float64
-Skill Moves                 float64
-Work Rate                    object
-Body Type                    object
-Real Face                    object
-Position                     object
-Joined                       object
-Loaned From                  object
-Contract Valid Until         object
-Height                       object
-Weight                       object
-Release Clause               object
-Kit Number                  float64
-Best Overall Rating          object
-dtype: object</code></pre>
-</div>
-</div>
-<p><code>-</code> <code>s.dtype</code></p>
-<div id="ffd04fed-1e63-43a3-9a8e-cb8918ce1e64" class="cell" data-tags="[]" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df.Name.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
-<pre><code>dtype('O')</code></pre>
-</div>
-</div>
-<p><code>-</code> <code>==</code>를 이용한 자료형 체크</p>
-<div id="26c4d9cd-3b52-4ad7-a3e2-94e9de0754f9" class="cell" data-tags="[]" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df.Name.dtype <span class="op">==</span> <span class="bu">object</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df.Name.dtype <span class="op">==</span> np.object_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
-<pre><code>True</code></pre>
-</div>
-</div>
-<div id="3a55582b-ee8e-4fd9-ae38-6ff529e7bb98" class="cell" data-tags="[]" data-execution_count="746">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df.Age.dtype <span class="op">==</span> <span class="bu">int</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>df.Age.dtype <span class="op">==</span> np.int64</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="746">
-<pre><code>True</code></pre>
-</div>
-</div>
-<div id="dfc6f23b-4cb4-436b-90de-c24b2ca5e4a7" class="cell" data-tags="[]" data-execution_count="752">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'International Reputation'</span>].dtype <span class="op">==</span> <span class="bu">float</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'International Reputation'</span>].dtype <span class="op">==</span> np.float64</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="752">
-<pre><code>True</code></pre>
-</div>
-</div>
-<p><code># 예제1</code>: <code>df</code>에서 <code>int</code> 자료형만 출력</p>
-<p><code>-</code> (풀이1)</p>
-<div id="964d7940-47ae-4c01-95a8-4c2e2a4d2145" class="cell" data-tags="[]" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df.loc[:,[l <span class="op">==</span> <span class="bu">int</span> <span class="cf">for</span> l <span class="kw">in</span> df.dtypes]]</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>df.loc[:,[l <span class="op">==</span> np.int64 <span class="cf">for</span> l <span class="kw">in</span> df.dtypes]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">ID</th>
-<th data-quarto-table-cell-role="th">Age</th>
-<th data-quarto-table-cell-role="th">Overall</th>
-<th data-quarto-table-cell-role="th">Potential</th>
-<th data-quarto-table-cell-role="th">Special</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>209658</td>
-<td>27</td>
-<td>87</td>
-<td>88</td>
-<td>2312</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>212198</td>
-<td>27</td>
-<td>86</td>
-<td>87</td>
-<td>2305</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>224334</td>
-<td>30</td>
-<td>85</td>
-<td>85</td>
-<td>2303</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>192985</td>
-<td>31</td>
-<td>91</td>
-<td>91</td>
-<td>2303</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>224232</td>
-<td>25</td>
-<td>86</td>
-<td>89</td>
-<td>2296</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">17655</td>
-<td>269526</td>
-<td>19</td>
-<td>48</td>
-<td>61</td>
-<td>762</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">17656</td>
-<td>267946</td>
-<td>17</td>
-<td>48</td>
-<td>64</td>
-<td>761</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">17657</td>
-<td>270567</td>
-<td>25</td>
-<td>51</td>
-<td>56</td>
-<td>759</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">17658</td>
-<td>256624</td>
-<td>18</td>
-<td>50</td>
-<td>65</td>
-<td>758</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">17659</td>
-<td>256376</td>
-<td>20</td>
-<td>50</td>
-<td>61</td>
-<td>749</td>
-</tr>
-</tbody>
-</table>
-
-<p>17660 rows × 5 columns</p>
-</div>
-</div>
-</div>
-<p><code>-</code> (풀이2)</p>
-<div id="b328cf8e-f09e-4495-a323-59582887de35" class="cell" data-tags="[]" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df.select_dtypes(<span class="bu">int</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>df.select_dtypes(np.int64)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>df.select_dtypes([<span class="bu">int</span>])</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>df.select_dtypes([np.int64])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">ID</th>
-<th data-quarto-table-cell-role="th">Age</th>
-<th data-quarto-table-cell-role="th">Overall</th>
-<th data-quarto-table-cell-role="th">Potential</th>
-<th data-quarto-table-cell-role="th">Special</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>209658</td>
-<td>27</td>
-<td>87</td>
-<td>88</td>
-<td>2312</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>212198</td>
-<td>27</td>
-<td>86</td>
-<td>87</td>
-<td>2305</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>224334</td>
-<td>30</td>
-<td>85</td>
-<td>85</td>
-<td>2303</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>192985</td>
-<td>31</td>
-<td>91</td>
-<td>91</td>
-<td>2303</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>224232</td>
-<td>25</td>
-<td>86</td>
-<td>89</td>
-<td>2296</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">17655</td>
-<td>269526</td>
-<td>19</td>
-<td>48</td>
-<td>61</td>
-<td>762</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">17656</td>
-<td>267946</td>
-<td>17</td>
-<td>48</td>
-<td>64</td>
-<td>761</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">17657</td>
-<td>270567</td>
-<td>25</td>
-<td>51</td>
-<td>56</td>
-<td>759</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">17658</td>
-<td>256624</td>
-<td>18</td>
-<td>50</td>
-<td>65</td>
-<td>758</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">17659</td>
-<td>256376</td>
-<td>20</td>
-<td>50</td>
-<td>61</td>
-<td>749</td>
-</tr>
-</tbody>
-</table>
-
-<p>17660 rows × 5 columns</p>
-</div>
-</div>
-</div>
-<p><code>#</code></p>
-<p><code># 예제2</code>: <code>df</code>에서 <code>int</code>, <code>float</code> 자료형만 출력 – <code>select_dtypes()</code> 이용</p>
-<div id="301b8398-dd2a-47d9-b0b7-e2c930d9cb27" class="cell" data-tags="[]" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df.select_dtypes([<span class="bu">int</span>,<span class="bu">float</span>])</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>df.select_dtypes([np.int64,np.float64])</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>df.select_dtypes(<span class="st">'number'</span>)</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>df.select_dtypes([<span class="st">'number'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">ID</th>
-<th data-quarto-table-cell-role="th">Age</th>
-<th data-quarto-table-cell-role="th">Overall</th>
-<th data-quarto-table-cell-role="th">Potential</th>
-<th data-quarto-table-cell-role="th">Special</th>
-<th data-quarto-table-cell-role="th">International Reputation</th>
-<th data-quarto-table-cell-role="th">Weak Foot</th>
-<th data-quarto-table-cell-role="th">Skill Moves</th>
-<th data-quarto-table-cell-role="th">Kit Number</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>209658</td>
-<td>27</td>
-<td>87</td>
-<td>88</td>
-<td>2312</td>
-<td>4.0</td>
-<td>4.0</td>
-<td>3.0</td>
-<td>8.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>212198</td>
-<td>27</td>
-<td>86</td>
-<td>87</td>
-<td>2305</td>
-<td>3.0</td>
-<td>3.0</td>
-<td>4.0</td>
-<td>8.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>224334</td>
-<td>30</td>
-<td>85</td>
-<td>85</td>
-<td>2303</td>
-<td>2.0</td>
-<td>3.0</td>
-<td>3.0</td>
-<td>19.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>192985</td>
-<td>31</td>
-<td>91</td>
-<td>91</td>
-<td>2303</td>
-<td>4.0</td>
-<td>5.0</td>
-<td>4.0</td>
-<td>17.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>224232</td>
-<td>25</td>
-<td>86</td>
-<td>89</td>
-<td>2296</td>
-<td>3.0</td>
-<td>3.0</td>
-<td>3.0</td>
-<td>23.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">17655</td>
-<td>269526</td>
-<td>19</td>
-<td>48</td>
-<td>61</td>
-<td>762</td>
-<td>1.0</td>
-<td>3.0</td>
-<td>1.0</td>
-<td>35.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">17656</td>
-<td>267946</td>
-<td>17</td>
-<td>48</td>
-<td>64</td>
-<td>761</td>
-<td>1.0</td>
-<td>2.0</td>
-<td>1.0</td>
-<td>21.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">17657</td>
-<td>270567</td>
-<td>25</td>
-<td>51</td>
-<td>56</td>
-<td>759</td>
-<td>1.0</td>
-<td>2.0</td>
-<td>1.0</td>
-<td>12.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">17658</td>
-<td>256624</td>
-<td>18</td>
-<td>50</td>
-<td>65</td>
-<td>758</td>
-<td>1.0</td>
-<td>2.0</td>
-<td>1.0</td>
-<td>40.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">17659</td>
-<td>256376</td>
-<td>20</td>
-<td>50</td>
-<td>61</td>
-<td>749</td>
-<td>1.0</td>
-<td>2.0</td>
-<td>1.0</td>
-<td>30.0</td>
-</tr>
-</tbody>
-</table>
-
-<p>17660 rows × 9 columns</p>
-</div>
-</div>
-</div>
-<p><code>#</code></p>
-<p><code># 예제3</code>: <code>df</code>에서 <code>object</code> 자료형만 출력 – <code>select_dtypes()</code> 이용</p>
-<div id="db1f89d3-fa07-41b2-aa62-49781340d144" class="cell" data-tags="[]" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df.select_dtypes(<span class="bu">object</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>df.select_dtypes([<span class="bu">object</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="14">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Name</th>
-<th data-quarto-table-cell-role="th">Photo</th>
-<th data-quarto-table-cell-role="th">Nationality</th>
-<th data-quarto-table-cell-role="th">Flag</th>
-<th data-quarto-table-cell-role="th">Club</th>
-<th data-quarto-table-cell-role="th">Club Logo</th>
-<th data-quarto-table-cell-role="th">Value</th>
-<th data-quarto-table-cell-role="th">Wage</th>
-<th data-quarto-table-cell-role="th">Preferred Foot</th>
-<th data-quarto-table-cell-role="th">Work Rate</th>
-<th data-quarto-table-cell-role="th">Body Type</th>
-<th data-quarto-table-cell-role="th">Real Face</th>
-<th data-quarto-table-cell-role="th">Position</th>
-<th data-quarto-table-cell-role="th">Joined</th>
-<th data-quarto-table-cell-role="th">Loaned From</th>
-<th data-quarto-table-cell-role="th">Contract Valid Until</th>
-<th data-quarto-table-cell-role="th">Height</th>
-<th data-quarto-table-cell-role="th">Weight</th>
-<th data-quarto-table-cell-role="th">Release Clause</th>
-<th data-quarto-table-cell-role="th">Best Overall Rating</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>L. Goretzka</td>
-<td>https://cdn.sofifa.net/players/209/658/23_60.png</td>
-<td>Germany</td>
-<td>https://cdn.sofifa.net/flags/de.png</td>
-<td>FC Bayern München</td>
-<td>https://cdn.sofifa.net/teams/21/30.png</td>
-<td>€91M</td>
-<td>€115K</td>
-<td>Right</td>
-<td>High/ Medium</td>
-<td>Unique</td>
-<td>Yes</td>
-<td>&lt;span class="pos pos28"&gt;SUB</td>
-<td>Jul 1, 2018</td>
-<td>NaN</td>
-<td>2026</td>
-<td>189cm</td>
-<td>82kg</td>
-<td>€157M</td>
-<td>NaN</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>Bruno Fernandes</td>
-<td>https://cdn.sofifa.net/players/212/198/23_60.png</td>
-<td>Portugal</td>
-<td>https://cdn.sofifa.net/flags/pt.png</td>
-<td>Manchester United</td>
-<td>https://cdn.sofifa.net/teams/11/30.png</td>
-<td>€78.5M</td>
-<td>€190K</td>
-<td>Right</td>
-<td>High/ High</td>
-<td>Unique</td>
-<td>Yes</td>
-<td>&lt;span class="pos pos15"&gt;LCM</td>
-<td>Jan 30, 2020</td>
-<td>NaN</td>
-<td>2026</td>
-<td>179cm</td>
-<td>69kg</td>
-<td>€155M</td>
-<td>NaN</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>M. Acuña</td>
-<td>https://cdn.sofifa.net/players/224/334/23_60.png</td>
-<td>Argentina</td>
-<td>https://cdn.sofifa.net/flags/ar.png</td>
-<td>Sevilla FC</td>
-<td>https://cdn.sofifa.net/teams/481/30.png</td>
-<td>€46.5M</td>
-<td>€46K</td>
-<td>Left</td>
-<td>High/ High</td>
-<td>Stocky (170-185)</td>
-<td>No</td>
-<td>&lt;span class="pos pos7"&gt;LB</td>
-<td>Sep 14, 2020</td>
-<td>NaN</td>
-<td>2024</td>
-<td>172cm</td>
-<td>69kg</td>
-<td>€97.7M</td>
-<td>NaN</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>K. De Bruyne</td>
-<td>https://cdn.sofifa.net/players/192/985/23_60.png</td>
-<td>Belgium</td>
-<td>https://cdn.sofifa.net/flags/be.png</td>
-<td>Manchester City</td>
-<td>https://cdn.sofifa.net/teams/10/30.png</td>
-<td>€107.5M</td>
-<td>€350K</td>
-<td>Right</td>
-<td>High/ High</td>
-<td>Unique</td>
-<td>Yes</td>
-<td>&lt;span class="pos pos13"&gt;RCM</td>
-<td>Aug 30, 2015</td>
-<td>NaN</td>
-<td>2025</td>
-<td>181cm</td>
-<td>70kg</td>
-<td>€198.9M</td>
-<td>NaN</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>N. Barella</td>
-<td>https://cdn.sofifa.net/players/224/232/23_60.png</td>
-<td>Italy</td>
-<td>https://cdn.sofifa.net/flags/it.png</td>
-<td>Inter</td>
-<td>https://cdn.sofifa.net/teams/44/30.png</td>
-<td>€89.5M</td>
-<td>€110K</td>
-<td>Right</td>
-<td>High/ High</td>
-<td>Normal (170-)</td>
-<td>Yes</td>
-<td>&lt;span class="pos pos13"&gt;RCM</td>
-<td>Sep 1, 2020</td>
-<td>NaN</td>
-<td>2026</td>
-<td>172cm</td>
-<td>68kg</td>
-<td>€154.4M</td>
-<td>NaN</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">17655</td>
-<td>Deng Xiongtao</td>
-<td>https://cdn.sofifa.net/players/269/526/23_60.png</td>
-<td>China PR</td>
-<td>https://cdn.sofifa.net/flags/cn.png</td>
-<td>Meizhou Hakka</td>
-<td>https://cdn.sofifa.net/teams/114628/30.png</td>
-<td>€100K</td>
-<td>€500</td>
-<td>Right</td>
-<td>Medium/ Medium</td>
-<td>Normal (185+)</td>
-<td>No</td>
-<td>&lt;span class="pos pos29"&gt;RES</td>
-<td>Apr 11, 2022</td>
-<td>NaN</td>
-<td>2027</td>
-<td>190cm</td>
-<td>78kg</td>
-<td>€218K</td>
-<td>NaN</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">17656</td>
-<td>22&nbsp;Lim Jun Sub</td>
-<td>https://cdn.sofifa.net/players/267/946/22_60.png</td>
-<td>Korea Republic</td>
-<td>https://cdn.sofifa.net/flags/kr.png</td>
-<td>Jeju United FC</td>
-<td>https://cdn.sofifa.net/teams/1478/30.png</td>
-<td>€100K</td>
-<td>€500</td>
-<td>Right</td>
-<td>Medium/ Medium</td>
-<td>Lean (185+)</td>
-<td>No</td>
-<td>&lt;span class="pos pos29"&gt;RES</td>
-<td>Jan 1, 2022</td>
-<td>NaN</td>
-<td>2026</td>
-<td>195cm</td>
-<td>84kg</td>
-<td>€188K</td>
-<td>NaN</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">17657</td>
-<td>A. Demir</td>
-<td>https://cdn.sofifa.net/players/270/567/23_60.png</td>
-<td>Turkey</td>
-<td>https://cdn.sofifa.net/flags/tr.png</td>
-<td>Ümraniyespor</td>
-<td>https://cdn.sofifa.net/teams/113796/30.png</td>
-<td>€70K</td>
-<td>€2K</td>
-<td>Right</td>
-<td>Medium/ Medium</td>
-<td>Lean (185+)</td>
-<td>No</td>
-<td>&lt;span class="pos pos29"&gt;RES</td>
-<td>Jun 6, 2021</td>
-<td>NaN</td>
-<td>2023</td>
-<td>190cm</td>
-<td>82kg</td>
-<td>€142K</td>
-<td>NaN</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">17658</td>
-<td>21&nbsp;S. Czajor</td>
-<td>https://cdn.sofifa.net/players/256/624/21_60.png</td>
-<td>Poland</td>
-<td>https://cdn.sofifa.net/flags/pl.png</td>
-<td>Fleetwood Town</td>
-<td>https://cdn.sofifa.net/teams/112260/30.png</td>
-<td>€90K</td>
-<td>€500</td>
-<td>Right</td>
-<td>Medium/ Medium</td>
-<td>Normal (185+)</td>
-<td>No</td>
-<td>&lt;span class="pos pos29"&gt;RES</td>
-<td>Jan 1, 2020</td>
-<td>NaN</td>
-<td>2021</td>
-<td>187cm</td>
-<td>79kg</td>
-<td>€214K</td>
-<td>NaN</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">17659</td>
-<td>21&nbsp;F. Jakobsson</td>
-<td>https://cdn.sofifa.net/players/256/376/21_60.png</td>
-<td>Sweden</td>
-<td>https://cdn.sofifa.net/flags/se.png</td>
-<td>IFK Norrköping</td>
-<td>https://cdn.sofifa.net/teams/702/30.png</td>
-<td>€90K</td>
-<td>€500</td>
-<td>Left</td>
-<td>Medium/ Medium</td>
-<td>Normal (185+)</td>
-<td>No</td>
-<td>&lt;span class="pos pos29"&gt;RES</td>
-<td>Jan 8, 2020</td>
-<td>NaN</td>
-<td>2021</td>
-<td>186cm</td>
-<td>78kg</td>
-<td>€131K</td>
-<td>NaN</td>
-</tr>
-</tbody>
-</table>
-
-<p>17660 rows × 20 columns</p>
-</div>
-</div>
-</div>
-<p><code>#</code></p>
-</section>
-<section id="d.-df.sort_values" class="level3">
-<h3 class="anchored" data-anchor-id="d.-df.sort_values">D. <code>df.sort_values()</code></h3>
+<section id="c.-df.sort_values" class="level3">
+<h3 class="anchored" data-anchor-id="c.-df.sort_values">C. <code>df.sort_values()</code></h3>
 <p><code>-</code> 예시1: 나이가 어린 순서대로 정렬</p>
-<div id="364d0e13-683b-47f3-80b3-e25cf5def7e3" class="cell" data-tags="[]" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df.sort_values(by<span class="op">=</span><span class="st">'Age'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
+<div id="364d0e13-683b-47f3-80b3-e25cf5def7e3" class="cell" data-tags="[]" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df.sort_values(by<span class="op">=</span><span class="st">'Age'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
 <div>
 
 
@@ -1692,9 +2158,9 @@ dtype: object</code></pre>
 </div>
 </div>
 <p><code>-</code> 예시2: 나이가 많은 순서대로 정렬</p>
-<div id="f357bbd7-fa81-4b40-bb25-1ffcd74e465d" class="cell" data-tags="[]" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df.sort_values(by<span class="op">=</span><span class="st">'Age'</span>,ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="16">
+<div id="f357bbd7-fa81-4b40-bb25-1ffcd74e465d" class="cell" data-tags="[]" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df.sort_values(by<span class="op">=</span><span class="st">'Age'</span>,ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 
 
@@ -1998,9 +2464,9 @@ dtype: object</code></pre>
 </div>
 </div>
 <p><code>-</code> 예시3: 능력치가 좋은 순서대로 정렬</p>
-<div id="97d8db83-0e42-46a6-b3fc-7d3f41f3a0a4" class="cell" data-tags="[]" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df.sort_values(by<span class="op">=</span><span class="st">'Overall'</span>,ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
+<div id="97d8db83-0e42-46a6-b3fc-7d3f41f3a0a4" class="cell" data-tags="[]" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df.sort_values(by<span class="op">=</span><span class="st">'Overall'</span>,ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 
 
@@ -2304,10 +2770,10 @@ dtype: object</code></pre>
 </div>
 </div>
 </section>
-<section id="e.-df.info" class="level3">
-<h3 class="anchored" data-anchor-id="e.-df.info">E. <code>df.info()</code></h3>
-<div id="8dca82bf-dd6a-415a-881b-1c3392c249e2" class="cell" data-tags="[]" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="d.-df.info" class="level3">
+<h3 class="anchored" data-anchor-id="d.-df.info">D. <code>df.info()</code></h3>
+<div id="8dca82bf-dd6a-415a-881b-1c3392c249e2" class="cell" data-tags="[]" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
 RangeIndex: 17660 entries, 0 to 17659
@@ -2348,12 +2814,674 @@ memory usage: 3.9+ MB</code></pre>
 </div>
 </div>
 </section>
+<section id="e.-결측치-처리" class="level3">
+<h3 class="anchored" data-anchor-id="e.-결측치-처리">E. 결측치 처리</h3>
+<p><code># 예제</code> – <code>Club</code> 컬럼의 결측치 갯수를 구하라.</p>
+<div id="f4cd0841-9d65-4312-9703-e2679d8aa3e4" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df.Club.isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>np.int64(211)</code></pre>
+</div>
+</div>
+<p><code>#</code></p>
+<p><code># 예제</code> – 열별 결측치 비율을 구하라.</p>
+<div id="61bb78bc-1ad2-44b9-b8e3-bad8a95276f8" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>{col_name: df[col_name].isna().mean() <span class="cf">for</span> col_name <span class="kw">in</span> df}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>{'ID': np.float64(0.0),
+ 'Name': np.float64(0.0),
+ 'Age': np.float64(0.0),
+ 'Photo': np.float64(0.0),
+ 'Nationality': np.float64(0.0),
+ 'Flag': np.float64(0.0),
+ 'Overall': np.float64(0.0),
+ 'Potential': np.float64(0.0),
+ 'Club': np.float64(0.011947904869762174),
+ 'Club Logo': np.float64(0.0),
+ 'Value': np.float64(0.0),
+ 'Wage': np.float64(0.0),
+ 'Special': np.float64(0.0),
+ 'Preferred Foot': np.float64(0.0),
+ 'International Reputation': np.float64(0.0),
+ 'Weak Foot': np.float64(0.0),
+ 'Skill Moves': np.float64(0.0),
+ 'Work Rate': np.float64(0.0),
+ 'Body Type': np.float64(0.0021517553793884486),
+ 'Real Face': np.float64(0.0021517553793884486),
+ 'Position': np.float64(0.0019818799546998866),
+ 'Joined': np.float64(0.06217440543601359),
+ 'Loaned From': np.float64(0.9607021517553794),
+ 'Contract Valid Until': np.float64(0.02044167610419026),
+ 'Height': np.float64(0.0),
+ 'Weight': np.float64(0.0),
+ 'Release Clause': np.float64(0.06517553793884484),
+ 'Kit Number': np.float64(0.0019818799546998866),
+ 'Best Overall Rating': np.float64(0.9988108720271801)}</code></pre>
+</div>
+</div>
+<p><code>#</code></p>
+<p><code># 예제</code> – 결측값이 50%이상인 열을 제외하고 새로운 데이터프레이 <code>df_new</code>로 저장하라.</p>
+<div id="4c208939-ff45-4b56-a394-081d18415788" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df_new <span class="op">=</span> df[[col_name <span class="cf">for</span> col_name <span class="kw">in</span> df <span class="cf">if</span> df[col_name].isna().mean()<span class="op">&lt;</span><span class="fl">0.5</span>]]</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>df_new</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ID</th>
+<th data-quarto-table-cell-role="th">Name</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Photo</th>
+<th data-quarto-table-cell-role="th">Nationality</th>
+<th data-quarto-table-cell-role="th">Flag</th>
+<th data-quarto-table-cell-role="th">Overall</th>
+<th data-quarto-table-cell-role="th">Potential</th>
+<th data-quarto-table-cell-role="th">Club</th>
+<th data-quarto-table-cell-role="th">Club Logo</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">Work Rate</th>
+<th data-quarto-table-cell-role="th">Body Type</th>
+<th data-quarto-table-cell-role="th">Real Face</th>
+<th data-quarto-table-cell-role="th">Position</th>
+<th data-quarto-table-cell-role="th">Joined</th>
+<th data-quarto-table-cell-role="th">Contract Valid Until</th>
+<th data-quarto-table-cell-role="th">Height</th>
+<th data-quarto-table-cell-role="th">Weight</th>
+<th data-quarto-table-cell-role="th">Release Clause</th>
+<th data-quarto-table-cell-role="th">Kit Number</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>209658</td>
+<td>L. Goretzka</td>
+<td>27</td>
+<td>https://cdn.sofifa.net/players/209/658/23_60.png</td>
+<td>Germany</td>
+<td>https://cdn.sofifa.net/flags/de.png</td>
+<td>87</td>
+<td>88</td>
+<td>FC Bayern München</td>
+<td>https://cdn.sofifa.net/teams/21/30.png</td>
+<td>...</td>
+<td>High/ Medium</td>
+<td>Unique</td>
+<td>Yes</td>
+<td>&lt;span class="pos pos28"&gt;SUB</td>
+<td>Jul 1, 2018</td>
+<td>2026</td>
+<td>189cm</td>
+<td>82kg</td>
+<td>€157M</td>
+<td>8.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>212198</td>
+<td>Bruno Fernandes</td>
+<td>27</td>
+<td>https://cdn.sofifa.net/players/212/198/23_60.png</td>
+<td>Portugal</td>
+<td>https://cdn.sofifa.net/flags/pt.png</td>
+<td>86</td>
+<td>87</td>
+<td>Manchester United</td>
+<td>https://cdn.sofifa.net/teams/11/30.png</td>
+<td>...</td>
+<td>High/ High</td>
+<td>Unique</td>
+<td>Yes</td>
+<td>&lt;span class="pos pos15"&gt;LCM</td>
+<td>Jan 30, 2020</td>
+<td>2026</td>
+<td>179cm</td>
+<td>69kg</td>
+<td>€155M</td>
+<td>8.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>224334</td>
+<td>M. Acuña</td>
+<td>30</td>
+<td>https://cdn.sofifa.net/players/224/334/23_60.png</td>
+<td>Argentina</td>
+<td>https://cdn.sofifa.net/flags/ar.png</td>
+<td>85</td>
+<td>85</td>
+<td>Sevilla FC</td>
+<td>https://cdn.sofifa.net/teams/481/30.png</td>
+<td>...</td>
+<td>High/ High</td>
+<td>Stocky (170-185)</td>
+<td>No</td>
+<td>&lt;span class="pos pos7"&gt;LB</td>
+<td>Sep 14, 2020</td>
+<td>2024</td>
+<td>172cm</td>
+<td>69kg</td>
+<td>€97.7M</td>
+<td>19.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>192985</td>
+<td>K. De Bruyne</td>
+<td>31</td>
+<td>https://cdn.sofifa.net/players/192/985/23_60.png</td>
+<td>Belgium</td>
+<td>https://cdn.sofifa.net/flags/be.png</td>
+<td>91</td>
+<td>91</td>
+<td>Manchester City</td>
+<td>https://cdn.sofifa.net/teams/10/30.png</td>
+<td>...</td>
+<td>High/ High</td>
+<td>Unique</td>
+<td>Yes</td>
+<td>&lt;span class="pos pos13"&gt;RCM</td>
+<td>Aug 30, 2015</td>
+<td>2025</td>
+<td>181cm</td>
+<td>70kg</td>
+<td>€198.9M</td>
+<td>17.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>224232</td>
+<td>N. Barella</td>
+<td>25</td>
+<td>https://cdn.sofifa.net/players/224/232/23_60.png</td>
+<td>Italy</td>
+<td>https://cdn.sofifa.net/flags/it.png</td>
+<td>86</td>
+<td>89</td>
+<td>Inter</td>
+<td>https://cdn.sofifa.net/teams/44/30.png</td>
+<td>...</td>
+<td>High/ High</td>
+<td>Normal (170-)</td>
+<td>Yes</td>
+<td>&lt;span class="pos pos13"&gt;RCM</td>
+<td>Sep 1, 2020</td>
+<td>2026</td>
+<td>172cm</td>
+<td>68kg</td>
+<td>€154.4M</td>
+<td>23.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">17655</td>
+<td>269526</td>
+<td>Deng Xiongtao</td>
+<td>19</td>
+<td>https://cdn.sofifa.net/players/269/526/23_60.png</td>
+<td>China PR</td>
+<td>https://cdn.sofifa.net/flags/cn.png</td>
+<td>48</td>
+<td>61</td>
+<td>Meizhou Hakka</td>
+<td>https://cdn.sofifa.net/teams/114628/30.png</td>
+<td>...</td>
+<td>Medium/ Medium</td>
+<td>Normal (185+)</td>
+<td>No</td>
+<td>&lt;span class="pos pos29"&gt;RES</td>
+<td>Apr 11, 2022</td>
+<td>2027</td>
+<td>190cm</td>
+<td>78kg</td>
+<td>€218K</td>
+<td>35.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17656</td>
+<td>267946</td>
+<td>22&nbsp;Lim Jun Sub</td>
+<td>17</td>
+<td>https://cdn.sofifa.net/players/267/946/22_60.png</td>
+<td>Korea Republic</td>
+<td>https://cdn.sofifa.net/flags/kr.png</td>
+<td>48</td>
+<td>64</td>
+<td>Jeju United FC</td>
+<td>https://cdn.sofifa.net/teams/1478/30.png</td>
+<td>...</td>
+<td>Medium/ Medium</td>
+<td>Lean (185+)</td>
+<td>No</td>
+<td>&lt;span class="pos pos29"&gt;RES</td>
+<td>Jan 1, 2022</td>
+<td>2026</td>
+<td>195cm</td>
+<td>84kg</td>
+<td>€188K</td>
+<td>21.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">17657</td>
+<td>270567</td>
+<td>A. Demir</td>
+<td>25</td>
+<td>https://cdn.sofifa.net/players/270/567/23_60.png</td>
+<td>Turkey</td>
+<td>https://cdn.sofifa.net/flags/tr.png</td>
+<td>51</td>
+<td>56</td>
+<td>Ümraniyespor</td>
+<td>https://cdn.sofifa.net/teams/113796/30.png</td>
+<td>...</td>
+<td>Medium/ Medium</td>
+<td>Lean (185+)</td>
+<td>No</td>
+<td>&lt;span class="pos pos29"&gt;RES</td>
+<td>Jun 6, 2021</td>
+<td>2023</td>
+<td>190cm</td>
+<td>82kg</td>
+<td>€142K</td>
+<td>12.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17658</td>
+<td>256624</td>
+<td>21&nbsp;S. Czajor</td>
+<td>18</td>
+<td>https://cdn.sofifa.net/players/256/624/21_60.png</td>
+<td>Poland</td>
+<td>https://cdn.sofifa.net/flags/pl.png</td>
+<td>50</td>
+<td>65</td>
+<td>Fleetwood Town</td>
+<td>https://cdn.sofifa.net/teams/112260/30.png</td>
+<td>...</td>
+<td>Medium/ Medium</td>
+<td>Normal (185+)</td>
+<td>No</td>
+<td>&lt;span class="pos pos29"&gt;RES</td>
+<td>Jan 1, 2020</td>
+<td>2021</td>
+<td>187cm</td>
+<td>79kg</td>
+<td>€214K</td>
+<td>40.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">17659</td>
+<td>256376</td>
+<td>21&nbsp;F. Jakobsson</td>
+<td>20</td>
+<td>https://cdn.sofifa.net/players/256/376/21_60.png</td>
+<td>Sweden</td>
+<td>https://cdn.sofifa.net/flags/se.png</td>
+<td>50</td>
+<td>61</td>
+<td>IFK Norrköping</td>
+<td>https://cdn.sofifa.net/teams/702/30.png</td>
+<td>...</td>
+<td>Medium/ Medium</td>
+<td>Normal (185+)</td>
+<td>No</td>
+<td>&lt;span class="pos pos29"&gt;RES</td>
+<td>Jan 8, 2020</td>
+<td>2021</td>
+<td>186cm</td>
+<td>78kg</td>
+<td>€131K</td>
+<td>30.0</td>
+</tr>
+</tbody>
+</table>
+
+<p>17660 rows × 27 columns</p>
+</div>
+</div>
+</div>
+<p><code>#</code></p>
+<p><code># 예제</code> – 결측치가 포함된 행을 제외하라.</p>
+<div id="338c4b02-6992-4d71-a297-8a23f9928fd0" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df_new.dropna()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ID</th>
+<th data-quarto-table-cell-role="th">Name</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Photo</th>
+<th data-quarto-table-cell-role="th">Nationality</th>
+<th data-quarto-table-cell-role="th">Flag</th>
+<th data-quarto-table-cell-role="th">Overall</th>
+<th data-quarto-table-cell-role="th">Potential</th>
+<th data-quarto-table-cell-role="th">Club</th>
+<th data-quarto-table-cell-role="th">Club Logo</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">Work Rate</th>
+<th data-quarto-table-cell-role="th">Body Type</th>
+<th data-quarto-table-cell-role="th">Real Face</th>
+<th data-quarto-table-cell-role="th">Position</th>
+<th data-quarto-table-cell-role="th">Joined</th>
+<th data-quarto-table-cell-role="th">Contract Valid Until</th>
+<th data-quarto-table-cell-role="th">Height</th>
+<th data-quarto-table-cell-role="th">Weight</th>
+<th data-quarto-table-cell-role="th">Release Clause</th>
+<th data-quarto-table-cell-role="th">Kit Number</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>209658</td>
+<td>L. Goretzka</td>
+<td>27</td>
+<td>https://cdn.sofifa.net/players/209/658/23_60.png</td>
+<td>Germany</td>
+<td>https://cdn.sofifa.net/flags/de.png</td>
+<td>87</td>
+<td>88</td>
+<td>FC Bayern München</td>
+<td>https://cdn.sofifa.net/teams/21/30.png</td>
+<td>...</td>
+<td>High/ Medium</td>
+<td>Unique</td>
+<td>Yes</td>
+<td>&lt;span class="pos pos28"&gt;SUB</td>
+<td>Jul 1, 2018</td>
+<td>2026</td>
+<td>189cm</td>
+<td>82kg</td>
+<td>€157M</td>
+<td>8.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>212198</td>
+<td>Bruno Fernandes</td>
+<td>27</td>
+<td>https://cdn.sofifa.net/players/212/198/23_60.png</td>
+<td>Portugal</td>
+<td>https://cdn.sofifa.net/flags/pt.png</td>
+<td>86</td>
+<td>87</td>
+<td>Manchester United</td>
+<td>https://cdn.sofifa.net/teams/11/30.png</td>
+<td>...</td>
+<td>High/ High</td>
+<td>Unique</td>
+<td>Yes</td>
+<td>&lt;span class="pos pos15"&gt;LCM</td>
+<td>Jan 30, 2020</td>
+<td>2026</td>
+<td>179cm</td>
+<td>69kg</td>
+<td>€155M</td>
+<td>8.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>224334</td>
+<td>M. Acuña</td>
+<td>30</td>
+<td>https://cdn.sofifa.net/players/224/334/23_60.png</td>
+<td>Argentina</td>
+<td>https://cdn.sofifa.net/flags/ar.png</td>
+<td>85</td>
+<td>85</td>
+<td>Sevilla FC</td>
+<td>https://cdn.sofifa.net/teams/481/30.png</td>
+<td>...</td>
+<td>High/ High</td>
+<td>Stocky (170-185)</td>
+<td>No</td>
+<td>&lt;span class="pos pos7"&gt;LB</td>
+<td>Sep 14, 2020</td>
+<td>2024</td>
+<td>172cm</td>
+<td>69kg</td>
+<td>€97.7M</td>
+<td>19.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>192985</td>
+<td>K. De Bruyne</td>
+<td>31</td>
+<td>https://cdn.sofifa.net/players/192/985/23_60.png</td>
+<td>Belgium</td>
+<td>https://cdn.sofifa.net/flags/be.png</td>
+<td>91</td>
+<td>91</td>
+<td>Manchester City</td>
+<td>https://cdn.sofifa.net/teams/10/30.png</td>
+<td>...</td>
+<td>High/ High</td>
+<td>Unique</td>
+<td>Yes</td>
+<td>&lt;span class="pos pos13"&gt;RCM</td>
+<td>Aug 30, 2015</td>
+<td>2025</td>
+<td>181cm</td>
+<td>70kg</td>
+<td>€198.9M</td>
+<td>17.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>224232</td>
+<td>N. Barella</td>
+<td>25</td>
+<td>https://cdn.sofifa.net/players/224/232/23_60.png</td>
+<td>Italy</td>
+<td>https://cdn.sofifa.net/flags/it.png</td>
+<td>86</td>
+<td>89</td>
+<td>Inter</td>
+<td>https://cdn.sofifa.net/teams/44/30.png</td>
+<td>...</td>
+<td>High/ High</td>
+<td>Normal (170-)</td>
+<td>Yes</td>
+<td>&lt;span class="pos pos13"&gt;RCM</td>
+<td>Sep 1, 2020</td>
+<td>2026</td>
+<td>172cm</td>
+<td>68kg</td>
+<td>€154.4M</td>
+<td>23.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">17655</td>
+<td>269526</td>
+<td>Deng Xiongtao</td>
+<td>19</td>
+<td>https://cdn.sofifa.net/players/269/526/23_60.png</td>
+<td>China PR</td>
+<td>https://cdn.sofifa.net/flags/cn.png</td>
+<td>48</td>
+<td>61</td>
+<td>Meizhou Hakka</td>
+<td>https://cdn.sofifa.net/teams/114628/30.png</td>
+<td>...</td>
+<td>Medium/ Medium</td>
+<td>Normal (185+)</td>
+<td>No</td>
+<td>&lt;span class="pos pos29"&gt;RES</td>
+<td>Apr 11, 2022</td>
+<td>2027</td>
+<td>190cm</td>
+<td>78kg</td>
+<td>€218K</td>
+<td>35.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17656</td>
+<td>267946</td>
+<td>22&nbsp;Lim Jun Sub</td>
+<td>17</td>
+<td>https://cdn.sofifa.net/players/267/946/22_60.png</td>
+<td>Korea Republic</td>
+<td>https://cdn.sofifa.net/flags/kr.png</td>
+<td>48</td>
+<td>64</td>
+<td>Jeju United FC</td>
+<td>https://cdn.sofifa.net/teams/1478/30.png</td>
+<td>...</td>
+<td>Medium/ Medium</td>
+<td>Lean (185+)</td>
+<td>No</td>
+<td>&lt;span class="pos pos29"&gt;RES</td>
+<td>Jan 1, 2022</td>
+<td>2026</td>
+<td>195cm</td>
+<td>84kg</td>
+<td>€188K</td>
+<td>21.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">17657</td>
+<td>270567</td>
+<td>A. Demir</td>
+<td>25</td>
+<td>https://cdn.sofifa.net/players/270/567/23_60.png</td>
+<td>Turkey</td>
+<td>https://cdn.sofifa.net/flags/tr.png</td>
+<td>51</td>
+<td>56</td>
+<td>Ümraniyespor</td>
+<td>https://cdn.sofifa.net/teams/113796/30.png</td>
+<td>...</td>
+<td>Medium/ Medium</td>
+<td>Lean (185+)</td>
+<td>No</td>
+<td>&lt;span class="pos pos29"&gt;RES</td>
+<td>Jun 6, 2021</td>
+<td>2023</td>
+<td>190cm</td>
+<td>82kg</td>
+<td>€142K</td>
+<td>12.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17658</td>
+<td>256624</td>
+<td>21&nbsp;S. Czajor</td>
+<td>18</td>
+<td>https://cdn.sofifa.net/players/256/624/21_60.png</td>
+<td>Poland</td>
+<td>https://cdn.sofifa.net/flags/pl.png</td>
+<td>50</td>
+<td>65</td>
+<td>Fleetwood Town</td>
+<td>https://cdn.sofifa.net/teams/112260/30.png</td>
+<td>...</td>
+<td>Medium/ Medium</td>
+<td>Normal (185+)</td>
+<td>No</td>
+<td>&lt;span class="pos pos29"&gt;RES</td>
+<td>Jan 1, 2020</td>
+<td>2021</td>
+<td>187cm</td>
+<td>79kg</td>
+<td>€214K</td>
+<td>40.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">17659</td>
+<td>256376</td>
+<td>21&nbsp;F. Jakobsson</td>
+<td>20</td>
+<td>https://cdn.sofifa.net/players/256/376/21_60.png</td>
+<td>Sweden</td>
+<td>https://cdn.sofifa.net/flags/se.png</td>
+<td>50</td>
+<td>61</td>
+<td>IFK Norrköping</td>
+<td>https://cdn.sofifa.net/teams/702/30.png</td>
+<td>...</td>
+<td>Medium/ Medium</td>
+<td>Normal (185+)</td>
+<td>No</td>
+<td>&lt;span class="pos pos29"&gt;RES</td>
+<td>Jan 8, 2020</td>
+<td>2021</td>
+<td>186cm</td>
+<td>78kg</td>
+<td>€131K</td>
+<td>30.0</td>
+</tr>
+</tbody>
+</table>
+
+<p>16364 rows × 27 columns</p>
+</div>
+</div>
+</div>
+<p><code>#</code></p>
+</section>
 <section id="f.-기본-query" class="level3">
 <h3 class="anchored" data-anchor-id="f.-기본-query">F. 기본 query</h3>
 <p><code>-</code> 예제: 나이가 20-25인 선수들을 출력</p>
 <div id="810cc142-9941-448f-a2da-64d8cd481bf2" class="cell" data-tags="[]" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">"Age &gt;= 20 and Age &lt;= 25"</span>)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">"20 &lt;= Age &lt;= 25"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">"Age &gt;= 20 and Age &lt;= 25"</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">"20 &lt;= Age &lt;= 25"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <div>
 
@@ -2659,7 +3787,7 @@ memory usage: 3.9+ MB</code></pre>
 </div>
 <p><code>-</code> 예제: Overall - Potentila이 20이상인 선수를 출력하라</p>
 <div id="096555e7-1af4-42f8-85ad-0285d7d3087f" class="cell" data-tags="[]" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">"Potential - Overall  &gt; 20"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">"Potential - Overall  &gt; 20"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <div>
 
@@ -2965,7 +4093,7 @@ memory usage: 3.9+ MB</code></pre>
 </div>
 <p><code>-</code> 예제3: 한국선수들(=Korea Republic)중 능력치가 높은순서대로 출력하라.</p>
 <div id="7918fe0f-5270-417b-8495-f6eacbdcafa4" class="cell" data-tags="[]" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">'Nationality == "Korea Republic"'</span>).sort_values(by<span class="op">=</span><span class="st">"Overall"</span>,ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">'Nationality == "Korea Republic"'</span>).sort_values(by<span class="op">=</span><span class="st">"Overall"</span>,ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
 <div>
 
@@ -3274,16 +4402,16 @@ memory usage: 3.9+ MB</code></pre>
 <h3 class="anchored" data-anchor-id="g.-외부변수를-이용">G. 외부변수를 이용</h3>
 <p><code>-</code> 예제: 한국선수들(=Korea Republic)중 능력치가 세계평균 이상인 선수들을 출력하라.</p>
 <div id="a6bb889a-92cb-47ab-9cfc-eb147eab9f99" class="cell" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>m<span class="op">=</span> df.Overall.mean()</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>m</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>m<span class="op">=</span> df.Overall.mean()</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>m</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="36">
 <pre><code>np.float64(63.36959229898075)</code></pre>
 </div>
 </div>
 <div id="d0d8e6e6-3977-4a96-86de-fb4a032db68c" class="cell" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#df.query("Overall &gt; 63.36959229898075 and Nationality == 'Korea Republic'")</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co">#df.query("Overall &gt; Overall.mean() and Nationality == 'Korea Republic'")</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">"Overall &gt; @m and Nationality == 'Korea Republic'"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#df.query("Overall &gt; 63.36959229898075 and Nationality == 'Korea Republic'")</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">#df.query("Overall &gt; Overall.mean() and Nationality == 'Korea Republic'")</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">"Overall &gt; @m and Nationality == 'Korea Republic'"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="45">
 <div>
 
@@ -4216,7 +5344,7 @@ memory usage: 3.9+ MB</code></pre>
 <h3 class="anchored" data-anchor-id="h.-열의-이름에-공백이-있을-경우">H. 열의 이름에 공백이 있을 경우</h3>
 <p><code>-</code> 예제: <code>Skill Moves &gt; 4</code> 인 선수를 구하라.</p>
 <div id="959f95a2-edef-488e-aece-25d7585ff959" class="cell" data-tags="[]" data-execution_count="46">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">'`Skill Moves` &gt; 4'</span>).head(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">'`Skill Moves` &gt; 4'</span>).head(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="46">
 <div>
 
@@ -4382,7 +5510,7 @@ memory usage: 3.9+ MB</code></pre>
 <p><code># 예제</code>: 열의 이름 출력하고, 열의 이름중 공백(<code></code>)이 있을 경우 언더바(<code>_</code>) 로 바꾸자.</p>
 <p>컬럼출력</p>
 <div id="94083faa-20c5-43b4-bad5-535b237b6fc7" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>Index(['ID', 'Name', 'Age', 'Photo', 'Nationality', 'Flag', 'Overall',
        'Potential', 'Club', 'Club Logo', 'Value', 'Wage', 'Special',
@@ -4397,17 +5525,17 @@ memory usage: 3.9+ MB</code></pre>
 <li><code>df.columns</code>에 직접대입</li>
 </ol>
 <div id="5840acac-ea08-4328-94ea-97b20ab901c4" class="cell" data-tags="[]" data-execution_count="631">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>new_colnames <span class="op">=</span> [l.replace(<span class="st">' '</span>,<span class="st">'_'</span>) <span class="cf">for</span> l <span class="kw">in</span> df.columns]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>new_colnames <span class="op">=</span> [l.replace(<span class="st">' '</span>,<span class="st">'_'</span>) <span class="cf">for</span> l <span class="kw">in</span> df.columns]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="a195fb1c-54c3-48a1-9488-22bd7eb64cf1" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># df.columns = new_colnames</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># df</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># df.columns = new_colnames</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># df</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="2" type="1">
 <li><code>set_axis()</code> 이용</li>
 </ol>
 <div id="9b445373-7799-4bc3-99c3-fcbe3001c012" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>df.set_axis(new_colnames,axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>df.set_axis(new_colnames,axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <div>
 
@@ -4715,7 +5843,7 @@ memory usage: 3.9+ MB</code></pre>
 <li><code>rename()</code> 이용</li>
 </ol>
 <div id="41d2862d-0ce7-4b47-9495-084fecd9cfda" class="cell" data-tags="[]" data-execution_count="643">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>df.rename({l:l.replace(<span class="st">' '</span>,<span class="st">'_'</span>) <span class="cf">for</span> l <span class="kw">in</span> df.columns <span class="cf">if</span> <span class="st">' '</span> <span class="kw">in</span> l},axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df.rename({l:l.replace(<span class="st">' '</span>,<span class="st">'_'</span>) <span class="cf">for</span> l <span class="kw">in</span> df.columns <span class="cf">if</span> <span class="st">' '</span> <span class="kw">in</span> l},axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="643">
 <div>
 
@@ -5025,7 +6153,7 @@ memory usage: 3.9+ MB</code></pre>
 <h3 class="anchored" data-anchor-id="j.-transform-column">J. transform column</h3>
 <p><code># 예제</code>df.Height`열 변환하기 + 변환된 열 할당하기</p>
 <div id="746a5dd0-025a-4e9d-8b01-68916b400396" class="cell" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>df.assign(Height <span class="op">=</span> [<span class="bu">int</span>(l.replace(<span class="st">"cm"</span>,<span class="st">""</span>)) <span class="cf">for</span> l <span class="kw">in</span> df.Height])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>df.assign(Height <span class="op">=</span> [<span class="bu">int</span>(l.replace(<span class="st">"cm"</span>,<span class="st">""</span>)) <span class="cf">for</span> l <span class="kw">in</span> df.Height])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="53">
 <div>
 
@@ -5334,13 +6462,13 @@ memory usage: 3.9+ MB</code></pre>
 <section id="pandas-할당" class="level2">
 <h2 class="anchored" data-anchor-id="pandas-할당">2. Pandas: 할당</h2>
 <div id="f2c5fa08-ddcc-4a51-bbaa-cd4a3fb55a2f" class="cell" data-tags="[]" data-execution_count="865">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">43052</span>)</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>att <span class="op">=</span> np.random.choice(np.arange(<span class="dv">10</span>,<span class="dv">21</span>)<span class="op">*</span><span class="dv">5</span>,<span class="dv">20</span>)</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>rep <span class="op">=</span> np.random.choice(np.arange(<span class="dv">5</span>,<span class="dv">21</span>)<span class="op">*</span><span class="dv">5</span>,<span class="dv">20</span>)</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>mid <span class="op">=</span> np.random.choice(np.arange(<span class="dv">0</span>,<span class="dv">21</span>)<span class="op">*</span><span class="dv">5</span>,<span class="dv">20</span>)</span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>fin <span class="op">=</span> np.random.choice(np.arange(<span class="dv">0</span>,<span class="dv">21</span>)<span class="op">*</span><span class="dv">5</span>,<span class="dv">20</span>)</span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'att'</span>:att,<span class="st">'rep'</span>:rep,<span class="st">'mid'</span>:mid,<span class="st">'fin'</span>:fin})</span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">43052</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>att <span class="op">=</span> np.random.choice(np.arange(<span class="dv">10</span>,<span class="dv">21</span>)<span class="op">*</span><span class="dv">5</span>,<span class="dv">20</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>rep <span class="op">=</span> np.random.choice(np.arange(<span class="dv">5</span>,<span class="dv">21</span>)<span class="op">*</span><span class="dv">5</span>,<span class="dv">20</span>)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>mid <span class="op">=</span> np.random.choice(np.arange(<span class="dv">0</span>,<span class="dv">21</span>)<span class="op">*</span><span class="dv">5</span>,<span class="dv">20</span>)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>fin <span class="op">=</span> np.random.choice(np.arange(<span class="dv">0</span>,<span class="dv">21</span>)<span class="op">*</span><span class="dv">5</span>,<span class="dv">20</span>)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'att'</span>:att,<span class="st">'rep'</span>:rep,<span class="st">'mid'</span>:mid,<span class="st">'fin'</span>:fin})</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="865">
 <div>
 
@@ -5506,7 +6634,7 @@ memory usage: 3.9+ MB</code></pre>
 <h3 class="anchored" data-anchor-id="a.-df.assign">A. <code>df.assign()</code></h3>
 <p><code>-</code> 예시: <code>total = att*0.1 + rep*0.2 + mid*0.35 + fin*0.35</code> 를 계산하여 할당</p>
 <div id="b08c830a-bc8f-4e70-83c8-3ee1e3ae2998" class="cell" data-tags="[]" data-execution_count="871">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df.assign(total <span class="op">=</span> df.att<span class="op">*</span><span class="fl">0.1</span> <span class="op">+</span> df.rep<span class="op">*</span><span class="fl">0.2</span> <span class="op">+</span> df.mid<span class="op">*</span><span class="fl">0.35</span> <span class="op">+</span> df.fin<span class="op">*</span><span class="fl">0.35</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>df.assign(total <span class="op">=</span> df.att<span class="op">*</span><span class="fl">0.1</span> <span class="op">+</span> df.rep<span class="op">*</span><span class="fl">0.2</span> <span class="op">+</span> df.mid<span class="op">*</span><span class="fl">0.35</span> <span class="op">+</span> df.fin<span class="op">*</span><span class="fl">0.35</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="871">
 <div>
 
@@ -5697,7 +6825,7 @@ memory usage: 3.9+ MB</code></pre>
 <h3 class="anchored" data-anchor-id="b.-df.eval">B. <code>df.eval()</code></h3>
 <p><code>-</code> 예시: <code>total = att*0.1 + rep*0.2 + mid*0.35 + fin*0.35</code> 를 계산하여 할당</p>
 <div id="2a0738e2-9761-4640-909d-416f910cfe0f" class="cell" data-tags="[]" data-execution_count="872">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>df.<span class="bu">eval</span>(<span class="st">"total = att*0.1 + rep*0.2 + mid*0.35 + fin*0.35"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>df.<span class="bu">eval</span>(<span class="st">"total = att*0.1 + rep*0.2 + mid*0.35 + fin*0.35"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="872">
 <div>
 
@@ -5888,8 +7016,8 @@ memory usage: 3.9+ MB</code></pre>
 <h3 class="anchored" data-anchor-id="c.-dfcolname-xxx">C. <code>df[colname] = xxx</code></h3>
 <p><code>-</code> 예시: <code>total = att*0.1 + rep*0.2 + mid*0.35 + fin*0.35</code> 를 계산하여 할당.</p>
 <div id="91a34688-fcb0-4d3d-a118-cec79916cacd" class="cell" data-tags="[]" data-execution_count="880">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'total'</span>] <span class="op">=</span> df.att<span class="op">*</span><span class="fl">0.1</span> <span class="op">+</span> df.rep<span class="op">*</span><span class="fl">0.2</span> <span class="op">+</span> df.mid<span class="op">*</span><span class="fl">0.35</span> <span class="op">+</span> df.fin<span class="op">*</span><span class="fl">0.35</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'total'</span>] <span class="op">=</span> df.att<span class="op">*</span><span class="fl">0.1</span> <span class="op">+</span> df.rep<span class="op">*</span><span class="fl">0.2</span> <span class="op">+</span> df.mid<span class="op">*</span><span class="fl">0.35</span> <span class="op">+</span> df.fin<span class="op">*</span><span class="fl">0.35</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="880">
 <div>
 
