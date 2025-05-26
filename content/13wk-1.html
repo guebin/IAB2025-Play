@@ -193,14 +193,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/playlist?list=PLQqh36zP38-zkL-LnnWMykmEsdLnIskjD&amp;si=IdQLtjoFrhAheYom" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<div id="497c7c74-6cba-43d8-b908-dd069b931374" class="cell" data-execution_count="3">
+<div id="497c7c74-6cba-43d8-b908-dd069b931374" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="pandas-할당" class="level2">
 <h2 class="anchored" data-anchor-id="pandas-할당">1. Pandas: 할당</h2>
-<div id="bbe32227-573e-4b93-aed0-e35050c25463" class="cell" data-tags="[]" data-execution_count="4">
+<div id="bbe32227-573e-4b93-aed0-e35050c25463" class="cell" data-tags="[]" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">43052</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>att <span class="op">=</span> np.random.choice(np.arange(<span class="dv">10</span>,<span class="dv">21</span>)<span class="op">*</span><span class="dv">5</span>,<span class="dv">20</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>rep <span class="op">=</span> np.random.choice(np.arange(<span class="dv">5</span>,<span class="dv">21</span>)<span class="op">*</span><span class="dv">5</span>,<span class="dv">20</span>)</span>
@@ -208,7 +207,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>fin <span class="op">=</span> np.random.choice(np.arange(<span class="dv">0</span>,<span class="dv">21</span>)<span class="op">*</span><span class="dv">5</span>,<span class="dv">20</span>)</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'att'</span>:att,<span class="st">'rep'</span>:rep,<span class="st">'mid'</span>:mid,<span class="st">'fin'</span>:fin})</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="23">
 <div>
 
 
@@ -372,9 +371,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="a.-df.assign" class="level3">
 <h3 class="anchored" data-anchor-id="a.-df.assign">A. <code>df.assign()</code></h3>
 <p><code>-</code> 예시: <code>total = att*0.1 + rep*0.2 + mid*0.35 + fin*0.35</code> 를 계산하여 할당</p>
-<div id="4eaecea7-1e43-4c6c-b1f1-941682b3751f" class="cell" data-tags="[]" data-execution_count="5">
+<div id="4eaecea7-1e43-4c6c-b1f1-941682b3751f" class="cell" data-tags="[]" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df.assign(total <span class="op">=</span> df.att<span class="op">*</span><span class="fl">0.1</span> <span class="op">+</span> df.rep<span class="op">*</span><span class="fl">0.2</span> <span class="op">+</span> df.mid<span class="op">*</span><span class="fl">0.35</span> <span class="op">+</span> df.fin<span class="op">*</span><span class="fl">0.35</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="24">
 <div>
 
 
@@ -563,9 +562,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="b.-df.eval" class="level3">
 <h3 class="anchored" data-anchor-id="b.-df.eval">B. <code>df.eval()</code></h3>
 <p><code>-</code> 예시: <code>total = att*0.1 + rep*0.2 + mid*0.35 + fin*0.35</code> 를 계산하여 할당</p>
-<div id="3a3d34b1-cd75-4816-91f6-0799ad9e811a" class="cell" data-tags="[]" data-execution_count="6">
+<div id="3a3d34b1-cd75-4816-91f6-0799ad9e811a" class="cell" data-tags="[]" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df.<span class="bu">eval</span>(<span class="st">"total = att*0.1 + rep*0.2 + mid*0.35 + fin*0.35"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="25">
 <div>
 
 
@@ -754,10 +753,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="c.-dfcolname-xxx" class="level3">
 <h3 class="anchored" data-anchor-id="c.-dfcolname-xxx">C. <code>df[colname] = xxx</code></h3>
 <p><code>-</code> 예시: <code>total = att*0.1 + rep*0.2 + mid*0.35 + fin*0.35</code> 를 계산하여 할당.</p>
-<div id="8c5527f1-4025-46c0-a958-58ab0cd7783e" class="cell" data-tags="[]" data-execution_count="7">
+<div id="8c5527f1-4025-46c0-a958-58ab0cd7783e" class="cell" data-tags="[]" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'total'</span>] <span class="op">=</span> df.att<span class="op">*</span><span class="fl">0.1</span> <span class="op">+</span> df.rep<span class="op">*</span><span class="fl">0.2</span> <span class="op">+</span> df.mid<span class="op">*</span><span class="fl">0.35</span> <span class="op">+</span> df.fin<span class="op">*</span><span class="fl">0.35</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="26">
 <div>
 
 
@@ -944,9 +943,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </blockquote>
 </section>
 </section>
-<section id="airline-자료로-연습" class="level1">
-<h1>2. AIRLINE 자료로 연습</h1>
-<div id="8b49a054-718a-4082-b960-c081d03549b4" class="cell" data-tags="[]" data-execution_count="9">
+<section id="airline-자료로-연습" class="level2">
+<h2 class="anchored" data-anchor-id="airline-자료로-연습">2. AIRLINE 자료로 연습</h2>
+<div id="8b49a054-718a-4082-b960-c081d03549b4" class="cell" data-tags="[]" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'flights.csv'</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -992,13 +991,13 @@ memory usage: 6.2+ MB</code></pre>
 </ol>
 <p><code># 예제1</code>: 항공사별로 도착지연시간의 평균을 구하라.</p>
 <p>(풀이)</p>
-<div id="3055eddc-ae57-44fa-b3ae-e1aeb7c0f25b" class="cell" data-tags="[]" data-execution_count="10">
+<div id="3055eddc-ae57-44fa-b3ae-e1aeb7c0f25b" class="cell" data-tags="[]" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df.groupby(by<span class="op">=</span><span class="st">"AIRLINE"</span>).aggregate({<span class="st">'ARR_DELAY'</span>:np.mean})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_41888/4188396604.py:1: FutureWarning: The provided callable &lt;function mean at 0x7fa468d8b8b0&gt; is currently using SeriesGroupBy.mean. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "mean" instead.
+<pre><code>/tmp/ipykernel_42777/4188396604.py:1: FutureWarning: The provided callable &lt;function mean at 0x7fd8847fcb80&gt; is currently using SeriesGroupBy.mean. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "mean" instead.
   df.groupby(by="AIRLINE").aggregate({'ARR_DELAY':np.mean})</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 
 
@@ -1084,10 +1083,16 @@ memory usage: 6.2+ MB</code></pre>
 <p><code># 예제4</code> (항공사,요일)별 비행취소건수와 비행취소율을 조사하라.</p>
 <p>(풀이)</p>
 <p><code># 예제4</code>: (항공사,요일)별로 <code>CANCELLED</code>는 평균과 합계를 구하고 (즉 비행취소건수와 취소율을 구하고), <code>AIR_TIME</code>은 평균과 표준편차를 구하여라.</p>
+<ul>
+<li>평균은 np.mean 함수를 합계는 sum 혹은 np.sum을 표준편차는 np.std를 이용하라.</li>
+</ul>
 <p>(풀이)</p>
 <p><code>#</code></p>
 <p><code># 예제5</code>: 운행구간을 그룹화하고, 운행구간별 비행취소건수와 취소율을 구하여라.</p>
 <p>(풀이)</p>
+<ul>
+<li>운행구간을 그룹화하는 함수는 <code>pd.quct(벡터, q=4)</code> 를 이용하라</li>
+</ul>
 <p><code>#</code></p>
 
 
