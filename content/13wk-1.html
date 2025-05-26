@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="최규빈">
+<meta name="dcterms.date" content="2025-05-27">
+
+<title>13wk-1: [DataFrame] – Pandas 할당 – IAB2025</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de84f8d6bb715db06a919283c2d1e787.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-3f453be5ec2ee49e579b43b94346acdb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">IAB2025</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/guebin/IAB2025"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.youtube.com/channel/UCQk9RyBNgXc7ORIsYlOfQrg/playlists?view=50&amp;sort=dd&amp;shelf_id=2"> <i class="bi bi-youtube" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#pandas-할당" id="toc-pandas-할당" class="nav-link active" data-scroll-target="#pandas-할당">1. Pandas: 할당</a></li>
+  <li><a href="#airline-자료로-연습" id="toc-airline-자료로-연습" class="nav-link" data-scroll-target="#airline-자료로-연습">2. AIRLINE 자료로 연습</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">13wk-1: [DataFrame] – Pandas 할당</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>최규빈 </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 27, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/playlist?list=PLQqh36zP38-zkL-LnnWMykmEsdLnIskjD&amp;si=IdQLtjoFrhAheYom" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<div id="497c7c74-6cba-43d8-b908-dd069b931374" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="pandas-할당" class="level2">
+<h2 class="anchored" data-anchor-id="pandas-할당">1. Pandas: 할당</h2>
+<div id="bbe32227-573e-4b93-aed0-e35050c25463" class="cell" data-tags="[]" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">43052</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>att <span class="op">=</span> np.random.choice(np.arange(<span class="dv">10</span>,<span class="dv">21</span>)<span class="op">*</span><span class="dv">5</span>,<span class="dv">20</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>rep <span class="op">=</span> np.random.choice(np.arange(<span class="dv">5</span>,<span class="dv">21</span>)<span class="op">*</span><span class="dv">5</span>,<span class="dv">20</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>mid <span class="op">=</span> np.random.choice(np.arange(<span class="dv">0</span>,<span class="dv">21</span>)<span class="op">*</span><span class="dv">5</span>,<span class="dv">20</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>fin <span class="op">=</span> np.random.choice(np.arange(<span class="dv">0</span>,<span class="dv">21</span>)<span class="op">*</span><span class="dv">5</span>,<span class="dv">20</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'att'</span>:att,<span class="st">'rep'</span>:rep,<span class="st">'mid'</span>:mid,<span class="st">'fin'</span>:fin})</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">att</th>
+<th data-quarto-table-cell-role="th">rep</th>
+<th data-quarto-table-cell-role="th">mid</th>
+<th data-quarto-table-cell-role="th">fin</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>65</td>
+<td>55</td>
+<td>50</td>
+<td>40</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>95</td>
+<td>100</td>
+<td>50</td>
+<td>80</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>65</td>
+<td>90</td>
+<td>60</td>
+<td>30</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>55</td>
+<td>80</td>
+<td>75</td>
+<td>80</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>80</td>
+<td>30</td>
+<td>30</td>
+<td>100</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>75</td>
+<td>40</td>
+<td>100</td>
+<td>15</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>65</td>
+<td>45</td>
+<td>45</td>
+<td>90</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>60</td>
+<td>60</td>
+<td>25</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>95</td>
+<td>65</td>
+<td>20</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>90</td>
+<td>80</td>
+<td>80</td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>55</td>
+<td>75</td>
+<td>35</td>
+<td>25</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>95</td>
+<td>95</td>
+<td>45</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>95</td>
+<td>55</td>
+<td>15</td>
+<td>35</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>50</td>
+<td>80</td>
+<td>40</td>
+<td>30</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14</td>
+<td>50</td>
+<td>55</td>
+<td>15</td>
+<td>85</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15</td>
+<td>95</td>
+<td>30</td>
+<td>30</td>
+<td>95</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16</td>
+<td>50</td>
+<td>50</td>
+<td>45</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17</td>
+<td>65</td>
+<td>55</td>
+<td>15</td>
+<td>45</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">18</td>
+<td>70</td>
+<td>70</td>
+<td>40</td>
+<td>35</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">19</td>
+<td>90</td>
+<td>90</td>
+<td>80</td>
+<td>90</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<section id="a.-df.assign" class="level3">
+<h3 class="anchored" data-anchor-id="a.-df.assign">A. <code>df.assign()</code></h3>
+<p><code>-</code> 예시: <code>total = att*0.1 + rep*0.2 + mid*0.35 + fin*0.35</code> 를 계산하여 할당</p>
+<div id="4eaecea7-1e43-4c6c-b1f1-941682b3751f" class="cell" data-tags="[]" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df.assign(total <span class="op">=</span> df.att<span class="op">*</span><span class="fl">0.1</span> <span class="op">+</span> df.rep<span class="op">*</span><span class="fl">0.2</span> <span class="op">+</span> df.mid<span class="op">*</span><span class="fl">0.35</span> <span class="op">+</span> df.fin<span class="op">*</span><span class="fl">0.35</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">att</th>
+<th data-quarto-table-cell-role="th">rep</th>
+<th data-quarto-table-cell-role="th">mid</th>
+<th data-quarto-table-cell-role="th">fin</th>
+<th data-quarto-table-cell-role="th">total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>65</td>
+<td>55</td>
+<td>50</td>
+<td>40</td>
+<td>49.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>95</td>
+<td>100</td>
+<td>50</td>
+<td>80</td>
+<td>75.00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>65</td>
+<td>90</td>
+<td>60</td>
+<td>30</td>
+<td>56.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>55</td>
+<td>80</td>
+<td>75</td>
+<td>80</td>
+<td>75.75</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>80</td>
+<td>30</td>
+<td>30</td>
+<td>100</td>
+<td>59.50</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>75</td>
+<td>40</td>
+<td>100</td>
+<td>15</td>
+<td>55.75</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>65</td>
+<td>45</td>
+<td>45</td>
+<td>90</td>
+<td>62.75</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>60</td>
+<td>60</td>
+<td>25</td>
+<td>0</td>
+<td>26.75</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>95</td>
+<td>65</td>
+<td>20</td>
+<td>10</td>
+<td>33.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>90</td>
+<td>80</td>
+<td>80</td>
+<td>20</td>
+<td>60.00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>55</td>
+<td>75</td>
+<td>35</td>
+<td>25</td>
+<td>41.50</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>95</td>
+<td>95</td>
+<td>45</td>
+<td>0</td>
+<td>44.25</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>95</td>
+<td>55</td>
+<td>15</td>
+<td>35</td>
+<td>38.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>50</td>
+<td>80</td>
+<td>40</td>
+<td>30</td>
+<td>45.50</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14</td>
+<td>50</td>
+<td>55</td>
+<td>15</td>
+<td>85</td>
+<td>51.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15</td>
+<td>95</td>
+<td>30</td>
+<td>30</td>
+<td>95</td>
+<td>59.25</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16</td>
+<td>50</td>
+<td>50</td>
+<td>45</td>
+<td>10</td>
+<td>34.25</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17</td>
+<td>65</td>
+<td>55</td>
+<td>15</td>
+<td>45</td>
+<td>38.50</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">18</td>
+<td>70</td>
+<td>70</td>
+<td>40</td>
+<td>35</td>
+<td>47.25</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">19</td>
+<td>90</td>
+<td>90</td>
+<td>80</td>
+<td>90</td>
+<td>86.50</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Note: 이 방법은 df원본을 손상시키지 않음</p>
+</blockquote>
+</section>
+<section id="b.-df.eval" class="level3">
+<h3 class="anchored" data-anchor-id="b.-df.eval">B. <code>df.eval()</code></h3>
+<p><code>-</code> 예시: <code>total = att*0.1 + rep*0.2 + mid*0.35 + fin*0.35</code> 를 계산하여 할당</p>
+<div id="3a3d34b1-cd75-4816-91f6-0799ad9e811a" class="cell" data-tags="[]" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df.<span class="bu">eval</span>(<span class="st">"total = att*0.1 + rep*0.2 + mid*0.35 + fin*0.35"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">att</th>
+<th data-quarto-table-cell-role="th">rep</th>
+<th data-quarto-table-cell-role="th">mid</th>
+<th data-quarto-table-cell-role="th">fin</th>
+<th data-quarto-table-cell-role="th">total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>65</td>
+<td>55</td>
+<td>50</td>
+<td>40</td>
+<td>49.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>95</td>
+<td>100</td>
+<td>50</td>
+<td>80</td>
+<td>75.00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>65</td>
+<td>90</td>
+<td>60</td>
+<td>30</td>
+<td>56.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>55</td>
+<td>80</td>
+<td>75</td>
+<td>80</td>
+<td>75.75</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>80</td>
+<td>30</td>
+<td>30</td>
+<td>100</td>
+<td>59.50</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>75</td>
+<td>40</td>
+<td>100</td>
+<td>15</td>
+<td>55.75</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>65</td>
+<td>45</td>
+<td>45</td>
+<td>90</td>
+<td>62.75</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>60</td>
+<td>60</td>
+<td>25</td>
+<td>0</td>
+<td>26.75</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>95</td>
+<td>65</td>
+<td>20</td>
+<td>10</td>
+<td>33.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>90</td>
+<td>80</td>
+<td>80</td>
+<td>20</td>
+<td>60.00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>55</td>
+<td>75</td>
+<td>35</td>
+<td>25</td>
+<td>41.50</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>95</td>
+<td>95</td>
+<td>45</td>
+<td>0</td>
+<td>44.25</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>95</td>
+<td>55</td>
+<td>15</td>
+<td>35</td>
+<td>38.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>50</td>
+<td>80</td>
+<td>40</td>
+<td>30</td>
+<td>45.50</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14</td>
+<td>50</td>
+<td>55</td>
+<td>15</td>
+<td>85</td>
+<td>51.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15</td>
+<td>95</td>
+<td>30</td>
+<td>30</td>
+<td>95</td>
+<td>59.25</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16</td>
+<td>50</td>
+<td>50</td>
+<td>45</td>
+<td>10</td>
+<td>34.25</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17</td>
+<td>65</td>
+<td>55</td>
+<td>15</td>
+<td>45</td>
+<td>38.50</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">18</td>
+<td>70</td>
+<td>70</td>
+<td>40</td>
+<td>35</td>
+<td>47.25</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">19</td>
+<td>90</td>
+<td>90</td>
+<td>80</td>
+<td>90</td>
+<td>86.50</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Note: 이 방법은 df원본을 손상시키지 않음</p>
+</blockquote>
+</section>
+<section id="c.-dfcolname-xxx" class="level3">
+<h3 class="anchored" data-anchor-id="c.-dfcolname-xxx">C. <code>df[colname] = xxx</code></h3>
+<p><code>-</code> 예시: <code>total = att*0.1 + rep*0.2 + mid*0.35 + fin*0.35</code> 를 계산하여 할당.</p>
+<div id="8c5527f1-4025-46c0-a958-58ab0cd7783e" class="cell" data-tags="[]" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'total'</span>] <span class="op">=</span> df.att<span class="op">*</span><span class="fl">0.1</span> <span class="op">+</span> df.rep<span class="op">*</span><span class="fl">0.2</span> <span class="op">+</span> df.mid<span class="op">*</span><span class="fl">0.35</span> <span class="op">+</span> df.fin<span class="op">*</span><span class="fl">0.35</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">att</th>
+<th data-quarto-table-cell-role="th">rep</th>
+<th data-quarto-table-cell-role="th">mid</th>
+<th data-quarto-table-cell-role="th">fin</th>
+<th data-quarto-table-cell-role="th">total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>65</td>
+<td>55</td>
+<td>50</td>
+<td>40</td>
+<td>49.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>95</td>
+<td>100</td>
+<td>50</td>
+<td>80</td>
+<td>75.00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>65</td>
+<td>90</td>
+<td>60</td>
+<td>30</td>
+<td>56.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>55</td>
+<td>80</td>
+<td>75</td>
+<td>80</td>
+<td>75.75</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>80</td>
+<td>30</td>
+<td>30</td>
+<td>100</td>
+<td>59.50</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>75</td>
+<td>40</td>
+<td>100</td>
+<td>15</td>
+<td>55.75</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>65</td>
+<td>45</td>
+<td>45</td>
+<td>90</td>
+<td>62.75</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>60</td>
+<td>60</td>
+<td>25</td>
+<td>0</td>
+<td>26.75</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>95</td>
+<td>65</td>
+<td>20</td>
+<td>10</td>
+<td>33.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>90</td>
+<td>80</td>
+<td>80</td>
+<td>20</td>
+<td>60.00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>55</td>
+<td>75</td>
+<td>35</td>
+<td>25</td>
+<td>41.50</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>95</td>
+<td>95</td>
+<td>45</td>
+<td>0</td>
+<td>44.25</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>95</td>
+<td>55</td>
+<td>15</td>
+<td>35</td>
+<td>38.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>50</td>
+<td>80</td>
+<td>40</td>
+<td>30</td>
+<td>45.50</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14</td>
+<td>50</td>
+<td>55</td>
+<td>15</td>
+<td>85</td>
+<td>51.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15</td>
+<td>95</td>
+<td>30</td>
+<td>30</td>
+<td>95</td>
+<td>59.25</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16</td>
+<td>50</td>
+<td>50</td>
+<td>45</td>
+<td>10</td>
+<td>34.25</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17</td>
+<td>65</td>
+<td>55</td>
+<td>15</td>
+<td>45</td>
+<td>38.50</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">18</td>
+<td>70</td>
+<td>70</td>
+<td>40</td>
+<td>35</td>
+<td>47.25</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">19</td>
+<td>90</td>
+<td>90</td>
+<td>80</td>
+<td>90</td>
+<td>86.50</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Note: 이 방법은 df를 영구적으로 변화시킴</p>
+</blockquote>
+</section>
+</section>
+<section id="airline-자료로-연습" class="level1">
+<h1>2. AIRLINE 자료로 연습</h1>
+<div id="8b49a054-718a-4082-b960-c081d03549b4" class="cell" data-tags="[]" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'flights.csv'</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 58492 entries, 0 to 58491
+Data columns (total 14 columns):
+ #   Column     Non-Null Count  Dtype  
+---  ------     --------------  -----  
+ 0   MONTH      58492 non-null  int64  
+ 1   DAY        58492 non-null  int64  
+ 2   WEEKDAY    58492 non-null  int64  
+ 3   AIRLINE    58492 non-null  object 
+ 4   ORG_AIR    58492 non-null  object 
+ 5   DEST_AIR   58492 non-null  object 
+ 6   SCHED_DEP  58492 non-null  int64  
+ 7   DEP_DELAY  57659 non-null  float64
+ 8   AIR_TIME   57474 non-null  float64
+ 9   DIST       58492 non-null  int64  
+ 10  SCHED_ARR  58492 non-null  int64  
+ 11  ARR_DELAY  57474 non-null  float64
+ 12  DIVERTED   58492 non-null  int64  
+ 13  CANCELLED  58492 non-null  int64  
+dtypes: float64(3), int64(8), object(3)
+memory usage: 6.2+ MB</code></pre>
+</div>
+</div>
+<p><code>-</code> 각 변수들에 대한 설명은 아래와 같다. (ChatGPT의 도움을 받아 정리함)</p>
+<ol type="1">
+<li><code>MONTH</code>: 비행이 이루어진 월을 나타냄. 1에서 12 사이의 값을 갖음.</li>
+<li><code>DAY</code>: 비행이 이루어진 일자를 나타냄. 월에 따라 1~28/29/30/31 사이의 값을 가질 수 있음.</li>
+<li><code>WEEKDAY</code>: 비행이 이루어진 요일을 나타냄. 일반적으로 1(일요일)부터 7(토요일)까지의 값을 갖음.</li>
+<li><code>AIRLINE</code>: 해당 항공편을 운영하는 항공사의 약어나 코드를 나타냄.</li>
+<li><code>ORG_AIR</code>: 비행기가 출발하는 공항의 약어나 코드를 나타냄.</li>
+<li><code>DEST_AIR</code>: 비행기가 도착하는 공항의 약어나 코드를 나타냄.</li>
+<li><code>SCHED_DEP</code>: 원래의 예정된 출발 시간을 나타냄. 시간은 일반적으로 HHMM 형식으로 표시될 수 있음.</li>
+<li><code>DEP_DELAY</code>: 출발 지연 시간을 나타냄. 음수 값은 조기 출발, 양수 값은 지연을 의미함.</li>
+<li><code>AIR_TIME</code>: 실제 공중에서 비행한 시간을 분 단위로 나타냄.</li>
+<li><code>DIST</code>: 비행 거리를 나타냄. 일반적으로 마일 또는 킬로미터로 표시됨.</li>
+<li><code>SCHED_ARR</code>: 원래의 예정된 도착 시간을 나타냄. <code>SCHED_DEP</code>와 같은 형식으로 표시될 수 있음.</li>
+<li><code>ARR_DELAY</code>: 도착 지연 시간을 나타냄. 음수는 조기 도착, 양수는 지연을 의미함.</li>
+<li><code>DIVERTED</code>: 항공편이 다른 곳으로 우회되었는지를 나타냄. 1은 우회, 0은 정상 경로를 의미함.</li>
+<li><code>CANCELLED</code>: 항공편이 취소되었는지 여부를 나타냄. 1은 취소, 0은 취소되지 않음을 의미함.</li>
+</ol>
+<p><code># 예제1</code>: 항공사별로 도착지연시간의 평균을 구하라.</p>
+<p>(풀이)</p>
+<div id="3055eddc-ae57-44fa-b3ae-e1aeb7c0f25b" class="cell" data-tags="[]" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df.groupby(by<span class="op">=</span><span class="st">"AIRLINE"</span>).aggregate({<span class="st">'ARR_DELAY'</span>:np.mean})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipykernel_41888/4188396604.py:1: FutureWarning: The provided callable &lt;function mean at 0x7fa468d8b8b0&gt; is currently using SeriesGroupBy.mean. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "mean" instead.
+  df.groupby(by="AIRLINE").aggregate({'ARR_DELAY':np.mean})</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ARR_DELAY</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">AIRLINE</th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">AA</td>
+<td>5.542661</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">AS</td>
+<td>-0.833333</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">B6</td>
+<td>8.692593</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">DL</td>
+<td>0.339691</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">EV</td>
+<td>7.034580</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">F9</td>
+<td>13.630651</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">HA</td>
+<td>4.972973</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">MQ</td>
+<td>6.860591</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">NK</td>
+<td>18.436070</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">OO</td>
+<td>7.593463</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">UA</td>
+<td>7.765755</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">US</td>
+<td>1.681105</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">VX</td>
+<td>5.348884</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">WN</td>
+<td>6.397353</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p><code>#</code></p>
+<p><code># 예제2</code>: 항공사별로 비행취소건수의 합계를 구하라. 취소건수가 높은 항공사순으로 정렬하라.</p>
+<p>(풀이)</p>
+<p><code># 예제3</code>: 항공사별로 비행취소율을 구하라. 비행취소율이 가장 높은 항공사 순으로 정렬하라.</p>
+<p>(풀이)</p>
+<p><code># 예제4</code> (항공사,요일)별 비행취소건수와 비행취소율을 조사하라.</p>
+<p>(풀이)</p>
+<p><code># 예제4</code>: (항공사,요일)별로 <code>CANCELLED</code>는 평균과 합계를 구하고 (즉 비행취소건수와 취소율을 구하고), <code>AIR_TIME</code>은 평균과 표준편차를 구하여라.</p>
+<p>(풀이)</p>
+<p><code>#</code></p>
+<p><code># 예제5</code>: 운행구간을 그룹화하고, 운행구간별 비행취소건수와 취소율을 구하여라.</p>
+<p>(풀이)</p>
+<p><code>#</code></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/guebin\.github\.io\/IAB2025-Play\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
