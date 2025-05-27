@@ -74,7 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-de84f8d6bb715db06a919283c2d1e787.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-251ce1ae7a9effd692ba97c003cecf85.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-3f453be5ec2ee49e579b43b94346acdb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -193,7 +193,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/playlist?list=PLQqh36zP38-zkL-LnnWMykmEsdLnIskjD&amp;si=IdQLtjoFrhAheYom" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<div id="497c7c74-6cba-43d8-b908-dd069b931374" class="cell" data-execution_count="2">
+<div id="497c7c74-6cba-43d8-b908-dd069b931374" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -203,10 +203,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="a.-data" class="level3">
 <h3 class="anchored" data-anchor-id="a.-data">A. Data</h3>
 <p><code>-</code> 데이터 load</p>
-<div id="c4d4d13a-6df8-44c9-a673-7d4ffafb4c6d" class="cell" data-tags="[]" data-execution_count="211">
+<div id="c4d4d13a-6df8-44c9-a673-7d4ffafb4c6d" class="cell" data-tags="[]" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'FIFA23_official_data.csv'</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="211">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 
 
@@ -6305,10 +6305,10 @@ memory usage: 3.9+ MB</code></pre>
 <section id="숙제" class="level2">
 <h2 class="anchored" data-anchor-id="숙제">2. 숙제</h2>
 <p><code>-</code> 아래의 자료에서 선수들의 몸무게의 평균을 구하여라.</p>
-<div id="3a75d059-87aa-4e2a-8635-c47ce748cfc4" class="cell" data-execution_count="224">
+<div id="3a75d059-87aa-4e2a-8635-c47ce748cfc4" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'FIFA23_official_data.csv'</span>)</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="224">
+<div class="cell-output cell-output-display" data-execution_count="34">
 <div>
 
 
@@ -6609,6 +6609,17 @@ memory usage: 3.9+ MB</code></pre>
 
 <p>17660 rows × 29 columns</p>
 </div>
+</div>
+</div>
+<p>(풀이)</p>
+<div id="76d6b22f-aacf-434b-a29f-bf6c173c621a" class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># df['Weight'] = [int(l.replace("kg","")) for l in df.Weight] # 몸무게가 숫자화된것 </span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># df.Weight.mean()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="dc4b0ffc-158b-4bfc-9ff9-b0b790a57ac5" class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>df.assign(Weight<span class="op">=</span>  [<span class="bu">int</span>(l.replace(<span class="st">"kg"</span>,<span class="st">""</span>)) <span class="cf">for</span> l <span class="kw">in</span> df.Weight])[<span class="st">'Weight'</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="54">
+<pre><code>np.float64(74.32616081540203)</code></pre>
 </div>
 </div>
 

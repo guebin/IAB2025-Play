@@ -9,7 +9,7 @@
 <meta name="author" content="최규빈">
 <meta name="dcterms.date" content="2025-05-27">
 
-<title>13wk-1: [DataFrame] – Pandas 할당 – IAB2025</title>
+<title>13wk-1: [DataFrame] – Pandas 할당, 그룹화 연산 – IAB2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -74,7 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-de84f8d6bb715db06a919283c2d1e787.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-251ce1ae7a9effd692ba97c003cecf85.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-3f453be5ec2ee49e579b43b94346acdb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -154,7 +154,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul class="collapse">
   <li><a href="#pandas-할당" id="toc-pandas-할당" class="nav-link active" data-scroll-target="#pandas-할당">1. Pandas: 할당</a></li>
-  <li><a href="#airline-자료로-연습" id="toc-airline-자료로-연습" class="nav-link" data-scroll-target="#airline-자료로-연습">2. AIRLINE 자료로 연습</a></li>
+  <li><a href="#그룹화연산-airline-자료로-연습" id="toc-그룹화연산-airline-자료로-연습" class="nav-link" data-scroll-target="#그룹화연산-airline-자료로-연습">2. 그룹화연산 – AIRLINE 자료로 연습</a></li>
+  <li><a href="#숙제" id="toc-숙제" class="nav-link" data-scroll-target="#숙제">3. 숙제</a></li>
   </ul>
 </nav>
     </div>
@@ -163,7 +164,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">13wk-1: [DataFrame] – Pandas 할당</h1>
+<h1 class="title">13wk-1: [DataFrame] – Pandas 할당, 그룹화 연산</h1>
 </div>
 
 
@@ -192,22 +193,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/playlist?list=PLQqh36zP38-zkL-LnnWMykmEsdLnIskjD&amp;si=IdQLtjoFrhAheYom" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<div id="497c7c74-6cba-43d8-b908-dd069b931374" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="5697a518-acd9-4aa4-9cca-96410d44c09e" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># {{&lt;video https://youtu.be/playlist?list=PLQqh36zP38-zkL-LnnWMykmEsdLnIskjD&amp;si=IdQLtjoFrhAheYom&gt;}}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="497c7c74-6cba-43d8-b908-dd069b931374" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="pandas-할당" class="level2">
 <h2 class="anchored" data-anchor-id="pandas-할당">1. Pandas: 할당</h2>
-<div id="bbe32227-573e-4b93-aed0-e35050c25463" class="cell" data-tags="[]" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">43052</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>att <span class="op">=</span> np.random.choice(np.arange(<span class="dv">10</span>,<span class="dv">21</span>)<span class="op">*</span><span class="dv">5</span>,<span class="dv">20</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>rep <span class="op">=</span> np.random.choice(np.arange(<span class="dv">5</span>,<span class="dv">21</span>)<span class="op">*</span><span class="dv">5</span>,<span class="dv">20</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>mid <span class="op">=</span> np.random.choice(np.arange(<span class="dv">0</span>,<span class="dv">21</span>)<span class="op">*</span><span class="dv">5</span>,<span class="dv">20</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>fin <span class="op">=</span> np.random.choice(np.arange(<span class="dv">0</span>,<span class="dv">21</span>)<span class="op">*</span><span class="dv">5</span>,<span class="dv">20</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'att'</span>:att,<span class="st">'rep'</span>:rep,<span class="st">'mid'</span>:mid,<span class="st">'fin'</span>:fin})</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="23">
+<div id="bbe32227-573e-4b93-aed0-e35050c25463" class="cell" data-tags="[]" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">43052</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>att <span class="op">=</span> np.random.choice(np.arange(<span class="dv">10</span>,<span class="dv">21</span>)<span class="op">*</span><span class="dv">5</span>,<span class="dv">20</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>rep <span class="op">=</span> np.random.choice(np.arange(<span class="dv">5</span>,<span class="dv">21</span>)<span class="op">*</span><span class="dv">5</span>,<span class="dv">20</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>mid <span class="op">=</span> np.random.choice(np.arange(<span class="dv">0</span>,<span class="dv">21</span>)<span class="op">*</span><span class="dv">5</span>,<span class="dv">20</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>fin <span class="op">=</span> np.random.choice(np.arange(<span class="dv">0</span>,<span class="dv">21</span>)<span class="op">*</span><span class="dv">5</span>,<span class="dv">20</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'att'</span>:att,<span class="st">'rep'</span>:rep,<span class="st">'mid'</span>:mid,<span class="st">'fin'</span>:fin})</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 
 
@@ -371,9 +374,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="a.-df.assign" class="level3">
 <h3 class="anchored" data-anchor-id="a.-df.assign">A. <code>df.assign()</code></h3>
 <p><code>-</code> 예시: <code>total = att*0.1 + rep*0.2 + mid*0.35 + fin*0.35</code> 를 계산하여 할당</p>
-<div id="4eaecea7-1e43-4c6c-b1f1-941682b3751f" class="cell" data-tags="[]" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df.assign(total <span class="op">=</span> df.att<span class="op">*</span><span class="fl">0.1</span> <span class="op">+</span> df.rep<span class="op">*</span><span class="fl">0.2</span> <span class="op">+</span> df.mid<span class="op">*</span><span class="fl">0.35</span> <span class="op">+</span> df.fin<span class="op">*</span><span class="fl">0.35</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="24">
+<div id="4eaecea7-1e43-4c6c-b1f1-941682b3751f" class="cell" data-tags="[]" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df.assign(total <span class="op">=</span> df.att<span class="op">*</span><span class="fl">0.1</span> <span class="op">+</span> df.rep<span class="op">*</span><span class="fl">0.2</span> <span class="op">+</span> df.mid<span class="op">*</span><span class="fl">0.35</span> <span class="op">+</span> df.fin<span class="op">*</span><span class="fl">0.35</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 
 
@@ -562,9 +565,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="b.-df.eval" class="level3">
 <h3 class="anchored" data-anchor-id="b.-df.eval">B. <code>df.eval()</code></h3>
 <p><code>-</code> 예시: <code>total = att*0.1 + rep*0.2 + mid*0.35 + fin*0.35</code> 를 계산하여 할당</p>
-<div id="3a3d34b1-cd75-4816-91f6-0799ad9e811a" class="cell" data-tags="[]" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df.<span class="bu">eval</span>(<span class="st">"total = att*0.1 + rep*0.2 + mid*0.35 + fin*0.35"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="25">
+<div id="3a3d34b1-cd75-4816-91f6-0799ad9e811a" class="cell" data-tags="[]" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df.<span class="bu">eval</span>(<span class="st">"total = att*0.1 + rep*0.2 + mid*0.35 + fin*0.35"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 
 
@@ -753,10 +756,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="c.-dfcolname-xxx" class="level3">
 <h3 class="anchored" data-anchor-id="c.-dfcolname-xxx">C. <code>df[colname] = xxx</code></h3>
 <p><code>-</code> 예시: <code>total = att*0.1 + rep*0.2 + mid*0.35 + fin*0.35</code> 를 계산하여 할당.</p>
-<div id="8c5527f1-4025-46c0-a958-58ab0cd7783e" class="cell" data-tags="[]" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'total'</span>] <span class="op">=</span> df.att<span class="op">*</span><span class="fl">0.1</span> <span class="op">+</span> df.rep<span class="op">*</span><span class="fl">0.2</span> <span class="op">+</span> df.mid<span class="op">*</span><span class="fl">0.35</span> <span class="op">+</span> df.fin<span class="op">*</span><span class="fl">0.35</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="26">
+<div id="3ae9d4cc-18f9-4128-bfdb-1adf76abf39a" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'total'</span>] <span class="op">=</span> df.att<span class="op">*</span><span class="fl">0.1</span> <span class="op">+</span> df.rep<span class="op">*</span><span class="fl">0.2</span> <span class="op">+</span> df.mid<span class="op">*</span><span class="fl">0.35</span> <span class="op">+</span> df.fin<span class="op">*</span><span class="fl">0.35</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
 <div>
 
 
@@ -943,11 +946,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </blockquote>
 </section>
 </section>
-<section id="airline-자료로-연습" class="level2">
-<h2 class="anchored" data-anchor-id="airline-자료로-연습">2. AIRLINE 자료로 연습</h2>
-<div id="8b49a054-718a-4082-b960-c081d03549b4" class="cell" data-tags="[]" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'flights.csv'</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="그룹화연산-airline-자료로-연습" class="level2">
+<h2 class="anchored" data-anchor-id="그룹화연산-airline-자료로-연습">2. 그룹화연산 – AIRLINE 자료로 연습</h2>
+<div id="8b49a054-718a-4082-b960-c081d03549b4" class="cell" data-tags="[]" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'flights.csv'</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
 RangeIndex: 58492 entries, 0 to 58491
@@ -990,14 +993,57 @@ memory usage: 6.2+ MB</code></pre>
 <li><code>CANCELLED</code>: 항공편이 취소되었는지 여부를 나타냄. 1은 취소, 0은 취소되지 않음을 의미함.</li>
 </ol>
 <p><code># 예제1</code>: 항공사별로 도착지연시간의 평균을 구하라.</p>
-<p>(풀이)</p>
-<div id="3055eddc-ae57-44fa-b3ae-e1aeb7c0f25b" class="cell" data-tags="[]" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df.groupby(by<span class="op">=</span><span class="st">"AIRLINE"</span>).aggregate({<span class="st">'ARR_DELAY'</span>:np.mean})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_42777/4188396604.py:1: FutureWarning: The provided callable &lt;function mean at 0x7fd8847fcb80&gt; is currently using SeriesGroupBy.mean. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "mean" instead.
-  df.groupby(by="AIRLINE").aggregate({'ARR_DELAY':np.mean})</code></pre>
-</div>
+<p>(풀이1)</p>
+<div id="18773485-472b-49ea-b4c0-4ba9acefb282" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>{l:df[df.AIRLINE <span class="op">==</span> l][<span class="st">'ARR_DELAY'</span>].mean().item() <span class="cf">for</span> l <span class="kw">in</span> <span class="bu">set</span>(df.AIRLINE)}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>{'US': 1.6811048336472065,
+ 'WN': 6.397352587244284,
+ 'UA': 7.765755208333333,
+ 'OO': 7.593463035019456,
+ 'DL': 0.3396906727393491,
+ 'AS': -0.8333333333333334,
+ 'B6': 8.692592592592593,
+ 'VX': 5.348884381338743,
+ 'MQ': 6.860591430295715,
+ 'F9': 13.630651340996168,
+ 'EV': 7.034579603299982,
+ 'AA': 5.542660550458716,
+ 'NK': 18.43606998654105,
+ 'HA': 4.972972972972973}</code></pre>
+</div>
+</div>
+<p>(풀이2)</p>
+<div id="f2f0fb2b-7d1a-4cdf-afb7-5f0e0e0e1aca" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">"AIRLINE"</span>)[<span class="st">'ARR_DELAY'</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>AIRLINE
+AA     5.542661
+AS    -0.833333
+B6     8.692593
+DL     0.339691
+EV     7.034580
+F9    13.630651
+HA     4.972973
+MQ     6.860591
+NK    18.436070
+OO     7.593463
+UA     7.765755
+US     1.681105
+VX     5.348884
+WN     6.397353
+Name: ARR_DELAY, dtype: float64</code></pre>
+</div>
+</div>
+<p>(풀이3)</p>
+<div id="f6238acb-3f16-4887-9321-e146bf656b23" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">"AIRLINE"</span>).agg({<span class="st">'ARR_DELAY'</span>:np.mean})</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#df.groupby(["AIRLINE"]).agg({'ARR_DELAY':[np.mean]})</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipykernel_44807/1410576880.py:1: FutureWarning: The provided callable &lt;function mean at 0x7f1d0ff02820&gt; is currently using SeriesGroupBy.mean. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "mean" instead.
+  df.groupby("AIRLINE").agg({'ARR_DELAY':np.mean})</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="10">
 <div>
 
 
@@ -1077,23 +1123,874 @@ memory usage: 6.2+ MB</code></pre>
 </div>
 <p><code>#</code></p>
 <p><code># 예제2</code>: 항공사별로 비행취소건수의 합계를 구하라. 취소건수가 높은 항공사순으로 정렬하라.</p>
-<p>(풀이)</p>
+<p>(풀이1)</p>
+<div id="25435441-1a4a-466f-8cf3-34ffe794edae" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df.groupby([<span class="st">"AIRLINE"</span>])[<span class="st">'CANCELLED'</span>].<span class="bu">sum</span>().sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>AIRLINE
+AA    154
+MQ    152
+EV    146
+OO    142
+UA     93
+WN     93
+DL     38
+NK     25
+US     21
+F9     10
+VX      6
+B6      1
+AS      0
+HA      0
+Name: CANCELLED, dtype: int64</code></pre>
+</div>
+</div>
+<p>(풀이2)</p>
+<div id="53fd8165-49ae-47e3-a0f8-46b30ca1197f" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df.groupby([<span class="st">"AIRLINE"</span>]).agg({<span class="st">'CANCELLED'</span>:np.<span class="bu">sum</span>}).sort_values(by<span class="op">=</span><span class="st">"CANCELLED"</span>,ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipykernel_44807/1571022381.py:1: FutureWarning: The provided callable &lt;function sum at 0x7f1d0ff7e8b0&gt; is currently using SeriesGroupBy.sum. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "sum" instead.
+  df.groupby(["AIRLINE"]).agg({'CANCELLED':np.sum}).sort_values(by="CANCELLED",ascending=False)</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">CANCELLED</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">AIRLINE</th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">AA</td>
+<td>154</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">MQ</td>
+<td>152</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">EV</td>
+<td>146</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">OO</td>
+<td>142</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">UA</td>
+<td>93</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">WN</td>
+<td>93</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">DL</td>
+<td>38</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">NK</td>
+<td>25</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">US</td>
+<td>21</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">F9</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">VX</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">B6</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">AS</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">HA</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>(풀이3)</p>
+<div id="117a17d5-8d88-409c-b63e-e17c756e69fd" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df.groupby([<span class="st">"AIRLINE"</span>]).agg({<span class="st">'CANCELLED'</span>:[np.<span class="bu">sum</span>]}).sort_values(by<span class="op">=</span>(<span class="st">"CANCELLED"</span>,<span class="st">"sum"</span>),ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipykernel_44807/3780745755.py:1: FutureWarning: The provided callable &lt;function sum at 0x7f1d0ff7e8b0&gt; is currently using SeriesGroupBy.sum. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "sum" instead.
+  df.groupby(["AIRLINE"]).agg({'CANCELLED':[np.sum]}).sort_values(by=("CANCELLED","sum"),ascending=False)</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">CANCELLED</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">sum</th>
+</tr>
+<tr class="header">
+<th data-quarto-table-cell-role="th">AIRLINE</th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">AA</td>
+<td>154</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">MQ</td>
+<td>152</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">EV</td>
+<td>146</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">OO</td>
+<td>142</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">UA</td>
+<td>93</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">WN</td>
+<td>93</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">DL</td>
+<td>38</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">NK</td>
+<td>25</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">US</td>
+<td>21</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">F9</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">VX</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">B6</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">AS</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">HA</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
 <p><code># 예제3</code>: 항공사별로 비행취소율을 구하라. 비행취소율이 가장 높은 항공사 순으로 정렬하라.</p>
 <p>(풀이)</p>
-<p><code># 예제4</code> (항공사,요일)별 비행취소건수와 비행취소율을 조사하라.</p>
+<div id="28209465-647a-4a23-b244-1a99632b2899" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">"AIRLINE"</span>)[<span class="st">"CANCELLED"</span>].mean().sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>AIRLINE
+MQ    0.043791
+EV    0.024923
+OO    0.021554
+AA    0.017303
+NK    0.016491
+US    0.013003
+UA    0.011935
+WN    0.011048
+F9    0.007593
+VX    0.006042
+DL    0.003585
+B6    0.001842
+AS    0.000000
+HA    0.000000
+Name: CANCELLED, dtype: float64</code></pre>
+</div>
+</div>
+<p><code>#</code></p>
+<p><code># 예제4</code>: (항공사,요일)별 비행취소건수와 비행취소율을 조사하라.</p>
 <p>(풀이)</p>
-<p><code># 예제4</code>: (항공사,요일)별로 <code>CANCELLED</code>는 평균과 합계를 구하고 (즉 비행취소건수와 취소율을 구하고), <code>AIR_TIME</code>은 평균과 표준편차를 구하여라.</p>
+<div id="23799884-5ea4-4591-a73f-8e0863575618" class="cell" data-execution_count="133">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df.groupby([<span class="st">"AIRLINE"</span>,<span class="st">"WEEKDAY"</span>])[<span class="st">"CANCELLED"</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="133">
+<pre><code>AIRLINE  WEEKDAY
+AA       1          0.032106
+         2          0.007341
+         3          0.011949
+         4          0.015004
+         5          0.014151
+                      ...   
+WN       3          0.014118
+         4          0.007911
+         5          0.005828
+         6          0.010132
+         7          0.006066
+Name: CANCELLED, Length: 98, dtype: float64</code></pre>
+</div>
+</div>
+<p><code>#</code></p>
+<p><code># 예제5</code>: (항공사,요일)별로 <code>CANCELLED</code>는 평균과 합계를 구하고 (즉 비행취소건수와 취소율을 구하고), <code>AIR_TIME</code>은 평균과 최대값을 구하여라.</p>
 <ul>
-<li>평균은 np.mean 함수를 합계는 sum 혹은 np.sum을 표준편차는 np.std를 이용하라.</li>
+<li>평균은 np.mean 함수를 합계는 sum 혹은 np.sum을 최대값은 np.max를 이용하라.</li>
 </ul>
 <p>(풀이)</p>
+<div id="19f6f908-b808-4a84-895c-8cb05bf61df6" class="cell" data-execution_count="150">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df.groupby([<span class="st">"AIRLINE"</span>,<span class="st">"WEEKDAY"</span>]).agg({<span class="st">'CANCELLED'</span>:[np.mean,np.<span class="bu">sum</span>],<span class="st">'AIR_TIME'</span>:[np.mean,np.<span class="bu">max</span>] })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>FutureWarning: The provided callable &lt;function mean at 0x2be0330&gt; is currently using SeriesGroupBy.mean. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "mean" instead.
+  df.groupby(["AIRLINE","WEEKDAY"]).agg({'CANCELLED':[np.mean,np.sum],'AIR_TIME':[np.mean,np.max] })
+&lt;ipython-input-150-5ca207a54017&gt;:1: FutureWarning: The provided callable &lt;function sum at 0x2b09040&gt; is currently using SeriesGroupBy.sum. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "sum" instead.
+  df.groupby(["AIRLINE","WEEKDAY"]).agg({'CANCELLED':[np.mean,np.sum],'AIR_TIME':[np.mean,np.max] })
+&lt;ipython-input-150-5ca207a54017&gt;:1: FutureWarning: The provided callable &lt;function mean at 0x2be0330&gt; is currently using SeriesGroupBy.mean. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "mean" instead.
+  df.groupby(["AIRLINE","WEEKDAY"]).agg({'CANCELLED':[np.mean,np.sum],'AIR_TIME':[np.mean,np.max] })
+&lt;ipython-input-150-5ca207a54017&gt;:1: FutureWarning: The provided callable &lt;function max at 0x2b9a390&gt; is currently using SeriesGroupBy.max. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "max" instead.
+  df.groupby(["AIRLINE","WEEKDAY"]).agg({'CANCELLED':[np.mean,np.sum],'AIR_TIME':[np.mean,np.max] })</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="150">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th colspan="2" data-quarto-table-cell-role="th" data-halign="left">CANCELLED</th>
+<th colspan="2" data-quarto-table-cell-role="th" data-halign="left">AIR_TIME</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">mean</th>
+<th data-quarto-table-cell-role="th">sum</th>
+<th data-quarto-table-cell-role="th">mean</th>
+<th data-quarto-table-cell-role="th">max</th>
+</tr>
+<tr class="header">
+<th data-quarto-table-cell-role="th">AIRLINE</th>
+<th data-quarto-table-cell-role="th">WEEKDAY</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td rowspan="5" data-quarto-table-cell-role="th" data-valign="top">AA</td>
+<td data-quarto-table-cell-role="th">1</td>
+<td>0.032106</td>
+<td>41</td>
+<td>147.610569</td>
+<td>489.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0.007341</td>
+<td>9</td>
+<td>143.851852</td>
+<td>513.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0.011949</td>
+<td>16</td>
+<td>144.514005</td>
+<td>496.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0.015004</td>
+<td>20</td>
+<td>141.124618</td>
+<td>498.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5</td>
+<td>0.014151</td>
+<td>18</td>
+<td>145.430966</td>
+<td>509.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td rowspan="5" data-quarto-table-cell-role="th" data-valign="top">WN</td>
+<td data-quarto-table-cell-role="th">3</td>
+<td>0.014118</td>
+<td>18</td>
+<td>104.219920</td>
+<td>277.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0.007911</td>
+<td>10</td>
+<td>107.200800</td>
+<td>307.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5</td>
+<td>0.005828</td>
+<td>7</td>
+<td>107.893635</td>
+<td>321.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">6</td>
+<td>0.010132</td>
+<td>10</td>
+<td>109.247433</td>
+<td>289.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">7</td>
+<td>0.006066</td>
+<td>7</td>
+<td>107.602273</td>
+<td>308.0</td>
+</tr>
+</tbody>
+</table>
+
+<p>98 rows × 4 columns</p>
+</div>
+</div>
+</div>
 <p><code>#</code></p>
-<p><code># 예제5</code>: 운행구간을 그룹화하고, 운행구간별 비행취소건수와 취소율을 구하여라.</p>
+<p><code># 예제6</code>: 운행구간을 그룹화하고, 운행구간별 비행취소건수와 취소율을 구하여라.</p>
 <p>(풀이)</p>
 <ul>
 <li>운행구간을 그룹화하는 함수는 <code>pd.quct(벡터, q=4)</code> 를 이용하라</li>
 </ul>
+<div id="26874d7b-4d44-4f39-a74a-6b0983d786cd" class="cell" data-execution_count="160">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>df.assign(dist_cut <span class="op">=</span> pd.qcut(df.DIST,q<span class="op">=</span><span class="dv">4</span>)).groupby(<span class="st">"dist_cut"</span>).agg({<span class="st">"CANCELLED"</span>:[np.mean,np.<span class="bu">sum</span>]})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+  df.assign(dist_cut = pd.qcut(df.DIST,q=4)).groupby("dist_cut").agg({"CANCELLED":[np.mean,np.sum]})
+&lt;ipython-input-160-5df9d682cdc7&gt;:1: FutureWarning: The provided callable &lt;function mean at 0x2be0330&gt; is currently using SeriesGroupBy.mean. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "mean" instead.
+  df.assign(dist_cut = pd.qcut(df.DIST,q=4)).groupby("dist_cut").agg({"CANCELLED":[np.mean,np.sum]})
+&lt;ipython-input-160-5df9d682cdc7&gt;:1: FutureWarning: The provided callable &lt;function sum at 0x2b09040&gt; is currently using SeriesGroupBy.sum. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "sum" instead.
+  df.assign(dist_cut = pd.qcut(df.DIST,q=4)).groupby("dist_cut").agg({"CANCELLED":[np.mean,np.sum]})</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="160">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th colspan="2" data-quarto-table-cell-role="th" data-halign="left">CANCELLED</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">mean</th>
+<th data-quarto-table-cell-role="th">sum</th>
+</tr>
+<tr class="header">
+<th data-quarto-table-cell-role="th">dist_cut</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">(66.999, 391.0]</td>
+<td>0.022659</td>
+<td>334</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">(391.0, 690.0]</td>
+<td>0.013503</td>
+<td>196</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">(690.0, 1199.0]</td>
+<td>0.013637</td>
+<td>203</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">(1199.0, 4502.0]</td>
+<td>0.010313</td>
+<td>148</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
 <p><code>#</code></p>
+</section>
+<section id="숙제" class="level2">
+<h2 class="anchored" data-anchor-id="숙제">3. 숙제</h2>
+<p><code>(1)</code> 타이타닉</p>
+<div id="99e80dbe-c0ad-4744-9c44-eb8113bc106e" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>titanic <span class="op">=</span> pd.read_csv(<span class="st">"titanic.csv"</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>titanic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">PassengerId</th>
+<th data-quarto-table-cell-role="th">Survived</th>
+<th data-quarto-table-cell-role="th">Pclass</th>
+<th data-quarto-table-cell-role="th">Name</th>
+<th data-quarto-table-cell-role="th">Sex</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">SibSp</th>
+<th data-quarto-table-cell-role="th">Parch</th>
+<th data-quarto-table-cell-role="th">Ticket</th>
+<th data-quarto-table-cell-role="th">Fare</th>
+<th data-quarto-table-cell-role="th">Cabin</th>
+<th data-quarto-table-cell-role="th">Embarked</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>0</td>
+<td>3</td>
+<td>Braund, Mr. Owen Harris</td>
+<td>male</td>
+<td>22.0</td>
+<td>1</td>
+<td>0</td>
+<td>A/5 21171</td>
+<td>7.2500</td>
+<td>NaN</td>
+<td>S</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>Cumings, Mrs. John Bradley (Florence Briggs Th...</td>
+<td>female</td>
+<td>38.0</td>
+<td>1</td>
+<td>0</td>
+<td>PC 17599</td>
+<td>71.2833</td>
+<td>C85</td>
+<td>C</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3</td>
+<td>1</td>
+<td>3</td>
+<td>Heikkinen, Miss. Laina</td>
+<td>female</td>
+<td>26.0</td>
+<td>0</td>
+<td>0</td>
+<td>STON/O2. 3101282</td>
+<td>7.9250</td>
+<td>NaN</td>
+<td>S</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>4</td>
+<td>1</td>
+<td>1</td>
+<td>Futrelle, Mrs. Jacques Heath (Lily May Peel)</td>
+<td>female</td>
+<td>35.0</td>
+<td>1</td>
+<td>0</td>
+<td>113803</td>
+<td>53.1000</td>
+<td>C123</td>
+<td>S</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>5</td>
+<td>0</td>
+<td>3</td>
+<td>Allen, Mr. William Henry</td>
+<td>male</td>
+<td>35.0</td>
+<td>0</td>
+<td>0</td>
+<td>373450</td>
+<td>8.0500</td>
+<td>NaN</td>
+<td>S</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">886</td>
+<td>887</td>
+<td>0</td>
+<td>2</td>
+<td>Montvila, Rev. Juozas</td>
+<td>male</td>
+<td>27.0</td>
+<td>0</td>
+<td>0</td>
+<td>211536</td>
+<td>13.0000</td>
+<td>NaN</td>
+<td>S</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">887</td>
+<td>888</td>
+<td>1</td>
+<td>1</td>
+<td>Graham, Miss. Margaret Edith</td>
+<td>female</td>
+<td>19.0</td>
+<td>0</td>
+<td>0</td>
+<td>112053</td>
+<td>30.0000</td>
+<td>B42</td>
+<td>S</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">888</td>
+<td>889</td>
+<td>0</td>
+<td>3</td>
+<td>Johnston, Miss. Catherine Helen "Carrie"</td>
+<td>female</td>
+<td>NaN</td>
+<td>1</td>
+<td>2</td>
+<td>W./C. 6607</td>
+<td>23.4500</td>
+<td>NaN</td>
+<td>S</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">889</td>
+<td>890</td>
+<td>1</td>
+<td>1</td>
+<td>Behr, Mr. Karl Howell</td>
+<td>male</td>
+<td>26.0</td>
+<td>0</td>
+<td>0</td>
+<td>111369</td>
+<td>30.0000</td>
+<td>C148</td>
+<td>C</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">890</td>
+<td>891</td>
+<td>0</td>
+<td>3</td>
+<td>Dooley, Mr. Patrick</td>
+<td>male</td>
+<td>32.0</td>
+<td>0</td>
+<td>0</td>
+<td>370376</td>
+<td>7.7500</td>
+<td>NaN</td>
+<td>Q</td>
+</tr>
+</tbody>
+</table>
+
+<p>891 rows × 12 columns</p>
+</div>
+</div>
+</div>
+<p><code>pd.qcut</code>을 활용하여 Fare를 4등분하고 운임료가 낮은그룹부터 높은그룹의 생존률을 구하라. 비싼운임료를 낸 사람의 생존률이 더 높다고 볼 수 있는가?</p>
+<p><code>(2)</code> 컬럼선택</p>
+<div id="3f7b262a-ba23-4e01-932a-450b3493ec79" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'flights.csv'</span>).groupby([<span class="st">"AIRLINE"</span>,<span class="st">"WEEKDAY"</span>]).agg({<span class="st">'CANCELLED'</span>:[np.mean,np.<span class="bu">sum</span>],<span class="st">'AIR_TIME'</span>:[np.mean,np.<span class="bu">max</span>]})</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipykernel_44807/3408117236.py:1: FutureWarning: The provided callable &lt;function mean at 0x7f1d0ff02820&gt; is currently using SeriesGroupBy.mean. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "mean" instead.
+  df = pd.read_csv('flights.csv').groupby(["AIRLINE","WEEKDAY"]).agg({'CANCELLED':[np.mean,np.sum],'AIR_TIME':[np.mean,np.max]})
+/tmp/ipykernel_44807/3408117236.py:1: FutureWarning: The provided callable &lt;function sum at 0x7f1d0ff7e8b0&gt; is currently using SeriesGroupBy.sum. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "sum" instead.
+  df = pd.read_csv('flights.csv').groupby(["AIRLINE","WEEKDAY"]).agg({'CANCELLED':[np.mean,np.sum],'AIR_TIME':[np.mean,np.max]})
+/tmp/ipykernel_44807/3408117236.py:1: FutureWarning: The provided callable &lt;function mean at 0x7f1d0ff02820&gt; is currently using SeriesGroupBy.mean. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "mean" instead.
+  df = pd.read_csv('flights.csv').groupby(["AIRLINE","WEEKDAY"]).agg({'CANCELLED':[np.mean,np.sum],'AIR_TIME':[np.mean,np.max]})
+/tmp/ipykernel_44807/3408117236.py:1: FutureWarning: The provided callable &lt;function max at 0x7f1d0ff7eee0&gt; is currently using SeriesGroupBy.max. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "max" instead.
+  df = pd.read_csv('flights.csv').groupby(["AIRLINE","WEEKDAY"]).agg({'CANCELLED':[np.mean,np.sum],'AIR_TIME':[np.mean,np.max]})</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th colspan="2" data-quarto-table-cell-role="th" data-halign="left">CANCELLED</th>
+<th colspan="2" data-quarto-table-cell-role="th" data-halign="left">AIR_TIME</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">mean</th>
+<th data-quarto-table-cell-role="th">sum</th>
+<th data-quarto-table-cell-role="th">mean</th>
+<th data-quarto-table-cell-role="th">max</th>
+</tr>
+<tr class="header">
+<th data-quarto-table-cell-role="th">AIRLINE</th>
+<th data-quarto-table-cell-role="th">WEEKDAY</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td rowspan="5" data-quarto-table-cell-role="th" data-valign="top">AA</td>
+<td data-quarto-table-cell-role="th">1</td>
+<td>0.032106</td>
+<td>41</td>
+<td>147.610569</td>
+<td>489.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0.007341</td>
+<td>9</td>
+<td>143.851852</td>
+<td>513.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0.011949</td>
+<td>16</td>
+<td>144.514005</td>
+<td>496.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0.015004</td>
+<td>20</td>
+<td>141.124618</td>
+<td>498.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5</td>
+<td>0.014151</td>
+<td>18</td>
+<td>145.430966</td>
+<td>509.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td rowspan="5" data-quarto-table-cell-role="th" data-valign="top">WN</td>
+<td data-quarto-table-cell-role="th">3</td>
+<td>0.014118</td>
+<td>18</td>
+<td>104.219920</td>
+<td>277.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0.007911</td>
+<td>10</td>
+<td>107.200800</td>
+<td>307.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5</td>
+<td>0.005828</td>
+<td>7</td>
+<td>107.893635</td>
+<td>321.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">6</td>
+<td>0.010132</td>
+<td>10</td>
+<td>109.247433</td>
+<td>289.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">7</td>
+<td>0.006066</td>
+<td>7</td>
+<td>107.602273</td>
+<td>308.0</td>
+</tr>
+</tbody>
+</table>
+
+<p>98 rows × 4 columns</p>
+</div>
+</div>
+</div>
+<p>위의 데이터프레임에서 (CANCELLED, sum)과 (AIR_TIME, max)를 선택하라. 출력예시는 아래와 같다.</p>
+<div id="2611676a-1744-4173-95dd-82ce62c21b12" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">CANCELLED</th>
+<th data-quarto-table-cell-role="th">AIR_TIME</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">sum</th>
+<th data-quarto-table-cell-role="th">max</th>
+</tr>
+<tr class="header">
+<th data-quarto-table-cell-role="th">AIRLINE</th>
+<th data-quarto-table-cell-role="th">WEEKDAY</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td rowspan="5" data-quarto-table-cell-role="th" data-valign="top">AA</td>
+<td data-quarto-table-cell-role="th">1</td>
+<td>41</td>
+<td>489.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2</td>
+<td>9</td>
+<td>513.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">3</td>
+<td>16</td>
+<td>496.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">4</td>
+<td>20</td>
+<td>498.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5</td>
+<td>18</td>
+<td>509.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td rowspan="5" data-quarto-table-cell-role="th" data-valign="top">WN</td>
+<td data-quarto-table-cell-role="th">3</td>
+<td>18</td>
+<td>277.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">4</td>
+<td>10</td>
+<td>307.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5</td>
+<td>7</td>
+<td>321.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">6</td>
+<td>10</td>
+<td>289.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">7</td>
+<td>7</td>
+<td>308.0</td>
+</tr>
+</tbody>
+</table>
+
+<p>98 rows × 2 columns</p>
+</div>
+</div>
+</div>
 
 
 </section>
