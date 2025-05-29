@@ -1,0 +1,2360 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="최규빈">
+<meta name="dcterms.date" content="2025-05-22">
+
+<title>13wk-2: [DataFrame] – FIFA22 데이터 // 숙제 – IAB2025</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de84f8d6bb715db06a919283c2d1e787.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-251ce1ae7a9effd692ba97c003cecf85.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">IAB2025</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/guebin/IAB2025"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.youtube.com/channel/UCQk9RyBNgXc7ORIsYlOfQrg/playlists?view=50&amp;sort=dd&amp;shelf_id=2"> <i class="bi bi-youtube" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#fifa22데이터" id="toc-fifa22데이터" class="nav-link active" data-scroll-target="#fifa22데이터">1. FIFA22데이터</a></li>
+  <li><a href="#평균처리" id="toc-평균처리" class="nav-link" data-scroll-target="#평균처리">2. 평균처리</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">13wk-2: [DataFrame] – FIFA22 데이터 // 숙제</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>최규빈 </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 22, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/playlist?list=PLQqh36zP38-zkL-LnnWMykmEsdLnIskjD&amp;si=IdQLtjoFrhAheYom" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<div id="d212f96a-4bc8-46a9-ba45-5975d3bdf824" class="cell" data-execution_count="189">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="fifa22데이터" class="level2">
+<h2 class="anchored" data-anchor-id="fifa22데이터">1. FIFA22데이터</h2>
+<section id="a.-data" class="level3">
+<h3 class="anchored" data-anchor-id="a.-data">A. Data</h3>
+<p><code>-</code> 데이터 load</p>
+<div id="8d5b2762-0e74-4ed8-bdc6-eac3a1ac7bc2" class="cell" data-tags="[]" data-execution_count="81">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'FIFA22_official_data.csv'</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="81">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ID</th>
+<th data-quarto-table-cell-role="th">Name</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Photo</th>
+<th data-quarto-table-cell-role="th">Nationality</th>
+<th data-quarto-table-cell-role="th">Flag</th>
+<th data-quarto-table-cell-role="th">Overall</th>
+<th data-quarto-table-cell-role="th">Potential</th>
+<th data-quarto-table-cell-role="th">Club</th>
+<th data-quarto-table-cell-role="th">Club Logo</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">SlidingTackle</th>
+<th data-quarto-table-cell-role="th">GKDiving</th>
+<th data-quarto-table-cell-role="th">GKHandling</th>
+<th data-quarto-table-cell-role="th">GKKicking</th>
+<th data-quarto-table-cell-role="th">GKPositioning</th>
+<th data-quarto-table-cell-role="th">GKReflexes</th>
+<th data-quarto-table-cell-role="th">Best Position</th>
+<th data-quarto-table-cell-role="th">Best Overall Rating</th>
+<th data-quarto-table-cell-role="th">Release Clause</th>
+<th data-quarto-table-cell-role="th">DefensiveAwareness</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>212198</td>
+<td>Bruno Fernandes</td>
+<td>26</td>
+<td>https://cdn.sofifa.com/players/212/198/22_60.png</td>
+<td>Portugal</td>
+<td>https://cdn.sofifa.com/flags/pt.png</td>
+<td>88</td>
+<td>89</td>
+<td>Manchester United</td>
+<td>https://cdn.sofifa.com/teams/11/30.png</td>
+<td>...</td>
+<td>65.0</td>
+<td>12.0</td>
+<td>14.0</td>
+<td>15.0</td>
+<td>8.0</td>
+<td>14.0</td>
+<td>CAM</td>
+<td>88.0</td>
+<td>€206.9M</td>
+<td>72.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>209658</td>
+<td>L. Goretzka</td>
+<td>26</td>
+<td>https://cdn.sofifa.com/players/209/658/22_60.png</td>
+<td>Germany</td>
+<td>https://cdn.sofifa.com/flags/de.png</td>
+<td>87</td>
+<td>88</td>
+<td>FC Bayern München</td>
+<td>https://cdn.sofifa.com/teams/21/30.png</td>
+<td>...</td>
+<td>77.0</td>
+<td>13.0</td>
+<td>8.0</td>
+<td>15.0</td>
+<td>11.0</td>
+<td>9.0</td>
+<td>CM</td>
+<td>87.0</td>
+<td>€160.4M</td>
+<td>74.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>176580</td>
+<td>L. Suárez</td>
+<td>34</td>
+<td>https://cdn.sofifa.com/players/176/580/22_60.png</td>
+<td>Uruguay</td>
+<td>https://cdn.sofifa.com/flags/uy.png</td>
+<td>88</td>
+<td>88</td>
+<td>Atlético de Madrid</td>
+<td>https://cdn.sofifa.com/teams/240/30.png</td>
+<td>...</td>
+<td>38.0</td>
+<td>27.0</td>
+<td>25.0</td>
+<td>31.0</td>
+<td>33.0</td>
+<td>37.0</td>
+<td>ST</td>
+<td>88.0</td>
+<td>€91.2M</td>
+<td>42.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>192985</td>
+<td>K. De Bruyne</td>
+<td>30</td>
+<td>https://cdn.sofifa.com/players/192/985/22_60.png</td>
+<td>Belgium</td>
+<td>https://cdn.sofifa.com/flags/be.png</td>
+<td>91</td>
+<td>91</td>
+<td>Manchester City</td>
+<td>https://cdn.sofifa.com/teams/10/30.png</td>
+<td>...</td>
+<td>53.0</td>
+<td>15.0</td>
+<td>13.0</td>
+<td>5.0</td>
+<td>10.0</td>
+<td>13.0</td>
+<td>CM</td>
+<td>91.0</td>
+<td>€232.2M</td>
+<td>68.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>224334</td>
+<td>M. Acuña</td>
+<td>29</td>
+<td>https://cdn.sofifa.com/players/224/334/22_60.png</td>
+<td>Argentina</td>
+<td>https://cdn.sofifa.com/flags/ar.png</td>
+<td>84</td>
+<td>84</td>
+<td>Sevilla FC</td>
+<td>https://cdn.sofifa.com/teams/481/30.png</td>
+<td>...</td>
+<td>82.0</td>
+<td>8.0</td>
+<td>14.0</td>
+<td>13.0</td>
+<td>13.0</td>
+<td>14.0</td>
+<td>LB</td>
+<td>84.0</td>
+<td>€77.7M</td>
+<td>80.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16705</td>
+<td>240558</td>
+<td>18&nbsp;L. Clayton</td>
+<td>17</td>
+<td>https://cdn.sofifa.com/players/240/558/18_60.png</td>
+<td>England</td>
+<td>https://cdn.sofifa.com/flags/gb-eng.png</td>
+<td>53</td>
+<td>70</td>
+<td>Cheltenham Town</td>
+<td>https://cdn.sofifa.com/teams/1936/30.png</td>
+<td>...</td>
+<td>12.0</td>
+<td>55.0</td>
+<td>54.0</td>
+<td>52.0</td>
+<td>50.0</td>
+<td>59.0</td>
+<td>GK</td>
+<td>52.0</td>
+<td>€238K</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">16706</td>
+<td>262846</td>
+<td>�. Dobre</td>
+<td>20</td>
+<td>https://cdn.sofifa.com/players/262/846/22_60.png</td>
+<td>Romania</td>
+<td>https://cdn.sofifa.com/flags/ro.png</td>
+<td>53</td>
+<td>63</td>
+<td>FC Academica Clinceni</td>
+<td>https://cdn.sofifa.com/teams/113391/30.png</td>
+<td>...</td>
+<td>12.0</td>
+<td>57.0</td>
+<td>52.0</td>
+<td>53.0</td>
+<td>48.0</td>
+<td>58.0</td>
+<td>GK</td>
+<td>53.0</td>
+<td>€279K</td>
+<td>5.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16707</td>
+<td>241317</td>
+<td>21&nbsp;Xue Qinghao</td>
+<td>19</td>
+<td>https://cdn.sofifa.com/players/241/317/21_60.png</td>
+<td>China PR</td>
+<td>https://cdn.sofifa.com/flags/cn.png</td>
+<td>47</td>
+<td>60</td>
+<td>Shanghai Shenhua FC</td>
+<td>https://cdn.sofifa.com/teams/110955/30.png</td>
+<td>...</td>
+<td>9.0</td>
+<td>49.0</td>
+<td>48.0</td>
+<td>45.0</td>
+<td>38.0</td>
+<td>52.0</td>
+<td>GK</td>
+<td>47.0</td>
+<td>€223K</td>
+<td>21.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">16708</td>
+<td>259646</td>
+<td>A. Shaikh</td>
+<td>18</td>
+<td>https://cdn.sofifa.com/players/259/646/22_60.png</td>
+<td>India</td>
+<td>https://cdn.sofifa.com/flags/in.png</td>
+<td>47</td>
+<td>67</td>
+<td>ATK Mohun Bagan FC</td>
+<td>https://cdn.sofifa.com/teams/113146/30.png</td>
+<td>...</td>
+<td>13.0</td>
+<td>49.0</td>
+<td>41.0</td>
+<td>39.0</td>
+<td>45.0</td>
+<td>49.0</td>
+<td>GK</td>
+<td>47.0</td>
+<td>€259K</td>
+<td>7.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16709</td>
+<td>178453</td>
+<td>07&nbsp;A. Censori</td>
+<td>17</td>
+<td>https://cdn.sofifa.com/players/178/453/07_60.png</td>
+<td>Italy</td>
+<td>https://cdn.sofifa.com/flags/it.png</td>
+<td>28</td>
+<td>38</td>
+<td>Arezzo</td>
+<td>https://cdn.sofifa.com/teams/110907/30.png</td>
+<td>...</td>
+<td>NaN</td>
+<td>7.0</td>
+<td>1.0</td>
+<td>36.0</td>
+<td>6.0</td>
+<td>9.0</td>
+<td>ST</td>
+<td>36.0</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+
+<p>16710 rows × 65 columns</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>기본정보</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>컬럼명</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>ID</code></td>
+<td>선수 고유 식별 번호</td>
+</tr>
+<tr class="even">
+<td><code>Name</code></td>
+<td>선수 이름</td>
+</tr>
+<tr class="odd">
+<td><code>Age</code></td>
+<td>나이</td>
+</tr>
+<tr class="even">
+<td><code>Photo</code></td>
+<td>선수 얼굴 사진 (URL 또는 이미지 경로)</td>
+</tr>
+<tr class="odd">
+<td><code>Nationality</code></td>
+<td>국적</td>
+</tr>
+<tr class="even">
+<td><code>Flag</code></td>
+<td>국가의 국기 이미지 (URL 또는 이미지 경로)</td>
+</tr>
+<tr class="odd">
+<td><code>Club</code></td>
+<td>소속 클럽</td>
+</tr>
+<tr class="even">
+<td><code>Club Logo</code></td>
+<td>클럽 로고 이미지 (URL 또는 경로)</td>
+</tr>
+<tr class="odd">
+<td><code>Value</code></td>
+<td>시장 가치 (예: €50M 등)</td>
+</tr>
+<tr class="even">
+<td><code>Wage</code></td>
+<td>주급 (예: €200K 등)</td>
+</tr>
+<tr class="odd">
+<td><code>Release Clause</code></td>
+<td>바이아웃 금액, 계약 해지에 필요한 금액</td>
+</tr>
+</tbody>
+</table>
+<p><strong>전체능력치 및 잠재력</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 57%">
+<col style="width: 42%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>컬럼명</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Overall</code></td>
+<td>현재 종합 능력치 (게임 내 평점 기준)</td>
+</tr>
+<tr class="even">
+<td><code>Potential</code></td>
+<td>향후 성장 가능성이 반영된 잠재 평점</td>
+</tr>
+<tr class="odd">
+<td><code>Special</code></td>
+<td>특수 능력치 총합 (비공식)</td>
+</tr>
+<tr class="even">
+<td><code>Best Overall Rating</code></td>
+<td>가장 높은 능력을 발휘할 수 있는 포지션에서의 최고 평점</td>
+</tr>
+<tr class="odd">
+<td><code>Best Position</code></td>
+<td>가장 잘하는 포지션</td>
+</tr>
+</tbody>
+</table>
+<p><strong>플레이관련</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>컬럼명</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Preferred Foot</code></td>
+<td>선호하는 발 (Left/Right)</td>
+</tr>
+<tr class="even">
+<td><code>International Reputation</code></td>
+<td>국제적인 명성 (1~5점)</td>
+</tr>
+<tr class="odd">
+<td><code>Weak Foot</code></td>
+<td>약발 능력치 (1~5점, 높을수록 양발잡이)</td>
+</tr>
+<tr class="even">
+<td><code>Skill Moves</code></td>
+<td>개인기 기술 수준 (1~5점)</td>
+</tr>
+<tr class="odd">
+<td><code>Work Rate</code></td>
+<td>공격/수비 성향 (예: High/Medium)</td>
+</tr>
+<tr class="even">
+<td><code>Body Type</code></td>
+<td>체형 (예: Lean, Normal, Stocky)</td>
+</tr>
+<tr class="odd">
+<td><code>Real Face</code></td>
+<td>실제 얼굴 스캔 여부 (Yes/No)</td>
+</tr>
+<tr class="even">
+<td><code>Position</code></td>
+<td>주 포지션 (예: ST, CM, GK 등)</td>
+</tr>
+<tr class="odd">
+<td><code>Jersey Number</code></td>
+<td>등번호</td>
+</tr>
+<tr class="even">
+<td><code>Joined</code></td>
+<td>클럽에 입단한 날짜</td>
+</tr>
+<tr class="odd">
+<td><code>Loaned From</code></td>
+<td>임대 중인 경우 원 소속 클럽</td>
+</tr>
+<tr class="even">
+<td><code>Contract Valid Until</code></td>
+<td>계약 만료 연도</td>
+</tr>
+</tbody>
+</table>
+<p><strong>신체 정보</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>컬럼명</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Height</code></td>
+<td>키 (cm 또는 ft/in)</td>
+</tr>
+<tr class="even">
+<td><code>Weight</code></td>
+<td>몸무게 (kg 또는 lbs)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>세부능력치</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>컬럼명</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Crossing</code></td>
+<td>크로스 정확도</td>
+</tr>
+<tr class="even">
+<td><code>Finishing</code></td>
+<td>골 결정력</td>
+</tr>
+<tr class="odd">
+<td><code>HeadingAccuracy</code></td>
+<td>헤딩 정확도</td>
+</tr>
+<tr class="even">
+<td><code>ShortPassing</code></td>
+<td>짧은 패스 정확도</td>
+</tr>
+<tr class="odd">
+<td><code>Volleys</code></td>
+<td>발리 슛 능력</td>
+</tr>
+<tr class="even">
+<td><code>Dribbling</code></td>
+<td>드리블 능력</td>
+</tr>
+<tr class="odd">
+<td><code>Curve</code></td>
+<td>감아차기 능력</td>
+</tr>
+<tr class="even">
+<td><code>FKAccuracy</code></td>
+<td>프리킥 정확도</td>
+</tr>
+<tr class="odd">
+<td><code>LongPassing</code></td>
+<td>롱패스 능력</td>
+</tr>
+<tr class="even">
+<td><code>BallControl</code></td>
+<td>볼 컨트롤 능력</td>
+</tr>
+<tr class="odd">
+<td><code>Acceleration</code></td>
+<td>가속력</td>
+</tr>
+<tr class="even">
+<td><code>SprintSpeed</code></td>
+<td>최고 속도</td>
+</tr>
+<tr class="odd">
+<td><code>Agility</code></td>
+<td>민첩성</td>
+</tr>
+<tr class="even">
+<td><code>Reactions</code></td>
+<td>반응 속도</td>
+</tr>
+<tr class="odd">
+<td><code>Balance</code></td>
+<td>균형 감각</td>
+</tr>
+<tr class="even">
+<td><code>ShotPower</code></td>
+<td>슛 파워</td>
+</tr>
+<tr class="odd">
+<td><code>Jumping</code></td>
+<td>점프력</td>
+</tr>
+<tr class="even">
+<td><code>Stamina</code></td>
+<td>체력</td>
+</tr>
+<tr class="odd">
+<td><code>Strength</code></td>
+<td>몸싸움 능력</td>
+</tr>
+<tr class="even">
+<td><code>LongShots</code></td>
+<td>중거리 슛 능력</td>
+</tr>
+<tr class="odd">
+<td><code>Aggression</code></td>
+<td>공격성</td>
+</tr>
+<tr class="even">
+<td><code>Interceptions</code></td>
+<td>공 차단 능력</td>
+</tr>
+<tr class="odd">
+<td><code>Positioning</code></td>
+<td>위치 선정</td>
+</tr>
+<tr class="even">
+<td><code>Vision</code></td>
+<td>시야</td>
+</tr>
+<tr class="odd">
+<td><code>Penalties</code></td>
+<td>페널티킥 능력</td>
+</tr>
+<tr class="even">
+<td><code>Composure</code></td>
+<td>침착성</td>
+</tr>
+<tr class="odd">
+<td><code>Marking</code></td>
+<td>마크 능력</td>
+</tr>
+<tr class="even">
+<td><code>StandingTackle</code></td>
+<td>서서 태클 능력</td>
+</tr>
+<tr class="odd">
+<td><code>SlidingTackle</code></td>
+<td>슬라이딩 태클 능력</td>
+</tr>
+<tr class="even">
+<td><code>DefensiveAwareness</code></td>
+<td>수비 인식 (FIFA 22 이후 명시됨)</td>
+</tr>
+<tr class="odd">
+<td><code>GKDiving</code></td>
+<td>다이빙</td>
+</tr>
+<tr class="even">
+<td><code>GKHandling</code></td>
+<td>캐치 능력</td>
+</tr>
+<tr class="odd">
+<td><code>GKKicking</code></td>
+<td>킥 정확도</td>
+</tr>
+<tr class="even">
+<td><code>GKPositioning</code></td>
+<td>골키퍼 위치 선정</td>
+</tr>
+<tr class="odd">
+<td><code>GKReflexes</code></td>
+<td>반사 신경</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="b.-결측치정리" class="level3">
+<h3 class="anchored" data-anchor-id="b.-결측치정리">B. 결측치정리</h3>
+<div id="c89668a8-dd53-402b-a6be-cd1630165371" class="cell" data-execution_count="82">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 16710 entries, 0 to 16709
+Data columns (total 65 columns):
+ #   Column                    Non-Null Count  Dtype  
+---  ------                    --------------  -----  
+ 0   ID                        16710 non-null  int64  
+ 1   Name                      16710 non-null  object 
+ 2   Age                       16710 non-null  int64  
+ 3   Photo                     16710 non-null  object 
+ 4   Nationality               16710 non-null  object 
+ 5   Flag                      16710 non-null  object 
+ 6   Overall                   16710 non-null  int64  
+ 7   Potential                 16710 non-null  int64  
+ 8   Club                      16446 non-null  object 
+ 9   Club Logo                 16710 non-null  object 
+ 10  Value                     16710 non-null  object 
+ 11  Wage                      16710 non-null  object 
+ 12  Special                   16710 non-null  int64  
+ 13  Preferred Foot            16710 non-null  object 
+ 14  International Reputation  16710 non-null  float64
+ 15  Weak Foot                 16710 non-null  float64
+ 16  Skill Moves               16710 non-null  float64
+ 17  Work Rate                 16710 non-null  object 
+ 18  Body Type                 16681 non-null  object 
+ 19  Real Face                 16681 non-null  object 
+ 20  Position                  16684 non-null  object 
+ 21  Jersey Number             16684 non-null  float64
+ 22  Joined                    15198 non-null  object 
+ 23  Loaned From               1132 non-null   object 
+ 24  Contract Valid Until      16359 non-null  object 
+ 25  Height                    16710 non-null  object 
+ 26  Weight                    16710 non-null  object 
+ 27  Crossing                  16710 non-null  float64
+ 28  Finishing                 16710 non-null  float64
+ 29  HeadingAccuracy           16710 non-null  float64
+ 30  ShortPassing              16710 non-null  float64
+ 31  Volleys                   16673 non-null  float64
+ 32  Dribbling                 16710 non-null  float64
+ 33  Curve                     16673 non-null  float64
+ 34  FKAccuracy                16710 non-null  float64
+ 35  LongPassing               16710 non-null  float64
+ 36  BallControl               16710 non-null  float64
+ 37  Acceleration              16710 non-null  float64
+ 38  SprintSpeed               16710 non-null  float64
+ 39  Agility                   16673 non-null  float64
+ 40  Reactions                 16710 non-null  float64
+ 41  Balance                   16673 non-null  float64
+ 42  ShotPower                 16710 non-null  float64
+ 43  Jumping                   16673 non-null  float64
+ 44  Stamina                   16710 non-null  float64
+ 45  Strength                  16710 non-null  float64
+ 46  LongShots                 16710 non-null  float64
+ 47  Aggression                16710 non-null  float64
+ 48  Interceptions             16702 non-null  float64
+ 49  Positioning               16702 non-null  float64
+ 50  Vision                    16673 non-null  float64
+ 51  Penalties                 16710 non-null  float64
+ 52  Composure                 16459 non-null  float64
+ 53  Marking                   892 non-null    float64
+ 54  StandingTackle            16710 non-null  float64
+ 55  SlidingTackle             16673 non-null  float64
+ 56  GKDiving                  16710 non-null  float64
+ 57  GKHandling                16710 non-null  float64
+ 58  GKKicking                 16710 non-null  float64
+ 59  GKPositioning             16710 non-null  float64
+ 60  GKReflexes                16710 non-null  float64
+ 61  Best Position             16710 non-null  object 
+ 62  Best Overall Rating       16710 non-null  float64
+ 63  Release Clause            14961 non-null  object 
+ 64  DefensiveAwareness        15818 non-null  float64
+dtypes: float64(40), int64(5), object(20)
+memory usage: 8.3+ MB</code></pre>
+</div>
+</div>
+<div id="2cbacd50-a738-4007-9364-051e80088a29" class="cell" data-execution_count="83">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df.isna().<span class="bu">sum</span>().sort_values()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="83">
+<pre><code>ID                        0
+Name                      0
+Age                       0
+Photo                     0
+Nationality               0
+                      ...  
+DefensiveAwareness      892
+Joined                 1512
+Release Clause         1749
+Loaned From           15578
+Marking               15818
+Length: 65, dtype: int64</code></pre>
+</div>
+</div>
+<div id="730b89f8-b3ae-44ca-b90a-f6daf10589d8" class="cell" data-execution_count="102">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> df.drop([<span class="st">"Loaned From"</span>, <span class="st">"Marking"</span>],axis<span class="op">=</span><span class="dv">1</span>).dropna()</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="102">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ID</th>
+<th data-quarto-table-cell-role="th">Name</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Photo</th>
+<th data-quarto-table-cell-role="th">Nationality</th>
+<th data-quarto-table-cell-role="th">Flag</th>
+<th data-quarto-table-cell-role="th">Overall</th>
+<th data-quarto-table-cell-role="th">Potential</th>
+<th data-quarto-table-cell-role="th">Club</th>
+<th data-quarto-table-cell-role="th">Club Logo</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">SlidingTackle</th>
+<th data-quarto-table-cell-role="th">GKDiving</th>
+<th data-quarto-table-cell-role="th">GKHandling</th>
+<th data-quarto-table-cell-role="th">GKKicking</th>
+<th data-quarto-table-cell-role="th">GKPositioning</th>
+<th data-quarto-table-cell-role="th">GKReflexes</th>
+<th data-quarto-table-cell-role="th">Best Position</th>
+<th data-quarto-table-cell-role="th">Best Overall Rating</th>
+<th data-quarto-table-cell-role="th">Release Clause</th>
+<th data-quarto-table-cell-role="th">DefensiveAwareness</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>212198</td>
+<td>Bruno Fernandes</td>
+<td>26</td>
+<td>https://cdn.sofifa.com/players/212/198/22_60.png</td>
+<td>Portugal</td>
+<td>https://cdn.sofifa.com/flags/pt.png</td>
+<td>88</td>
+<td>89</td>
+<td>Manchester United</td>
+<td>https://cdn.sofifa.com/teams/11/30.png</td>
+<td>...</td>
+<td>65.0</td>
+<td>12.0</td>
+<td>14.0</td>
+<td>15.0</td>
+<td>8.0</td>
+<td>14.0</td>
+<td>CAM</td>
+<td>88.0</td>
+<td>€206.9M</td>
+<td>72.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>209658</td>
+<td>L. Goretzka</td>
+<td>26</td>
+<td>https://cdn.sofifa.com/players/209/658/22_60.png</td>
+<td>Germany</td>
+<td>https://cdn.sofifa.com/flags/de.png</td>
+<td>87</td>
+<td>88</td>
+<td>FC Bayern München</td>
+<td>https://cdn.sofifa.com/teams/21/30.png</td>
+<td>...</td>
+<td>77.0</td>
+<td>13.0</td>
+<td>8.0</td>
+<td>15.0</td>
+<td>11.0</td>
+<td>9.0</td>
+<td>CM</td>
+<td>87.0</td>
+<td>€160.4M</td>
+<td>74.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>176580</td>
+<td>L. Suárez</td>
+<td>34</td>
+<td>https://cdn.sofifa.com/players/176/580/22_60.png</td>
+<td>Uruguay</td>
+<td>https://cdn.sofifa.com/flags/uy.png</td>
+<td>88</td>
+<td>88</td>
+<td>Atlético de Madrid</td>
+<td>https://cdn.sofifa.com/teams/240/30.png</td>
+<td>...</td>
+<td>38.0</td>
+<td>27.0</td>
+<td>25.0</td>
+<td>31.0</td>
+<td>33.0</td>
+<td>37.0</td>
+<td>ST</td>
+<td>88.0</td>
+<td>€91.2M</td>
+<td>42.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>192985</td>
+<td>K. De Bruyne</td>
+<td>30</td>
+<td>https://cdn.sofifa.com/players/192/985/22_60.png</td>
+<td>Belgium</td>
+<td>https://cdn.sofifa.com/flags/be.png</td>
+<td>91</td>
+<td>91</td>
+<td>Manchester City</td>
+<td>https://cdn.sofifa.com/teams/10/30.png</td>
+<td>...</td>
+<td>53.0</td>
+<td>15.0</td>
+<td>13.0</td>
+<td>5.0</td>
+<td>10.0</td>
+<td>13.0</td>
+<td>CM</td>
+<td>91.0</td>
+<td>€232.2M</td>
+<td>68.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>224334</td>
+<td>M. Acuña</td>
+<td>29</td>
+<td>https://cdn.sofifa.com/players/224/334/22_60.png</td>
+<td>Argentina</td>
+<td>https://cdn.sofifa.com/flags/ar.png</td>
+<td>84</td>
+<td>84</td>
+<td>Sevilla FC</td>
+<td>https://cdn.sofifa.com/teams/481/30.png</td>
+<td>...</td>
+<td>82.0</td>
+<td>8.0</td>
+<td>14.0</td>
+<td>13.0</td>
+<td>13.0</td>
+<td>14.0</td>
+<td>LB</td>
+<td>84.0</td>
+<td>€77.7M</td>
+<td>80.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16703</td>
+<td>259718</td>
+<td>F. Gebhardt</td>
+<td>19</td>
+<td>https://cdn.sofifa.com/players/259/718/22_60.png</td>
+<td>Germany</td>
+<td>https://cdn.sofifa.com/flags/de.png</td>
+<td>52</td>
+<td>66</td>
+<td>FC Basel 1893</td>
+<td>https://cdn.sofifa.com/teams/896/30.png</td>
+<td>...</td>
+<td>10.0</td>
+<td>53.0</td>
+<td>45.0</td>
+<td>47.0</td>
+<td>52.0</td>
+<td>57.0</td>
+<td>GK</td>
+<td>52.0</td>
+<td>€361K</td>
+<td>6.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">16704</td>
+<td>251433</td>
+<td>B. Voll</td>
+<td>20</td>
+<td>https://cdn.sofifa.com/players/251/433/22_60.png</td>
+<td>Germany</td>
+<td>https://cdn.sofifa.com/flags/de.png</td>
+<td>58</td>
+<td>69</td>
+<td>F.C. Hansa Rostock</td>
+<td>https://cdn.sofifa.com/teams/27/30.png</td>
+<td>...</td>
+<td>10.0</td>
+<td>59.0</td>
+<td>60.0</td>
+<td>56.0</td>
+<td>55.0</td>
+<td>61.0</td>
+<td>GK</td>
+<td>58.0</td>
+<td>€656K</td>
+<td>5.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16706</td>
+<td>262846</td>
+<td>�. Dobre</td>
+<td>20</td>
+<td>https://cdn.sofifa.com/players/262/846/22_60.png</td>
+<td>Romania</td>
+<td>https://cdn.sofifa.com/flags/ro.png</td>
+<td>53</td>
+<td>63</td>
+<td>FC Academica Clinceni</td>
+<td>https://cdn.sofifa.com/teams/113391/30.png</td>
+<td>...</td>
+<td>12.0</td>
+<td>57.0</td>
+<td>52.0</td>
+<td>53.0</td>
+<td>48.0</td>
+<td>58.0</td>
+<td>GK</td>
+<td>53.0</td>
+<td>€279K</td>
+<td>5.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">16707</td>
+<td>241317</td>
+<td>21&nbsp;Xue Qinghao</td>
+<td>19</td>
+<td>https://cdn.sofifa.com/players/241/317/21_60.png</td>
+<td>China PR</td>
+<td>https://cdn.sofifa.com/flags/cn.png</td>
+<td>47</td>
+<td>60</td>
+<td>Shanghai Shenhua FC</td>
+<td>https://cdn.sofifa.com/teams/110955/30.png</td>
+<td>...</td>
+<td>9.0</td>
+<td>49.0</td>
+<td>48.0</td>
+<td>45.0</td>
+<td>38.0</td>
+<td>52.0</td>
+<td>GK</td>
+<td>47.0</td>
+<td>€223K</td>
+<td>21.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16708</td>
+<td>259646</td>
+<td>A. Shaikh</td>
+<td>18</td>
+<td>https://cdn.sofifa.com/players/259/646/22_60.png</td>
+<td>India</td>
+<td>https://cdn.sofifa.com/flags/in.png</td>
+<td>47</td>
+<td>67</td>
+<td>ATK Mohun Bagan FC</td>
+<td>https://cdn.sofifa.com/teams/113146/30.png</td>
+<td>...</td>
+<td>13.0</td>
+<td>49.0</td>
+<td>41.0</td>
+<td>39.0</td>
+<td>45.0</td>
+<td>49.0</td>
+<td>GK</td>
+<td>47.0</td>
+<td>€259K</td>
+<td>7.0</td>
+</tr>
+</tbody>
+</table>
+
+<p>14398 rows × 63 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="c.-포지션-정리" class="level3">
+<h3 class="anchored" data-anchor-id="c.-포지션-정리">C. 포지션 정리</h3>
+<p><code>-</code> 포지션변환</p>
+<div id="2a1b9ea1-15a6-48c3-a361-b1684be1c6bf" class="cell" data-execution_count="103">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df3 <span class="op">=</span> df2.copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="19272665-830f-4d73-89fa-d3dd42eecc15" class="cell" data-execution_count="104">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df3[<span class="st">'Position'</span>] <span class="op">=</span> [l.split(<span class="st">"&gt;"</span>)[<span class="op">-</span><span class="dv">1</span>] <span class="cf">for</span> l <span class="kw">in</span> df2.Position]</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df3.Position</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="104">
+<pre><code>0        CAM
+1        LDM
+2         RS
+3        RCM
+4         LB
+        ... 
+16703    RES
+16704    RES
+16706    RES
+16707    RES
+16708    SUB
+Name: Position, Length: 14398, dtype: object</code></pre>
+</div>
+</div>
+<p><code>-</code> 포지션치환</p>
+<div id="7dd34f90-9555-4cd6-a743-bffdf251661f" class="cell" data-execution_count="105">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>position_dict <span class="op">=</span> {</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'GOALKEEPER'</span>:{<span class="st">'GK'</span>},</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'DEFENDER'</span>:{<span class="st">'CB'</span>,<span class="st">'RCB'</span>,<span class="st">'LCB'</span>,<span class="st">'RB'</span>,<span class="st">'LB'</span>,<span class="st">'RWB'</span>,<span class="st">'LWB'</span>},</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'MIDFIELDER'</span>:{<span class="st">'CM'</span>,<span class="st">'RCM'</span>,<span class="st">'LCM'</span>,<span class="st">'CDM'</span>,<span class="st">'RDM'</span>,<span class="st">'LDM'</span>,<span class="st">'CAM'</span>,<span class="st">'RAM'</span>,<span class="st">'LAM'</span>,<span class="st">'RM'</span>,<span class="st">'LM'</span>},</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'FORWARD'</span>:{<span class="st">'ST'</span>,<span class="st">'CF'</span>,<span class="st">'RF'</span>,<span class="st">'LF'</span>,<span class="st">'RW'</span>,<span class="st">'LW'</span>,<span class="st">'RS'</span>,<span class="st">'LS'</span>},</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'SUB'</span>:{<span class="st">'SUB'</span>},</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'RES'</span>:{<span class="st">'RES'</span>}</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>position_dict</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="105">
+<pre><code>{'GOALKEEPER': {'GK'},
+ 'DEFENDER': {'CB', 'LB', 'LCB', 'LWB', 'RB', 'RCB', 'RWB'},
+ 'MIDFIELDER': {'CAM',
+  'CDM',
+  'CM',
+  'LAM',
+  'LCM',
+  'LDM',
+  'LM',
+  'RAM',
+  'RCM',
+  'RDM',
+  'RM'},
+ 'FORWARD': {'CF', 'LF', 'LS', 'LW', 'RF', 'RS', 'RW', 'ST'},
+ 'SUB': {'SUB'},
+ 'RES': {'RES'}}</code></pre>
+</div>
+</div>
+<div id="023317b5-c967-4a8d-be17-fc02e132be33" class="cell" data-execution_count="113">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>position <span class="op">=</span> <span class="st">"CAM"</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>[key <span class="cf">for</span> key <span class="kw">in</span> position_dict <span class="cf">if</span> position <span class="kw">in</span> position_dict[key]].pop()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="113">
+<pre><code>'MIDFIELDER'</code></pre>
+</div>
+</div>
+<div id="3d31bc69-e8d2-487a-bda9-2dfad9621225" class="cell" data-execution_count="116">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df3[<span class="st">'Position2'</span>] <span class="op">=</span> [[key <span class="cf">for</span> key <span class="kw">in</span> position_dict <span class="cf">if</span> position <span class="kw">in</span> position_dict[key]].pop() <span class="cf">for</span> position <span class="kw">in</span> df3.Position]</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>df3.loc[:,[<span class="st">'Position'</span>,<span class="st">'Position2'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="116">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Position</th>
+<th data-quarto-table-cell-role="th">Position2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>CAM</td>
+<td>MIDFIELDER</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>LDM</td>
+<td>MIDFIELDER</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>RS</td>
+<td>FORWARD</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>RCM</td>
+<td>MIDFIELDER</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>LB</td>
+<td>DEFENDER</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16703</td>
+<td>RES</td>
+<td>RES</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">16704</td>
+<td>RES</td>
+<td>RES</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16706</td>
+<td>RES</td>
+<td>RES</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">16707</td>
+<td>RES</td>
+<td>RES</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16708</td>
+<td>SUB</td>
+<td>SUB</td>
+</tr>
+</tbody>
+</table>
+
+<p>14398 rows × 2 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="d.-포지션별-능력치-비교" class="level3">
+<h3 class="anchored" data-anchor-id="d.-포지션별-능력치-비교">D. 포지션별 능력치 비교</h3>
+<div id="0ab59b3e-2194-426c-89e1-9b1d5f005034" class="cell" data-execution_count="123">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df3.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="123">
+<pre><code>Index(['ID', 'Name', 'Age', 'Photo', 'Nationality', 'Flag', 'Overall',
+       'Potential', 'Club', 'Club Logo', 'Value', 'Wage', 'Special',
+       'Preferred Foot', 'International Reputation', 'Weak Foot',
+       'Skill Moves', 'Work Rate', 'Body Type', 'Real Face', 'Position',
+       'Jersey Number', 'Joined', 'Contract Valid Until', 'Height', 'Weight',
+       'Crossing', 'Finishing', 'HeadingAccuracy', 'ShortPassing', 'Volleys',
+       'Dribbling', 'Curve', 'FKAccuracy', 'LongPassing', 'BallControl',
+       'Acceleration', 'SprintSpeed', 'Agility', 'Reactions', 'Balance',
+       'ShotPower', 'Jumping', 'Stamina', 'Strength', 'LongShots',
+       'Aggression', 'Interceptions', 'Positioning', 'Vision', 'Penalties',
+       'Composure', 'StandingTackle', 'SlidingTackle', 'GKDiving',
+       'GKHandling', 'GKKicking', 'GKPositioning', 'GKReflexes',
+       'Best Position', 'Best Overall Rating', 'Release Clause',
+       'DefensiveAwareness', 'Position2'],
+      dtype='object')</code></pre>
+</div>
+</div>
+<p><code>-</code> 포지션별로 “Dribbling”, “ShotPower”, “SlidingTackle” 능력의 평균을 구하라.</p>
+<ul>
+<li>Dribbling의 평균능력치가 가장 좋은 포지션은 어디인가?</li>
+<li>ShotPower의 평균능력치가 가장 좋은 포지션은 어디인가?</li>
+<li>SlidingTackle의 평균능력치가 가장 좋은 포지션은 어디인가?</li>
+<li>세 능력치의 평균이 가장 좋은 포지션은?</li>
+</ul>
+<div id="59cf0d9c-418b-470e-b937-13e9e0bd4600" class="cell" data-execution_count="145">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df3.groupby(<span class="st">"Position2"</span>)[[<span class="st">"Dribbling"</span>,<span class="st">"ShotPower"</span>,<span class="st">"SlidingTackle"</span>]].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="145">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Dribbling</th>
+<th data-quarto-table-cell-role="th">ShotPower</th>
+<th data-quarto-table-cell-role="th">SlidingTackle</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Position2</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">DEFENDER</td>
+<td>57.100000</td>
+<td>55.638605</td>
+<td>66.985116</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">FORWARD</td>
+<td>69.472997</td>
+<td>71.105401</td>
+<td>29.051394</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">GOALKEEPER</td>
+<td>14.996055</td>
+<td>50.512821</td>
+<td>14.353057</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">MIDFIELDER</td>
+<td>69.057130</td>
+<td>67.587294</td>
+<td>53.313985</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">RES</td>
+<td>53.150668</td>
+<td>55.156928</td>
+<td>42.362270</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">SUB</td>
+<td>58.582293</td>
+<td>60.417540</td>
+<td>45.524380</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="f8fddbdf-ddf9-4f95-954d-58a549891233" class="cell" data-execution_count="213">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df3.groupby(<span class="st">"Position2"</span>)[[<span class="st">"Dribbling"</span>,<span class="st">"ShotPower"</span>,<span class="st">"SlidingTackle"</span>]].mean().mean(axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="213">
+<pre><code>Position2
+DEFENDER      59.907907
+FORWARD       56.543264
+GOALKEEPER    26.620644
+MIDFIELDER    63.319470
+RES           50.223289
+SUB           54.841405
+dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="f.-주급처리" class="level3">
+<h3 class="anchored" data-anchor-id="f.-주급처리">F. 주급처리</h3>
+<div id="774c952a-2c1e-4dba-bd39-1e0f4c6db0fa" class="cell" data-execution_count="171">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df3[<span class="st">'Wage'</span>] <span class="op">=</span> [<span class="bu">eval</span>(l.replace(<span class="st">"€"</span>,<span class="st">""</span>).replace(<span class="st">"K"</span>,<span class="st">"*1000"</span>).replace(<span class="st">"M"</span>,<span class="st">"*1000000"</span>)) <span class="cf">for</span> l <span class="kw">in</span> df2.Wage]</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>df3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="171">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ID</th>
+<th data-quarto-table-cell-role="th">Name</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Photo</th>
+<th data-quarto-table-cell-role="th">Nationality</th>
+<th data-quarto-table-cell-role="th">Flag</th>
+<th data-quarto-table-cell-role="th">Overall</th>
+<th data-quarto-table-cell-role="th">Potential</th>
+<th data-quarto-table-cell-role="th">Club</th>
+<th data-quarto-table-cell-role="th">Club Logo</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">GKDiving</th>
+<th data-quarto-table-cell-role="th">GKHandling</th>
+<th data-quarto-table-cell-role="th">GKKicking</th>
+<th data-quarto-table-cell-role="th">GKPositioning</th>
+<th data-quarto-table-cell-role="th">GKReflexes</th>
+<th data-quarto-table-cell-role="th">Best Position</th>
+<th data-quarto-table-cell-role="th">Best Overall Rating</th>
+<th data-quarto-table-cell-role="th">Release Clause</th>
+<th data-quarto-table-cell-role="th">DefensiveAwareness</th>
+<th data-quarto-table-cell-role="th">Position2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>212198</td>
+<td>Bruno Fernandes</td>
+<td>26</td>
+<td>https://cdn.sofifa.com/players/212/198/22_60.png</td>
+<td>Portugal</td>
+<td>https://cdn.sofifa.com/flags/pt.png</td>
+<td>88</td>
+<td>89</td>
+<td>Manchester United</td>
+<td>https://cdn.sofifa.com/teams/11/30.png</td>
+<td>...</td>
+<td>12.0</td>
+<td>14.0</td>
+<td>15.0</td>
+<td>8.0</td>
+<td>14.0</td>
+<td>CAM</td>
+<td>88.0</td>
+<td>€206.9M</td>
+<td>72.0</td>
+<td>MIDFIELDER</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>209658</td>
+<td>L. Goretzka</td>
+<td>26</td>
+<td>https://cdn.sofifa.com/players/209/658/22_60.png</td>
+<td>Germany</td>
+<td>https://cdn.sofifa.com/flags/de.png</td>
+<td>87</td>
+<td>88</td>
+<td>FC Bayern München</td>
+<td>https://cdn.sofifa.com/teams/21/30.png</td>
+<td>...</td>
+<td>13.0</td>
+<td>8.0</td>
+<td>15.0</td>
+<td>11.0</td>
+<td>9.0</td>
+<td>CM</td>
+<td>87.0</td>
+<td>€160.4M</td>
+<td>74.0</td>
+<td>MIDFIELDER</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>176580</td>
+<td>L. Suárez</td>
+<td>34</td>
+<td>https://cdn.sofifa.com/players/176/580/22_60.png</td>
+<td>Uruguay</td>
+<td>https://cdn.sofifa.com/flags/uy.png</td>
+<td>88</td>
+<td>88</td>
+<td>Atlético de Madrid</td>
+<td>https://cdn.sofifa.com/teams/240/30.png</td>
+<td>...</td>
+<td>27.0</td>
+<td>25.0</td>
+<td>31.0</td>
+<td>33.0</td>
+<td>37.0</td>
+<td>ST</td>
+<td>88.0</td>
+<td>€91.2M</td>
+<td>42.0</td>
+<td>FORWARD</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>192985</td>
+<td>K. De Bruyne</td>
+<td>30</td>
+<td>https://cdn.sofifa.com/players/192/985/22_60.png</td>
+<td>Belgium</td>
+<td>https://cdn.sofifa.com/flags/be.png</td>
+<td>91</td>
+<td>91</td>
+<td>Manchester City</td>
+<td>https://cdn.sofifa.com/teams/10/30.png</td>
+<td>...</td>
+<td>15.0</td>
+<td>13.0</td>
+<td>5.0</td>
+<td>10.0</td>
+<td>13.0</td>
+<td>CM</td>
+<td>91.0</td>
+<td>€232.2M</td>
+<td>68.0</td>
+<td>MIDFIELDER</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>224334</td>
+<td>M. Acuña</td>
+<td>29</td>
+<td>https://cdn.sofifa.com/players/224/334/22_60.png</td>
+<td>Argentina</td>
+<td>https://cdn.sofifa.com/flags/ar.png</td>
+<td>84</td>
+<td>84</td>
+<td>Sevilla FC</td>
+<td>https://cdn.sofifa.com/teams/481/30.png</td>
+<td>...</td>
+<td>8.0</td>
+<td>14.0</td>
+<td>13.0</td>
+<td>13.0</td>
+<td>14.0</td>
+<td>LB</td>
+<td>84.0</td>
+<td>€77.7M</td>
+<td>80.0</td>
+<td>DEFENDER</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16703</td>
+<td>259718</td>
+<td>F. Gebhardt</td>
+<td>19</td>
+<td>https://cdn.sofifa.com/players/259/718/22_60.png</td>
+<td>Germany</td>
+<td>https://cdn.sofifa.com/flags/de.png</td>
+<td>52</td>
+<td>66</td>
+<td>FC Basel 1893</td>
+<td>https://cdn.sofifa.com/teams/896/30.png</td>
+<td>...</td>
+<td>53.0</td>
+<td>45.0</td>
+<td>47.0</td>
+<td>52.0</td>
+<td>57.0</td>
+<td>GK</td>
+<td>52.0</td>
+<td>€361K</td>
+<td>6.0</td>
+<td>RES</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">16704</td>
+<td>251433</td>
+<td>B. Voll</td>
+<td>20</td>
+<td>https://cdn.sofifa.com/players/251/433/22_60.png</td>
+<td>Germany</td>
+<td>https://cdn.sofifa.com/flags/de.png</td>
+<td>58</td>
+<td>69</td>
+<td>F.C. Hansa Rostock</td>
+<td>https://cdn.sofifa.com/teams/27/30.png</td>
+<td>...</td>
+<td>59.0</td>
+<td>60.0</td>
+<td>56.0</td>
+<td>55.0</td>
+<td>61.0</td>
+<td>GK</td>
+<td>58.0</td>
+<td>€656K</td>
+<td>5.0</td>
+<td>RES</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16706</td>
+<td>262846</td>
+<td>�. Dobre</td>
+<td>20</td>
+<td>https://cdn.sofifa.com/players/262/846/22_60.png</td>
+<td>Romania</td>
+<td>https://cdn.sofifa.com/flags/ro.png</td>
+<td>53</td>
+<td>63</td>
+<td>FC Academica Clinceni</td>
+<td>https://cdn.sofifa.com/teams/113391/30.png</td>
+<td>...</td>
+<td>57.0</td>
+<td>52.0</td>
+<td>53.0</td>
+<td>48.0</td>
+<td>58.0</td>
+<td>GK</td>
+<td>53.0</td>
+<td>€279K</td>
+<td>5.0</td>
+<td>RES</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">16707</td>
+<td>241317</td>
+<td>21&nbsp;Xue Qinghao</td>
+<td>19</td>
+<td>https://cdn.sofifa.com/players/241/317/21_60.png</td>
+<td>China PR</td>
+<td>https://cdn.sofifa.com/flags/cn.png</td>
+<td>47</td>
+<td>60</td>
+<td>Shanghai Shenhua FC</td>
+<td>https://cdn.sofifa.com/teams/110955/30.png</td>
+<td>...</td>
+<td>49.0</td>
+<td>48.0</td>
+<td>45.0</td>
+<td>38.0</td>
+<td>52.0</td>
+<td>GK</td>
+<td>47.0</td>
+<td>€223K</td>
+<td>21.0</td>
+<td>RES</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16708</td>
+<td>259646</td>
+<td>A. Shaikh</td>
+<td>18</td>
+<td>https://cdn.sofifa.com/players/259/646/22_60.png</td>
+<td>India</td>
+<td>https://cdn.sofifa.com/flags/in.png</td>
+<td>47</td>
+<td>67</td>
+<td>ATK Mohun Bagan FC</td>
+<td>https://cdn.sofifa.com/teams/113146/30.png</td>
+<td>...</td>
+<td>49.0</td>
+<td>41.0</td>
+<td>39.0</td>
+<td>45.0</td>
+<td>49.0</td>
+<td>GK</td>
+<td>47.0</td>
+<td>€259K</td>
+<td>7.0</td>
+<td>SUB</td>
+</tr>
+</tbody>
+</table>
+
+<p>14398 rows × 64 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="g.-주급분석" class="level3">
+<h3 class="anchored" data-anchor-id="g.-주급분석">G. 주급분석</h3>
+<p><code>-</code> 공격수 포지션의 선수들을 “SlidingTackle”에 따라 4개의 그룹으로 나누어라. “SlidingTackle”능력에 따른 주급차이가 있을까?</p>
+<div id="fa9975e9-3aa5-4847-9566-d017c8e1add1" class="cell" data-execution_count="187">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df3.assign(</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    StandingTackle_qcut <span class="op">=</span> pd.qcut(df3[df3.Position2 <span class="op">==</span> <span class="st">"FORWARD"</span>].StandingTackle, q<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>).groupby(<span class="st">"StandingTackle_qcut"</span>).Wage.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipykernel_660254/1348440976.py:3: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+  ).groupby("StandingTackle_qcut").Wage.mean()</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="187">
+<pre><code>StandingTackle_qcut
+(10.999, 23.0]     8407.716049
+(23.0, 31.0]      18052.407407
+(31.0, 41.0]      21139.409722
+(41.0, 76.0]      20203.007519
+Name: Wage, dtype: float64</code></pre>
+</div>
+</div>
+<p><code>-</code> 공격수 포지션의 선수들을 슬라이딩 “ShotPower”의 능력에 따라 4개의 그룹으로 나누어라. “ShotPower”능력에 따른 주급차이가 있을까?</p>
+<div id="d36a1af7-dbe8-4243-9c2e-075a9086f342" class="cell" data-execution_count="188">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df3.assign(</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    ShotPower_qcut <span class="op">=</span> pd.qcut(df3[df3.Position2 <span class="op">==</span> <span class="st">"FORWARD"</span>].ShotPower, q<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>).groupby(<span class="st">"ShotPower_qcut"</span>).Wage.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipykernel_660254/3227603166.py:3: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+  ).groupby("ShotPower_qcut").Wage.mean()</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="188">
+<pre><code>ShotPower_qcut
+(39.999, 66.0]     3736.569579
+(66.0, 71.0]       6737.321429
+(71.0, 77.0]      14354.560261
+(77.0, 94.0]      46081.349206
+Name: Wage, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="평균처리" class="level2">
+<h2 class="anchored" data-anchor-id="평균처리">2. 평균처리</h2>
+<p><code>-</code> numpy</p>
+<div id="d4258bc5-a6b1-4b65-af0b-c5ebd15964ac" class="cell" data-execution_count="193">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]])</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>X</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="193">
+<pre><code>array([[1, 2, 3],
+       [1, 2, 3]])</code></pre>
+</div>
+</div>
+<div id="912dacc2-813c-4a39-898b-96f0054fb23e" class="cell" data-execution_count="195">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>X.<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="195">
+<pre><code>np.int64(12)</code></pre>
+</div>
+</div>
+<div id="b107fbb0-6d8a-48ee-a4c1-64574702b54c" class="cell" data-execution_count="196">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>X.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="196">
+<pre><code>array([2, 4, 6])</code></pre>
+</div>
+</div>
+<div id="c583d00f-5ded-4b7d-bdef-5b921a4590d1" class="cell" data-execution_count="197">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>X.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="197">
+<pre><code>array([6, 6])</code></pre>
+</div>
+</div>
+<p><code>-</code> df</p>
+<div id="3d168d60-c4d5-4ef3-a648-58827a7fd7cd" class="cell" data-execution_count="200">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> pd.DataFrame(X)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>X</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="200">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">0</th>
+<th data-quarto-table-cell-role="th">1</th>
+<th data-quarto-table-cell-role="th">2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="760a4011-e252-4601-8659-f6b78ad3a343" class="cell" data-execution_count="201">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>X.<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="201">
+<pre><code>0    2
+1    4
+2    6
+dtype: int64</code></pre>
+</div>
+</div>
+<div id="8daaa475-f038-45b4-8079-a5b102a566df" class="cell" data-execution_count="202">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>X.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="202">
+<pre><code>0    2
+1    4
+2    6
+dtype: int64</code></pre>
+</div>
+</div>
+<div id="b8a811c5-ed95-480c-921d-5271e584dff6" class="cell" data-execution_count="203">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>X.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="203">
+<pre><code>0    6
+1    6
+dtype: int64</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/guebin\.github\.io\/IAB2025-Play\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

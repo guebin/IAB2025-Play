@@ -9,7 +9,7 @@
 <meta name="author" content="최규빈">
 <meta name="dcterms.date" content="2025-05-22">
 
-<title>12wk-2: [DataFrame] – FIFA 데이터 // 숙제 – IAB2025</title>
+<title>12wk-2: [DataFrame] – FIFA23 데이터 // 숙제 – IAB2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -74,7 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-de84f8d6bb715db06a919283c2d1e787.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-3f453be5ec2ee49e579b43b94346acdb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-251ce1ae7a9effd692ba97c003cecf85.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -154,6 +154,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul class="collapse">
   <li><a href="#fifa데이터" id="toc-fifa데이터" class="nav-link active" data-scroll-target="#fifa데이터">1. FIFA데이터</a></li>
+  <li><a href="#fifa23데이터" id="toc-fifa23데이터" class="nav-link" data-scroll-target="#fifa23데이터">1. FIFA23데이터</a></li>
   <li><a href="#숙제" id="toc-숙제" class="nav-link" data-scroll-target="#숙제">2. 숙제</a></li>
   </ul>
 </nav>
@@ -163,7 +164,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">12wk-2: [DataFrame] – FIFA 데이터 // 숙제</h1>
+<h1 class="title">12wk-2: [DataFrame] – FIFA23 데이터 // 숙제</h1>
 </div>
 
 
@@ -510,11 +511,324 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
+</section>
+<section id="fifa23데이터" class="level2">
+<h2 class="anchored" data-anchor-id="fifa23데이터">1. FIFA23데이터</h2>
+<section id="a.-data-1" class="level3">
+<h3 class="anchored" data-anchor-id="a.-data-1">A. Data</h3>
+<p><code>-</code> 데이터 load</p>
+<div id="cddf9808-3d65-46b1-b548-e877d6e30407" class="cell" data-tags="[]" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'FIFA23_official_data.csv'</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ID</th>
+<th data-quarto-table-cell-role="th">Name</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Photo</th>
+<th data-quarto-table-cell-role="th">Nationality</th>
+<th data-quarto-table-cell-role="th">Flag</th>
+<th data-quarto-table-cell-role="th">Overall</th>
+<th data-quarto-table-cell-role="th">Potential</th>
+<th data-quarto-table-cell-role="th">Club</th>
+<th data-quarto-table-cell-role="th">Club Logo</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">Real Face</th>
+<th data-quarto-table-cell-role="th">Position</th>
+<th data-quarto-table-cell-role="th">Joined</th>
+<th data-quarto-table-cell-role="th">Loaned From</th>
+<th data-quarto-table-cell-role="th">Contract Valid Until</th>
+<th data-quarto-table-cell-role="th">Height</th>
+<th data-quarto-table-cell-role="th">Weight</th>
+<th data-quarto-table-cell-role="th">Release Clause</th>
+<th data-quarto-table-cell-role="th">Kit Number</th>
+<th data-quarto-table-cell-role="th">Best Overall Rating</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>209658</td>
+<td>L. Goretzka</td>
+<td>27</td>
+<td>https://cdn.sofifa.net/players/209/658/23_60.png</td>
+<td>Germany</td>
+<td>https://cdn.sofifa.net/flags/de.png</td>
+<td>87</td>
+<td>88</td>
+<td>FC Bayern München</td>
+<td>https://cdn.sofifa.net/teams/21/30.png</td>
+<td>...</td>
+<td>Yes</td>
+<td>&lt;span class="pos pos28"&gt;SUB</td>
+<td>Jul 1, 2018</td>
+<td>NaN</td>
+<td>2026</td>
+<td>189cm</td>
+<td>82kg</td>
+<td>€157M</td>
+<td>8.0</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>212198</td>
+<td>Bruno Fernandes</td>
+<td>27</td>
+<td>https://cdn.sofifa.net/players/212/198/23_60.png</td>
+<td>Portugal</td>
+<td>https://cdn.sofifa.net/flags/pt.png</td>
+<td>86</td>
+<td>87</td>
+<td>Manchester United</td>
+<td>https://cdn.sofifa.net/teams/11/30.png</td>
+<td>...</td>
+<td>Yes</td>
+<td>&lt;span class="pos pos15"&gt;LCM</td>
+<td>Jan 30, 2020</td>
+<td>NaN</td>
+<td>2026</td>
+<td>179cm</td>
+<td>69kg</td>
+<td>€155M</td>
+<td>8.0</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>224334</td>
+<td>M. Acuña</td>
+<td>30</td>
+<td>https://cdn.sofifa.net/players/224/334/23_60.png</td>
+<td>Argentina</td>
+<td>https://cdn.sofifa.net/flags/ar.png</td>
+<td>85</td>
+<td>85</td>
+<td>Sevilla FC</td>
+<td>https://cdn.sofifa.net/teams/481/30.png</td>
+<td>...</td>
+<td>No</td>
+<td>&lt;span class="pos pos7"&gt;LB</td>
+<td>Sep 14, 2020</td>
+<td>NaN</td>
+<td>2024</td>
+<td>172cm</td>
+<td>69kg</td>
+<td>€97.7M</td>
+<td>19.0</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>192985</td>
+<td>K. De Bruyne</td>
+<td>31</td>
+<td>https://cdn.sofifa.net/players/192/985/23_60.png</td>
+<td>Belgium</td>
+<td>https://cdn.sofifa.net/flags/be.png</td>
+<td>91</td>
+<td>91</td>
+<td>Manchester City</td>
+<td>https://cdn.sofifa.net/teams/10/30.png</td>
+<td>...</td>
+<td>Yes</td>
+<td>&lt;span class="pos pos13"&gt;RCM</td>
+<td>Aug 30, 2015</td>
+<td>NaN</td>
+<td>2025</td>
+<td>181cm</td>
+<td>70kg</td>
+<td>€198.9M</td>
+<td>17.0</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>224232</td>
+<td>N. Barella</td>
+<td>25</td>
+<td>https://cdn.sofifa.net/players/224/232/23_60.png</td>
+<td>Italy</td>
+<td>https://cdn.sofifa.net/flags/it.png</td>
+<td>86</td>
+<td>89</td>
+<td>Inter</td>
+<td>https://cdn.sofifa.net/teams/44/30.png</td>
+<td>...</td>
+<td>Yes</td>
+<td>&lt;span class="pos pos13"&gt;RCM</td>
+<td>Sep 1, 2020</td>
+<td>NaN</td>
+<td>2026</td>
+<td>172cm</td>
+<td>68kg</td>
+<td>€154.4M</td>
+<td>23.0</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">17655</td>
+<td>269526</td>
+<td>Deng Xiongtao</td>
+<td>19</td>
+<td>https://cdn.sofifa.net/players/269/526/23_60.png</td>
+<td>China PR</td>
+<td>https://cdn.sofifa.net/flags/cn.png</td>
+<td>48</td>
+<td>61</td>
+<td>Meizhou Hakka</td>
+<td>https://cdn.sofifa.net/teams/114628/30.png</td>
+<td>...</td>
+<td>No</td>
+<td>&lt;span class="pos pos29"&gt;RES</td>
+<td>Apr 11, 2022</td>
+<td>NaN</td>
+<td>2027</td>
+<td>190cm</td>
+<td>78kg</td>
+<td>€218K</td>
+<td>35.0</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17656</td>
+<td>267946</td>
+<td>22&nbsp;Lim Jun Sub</td>
+<td>17</td>
+<td>https://cdn.sofifa.net/players/267/946/22_60.png</td>
+<td>Korea Republic</td>
+<td>https://cdn.sofifa.net/flags/kr.png</td>
+<td>48</td>
+<td>64</td>
+<td>Jeju United FC</td>
+<td>https://cdn.sofifa.net/teams/1478/30.png</td>
+<td>...</td>
+<td>No</td>
+<td>&lt;span class="pos pos29"&gt;RES</td>
+<td>Jan 1, 2022</td>
+<td>NaN</td>
+<td>2026</td>
+<td>195cm</td>
+<td>84kg</td>
+<td>€188K</td>
+<td>21.0</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">17657</td>
+<td>270567</td>
+<td>A. Demir</td>
+<td>25</td>
+<td>https://cdn.sofifa.net/players/270/567/23_60.png</td>
+<td>Turkey</td>
+<td>https://cdn.sofifa.net/flags/tr.png</td>
+<td>51</td>
+<td>56</td>
+<td>Ümraniyespor</td>
+<td>https://cdn.sofifa.net/teams/113796/30.png</td>
+<td>...</td>
+<td>No</td>
+<td>&lt;span class="pos pos29"&gt;RES</td>
+<td>Jun 6, 2021</td>
+<td>NaN</td>
+<td>2023</td>
+<td>190cm</td>
+<td>82kg</td>
+<td>€142K</td>
+<td>12.0</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17658</td>
+<td>256624</td>
+<td>21&nbsp;S. Czajor</td>
+<td>18</td>
+<td>https://cdn.sofifa.net/players/256/624/21_60.png</td>
+<td>Poland</td>
+<td>https://cdn.sofifa.net/flags/pl.png</td>
+<td>50</td>
+<td>65</td>
+<td>Fleetwood Town</td>
+<td>https://cdn.sofifa.net/teams/112260/30.png</td>
+<td>...</td>
+<td>No</td>
+<td>&lt;span class="pos pos29"&gt;RES</td>
+<td>Jan 1, 2020</td>
+<td>NaN</td>
+<td>2021</td>
+<td>187cm</td>
+<td>79kg</td>
+<td>€214K</td>
+<td>40.0</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">17659</td>
+<td>256376</td>
+<td>21&nbsp;F. Jakobsson</td>
+<td>20</td>
+<td>https://cdn.sofifa.net/players/256/376/21_60.png</td>
+<td>Sweden</td>
+<td>https://cdn.sofifa.net/flags/se.png</td>
+<td>50</td>
+<td>61</td>
+<td>IFK Norrköping</td>
+<td>https://cdn.sofifa.net/teams/702/30.png</td>
+<td>...</td>
+<td>No</td>
+<td>&lt;span class="pos pos29"&gt;RES</td>
+<td>Jan 8, 2020</td>
+<td>NaN</td>
+<td>2021</td>
+<td>186cm</td>
+<td>78kg</td>
+<td>€131K</td>
+<td>30.0</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+
+<p>17660 rows × 29 columns</p>
+</div>
+</div>
+</div>
+</section>
 <section id="b.-df.t" class="level3">
 <h3 class="anchored" data-anchor-id="b.-df.t">B. <code>df.T</code></h3>
 <p><code>-</code> <code>df.T</code>를 이용하여 데이터를 살피면 편리한 경우도 있음</p>
 <div id="b39af168-a077-4209-870e-f39fac7221f4" class="cell" data-tags="[]" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df.T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df.T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <div>
 
@@ -1252,9 +1566,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>-</code> 출력옵션 조정</p>
 <div id="2ab6a3fb-6df3-4efb-93c0-ab760ca7b70b" class="cell" data-tags="[]" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pd.options.display.max_rows <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>display(df.T)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>pd.reset_option(<span class="st">"display.max_rows"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pd.options.display.max_rows <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>display(df.T)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>pd.reset_option(<span class="st">"display.max_rows"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 
@@ -1995,7 +2309,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="c.-df.sort_values">C. <code>df.sort_values()</code></h3>
 <p><code># 예시1</code> – 나이가 어린 순서대로 정렬</p>
 <div id="6dec586f-b97d-4612-89cc-4b1ace1b8f85" class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df.sort_values(by<span class="op">=</span><span class="st">"Age"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df.sort_values(by<span class="op">=</span><span class="st">"Age"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 <div>
 
@@ -2300,7 +2614,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="364d0e13-683b-47f3-80b3-e25cf5def7e3" class="cell" data-tags="[]" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df.sort_values(by<span class="op">=</span><span class="st">'Age'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df.sort_values(by<span class="op">=</span><span class="st">'Age'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <div>
 
@@ -2606,7 +2920,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>-</code> 예시2: 나이가 많은 순서대로 정렬</p>
 <div id="f357bbd7-fa81-4b40-bb25-1ffcd74e465d" class="cell" data-tags="[]" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df.sort_values(by<span class="op">=</span><span class="st">'Age'</span>,ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df.sort_values(by<span class="op">=</span><span class="st">'Age'</span>,ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
 <div>
 
@@ -2912,7 +3226,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>-</code> 예시3: 능력치가 좋은 순서대로 정렬</p>
 <div id="97d8db83-0e42-46a6-b3fc-7d3f41f3a0a4" class="cell" data-tags="[]" data-execution_count="33">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df.sort_values(by<span class="op">=</span><span class="st">'Overall'</span>,ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df.sort_values(by<span class="op">=</span><span class="st">'Overall'</span>,ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="33">
 <div>
 
@@ -3220,7 +3534,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="d.-df.info" class="level3">
 <h3 class="anchored" data-anchor-id="d.-df.info">D. <code>df.info()</code></h3>
 <div id="6704c4b3-aafb-4bc3-ba94-0fbc6dec1016" class="cell" data-execution_count="42">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
 RangeIndex: 17660 entries, 0 to 17659
@@ -3265,13 +3579,13 @@ memory usage: 3.9+ MB</code></pre>
 <h3 class="anchored" data-anchor-id="e.-결측치-처리">E. 결측치 처리</h3>
 <p><code># 예제</code> – <code>Club</code> 컬럼의 결측치 갯수를 구하라.</p>
 <div id="26a0ebfd-4302-4516-a4fc-4d370bbe96c0" class="cell" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df.Club.isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df.Club.isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="45">
 <pre><code>np.int64(211)</code></pre>
 </div>
 </div>
 <div id="15457042-93f1-400a-a10a-25b39c09d916" class="cell" data-execution_count="50">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df.Club.isna().mean() <span class="co"># 결측치의 비율</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df.Club.isna().mean() <span class="co"># 결측치의 비율</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="50">
 <pre><code>np.float64(0.011947904869762174)</code></pre>
 </div>
@@ -3279,7 +3593,7 @@ memory usage: 3.9+ MB</code></pre>
 <p><code>#</code></p>
 <p><code># 예제</code> – 열별 결측치 비율을 구하라.</p>
 <div id="5336173e-ba53-44b1-8096-1dc65eaa9960" class="cell" data-execution_count="70">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>{col_name: df[col_name].isna().mean() <span class="cf">for</span> col_name <span class="kw">in</span> df.columns}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>{col_name: df[col_name].isna().mean() <span class="cf">for</span> col_name <span class="kw">in</span> df.columns}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="70">
 <pre><code>{'ID': np.float64(0.0),
  'Name': np.float64(0.0),
@@ -3315,8 +3629,8 @@ memory usage: 3.9+ MB</code></pre>
 <p><code>#</code></p>
 <p><code># 예제</code> – 결측값이 50%이상인 열을 제외하고 새로운 데이터프레임 <code>df_new</code>로 저장하라.</p>
 <div id="e12b0dea-e0d7-4634-8450-0889613838a1" class="cell" data-execution_count="94">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df_new <span class="op">=</span> df[[col_name <span class="cf">for</span> col_name <span class="kw">in</span> df.columns <span class="cf">if</span> df[col_name].isna().mean() <span class="op">&lt;</span> <span class="fl">0.5</span>]]</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>df_new</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df_new <span class="op">=</span> df[[col_name <span class="cf">for</span> col_name <span class="kw">in</span> df.columns <span class="cf">if</span> df[col_name].isna().mean() <span class="op">&lt;</span> <span class="fl">0.5</span>]]</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>df_new</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="94">
 <div>
 
@@ -3623,7 +3937,7 @@ memory usage: 3.9+ MB</code></pre>
 <p><code>#</code></p>
 <p><code># 예제</code> – <code>df_new</code>에서 결측치가 포함된 행을 제외하라.</p>
 <div id="338c4b02-6992-4d71-a297-8a23f9928fd0" class="cell" data-execution_count="102">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df_new.dropna()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df_new.dropna()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="102">
 <div>
 
@@ -3933,8 +4247,8 @@ memory usage: 3.9+ MB</code></pre>
 <h3 class="anchored" data-anchor-id="f.-기본-query">F. 기본 query</h3>
 <p><code>-</code> 예제: 나이가 20-25인 선수들을 출력</p>
 <div id="810cc142-9941-448f-a2da-64d8cd481bf2" class="cell" data-tags="[]" data-execution_count="113">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">"Age &gt;= 20 and Age &lt;= 25"</span>)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">"20 &lt;= Age &lt;= 25"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">"Age &gt;= 20 and Age &lt;= 25"</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">"20 &lt;= Age &lt;= 25"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="113">
 <div>
 
@@ -4240,7 +4554,7 @@ memory usage: 3.9+ MB</code></pre>
 </div>
 <p><code>-</code> 예제: Potential - Overall 이 20이상인 선수를 출력하라</p>
 <div id="12d78daf-47b7-4e2b-94b8-0ffc8160a839" class="cell" data-execution_count="130">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">"Potential - Overall &gt; 20"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">"Potential - Overall &gt; 20"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="130">
 <div>
 
@@ -4546,7 +4860,7 @@ memory usage: 3.9+ MB</code></pre>
 </div>
 <p><code>-</code> 예제3: 한국선수들(=Korea Republic)중 능력치가 높은순서대로 출력하라.</p>
 <div id="9a3c700d-fa86-4de9-a1c3-4a6cb908de8a" class="cell" data-execution_count="158">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">'Nationality == "Korea Republic" '</span> ).sort_values(by<span class="op">=</span><span class="st">"Overall"</span>,ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">'Nationality == "Korea Republic" '</span> ).sort_values(by<span class="op">=</span><span class="st">"Overall"</span>,ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="158">
 <div>
 
@@ -4855,16 +5169,16 @@ memory usage: 3.9+ MB</code></pre>
 <h3 class="anchored" data-anchor-id="g.-외부변수를-이용">G. 외부변수를 이용</h3>
 <p><code>-</code> 예제: 한국선수들(=Korea Republic)중 능력치가 세계평균 이상인 선수들을 출력하라.</p>
 <div id="a6bb889a-92cb-47ab-9cfc-eb147eab9f99" class="cell" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>m<span class="op">=</span> df.Overall.mean()</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>m</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>m<span class="op">=</span> df.Overall.mean()</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>m</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="36">
 <pre><code>np.float64(63.36959229898075)</code></pre>
 </div>
 </div>
 <div id="d0d8e6e6-3977-4a96-86de-fb4a032db68c" class="cell" data-execution_count="172">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#df.query("Overall &gt; 63.36959229898075 and Nationality == 'Korea Republic'")</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co">#df.query("Overall &gt; Overall.mean() and Nationality == 'Korea Republic'")</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">"Overall &gt; @m and Nationality == 'Korea Republic'"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#df.query("Overall &gt; 63.36959229898075 and Nationality == 'Korea Republic'")</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co">#df.query("Overall &gt; Overall.mean() and Nationality == 'Korea Republic'")</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">"Overall &gt; @m and Nationality == 'Korea Republic'"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="172">
 <div>
 
@@ -5797,7 +6111,7 @@ memory usage: 3.9+ MB</code></pre>
 <h3 class="anchored" data-anchor-id="h.-열의-이름에-공백이-있을-경우">H. 열의 이름에 공백이 있을 경우</h3>
 <p><code>-</code> 예제: <code>Skill Moves &gt; 4</code> 인 선수를 구하라.</p>
 <div id="959f95a2-edef-488e-aece-25d7585ff959" class="cell" data-tags="[]" data-execution_count="180">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">'`Skill Moves` &gt; 4'</span>).head(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">'`Skill Moves` &gt; 4'</span>).head(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="180">
 <div>
 
@@ -5963,7 +6277,7 @@ memory usage: 3.9+ MB</code></pre>
 <p><code># 예제</code>: 열의 이름 출력하고, 열의 이름중 공백(<code></code>)이 있을 경우 언더바(<code>_</code>) 로 바꾸자.</p>
 <p>컬럼출력</p>
 <div id="94083faa-20c5-43b4-bad5-535b237b6fc7" class="cell" data-execution_count="181">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="181">
 <pre><code>Index(['ID', 'Name', 'Age', 'Photo', 'Nationality', 'Flag', 'Overall',
        'Potential', 'Club', 'Club Logo', 'Value', 'Wage', 'Special',
@@ -5976,10 +6290,10 @@ memory usage: 3.9+ MB</code></pre>
 </div>
 <p><code>df.columns</code>에 직접대입</p>
 <div id="0ffcf6ef-baee-42fc-8b3a-82841a5fca73" class="cell" data-execution_count="190">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>df.columns <span class="op">=</span> [l.replace(<span class="st">' '</span>, <span class="st">'_'</span>) <span class="cf">for</span> l <span class="kw">in</span> df.columns]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df.columns <span class="op">=</span> [l.replace(<span class="st">' '</span>, <span class="st">'_'</span>) <span class="cf">for</span> l <span class="kw">in</span> df.columns]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="27d16995-88ea-4235-af20-569d5a9d2f94" class="cell" data-execution_count="191">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="191">
 <pre><code>Index(['ID', 'Name', 'Age', 'Photo', 'Nationality', 'Flag', 'Overall',
        'Potential', 'Club', 'Club_Logo', 'Value', 'Wage', 'Special',
@@ -5996,7 +6310,7 @@ memory usage: 3.9+ MB</code></pre>
 <h3 class="anchored" data-anchor-id="j.-transform-column">J. transform column</h3>
 <p><code># 예제</code>df.Height`열 변환하기 + 변환된 열 할당하기</p>
 <div id="746a5dd0-025a-4e9d-8b01-68916b400396" class="cell" data-execution_count="220">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>df.assign(Height <span class="op">=</span> [<span class="bu">int</span>(l.replace(<span class="st">"cm"</span>,<span class="st">""</span>)) <span class="cf">for</span> l <span class="kw">in</span> df.Height])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>df.assign(Height <span class="op">=</span> [<span class="bu">int</span>(l.replace(<span class="st">"cm"</span>,<span class="st">""</span>)) <span class="cf">for</span> l <span class="kw">in</span> df.Height])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="220">
 <div>
 
@@ -6306,8 +6620,8 @@ memory usage: 3.9+ MB</code></pre>
 <h2 class="anchored" data-anchor-id="숙제">2. 숙제</h2>
 <p><code>-</code> 아래의 자료에서 선수들의 몸무게의 평균을 구하여라.</p>
 <div id="3a75d059-87aa-4e2a-8635-c47ce748cfc4" class="cell" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'FIFA23_official_data.csv'</span>)</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'FIFA23_official_data.csv'</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
 <div>
 
@@ -6613,11 +6927,11 @@ memory usage: 3.9+ MB</code></pre>
 </div>
 <p>(풀이)</p>
 <div id="76d6b22f-aacf-434b-a29f-bf6c173c621a" class="cell" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># df['Weight'] = [int(l.replace("kg","")) for l in df.Weight] # 몸무게가 숫자화된것 </span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># df.Weight.mean()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># df['Weight'] = [int(l.replace("kg","")) for l in df.Weight] # 몸무게가 숫자화된것 </span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># df.Weight.mean()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="dc4b0ffc-158b-4bfc-9ff9-b0b790a57ac5" class="cell" data-execution_count="54">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>df.assign(Weight<span class="op">=</span>  [<span class="bu">int</span>(l.replace(<span class="st">"kg"</span>,<span class="st">""</span>)) <span class="cf">for</span> l <span class="kw">in</span> df.Weight])[<span class="st">'Weight'</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>df.assign(Weight<span class="op">=</span>  [<span class="bu">int</span>(l.replace(<span class="st">"kg"</span>,<span class="st">""</span>)) <span class="cf">for</span> l <span class="kw">in</span> df.Weight])[<span class="st">'Weight'</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="54">
 <pre><code>np.float64(74.32616081540203)</code></pre>
 </div>
