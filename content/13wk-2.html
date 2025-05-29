@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="최규빈">
-<meta name="dcterms.date" content="2025-05-22">
+<meta name="dcterms.date" content="2025-05-29">
 
 <title>13wk-2: [DataFrame] – FIFA22 데이터 // 숙제 – IAB2025</title>
 <style>
@@ -180,7 +180,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 22, 2025</p>
+      <p class="date">May 29, 2025</p>
     </div>
   </div>
   
@@ -192,20 +192,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/playlist?list=PLQqh36zP38-zkL-LnnWMykmEsdLnIskjD&amp;si=IdQLtjoFrhAheYom" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<div id="d212f96a-4bc8-46a9-ba45-5975d3bdf824" class="cell" data-execution_count="189">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="89b17e1f-d732-4b03-bbf4-b71c936869b4" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># {{&lt;video https://youtu.be/playlist?list=PLQqh36zP38-zkL-LnnWMykmEsdLnIskjD&amp;si=IdQLtjoFrhAheYom&gt;}}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="d212f96a-4bc8-46a9-ba45-5975d3bdf824" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="fifa22데이터" class="level2">
 <h2 class="anchored" data-anchor-id="fifa22데이터">1. FIFA22데이터</h2>
 <section id="a.-data" class="level3">
 <h3 class="anchored" data-anchor-id="a.-data">A. Data</h3>
 <p><code>-</code> 데이터 load</p>
-<div id="8d5b2762-0e74-4ed8-bdc6-eac3a1ac7bc2" class="cell" data-tags="[]" data-execution_count="81">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'FIFA22_official_data.csv'</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="81">
+<div id="8d5b2762-0e74-4ed8-bdc6-eac3a1ac7bc2" class="cell" data-tags="[]" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'FIFA22_official_data.csv'</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 
 
@@ -843,7 +845,7 @@ Note
 <section id="b.-결측치정리" class="level3">
 <h3 class="anchored" data-anchor-id="b.-결측치정리">B. 결측치정리</h3>
 <div id="c89668a8-dd53-402b-a6be-cd1630165371" class="cell" data-execution_count="82">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
 RangeIndex: 16710 entries, 0 to 16709
@@ -920,7 +922,7 @@ memory usage: 8.3+ MB</code></pre>
 </div>
 </div>
 <div id="2cbacd50-a738-4007-9364-051e80088a29" class="cell" data-execution_count="83">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df.isna().<span class="bu">sum</span>().sort_values()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df.isna().<span class="bu">sum</span>().sort_values()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="83">
 <pre><code>ID                        0
 Name                      0
@@ -937,8 +939,8 @@ Length: 65, dtype: int64</code></pre>
 </div>
 </div>
 <div id="730b89f8-b3ae-44ca-b90a-f6daf10589d8" class="cell" data-execution_count="102">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> df.drop([<span class="st">"Loaned From"</span>, <span class="st">"Marking"</span>],axis<span class="op">=</span><span class="dv">1</span>).dropna()</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> df.drop([<span class="st">"Loaned From"</span>, <span class="st">"Marking"</span>],axis<span class="op">=</span><span class="dv">1</span>).dropna()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="102">
 <div>
 
@@ -1247,11 +1249,11 @@ Length: 65, dtype: int64</code></pre>
 <h3 class="anchored" data-anchor-id="c.-포지션-정리">C. 포지션 정리</h3>
 <p><code>-</code> 포지션변환</p>
 <div id="2a1b9ea1-15a6-48c3-a361-b1684be1c6bf" class="cell" data-execution_count="103">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df3 <span class="op">=</span> df2.copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df3 <span class="op">=</span> df2.copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="19272665-830f-4d73-89fa-d3dd42eecc15" class="cell" data-execution_count="104">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df3[<span class="st">'Position'</span>] <span class="op">=</span> [l.split(<span class="st">"&gt;"</span>)[<span class="op">-</span><span class="dv">1</span>] <span class="cf">for</span> l <span class="kw">in</span> df2.Position]</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df3.Position</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df3[<span class="st">'Position'</span>] <span class="op">=</span> [l.split(<span class="st">"&gt;"</span>)[<span class="op">-</span><span class="dv">1</span>] <span class="cf">for</span> l <span class="kw">in</span> df2.Position]</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>df3.Position</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="104">
 <pre><code>0        CAM
 1        LDM
@@ -1269,15 +1271,15 @@ Name: Position, Length: 14398, dtype: object</code></pre>
 </div>
 <p><code>-</code> 포지션치환</p>
 <div id="7dd34f90-9555-4cd6-a743-bffdf251661f" class="cell" data-execution_count="105">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>position_dict <span class="op">=</span> {</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'GOALKEEPER'</span>:{<span class="st">'GK'</span>},</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'DEFENDER'</span>:{<span class="st">'CB'</span>,<span class="st">'RCB'</span>,<span class="st">'LCB'</span>,<span class="st">'RB'</span>,<span class="st">'LB'</span>,<span class="st">'RWB'</span>,<span class="st">'LWB'</span>},</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'MIDFIELDER'</span>:{<span class="st">'CM'</span>,<span class="st">'RCM'</span>,<span class="st">'LCM'</span>,<span class="st">'CDM'</span>,<span class="st">'RDM'</span>,<span class="st">'LDM'</span>,<span class="st">'CAM'</span>,<span class="st">'RAM'</span>,<span class="st">'LAM'</span>,<span class="st">'RM'</span>,<span class="st">'LM'</span>},</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'FORWARD'</span>:{<span class="st">'ST'</span>,<span class="st">'CF'</span>,<span class="st">'RF'</span>,<span class="st">'LF'</span>,<span class="st">'RW'</span>,<span class="st">'LW'</span>,<span class="st">'RS'</span>,<span class="st">'LS'</span>},</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'SUB'</span>:{<span class="st">'SUB'</span>},</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'RES'</span>:{<span class="st">'RES'</span>}</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>position_dict</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>position_dict <span class="op">=</span> {</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'GOALKEEPER'</span>:{<span class="st">'GK'</span>},</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'DEFENDER'</span>:{<span class="st">'CB'</span>,<span class="st">'RCB'</span>,<span class="st">'LCB'</span>,<span class="st">'RB'</span>,<span class="st">'LB'</span>,<span class="st">'RWB'</span>,<span class="st">'LWB'</span>},</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'MIDFIELDER'</span>:{<span class="st">'CM'</span>,<span class="st">'RCM'</span>,<span class="st">'LCM'</span>,<span class="st">'CDM'</span>,<span class="st">'RDM'</span>,<span class="st">'LDM'</span>,<span class="st">'CAM'</span>,<span class="st">'RAM'</span>,<span class="st">'LAM'</span>,<span class="st">'RM'</span>,<span class="st">'LM'</span>},</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'FORWARD'</span>:{<span class="st">'ST'</span>,<span class="st">'CF'</span>,<span class="st">'RF'</span>,<span class="st">'LF'</span>,<span class="st">'RW'</span>,<span class="st">'LW'</span>,<span class="st">'RS'</span>,<span class="st">'LS'</span>},</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'SUB'</span>:{<span class="st">'SUB'</span>},</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'RES'</span>:{<span class="st">'RES'</span>}</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>position_dict</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="105">
 <pre><code>{'GOALKEEPER': {'GK'},
  'DEFENDER': {'CB', 'LB', 'LCB', 'LWB', 'RB', 'RCB', 'RWB'},
@@ -1298,15 +1300,15 @@ Name: Position, Length: 14398, dtype: object</code></pre>
 </div>
 </div>
 <div id="023317b5-c967-4a8d-be17-fc02e132be33" class="cell" data-execution_count="113">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>position <span class="op">=</span> <span class="st">"CAM"</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>[key <span class="cf">for</span> key <span class="kw">in</span> position_dict <span class="cf">if</span> position <span class="kw">in</span> position_dict[key]].pop()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>position <span class="op">=</span> <span class="st">"CAM"</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>[key <span class="cf">for</span> key <span class="kw">in</span> position_dict <span class="cf">if</span> position <span class="kw">in</span> position_dict[key]].pop()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="113">
 <pre><code>'MIDFIELDER'</code></pre>
 </div>
 </div>
 <div id="3d31bc69-e8d2-487a-bda9-2dfad9621225" class="cell" data-execution_count="116">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df3[<span class="st">'Position2'</span>] <span class="op">=</span> [[key <span class="cf">for</span> key <span class="kw">in</span> position_dict <span class="cf">if</span> position <span class="kw">in</span> position_dict[key]].pop() <span class="cf">for</span> position <span class="kw">in</span> df3.Position]</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>df3.loc[:,[<span class="st">'Position'</span>,<span class="st">'Position2'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df3[<span class="st">'Position2'</span>] <span class="op">=</span> [[key <span class="cf">for</span> key <span class="kw">in</span> position_dict <span class="cf">if</span> position <span class="kw">in</span> position_dict[key]].pop() <span class="cf">for</span> position <span class="kw">in</span> df3.Position]</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>df3.loc[:,[<span class="st">'Position'</span>,<span class="st">'Position2'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="116">
 <div>
 
@@ -1386,7 +1388,7 @@ Name: Position, Length: 14398, dtype: object</code></pre>
 <section id="d.-포지션별-능력치-비교" class="level3">
 <h3 class="anchored" data-anchor-id="d.-포지션별-능력치-비교">D. 포지션별 능력치 비교</h3>
 <div id="0ab59b3e-2194-426c-89e1-9b1d5f005034" class="cell" data-execution_count="123">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df3.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df3.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="123">
 <pre><code>Index(['ID', 'Name', 'Age', 'Photo', 'Nationality', 'Flag', 'Overall',
        'Potential', 'Club', 'Club Logo', 'Value', 'Wage', 'Special',
@@ -1413,7 +1415,7 @@ Name: Position, Length: 14398, dtype: object</code></pre>
 <li>세 능력치의 평균이 가장 좋은 포지션은?</li>
 </ul>
 <div id="59cf0d9c-418b-470e-b937-13e9e0bd4600" class="cell" data-execution_count="145">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df3.groupby(<span class="st">"Position2"</span>)[[<span class="st">"Dribbling"</span>,<span class="st">"ShotPower"</span>,<span class="st">"SlidingTackle"</span>]].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df3.groupby(<span class="st">"Position2"</span>)[[<span class="st">"Dribbling"</span>,<span class="st">"ShotPower"</span>,<span class="st">"SlidingTackle"</span>]].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="145">
 <div>
 
@@ -1477,7 +1479,7 @@ Name: Position, Length: 14398, dtype: object</code></pre>
 </div>
 </div>
 <div id="f8fddbdf-ddf9-4f95-954d-58a549891233" class="cell" data-execution_count="213">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df3.groupby(<span class="st">"Position2"</span>)[[<span class="st">"Dribbling"</span>,<span class="st">"ShotPower"</span>,<span class="st">"SlidingTackle"</span>]].mean().mean(axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df3.groupby(<span class="st">"Position2"</span>)[[<span class="st">"Dribbling"</span>,<span class="st">"ShotPower"</span>,<span class="st">"SlidingTackle"</span>]].mean().mean(axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="213">
 <pre><code>Position2
 DEFENDER      59.907907
@@ -1493,8 +1495,8 @@ dtype: float64</code></pre>
 <section id="f.-주급처리" class="level3">
 <h3 class="anchored" data-anchor-id="f.-주급처리">F. 주급처리</h3>
 <div id="774c952a-2c1e-4dba-bd39-1e0f4c6db0fa" class="cell" data-execution_count="171">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df3[<span class="st">'Wage'</span>] <span class="op">=</span> [<span class="bu">eval</span>(l.replace(<span class="st">"€"</span>,<span class="st">""</span>).replace(<span class="st">"K"</span>,<span class="st">"*1000"</span>).replace(<span class="st">"M"</span>,<span class="st">"*1000000"</span>)) <span class="cf">for</span> l <span class="kw">in</span> df2.Wage]</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>df3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df3[<span class="st">'Wage'</span>] <span class="op">=</span> [<span class="bu">eval</span>(l.replace(<span class="st">"€"</span>,<span class="st">""</span>).replace(<span class="st">"K"</span>,<span class="st">"*1000"</span>).replace(<span class="st">"M"</span>,<span class="st">"*1000000"</span>)) <span class="cf">for</span> l <span class="kw">in</span> df2.Wage]</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>df3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="171">
 <div>
 
@@ -1803,9 +1805,9 @@ dtype: float64</code></pre>
 <h3 class="anchored" data-anchor-id="g.-주급분석">G. 주급분석</h3>
 <p><code>-</code> 공격수 포지션의 선수들을 “SlidingTackle”에 따라 4개의 그룹으로 나누어라. “SlidingTackle”능력에 따른 주급차이가 있을까?</p>
 <div id="fa9975e9-3aa5-4847-9566-d017c8e1add1" class="cell" data-execution_count="187">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df3.assign(</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    StandingTackle_qcut <span class="op">=</span> pd.qcut(df3[df3.Position2 <span class="op">==</span> <span class="st">"FORWARD"</span>].StandingTackle, q<span class="op">=</span><span class="dv">4</span>)</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>).groupby(<span class="st">"StandingTackle_qcut"</span>).Wage.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df3.assign(</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    StandingTackle_qcut <span class="op">=</span> pd.qcut(df3[df3.Position2 <span class="op">==</span> <span class="st">"FORWARD"</span>].StandingTackle, q<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>).groupby(<span class="st">"StandingTackle_qcut"</span>).Wage.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/tmp/ipykernel_660254/1348440976.py:3: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
   ).groupby("StandingTackle_qcut").Wage.mean()</code></pre>
@@ -1821,9 +1823,9 @@ Name: Wage, dtype: float64</code></pre>
 </div>
 <p><code>-</code> 공격수 포지션의 선수들을 슬라이딩 “ShotPower”의 능력에 따라 4개의 그룹으로 나누어라. “ShotPower”능력에 따른 주급차이가 있을까?</p>
 <div id="d36a1af7-dbe8-4243-9c2e-075a9086f342" class="cell" data-execution_count="188">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df3.assign(</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    ShotPower_qcut <span class="op">=</span> pd.qcut(df3[df3.Position2 <span class="op">==</span> <span class="st">"FORWARD"</span>].ShotPower, q<span class="op">=</span><span class="dv">4</span>)</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>).groupby(<span class="st">"ShotPower_qcut"</span>).Wage.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df3.assign(</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    ShotPower_qcut <span class="op">=</span> pd.qcut(df3[df3.Position2 <span class="op">==</span> <span class="st">"FORWARD"</span>].ShotPower, q<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>).groupby(<span class="st">"ShotPower_qcut"</span>).Wage.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/tmp/ipykernel_660254/3227603166.py:3: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
   ).groupby("ShotPower_qcut").Wage.mean()</code></pre>
@@ -1843,35 +1845,35 @@ Name: Wage, dtype: float64</code></pre>
 <h2 class="anchored" data-anchor-id="평균처리">2. 평균처리</h2>
 <p><code>-</code> numpy</p>
 <div id="d4258bc5-a6b1-4b65-af0b-c5ebd15964ac" class="cell" data-execution_count="193">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]])</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>X</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]])</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>X</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="193">
 <pre><code>array([[1, 2, 3],
        [1, 2, 3]])</code></pre>
 </div>
 </div>
 <div id="912dacc2-813c-4a39-898b-96f0054fb23e" class="cell" data-execution_count="195">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>X.<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>X.<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="195">
 <pre><code>np.int64(12)</code></pre>
 </div>
 </div>
 <div id="b107fbb0-6d8a-48ee-a4c1-64574702b54c" class="cell" data-execution_count="196">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>X.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>X.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="196">
 <pre><code>array([2, 4, 6])</code></pre>
 </div>
 </div>
 <div id="c583d00f-5ded-4b7d-bdef-5b921a4590d1" class="cell" data-execution_count="197">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>X.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>X.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="197">
 <pre><code>array([6, 6])</code></pre>
 </div>
 </div>
 <p><code>-</code> df</p>
 <div id="3d168d60-c4d5-4ef3-a648-58827a7fd7cd" class="cell" data-execution_count="200">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> pd.DataFrame(X)</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>X</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> pd.DataFrame(X)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>X</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="200">
 <div>
 
@@ -1905,7 +1907,7 @@ Name: Wage, dtype: float64</code></pre>
 </div>
 </div>
 <div id="760a4011-e252-4601-8659-f6b78ad3a343" class="cell" data-execution_count="201">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>X.<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>X.<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="201">
 <pre><code>0    2
 1    4
@@ -1914,7 +1916,7 @@ dtype: int64</code></pre>
 </div>
 </div>
 <div id="8daaa475-f038-45b4-8079-a5b102a566df" class="cell" data-execution_count="202">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>X.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>X.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="202">
 <pre><code>0    2
 1    4
@@ -1923,7 +1925,7 @@ dtype: int64</code></pre>
 </div>
 </div>
 <div id="b8a811c5-ed95-480c-921d-5271e584dff6" class="cell" data-execution_count="203">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>X.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>X.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="203">
 <pre><code>0    6
 1    6
