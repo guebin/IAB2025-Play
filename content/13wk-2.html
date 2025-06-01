@@ -155,6 +155,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#fifa22데이터" id="toc-fifa22데이터" class="nav-link active" data-scroll-target="#fifa22데이터">1. FIFA22데이터</a></li>
   <li><a href="#평균처리" id="toc-평균처리" class="nav-link" data-scroll-target="#평균처리">2. 평균처리</a></li>
+  <li><a href="#숙제" id="toc-숙제" class="nav-link" data-scroll-target="#숙제">3. 숙제</a></li>
   </ul>
 </nav>
     </div>
@@ -2236,6 +2237,316 @@ dtype: int64</code></pre>
 dtype: int64</code></pre>
 </div>
 </div>
+</section>
+<section id="숙제" class="level2">
+<h2 class="anchored" data-anchor-id="숙제">3. 숙제</h2>
+<div id="a367c292-2c46-4cd2-b44b-b33ad3ebf12b" class="cell" data-tags="[]" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'FIFA22_official_data.csv'</span>).drop([<span class="st">"Loaned From"</span>, <span class="st">"Marking"</span>], axis<span class="op">=</span><span class="dv">1</span>).dropna()</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ID</th>
+<th data-quarto-table-cell-role="th">Name</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Photo</th>
+<th data-quarto-table-cell-role="th">Nationality</th>
+<th data-quarto-table-cell-role="th">Flag</th>
+<th data-quarto-table-cell-role="th">Overall</th>
+<th data-quarto-table-cell-role="th">Potential</th>
+<th data-quarto-table-cell-role="th">Club</th>
+<th data-quarto-table-cell-role="th">Club Logo</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">SlidingTackle</th>
+<th data-quarto-table-cell-role="th">GKDiving</th>
+<th data-quarto-table-cell-role="th">GKHandling</th>
+<th data-quarto-table-cell-role="th">GKKicking</th>
+<th data-quarto-table-cell-role="th">GKPositioning</th>
+<th data-quarto-table-cell-role="th">GKReflexes</th>
+<th data-quarto-table-cell-role="th">Best Position</th>
+<th data-quarto-table-cell-role="th">Best Overall Rating</th>
+<th data-quarto-table-cell-role="th">Release Clause</th>
+<th data-quarto-table-cell-role="th">DefensiveAwareness</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>212198</td>
+<td>Bruno Fernandes</td>
+<td>26</td>
+<td>https://cdn.sofifa.com/players/212/198/22_60.png</td>
+<td>Portugal</td>
+<td>https://cdn.sofifa.com/flags/pt.png</td>
+<td>88</td>
+<td>89</td>
+<td>Manchester United</td>
+<td>https://cdn.sofifa.com/teams/11/30.png</td>
+<td>...</td>
+<td>65.0</td>
+<td>12.0</td>
+<td>14.0</td>
+<td>15.0</td>
+<td>8.0</td>
+<td>14.0</td>
+<td>CAM</td>
+<td>88.0</td>
+<td>€206.9M</td>
+<td>72.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>209658</td>
+<td>L. Goretzka</td>
+<td>26</td>
+<td>https://cdn.sofifa.com/players/209/658/22_60.png</td>
+<td>Germany</td>
+<td>https://cdn.sofifa.com/flags/de.png</td>
+<td>87</td>
+<td>88</td>
+<td>FC Bayern München</td>
+<td>https://cdn.sofifa.com/teams/21/30.png</td>
+<td>...</td>
+<td>77.0</td>
+<td>13.0</td>
+<td>8.0</td>
+<td>15.0</td>
+<td>11.0</td>
+<td>9.0</td>
+<td>CM</td>
+<td>87.0</td>
+<td>€160.4M</td>
+<td>74.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>176580</td>
+<td>L. Suárez</td>
+<td>34</td>
+<td>https://cdn.sofifa.com/players/176/580/22_60.png</td>
+<td>Uruguay</td>
+<td>https://cdn.sofifa.com/flags/uy.png</td>
+<td>88</td>
+<td>88</td>
+<td>Atlético de Madrid</td>
+<td>https://cdn.sofifa.com/teams/240/30.png</td>
+<td>...</td>
+<td>38.0</td>
+<td>27.0</td>
+<td>25.0</td>
+<td>31.0</td>
+<td>33.0</td>
+<td>37.0</td>
+<td>ST</td>
+<td>88.0</td>
+<td>€91.2M</td>
+<td>42.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>192985</td>
+<td>K. De Bruyne</td>
+<td>30</td>
+<td>https://cdn.sofifa.com/players/192/985/22_60.png</td>
+<td>Belgium</td>
+<td>https://cdn.sofifa.com/flags/be.png</td>
+<td>91</td>
+<td>91</td>
+<td>Manchester City</td>
+<td>https://cdn.sofifa.com/teams/10/30.png</td>
+<td>...</td>
+<td>53.0</td>
+<td>15.0</td>
+<td>13.0</td>
+<td>5.0</td>
+<td>10.0</td>
+<td>13.0</td>
+<td>CM</td>
+<td>91.0</td>
+<td>€232.2M</td>
+<td>68.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>224334</td>
+<td>M. Acuña</td>
+<td>29</td>
+<td>https://cdn.sofifa.com/players/224/334/22_60.png</td>
+<td>Argentina</td>
+<td>https://cdn.sofifa.com/flags/ar.png</td>
+<td>84</td>
+<td>84</td>
+<td>Sevilla FC</td>
+<td>https://cdn.sofifa.com/teams/481/30.png</td>
+<td>...</td>
+<td>82.0</td>
+<td>8.0</td>
+<td>14.0</td>
+<td>13.0</td>
+<td>13.0</td>
+<td>14.0</td>
+<td>LB</td>
+<td>84.0</td>
+<td>€77.7M</td>
+<td>80.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16703</td>
+<td>259718</td>
+<td>F. Gebhardt</td>
+<td>19</td>
+<td>https://cdn.sofifa.com/players/259/718/22_60.png</td>
+<td>Germany</td>
+<td>https://cdn.sofifa.com/flags/de.png</td>
+<td>52</td>
+<td>66</td>
+<td>FC Basel 1893</td>
+<td>https://cdn.sofifa.com/teams/896/30.png</td>
+<td>...</td>
+<td>10.0</td>
+<td>53.0</td>
+<td>45.0</td>
+<td>47.0</td>
+<td>52.0</td>
+<td>57.0</td>
+<td>GK</td>
+<td>52.0</td>
+<td>€361K</td>
+<td>6.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">16704</td>
+<td>251433</td>
+<td>B. Voll</td>
+<td>20</td>
+<td>https://cdn.sofifa.com/players/251/433/22_60.png</td>
+<td>Germany</td>
+<td>https://cdn.sofifa.com/flags/de.png</td>
+<td>58</td>
+<td>69</td>
+<td>F.C. Hansa Rostock</td>
+<td>https://cdn.sofifa.com/teams/27/30.png</td>
+<td>...</td>
+<td>10.0</td>
+<td>59.0</td>
+<td>60.0</td>
+<td>56.0</td>
+<td>55.0</td>
+<td>61.0</td>
+<td>GK</td>
+<td>58.0</td>
+<td>€656K</td>
+<td>5.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16706</td>
+<td>262846</td>
+<td>�. Dobre</td>
+<td>20</td>
+<td>https://cdn.sofifa.com/players/262/846/22_60.png</td>
+<td>Romania</td>
+<td>https://cdn.sofifa.com/flags/ro.png</td>
+<td>53</td>
+<td>63</td>
+<td>FC Academica Clinceni</td>
+<td>https://cdn.sofifa.com/teams/113391/30.png</td>
+<td>...</td>
+<td>12.0</td>
+<td>57.0</td>
+<td>52.0</td>
+<td>53.0</td>
+<td>48.0</td>
+<td>58.0</td>
+<td>GK</td>
+<td>53.0</td>
+<td>€279K</td>
+<td>5.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">16707</td>
+<td>241317</td>
+<td>21&nbsp;Xue Qinghao</td>
+<td>19</td>
+<td>https://cdn.sofifa.com/players/241/317/21_60.png</td>
+<td>China PR</td>
+<td>https://cdn.sofifa.com/flags/cn.png</td>
+<td>47</td>
+<td>60</td>
+<td>Shanghai Shenhua FC</td>
+<td>https://cdn.sofifa.com/teams/110955/30.png</td>
+<td>...</td>
+<td>9.0</td>
+<td>49.0</td>
+<td>48.0</td>
+<td>45.0</td>
+<td>38.0</td>
+<td>52.0</td>
+<td>GK</td>
+<td>47.0</td>
+<td>€223K</td>
+<td>21.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16708</td>
+<td>259646</td>
+<td>A. Shaikh</td>
+<td>18</td>
+<td>https://cdn.sofifa.com/players/259/646/22_60.png</td>
+<td>India</td>
+<td>https://cdn.sofifa.com/flags/in.png</td>
+<td>47</td>
+<td>67</td>
+<td>ATK Mohun Bagan FC</td>
+<td>https://cdn.sofifa.com/teams/113146/30.png</td>
+<td>...</td>
+<td>13.0</td>
+<td>49.0</td>
+<td>41.0</td>
+<td>39.0</td>
+<td>45.0</td>
+<td>49.0</td>
+<td>GK</td>
+<td>47.0</td>
+<td>€259K</td>
+<td>7.0</td>
+</tr>
+</tbody>
+</table>
+
+<p>14398 rows × 63 columns</p>
+</div>
+</div>
+</div>
+<p>수비수 포지션의 선수들을 “SlidingTackle”의 능력에 따라 4개의 그룹으로 나누어라. “SlidingTackle”능력에 따른 주급차이가 있을까?</p>
 
 
 </section>
