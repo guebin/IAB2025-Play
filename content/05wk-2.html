@@ -1,0 +1,1974 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="최규빈">
+<meta name="dcterms.date" content="2025-04-03">
+
+<title>05wk-2: [Python] – str, list // 숙제 – IAB2025</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de84f8d6bb715db06a919283c2d1e787.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-251ce1ae7a9effd692ba97c003cecf85.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">IAB2025</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/guebin/IAB2025"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.youtube.com/channel/UCQk9RyBNgXc7ORIsYlOfQrg/playlists?view=50&amp;sort=dd&amp;shelf_id=2"> <i class="bi bi-youtube" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#str-고급" id="toc-str-고급" class="nav-link active" data-scroll-target="#str-고급">1. str – 고급</a></li>
+  <li><a href="#list" id="toc-list" class="nav-link" data-scroll-target="#list">2. <code>list</code></a></li>
+  <li><a href="#hw" id="toc-hw" class="nav-link" data-scroll-target="#hw">3. HW</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">05wk-2: [Python] – str, list // 숙제</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>최규빈 </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 3, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/playlist?list=PLQqh36zP38-wHEoUFt3MKpaIN0EBv40kJ&amp;si=MWASI-RKTW8uFD2D" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<section id="str-고급" class="level2">
+<h2 class="anchored" data-anchor-id="str-고급">1. str – 고급</h2>
+<section id="a.-fstring" class="level3">
+<h3 class="anchored" data-anchor-id="a.-fstring">A. <code>fstring</code></h3>
+<p><code>-</code> 예제1</p>
+<div id="f3438202-80ee-4dd6-a2d9-59f01b013ec1" class="cell" data-tags="[]" data-execution_count="210">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>b<span class="op">=</span><span class="dv">2</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'a+b = </span><span class="sc">{</span>a<span class="op">+</span>b<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>a+b = 3</code></pre>
+</div>
+</div>
+<p><code>-</code> 예제2</p>
+<div id="4de7e095-37f9-4df6-8f20-472dd62a2d02" class="cell" data-tags="[]" data-execution_count="215">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span><span class="dv">2</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>b<span class="op">=</span><span class="fl">3.141592</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'a*b = </span><span class="sc">{</span>a<span class="op">*</span>b<span class="sc">:.4f}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>a*b = 6.2832</code></pre>
+</div>
+</div>
+<p><code>-</code> 예제3</p>
+<div id="56d3147d-e635-4652-8e53-3f52863519f2" class="cell" data-tags="[]" data-execution_count="220">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span><span class="fl">3.141592</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'2a = </span><span class="sc">{</span><span class="dv">2</span><span class="op">*</span>a<span class="sc">:.2f}</span><span class="ch">\t</span><span class="ss">3a = </span><span class="sc">{</span><span class="dv">3</span><span class="op">*</span>a<span class="sc">:.2f}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2a = 6.28   3a = 9.42</code></pre>
+</div>
+</div>
+</section>
+<section id="b.-string과-for문" class="level3">
+<h3 class="anchored" data-anchor-id="b.-string과-for문">B. string과 <code>for</code>문</h3>
+<p><code>-</code> 예제1</p>
+<div id="332dd7a4-de31-4729-8105-a7c5308ebda4" class="cell" data-tags="[]" data-execution_count="234">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> s <span class="kw">in</span> <span class="st">'jbnu'</span>:</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="dv">2</span><span class="op">*</span>s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>jj
+bb
+nn
+uu</code></pre>
+</div>
+</div>
+<p><code>-</code> 예제2</p>
+<div id="47e3af04-197b-401e-bb02-eecb4a3cb80c" class="cell" data-tags="[]" data-execution_count="240">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> s <span class="kw">in</span> <span class="st">'jbnu'</span>:</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(s.upper())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>J
+B
+N
+U</code></pre>
+</div>
+</div>
+</section>
+<section id="c.-in-연산자" class="level3">
+<h3 class="anchored" data-anchor-id="c.-in-연산자">C. <code>in</code> 연산자</h3>
+<div id="2511eb65-ead0-4790-890b-d7211949f2c9" class="cell" data-tags="[]" data-execution_count="241">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">'jbnu'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="6993b791-a61e-43e2-a758-00fe29505490" class="cell" data-tags="[]" data-execution_count="244">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">'b'</span> <span class="kw">in</span> s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="244">
+<pre><code>True</code></pre>
+</div>
+</div>
+<div id="5c44446a-e29b-4c31-b072-93da6216ea3b" class="cell" data-tags="[]" data-execution_count="245">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">'c'</span> <span class="kw">in</span> s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="245">
+<pre><code>False</code></pre>
+</div>
+</div>
+<div id="9b6524f5-1f43-4647-b866-1a38462692f3" class="cell" data-tags="[]" data-execution_count="246">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">'jb'</span> <span class="kw">in</span> s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="246">
+<pre><code>True</code></pre>
+</div>
+</div>
+<div id="ac2ca4bb-b735-4952-82c2-a308cfe8443e" class="cell" data-tags="[]" data-execution_count="248">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">'jn'</span> <span class="kw">in</span> s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="248">
+<pre><code>False</code></pre>
+</div>
+</div>
+</section>
+<section id="d.-split과-join" class="level3">
+<h3 class="anchored" data-anchor-id="d.-split과-join">D. <code>split</code>과 <code>join</code></h3>
+<p><code>-</code> 예제1</p>
+<div id="d215fe1a-b8c2-4a12-a36e-bf8953693b7f" class="cell" data-execution_count="255">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">'2021.08.14'</span>.split(<span class="st">'.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="255">
+<pre><code>['2021', '08', '14']</code></pre>
+</div>
+</div>
+<p><code>-</code> 예제2</p>
+<div id="3f790025-92d3-4474-af85-8a073e1b4814" class="cell" data-execution_count="256">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">'asdf'</span><span class="op">*</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="256">
+<pre><code>'asdfasdf'</code></pre>
+</div>
+</div>
+<div id="35357bdd-7bdb-434d-b0ea-06aced4278c0" class="cell" data-execution_count="259">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>(<span class="st">'asdf'</span><span class="op">*</span><span class="dv">2</span>).split(<span class="st">'f'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="259">
+<pre><code>['asd', 'asd', '']</code></pre>
+</div>
+</div>
+<p><code>-</code> 예제3</p>
+<div id="358bdbf2-d2e1-49f3-abd8-8054f754f30d" class="cell" data-execution_count="273">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">'-'</span>.join(<span class="st">'asdf'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="273">
+<pre><code>'a-s-d-f'</code></pre>
+</div>
+</div>
+<p><code>-</code> 예제4</p>
+<div id="47c95c58-82cd-44b6-88f2-443ddece0ffb" class="cell" data-execution_count="274">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">'-'</span>.join([<span class="st">'a'</span>,<span class="st">'s'</span>,<span class="st">'d'</span>,<span class="st">'f'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="274">
+<pre><code>'a-s-d-f'</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="list" class="level2">
+<h2 class="anchored" data-anchor-id="list">2. <code>list</code></h2>
+<section id="a.-선언" class="level3">
+<h3 class="anchored" data-anchor-id="a.-선언">A. 선언</h3>
+<p><code>-</code> 리스트의 선언</p>
+<div id="b7294d75-7cbd-4049-939b-d30ea53e7765" class="cell" data-execution_count="277">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="277">
+<pre><code>[1, 2, 3, 4]</code></pre>
+</div>
+</div>
+<p><code>-</code> 비어있는 리스트의 선언</p>
+<div id="5870fb47-6585-4e61-b2ec-9d2c24cda23f" class="cell" data-tags="[]" data-execution_count="280">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span> []</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="280">
+<pre><code>[]</code></pre>
+</div>
+</div>
+<div id="ec94c6cf-2053-4664-b33b-a7e1f5b71668" class="cell" data-tags="[]" data-execution_count="281">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span> <span class="bu">list</span>()</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="281">
+<pre><code>[]</code></pre>
+</div>
+</div>
+</section>
+<section id="b.-연산" class="level3">
+<h3 class="anchored" data-anchor-id="b.-연산">B. 연산</h3>
+<p><code>-</code> 더하기연산</p>
+<div id="07dcf4b1-ebc1-423d-9942-5fd0c75eed81" class="cell" data-tags="[]" data-execution_count="283">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>] <span class="op">+</span> [<span class="op">-</span><span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="283">
+<pre><code>[1, 2, 3, -3, 4, 5]</code></pre>
+</div>
+</div>
+<ul>
+<li>우리의 예상과 다른 결과가 나옴 <span class="math inline">\(\to\)</span> 파이썬은 R처럼 자체적으로 좋은 계산기능을 내장하고 있지 않음.</li>
+</ul>
+<p><code>-</code> 브로드캐스팅과 같이 R에서는 당연히 가능했던 기능을 사용할 수 없음.</p>
+<div id="538182e5-1c1a-4c0f-9257-551f5aac9aeb" class="cell" data-tags="[]" data-execution_count="284">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>] <span class="op">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[284]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">[</span><span class="ansi-green-fg ansi-yellow-bg">1</span><span class="ansi-yellow-bg">,</span><span class="ansi-green-fg ansi-yellow-bg">2</span><span class="ansi-yellow-bg">,</span><span class="ansi-green-fg ansi-yellow-bg">3</span><span class="ansi-yellow-bg">,</span><span class="ansi-green-fg ansi-yellow-bg">4</span><span class="ansi-yellow-bg">,</span><span class="ansi-green-fg ansi-yellow-bg">5</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">+</span><span class="ansi-yellow-bg"> </span><span class="ansi-green-fg ansi-yellow-bg">1</span>
+
+<span class="ansi-red-fg">TypeError</span>: can only concatenate list (not "int") to list</pre>
+</div>
+</div>
+</div>
+<p><code>-</code> 뺄셈은 정의되지 않음</p>
+<div id="b1de7f3e-3412-4344-b65e-154509e2d69f" class="cell" data-tags="[]" data-execution_count="291">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>]</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>a<span class="op">-</span>[<span class="dv">1</span>,<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[291]</span><span class="ansi-green-fg">, line 2</span>
+<span class="ansi-green-fg">      1</span> a= [<span class="ansi-green-fg">1</span>,<span class="ansi-green-fg">2</span>,<span class="ansi-green-fg">1</span>,<span class="ansi-green-fg">2</span>]
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span> <span class="ansi-yellow-bg">a</span><span class="ansi-yellow-bg">-</span><span class="ansi-yellow-bg">[</span><span class="ansi-green-fg ansi-yellow-bg">1</span><span class="ansi-yellow-bg">,</span><span class="ansi-green-fg ansi-yellow-bg">2</span><span class="ansi-yellow-bg">]</span>
+
+<span class="ansi-red-fg">TypeError</span>: unsupported operand type(s) for -: 'list' and 'list'</pre>
+</div>
+</div>
+</div>
+<p><code>-</code> 곱하기는 정의가능</p>
+<div id="6f73656a-27f6-40a1-8db1-43c880a9e603" class="cell" data-tags="[]" data-execution_count="293">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>,<span class="dv">2</span>]<span class="op">*</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="293">
+<pre><code>[1, 2, 1, 2, 1, 2]</code></pre>
+</div>
+</div>
+<p><code>-</code> 나눗셈은 정의되지 않음</p>
+<div id="76d9c721-06e0-4949-9257-ffae7a40c0e3" class="cell" data-tags="[]" data-execution_count="294">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>] <span class="op">/</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[294]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">[</span><span class="ansi-green-fg ansi-yellow-bg">1</span><span class="ansi-yellow-bg">,</span><span class="ansi-green-fg ansi-yellow-bg">2</span><span class="ansi-yellow-bg">,</span><span class="ansi-green-fg ansi-yellow-bg">1</span><span class="ansi-yellow-bg">,</span><span class="ansi-green-fg ansi-yellow-bg">2</span><span class="ansi-yellow-bg">,</span><span class="ansi-green-fg ansi-yellow-bg">1</span><span class="ansi-yellow-bg">,</span><span class="ansi-green-fg ansi-yellow-bg">2</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">/</span><span class="ansi-green-fg ansi-yellow-bg">3</span>
+
+<span class="ansi-red-fg">TypeError</span>: unsupported operand type(s) for /: 'list' and 'int'</pre>
+</div>
+</div>
+</div>
+<p><code>-</code> 더하기와 곱하기는 원소의 추가와 반복추가를 의미하지만 그렇다고 해서 뺄셈과 나눗셈이 원소의 삭제를 의미하는것은 아님</p>
+<p><code>-</code> 더하기와 곱하기가 원소의 추가와 반복추가를 의미하여 편리할때도 있긴하지만, 우리는 산술적인 <code>+</code>, <code>*</code> 를 원하는 경우도 있다. 이럴 경우는 어떻게 할 수 있을까?</p>
+<p>(예제)</p>
+<div id="d09b5332-7e31-4e69-ad37-c3b608b4a61b" class="cell" data-tags="[]" data-execution_count="295">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span>[<span class="dv">1</span>,<span class="dv">2</span>]</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>b<span class="op">=</span>[<span class="dv">3</span>,<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>a+b = [4,6] 이 되도록 하려면?</p>
+<p>(풀이1)</p>
+<div id="426859d3-7434-4f9f-99ab-951d8d5b665d" class="cell" data-execution_count="307">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>[a[<span class="dv">0</span>]<span class="op">+</span>b[<span class="dv">0</span>], a[<span class="dv">1</span>]<span class="op">+</span>b[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="307">
+<pre><code>[4, 6]</code></pre>
+</div>
+</div>
+<p>풀이가 가능한 이유? a,b는 리스트이지만 a[0], a[1], b[0], b[1] 은 각각 인트형임. 인트형은 + 연산이 가능했음.</p>
+<p>(풀이2)</p>
+<div id="82e7f53a-83a0-47e1-8962-4598774fab43" class="cell" data-tags="[]" data-execution_count="308">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="1173d339-6d29-4a10-bd15-bbde9870b8e4" class="cell" data-tags="[]" data-execution_count="315">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span>[<span class="dv">1</span>,<span class="dv">2</span>]</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>b<span class="op">=</span>[<span class="dv">3</span>,<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="7cdef1fa-c2d6-4cfd-a09f-811a67814eae" class="cell" data-tags="[]" data-execution_count="316">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>aa <span class="op">=</span> numpy.array(a)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>bb <span class="op">=</span> numpy.array(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="048d519c-ca8e-40bf-8859-59d8d425e23f" class="cell" data-execution_count="318">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="318">
+<pre><code>[1, 2]</code></pre>
+</div>
+</div>
+<div id="e041ce7e-9123-41c1-a8d2-273db72342d9" class="cell" data-execution_count="320">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>aa<span class="op">+</span>bb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="320">
+<pre><code>array([4, 6])</code></pre>
+</div>
+</div>
+<p>여러가지 연산 가능 (마치 R처럼 쓸 수 있음)</p>
+<div id="da8fae0d-74a8-4b23-b2db-a45659189104" class="cell" data-tags="[]" data-execution_count="324">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="op">*</span>aa</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="324">
+<pre><code>array([2, 4])</code></pre>
+</div>
+</div>
+<div id="991988b6-c6c5-41bd-80e6-55c019382348" class="cell" data-tags="[]" data-execution_count="325">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="op">*</span>aa<span class="op">+</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="325">
+<pre><code>array([3, 5])</code></pre>
+</div>
+</div>
+<div id="86769124-cfea-4f1d-9923-afa1090de1fb" class="cell" data-tags="[]" data-execution_count="326">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="op">*</span>aa<span class="op">+</span><span class="dv">1</span><span class="op">+</span>bb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="326">
+<pre><code>array([6, 9])</code></pre>
+</div>
+</div>
+<p>(풀이3)</p>
+<div id="47f7c2fe-dbd5-48fa-b692-54b9fc07da02" class="cell" data-tags="[]" data-execution_count="334">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np <span class="co">## 설치가 되어있는 numpy라는 패키지를 쓰겠음. 그런데 numpy말고 np라는 이름으로 쓰겠음</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="31b7548d-9be9-4097-a081-47cd4b55828e" class="cell" data-execution_count="335">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>np.array(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="335">
+<pre><code>array([1, 2])</code></pre>
+</div>
+</div>
+<div id="637a3d36-ecde-4f0b-806d-4de19f14832b" class="cell" data-tags="[]" data-execution_count="336">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>np.array(a)<span class="op">+</span>np.array(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="336">
+<pre><code>array([4, 6])</code></pre>
+</div>
+</div>
+</section>
+<section id="c.-인덱싱" class="level3">
+<h3 class="anchored" data-anchor-id="c.-인덱싱">C. 인덱싱</h3>
+<p><code>-</code> str형과 동일한 방식</p>
+<div id="3bceec38-47ac-4a2c-9d3f-90c8343b19c2" class="cell" data-tags="[]" data-execution_count="344">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span>[<span class="dv">11</span>,<span class="dv">22</span>,<span class="dv">33</span>,<span class="dv">44</span>,<span class="dv">55</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="bf51d277-96b1-4244-ba63-35701091acbb" class="cell" data-tags="[]" data-execution_count="345">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>a[<span class="op">-</span><span class="dv">2</span>:] <span class="co"># 끝의 2개의 원소를 뽑음 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="345">
+<pre><code>[44, 55]</code></pre>
+</div>
+</div>
+</section>
+<section id="d.-콘테이너형-객체로서의-리스트" class="level3">
+<h3 class="anchored" data-anchor-id="d.-콘테이너형-객체로서의-리스트">D. 콘테이너형 객체로서의 리스트</h3>
+<p><code>-</code> 리스트의 원소는 int, float 따위만 가능한 것이 아니다. (리스트는 컨테이너형 객체이므로)</p>
+<div id="46b7aa68-ddd5-4e38-b201-f59142429b56" class="cell" data-execution_count="347">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="va">True</span>, <span class="va">False</span>, <span class="va">True</span>, <span class="dv">2</span>]</span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="347">
+<pre><code>[True, False, True, 2]</code></pre>
+</div>
+</div>
+<div id="774ae731-4a7a-4777-8dfa-f3d6fd267279" class="cell" data-tags="[]" data-execution_count="348">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>lst <span class="op">=</span> [<span class="dv">1</span>,<span class="fl">3.14</span>,<span class="va">True</span>,<span class="st">'a'</span>,[<span class="dv">1</span>,<span class="dv">2</span>], </span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>       (<span class="dv">1</span>,<span class="dv">2</span>),{<span class="st">'name'</span>:<span class="st">'iu'</span>,<span class="st">'age'</span>:<span class="dv">27</span>},{<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>}]</span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>lst</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="348">
+<pre><code>[1, 3.14, True, 'a', [1, 2], (1, 2), {'name': 'iu', 'age': 27}, {1, 2, 3}]</code></pre>
+</div>
+</div>
+<p><code>-</code> str은 컨테이너형이 아니다.</p>
+<div id="2d9ff5a1-e4d5-408a-a563-06f75af511a4" class="cell" data-execution_count="349">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co">'asdf'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="349">
+<pre><code>'asdf'</code></pre>
+</div>
+</div>
+<ul>
+<li>str의 모든 원소는 문자임</li>
+</ul>
+</section>
+<section id="e.-가변객체" class="level3">
+<h3 class="anchored" data-anchor-id="e.-가변객체">E. 가변객체</h3>
+<p><code>-</code> 리스트는 원소를 수정할 수 있다. (리스트는 가변객체이므로)</p>
+<div id="29be248b-4068-47a7-aea6-fb5167662b03" class="cell" data-tags="[]" data-execution_count="376">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">11</span>,<span class="dv">22</span>,<span class="dv">33</span>]</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="376">
+<pre><code>[11, 22, 33]</code></pre>
+</div>
+</div>
+<div id="254bbc8e-07b3-41d8-9b82-4830eb781828" class="cell" data-tags="[]" data-execution_count="377">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>a[<span class="dv">0</span>] <span class="op">=</span> <span class="op">-</span><span class="dv">77</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="63047d26-7e0c-49f5-b577-3486eb400bf8" class="cell" data-execution_count="378">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="378">
+<pre><code>[-77, 22, 33]</code></pre>
+</div>
+</div>
+<p><code>-</code> 원소수정은 당연한 기능같은데 이것이 불가능한 경우도 있다.</p>
+<p>(가능한경우)</p>
+<div id="eca48e75-e283-4759-acca-cd16d357f701" class="cell" data-tags="[]" data-execution_count="379">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span>[<span class="st">'g'</span>,<span class="st">'u'</span>,<span class="st">'e'</span>,<span class="st">'b'</span>,<span class="st">'i'</span>,<span class="st">'n'</span>]</span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="379">
+<pre><code>['g', 'u', 'e', 'b', 'i', 'n']</code></pre>
+</div>
+</div>
+<div id="f7f36fa7-b773-4644-af66-b2990d8387d1" class="cell" data-tags="[]" data-execution_count="380">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>a[<span class="dv">0</span>] <span class="op">=</span> <span class="st">'G'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="94ba4c7b-bf84-4f90-be85-ea34d5c4edb9" class="cell" data-tags="[]" data-execution_count="381">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="381">
+<pre><code>['G', 'u', 'e', 'b', 'i', 'n']</code></pre>
+</div>
+</div>
+<p>(불가능한경우)</p>
+<div id="b5a6df20-685b-467c-9973-71cd192c87e1" class="cell" data-tags="[]" data-execution_count="382">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span><span class="st">'guebin'</span></span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="382">
+<pre><code>'guebin'</code></pre>
+</div>
+</div>
+<div id="5347e9ad-dda3-48aa-9585-cd8d974bff9e" class="cell" data-execution_count="383">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>a[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="383">
+<pre><code>'g'</code></pre>
+</div>
+</div>
+<div id="24b6e3ff-c0cd-430f-b9a6-5da3f432a785" class="cell" data-tags="[]" data-execution_count="384">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>a[<span class="dv">0</span>]<span class="op">=</span><span class="st">'G'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[384]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">a</span><span class="ansi-yellow-bg">[</span><span class="ansi-green-fg ansi-yellow-bg">0</span><span class="ansi-yellow-bg">]</span>=<span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">G</span><span class="ansi-yellow-fg">'</span>
+
+<span class="ansi-red-fg">TypeError</span>: 'str' object does not support item assignment</pre>
+</div>
+</div>
+</div>
+<p><em>만약에 억지로 바꾸고 싶다면?</em></p>
+<div id="867692bc-64dc-4548-9078-1121f5215dc2" class="cell" data-execution_count="389">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> <span class="bu">list</span>(a)</span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a>l[<span class="dv">0</span>] <span class="op">=</span> <span class="st">'G'</span></span>
+<span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a><span class="co">''</span>.join(l)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="389">
+<pre><code>'Guebin'</code></pre>
+</div>
+</div>
+</section>
+<section id="f.-리스트의-원소-삭제" class="level3">
+<h3 class="anchored" data-anchor-id="f.-리스트의-원소-삭제">F. 리스트의 원소 삭제</h3>
+<p>(예제1) del을 이용한 원소삭제</p>
+<p>아래와 같이 문자로 된 리스트를 선언하자.</p>
+<div id="8eaaa7f2-5df2-4967-a73c-06b20e4eef16" class="cell" data-tags="[]" data-execution_count="395">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="st">'g'</span>,<span class="st">'u'</span>,<span class="st">'e'</span>,<span class="st">'b'</span>,<span class="st">'i'</span>,<span class="st">'n'</span>]</span>
+<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="395">
+<pre><code>['g', 'u', 'e', 'b', 'i', 'n']</code></pre>
+</div>
+</div>
+<p><strong><em>사실 더 쉽게 선언할 수 있음</em></strong></p>
+<div id="ce20d9e8-1f5b-484c-9849-a7b3b4bff910" class="cell" data-execution_count="396">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(<span class="st">'guebin'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="396">
+<pre><code>['g', 'u', 'e', 'b', 'i', 'n']</code></pre>
+</div>
+</div>
+<p>첫번째 원소를 삭제하고 싶다면?</p>
+<div id="e56e4c17-f86c-41f1-a709-3b0e583d692b" class="cell" data-tags="[]" data-execution_count="398">
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> a[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="83ed5e6a-9950-46c3-a57a-8d90187fa851" class="cell" data-execution_count="399">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="399">
+<pre><code>['u', 'e', 'b', 'i', 'n']</code></pre>
+</div>
+</div>
+<p>이 상태에서 다시 첫번째 원소를 삭제한다면?</p>
+<div id="5099905d-bbb4-4a5d-b906-765f5cad34b5" class="cell" data-tags="[]" data-execution_count="400">
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> a[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="d0d8d5ff-1e37-4fab-8cdd-8ce9d220e939" class="cell" data-tags="[]" data-execution_count="401">
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="401">
+<pre><code>['e', 'b', 'i', 'n']</code></pre>
+</div>
+</div>
+<p>(예제2) pop을 이용한 원소삭제</p>
+<div id="faa2419f-3476-4254-8a18-d11af296b43f" class="cell" data-tags="[]" data-execution_count="402">
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span><span class="bu">list</span>(<span class="st">'guebin'</span>)</span>
+<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="402">
+<pre><code>['g', 'u', 'e', 'b', 'i', 'n']</code></pre>
+</div>
+</div>
+<div id="b7c07065-b248-4a7c-8cc7-95266a66decd" class="cell" data-tags="[]" data-execution_count="403">
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>a.pop(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="403">
+<pre><code>'g'</code></pre>
+</div>
+</div>
+<div id="aaad5871-1ba1-4a1f-9903-9bb8ce16cc0c" class="cell" data-execution_count="404">
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="404">
+<pre><code>['u', 'e', 'b', 'i', 'n']</code></pre>
+</div>
+</div>
+<div id="44aea265-b430-43a7-8d65-f50580f25d2e" class="cell" data-tags="[]" data-execution_count="405">
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>a.pop(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="405">
+<pre><code>'u'</code></pre>
+</div>
+</div>
+<div id="ea20ce02-df64-4d0f-a6e3-192a4c04887b" class="cell" data-tags="[]" data-execution_count="406">
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="406">
+<pre><code>['e', 'b', 'i', 'n']</code></pre>
+</div>
+</div>
+<p>(예제3) remove를 이용한 원소삭제</p>
+<div id="6adf5bfc-9906-4e14-b45c-b36c2846f7c0" class="cell" data-tags="[]" data-execution_count="407">
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span><span class="bu">list</span>(<span class="st">'guebin'</span>)</span>
+<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="407">
+<pre><code>['g', 'u', 'e', 'b', 'i', 'n']</code></pre>
+</div>
+</div>
+<div id="7a7f44b4-89cb-4465-b436-63f95329f49c" class="cell" data-tags="[]" data-execution_count="408">
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a>a.remove(<span class="st">'b'</span>)</span>
+<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="408">
+<pre><code>['g', 'u', 'e', 'i', 'n']</code></pre>
+</div>
+</div>
+</section>
+<section id="g.-리스트-원소-추가" class="level3">
+<h3 class="anchored" data-anchor-id="g.-리스트-원소-추가">G. 리스트 원소 추가</h3>
+<p>(예제) 비어있는 리스트를 만들고 원소 0,1,2를 차례로 추가하여 보자.</p>
+<p>(풀이1) <code>+</code> 연산이용</p>
+<div id="88f548b9-9638-4250-b239-1428efe10ff0" class="cell" data-tags="[]" data-execution_count="411">
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span>[]</span>
+<span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="411">
+<pre><code>[]</code></pre>
+</div>
+</div>
+<div id="b4460852-9400-4914-a0fe-77a47aa56907" class="cell" data-tags="[]" data-execution_count="415">
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span> a<span class="op">+</span>[<span class="dv">0</span>]</span>
+<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="415">
+<pre><code>[0]</code></pre>
+</div>
+</div>
+<div id="35aec053-93a3-4a04-b56d-5367b4e2446a" class="cell" data-tags="[]" data-execution_count="416">
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span> a<span class="op">+</span>[<span class="dv">1</span>] <span class="co"># a = [0]+[1]</span></span>
+<span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="416">
+<pre><code>[0, 1]</code></pre>
+</div>
+</div>
+<div id="981e983a-be46-45c5-ae7f-b23b604cb0c9" class="cell" data-tags="[]" data-execution_count="417">
+<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span> a<span class="op">+</span>[<span class="dv">2</span>] <span class="co"># a = [0,1] + [2]</span></span>
+<span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="417">
+<pre><code>[0, 1, 2]</code></pre>
+</div>
+</div>
+<p>(풀이2) <code>+=</code> 이용</p>
+<div id="cee123d8-1cd0-4fc7-ac99-a076dab967c2" class="cell" data-tags="[]" data-execution_count="420">
+<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> []</span>
+<span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">+=</span> [<span class="dv">0</span>]</span>
+<span id="cb122-3"><a href="#cb122-3" aria-hidden="true" tabindex="-1"></a>a <span class="op">+=</span> [<span class="dv">1</span>] </span>
+<span id="cb122-4"><a href="#cb122-4" aria-hidden="true" tabindex="-1"></a>a <span class="op">+=</span> [<span class="dv">2</span>] </span>
+<span id="cb122-5"><a href="#cb122-5" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="420">
+<pre><code>[0, 1, 2]</code></pre>
+</div>
+</div>
+<ul>
+<li>반복되는 문자를 제거하고 연산의 순서를 바꾼다.</li>
+</ul>
+<p>(풀이3) 리스트 특수기능 <code>.append()</code>를 이용</p>
+<div id="cfd45e3c-7bf7-45ed-b12e-7e88d9ea7393" class="cell" data-tags="[]" data-execution_count="421">
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span>[] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="089c85e9-1f44-49a7-9a55-f63b5d5de05d" class="cell" data-tags="[]" data-execution_count="428">
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a>a.append(<span class="dv">0</span>)</span>
+<span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a>a.append(<span class="dv">1</span>)</span>
+<span id="cb125-3"><a href="#cb125-3" aria-hidden="true" tabindex="-1"></a>a.append(<span class="dv">2</span>)</span>
+<span id="cb125-4"><a href="#cb125-4" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="428">
+<pre><code>[0, 1, 2, 0, 1, 2]</code></pre>
+</div>
+</div>
+</section>
+<section id="h.-a4와-a.append4의-차이점은" class="level3">
+<h3 class="anchored" data-anchor-id="h.-a4와-a.append4의-차이점은">H. <code>a+[4]</code>와 <code>a.append(4)</code>의 차이점은?</h3>
+<p>(관찰1)</p>
+<div id="16081345-5e58-48b6-b0c6-57cd1195b002" class="cell" data-tags="[]" data-execution_count="441">
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span>[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
+<span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a>a<span class="op">+</span>[<span class="dv">4</span>] <span class="co">## 리스트 a와 리스트 [4]의 연산결과를 알려줘 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="441">
+<pre><code>[1, 2, 3, 4]</code></pre>
+</div>
+</div>
+<div id="cc34adf7-1491-44db-9b49-dec692bd4978" class="cell" data-tags="[]" data-execution_count="442">
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a>a <span class="co">## a는 그대로임. 변화없음 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="442">
+<pre><code>[1, 2, 3]</code></pre>
+</div>
+</div>
+<p>(관찰2)</p>
+<div id="e5906002-f777-4f4c-a0b7-55ea4dd55b3e" class="cell" data-tags="[]" data-execution_count="443">
+<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span>[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
+<span id="cb131-2"><a href="#cb131-2" aria-hidden="true" tabindex="-1"></a>a.append(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="45627fe7-6276-4bbb-808b-e8d55df6fa61" class="cell" data-tags="[]" data-execution_count="444">
+<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>a <span class="co">## a자체가 변화함 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="444">
+<pre><code>[1, 2, 3, 4]</code></pre>
+</div>
+</div>
+<p>비슷해보이지만 굉장히 미묘한 차이가 있음</p>
+<p><code>a.append(4)</code>: <code>a</code>에 4를 append하라 <span class="math inline">\(\to\)</span> <code>a</code>가 변함</p>
+<p><code>a+[4]</code>: <code>a</code>와 <code>[4]</code>를 연산하라</p>
+</section>
+<section id="i.-리스트-특수기능" class="level3">
+<h3 class="anchored" data-anchor-id="i.-리스트-특수기능">I. 리스트 특수기능</h3>
+<p><strong>(append)</strong></p>
+<div id="0df4aa53-c737-4a5d-b30b-5a851a7ae769" class="cell" data-execution_count="445">
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span>[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]</span>
+<span id="cb134-2"><a href="#cb134-2" aria-hidden="true" tabindex="-1"></a>a.append?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">Signature:</span> a.append(object, /)
+<span class="ansi-red-fg">Docstring:</span> Append object to the end of the list.
+<span class="ansi-red-fg">Type:</span>      builtin_function_or_method</pre>
+</div>
+</div>
+</div>
+<div id="f9a6d1d2-d643-449a-97fc-d1376a0076c3" class="cell" data-execution_count="446">
+<div class="sourceCode cell-code" id="cb135"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a>a.append(<span class="dv">5</span>)</span>
+<span id="cb135-2"><a href="#cb135-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="446">
+<pre><code>[1, 2, 3, 4, 5]</code></pre>
+</div>
+</div>
+<p><strong>(clear)</strong></p>
+<div id="2bb1fe05-1feb-4c10-83c6-6046f4f04c53" class="cell" data-execution_count="447">
+<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span>[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]</span>
+<span id="cb137-2"><a href="#cb137-2" aria-hidden="true" tabindex="-1"></a>a.clear?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">Signature:</span> a.clear()
+<span class="ansi-red-fg">Docstring:</span> Remove all items from list.
+<span class="ansi-red-fg">Type:</span>      builtin_function_or_method</pre>
+</div>
+</div>
+</div>
+<div id="1c5c2f35-45f6-4937-8ac4-c5c0dfb15fce" class="cell" data-execution_count="448">
+<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a>a.clear()</span>
+<span id="cb138-2"><a href="#cb138-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="448">
+<pre><code>[]</code></pre>
+</div>
+</div>
+<p><strong>(copy)</strong></p>
+<div id="2cab71e7-0c06-454e-b07d-37b3c336d7f9" class="cell" data-execution_count="449">
+<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span>[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]</span>
+<span id="cb140-2"><a href="#cb140-2" aria-hidden="true" tabindex="-1"></a>a.copy?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">Signature:</span> a.copy()
+<span class="ansi-red-fg">Docstring:</span> Return a shallow copy of the list.
+<span class="ansi-red-fg">Type:</span>      builtin_function_or_method</pre>
+</div>
+</div>
+</div>
+<div id="89a26a79-91df-4d3d-9545-242c5f56f264" class="cell" data-execution_count="450">
+<div class="sourceCode cell-code" id="cb141"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a>b<span class="op">=</span>a.copy()</span>
+<span id="cb141-2"><a href="#cb141-2" aria-hidden="true" tabindex="-1"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="450">
+<pre><code>[1, 2, 3, 4]</code></pre>
+</div>
+</div>
+<p><strong>(count)</strong></p>
+<div id="a2e50780-4855-4b38-8b06-ee349f03d914" class="cell" data-tags="[]" data-execution_count="451">
+<div class="sourceCode cell-code" id="cb143"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span>[<span class="st">'a'</span>,<span class="st">'a'</span>,<span class="st">'b'</span>,<span class="st">'b'</span>,<span class="st">'b'</span>,<span class="st">'c'</span>]</span>
+<span id="cb143-2"><a href="#cb143-2" aria-hidden="true" tabindex="-1"></a>a.count?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">Signature:</span> a.count(value, /)
+<span class="ansi-red-fg">Docstring:</span> Return number of occurrences of value.
+<span class="ansi-red-fg">Type:</span>      builtin_function_or_method</pre>
+</div>
+</div>
+</div>
+<div id="22005f55-f28a-4fb9-a800-0a11c1c333da" class="cell" data-tags="[]" data-execution_count="453">
+<div class="sourceCode cell-code" id="cb144"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a>a.count(<span class="st">'a'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="453">
+<pre><code>2</code></pre>
+</div>
+</div>
+<div id="2d8a41a8-539c-4317-91c5-28bc4ad2fdac" class="cell" data-tags="[]" data-execution_count="454">
+<div class="sourceCode cell-code" id="cb146"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb146-1"><a href="#cb146-1" aria-hidden="true" tabindex="-1"></a>a.count(<span class="st">'b'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="454">
+<pre><code>3</code></pre>
+</div>
+</div>
+<div id="9ccdb3c8-9a55-4585-8d3d-b42ac90f3314" class="cell" data-tags="[]" data-execution_count="455">
+<div class="sourceCode cell-code" id="cb148"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a>a.count(<span class="st">'c'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="455">
+<pre><code>1</code></pre>
+</div>
+</div>
+<p><strong>(extend)</strong></p>
+<div id="1e3a650c-e875-42f0-8517-71c7daf6b907" class="cell" data-tags="[]" data-execution_count="470">
+<div class="sourceCode cell-code" id="cb150"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb150-1"><a href="#cb150-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span>[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]</span>
+<span id="cb150-2"><a href="#cb150-2" aria-hidden="true" tabindex="-1"></a>b<span class="op">=</span>[<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>,<span class="op">-</span><span class="dv">3</span>,<span class="op">-</span><span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="583dd572-7a99-4e9a-bf88-716f80274d06" class="cell" data-execution_count="471">
+<div class="sourceCode cell-code" id="cb151"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a>a.extend(b)</span>
+<span id="cb151-2"><a href="#cb151-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="471">
+<pre><code>[1, 2, 3, 4, -1, -2, -3, -4]</code></pre>
+</div>
+</div>
+<div id="4f931791-e264-4cd1-ab18-8feb8ca0d1bd" class="cell" data-tags="[]" data-execution_count="472">
+<div class="sourceCode cell-code" id="cb153"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span>[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]</span>
+<span id="cb153-2"><a href="#cb153-2" aria-hidden="true" tabindex="-1"></a>b<span class="op">=</span>[<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>,<span class="op">-</span><span class="dv">3</span>,<span class="op">-</span><span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="30944a31-5448-4fc6-b3ad-38cc653cb798" class="cell" data-tags="[]" data-execution_count="473">
+<div class="sourceCode cell-code" id="cb154"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb154-1"><a href="#cb154-1" aria-hidden="true" tabindex="-1"></a>a.append(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="6294a621-28ed-45a4-b3cd-e93e65d5744b" class="cell" data-tags="[]" data-execution_count="474">
+<div class="sourceCode cell-code" id="cb155"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb155-1"><a href="#cb155-1" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="474">
+<pre><code>[1, 2, 3, 4, [-1, -2, -3, -4]]</code></pre>
+</div>
+</div>
+<p><strong>(index)</strong></p>
+<div id="666cd13c-9239-485d-908a-fcbbdb593f7d" class="cell" data-execution_count="477">
+<div class="sourceCode cell-code" id="cb157"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb157-1"><a href="#cb157-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span>[<span class="dv">11</span>,<span class="dv">22</span>,<span class="st">'a'</span>,<span class="va">True</span>, <span class="dv">22</span>,<span class="st">'a'</span>]</span>
+<span id="cb157-2"><a href="#cb157-2" aria-hidden="true" tabindex="-1"></a>a.index?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">Signature:</span> a.index(value, start=<span class="ansi-green-fg">0</span>, stop=<span class="ansi-green-fg">9223372036854775807</span>, /)
+<span class="ansi-red-fg">Docstring:</span>
+Return first index of value.
+Raises ValueError if the value is not present.
+<span class="ansi-red-fg">Type:</span>      builtin_function_or_method</pre>
+</div>
+</div>
+</div>
+<div id="73a699ab-85c6-4ac5-9a1a-fd248b613234" class="cell" data-execution_count="114">
+<div class="sourceCode cell-code" id="cb158"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a>a.index(<span class="dv">11</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="114">
+<pre><code>0</code></pre>
+</div>
+</div>
+<div id="aca01893-f546-4d99-8dba-474f0fe8ad69" class="cell" data-execution_count="115">
+<div class="sourceCode cell-code" id="cb160"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb160-1"><a href="#cb160-1" aria-hidden="true" tabindex="-1"></a>a.index(<span class="dv">22</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="115">
+<pre><code>1</code></pre>
+</div>
+</div>
+<div id="0e75b317-24f0-499b-b1e4-57351c2dce30" class="cell" data-execution_count="116">
+<div class="sourceCode cell-code" id="cb162"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb162-1"><a href="#cb162-1" aria-hidden="true" tabindex="-1"></a>a.index(<span class="st">'a'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="116">
+<pre><code>2</code></pre>
+</div>
+</div>
+<div id="559c0d24-007f-4670-af86-61816509b7f6" class="cell" data-execution_count="117">
+<div class="sourceCode cell-code" id="cb164"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb164-1"><a href="#cb164-1" aria-hidden="true" tabindex="-1"></a>a.index(<span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="117">
+<pre><code>3</code></pre>
+</div>
+</div>
+<p><strong>(insert)</strong></p>
+<div id="58d2ce7c-a5d7-4de5-93d1-7c9f2f4d3ff9" class="cell" data-execution_count="482">
+<div class="sourceCode cell-code" id="cb166"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb166-1"><a href="#cb166-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span>[<span class="dv">11</span>,<span class="dv">22</span>,<span class="dv">33</span>]</span>
+<span id="cb166-2"><a href="#cb166-2" aria-hidden="true" tabindex="-1"></a>a.insert?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">Signature:</span> a.insert(index, object, /)
+<span class="ansi-red-fg">Docstring:</span> Insert object before index.
+<span class="ansi-red-fg">Type:</span>      builtin_function_or_method</pre>
+</div>
+</div>
+</div>
+<div id="5fc5bb9a-c399-4f13-b44c-8270f92145d8" class="cell" data-execution_count="484">
+<div class="sourceCode cell-code" id="cb167"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb167-1"><a href="#cb167-1" aria-hidden="true" tabindex="-1"></a>a.insert(<span class="dv">2</span>,<span class="dv">88</span>) </span>
+<span id="cb167-2"><a href="#cb167-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="484">
+<pre><code>[11, 22, 88, 88, 33]</code></pre>
+</div>
+</div>
+<p><strong>(pop)</strong></p>
+<div id="0fe10e93-8a27-4a8a-9880-231e7fd1d9c7" class="cell" data-execution_count="485">
+<div class="sourceCode cell-code" id="cb169"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb169-1"><a href="#cb169-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span>[<span class="st">'a'</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="st">'d'</span>]</span>
+<span id="cb169-2"><a href="#cb169-2" aria-hidden="true" tabindex="-1"></a>a.pop?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">Signature:</span> a.pop(index=-<span class="ansi-green-fg">1</span>, /)
+<span class="ansi-red-fg">Docstring:</span>
+Remove and return item at index (default last).
+Raises IndexError if list is empty or index is out of range.
+<span class="ansi-red-fg">Type:</span>      builtin_function_or_method</pre>
+</div>
+</div>
+</div>
+<div id="bf7f454b-99b9-47d9-8607-7fd9d41c76a7" class="cell" data-execution_count="486">
+<div class="sourceCode cell-code" id="cb170"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb170-1"><a href="#cb170-1" aria-hidden="true" tabindex="-1"></a>a.pop() <span class="co"># index=-1 이므로 마지막원소가 나타남</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="486">
+<pre><code>'d'</code></pre>
+</div>
+</div>
+<div id="5ce40fd0-41f9-4ee4-a8da-9810d665cf55" class="cell" data-execution_count="487">
+<div class="sourceCode cell-code" id="cb172"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb172-1"><a href="#cb172-1" aria-hidden="true" tabindex="-1"></a>a <span class="co"># a는 마지막 원소가 사라진 상태</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="487">
+<pre><code>['a', 1, 2]</code></pre>
+</div>
+</div>
+<div id="8f0e3a90-ba90-49f0-8387-b4f7e8ebdbd6" class="cell" data-execution_count="488">
+<div class="sourceCode cell-code" id="cb174"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb174-1"><a href="#cb174-1" aria-hidden="true" tabindex="-1"></a>a.pop(<span class="dv">0</span>) <span class="co"># index=0 이므로 첫번쨰 원소가 나타남</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="488">
+<pre><code>'a'</code></pre>
+</div>
+</div>
+<div id="209c0400-1c9a-4612-b2c9-2a07ce8beb44" class="cell" data-execution_count="489">
+<div class="sourceCode cell-code" id="cb176"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb176-1"><a href="#cb176-1" aria-hidden="true" tabindex="-1"></a>a <span class="co"># a에는 첫번째 원소가 사라진 상태</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="489">
+<pre><code>[1, 2]</code></pre>
+</div>
+</div>
+<p><strong>(remove)</strong></p>
+<div id="b303f3ca-b9e3-4964-a655-bc8c7e5de4de" class="cell" data-execution_count="490">
+<div class="sourceCode cell-code" id="cb178"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb178-1"><a href="#cb178-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span>[<span class="st">'a'</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="st">'d'</span>]</span>
+<span id="cb178-2"><a href="#cb178-2" aria-hidden="true" tabindex="-1"></a>a.remove?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">Signature:</span> a.remove(value, /)
+<span class="ansi-red-fg">Docstring:</span>
+Remove first occurrence of value.
+Raises ValueError if the value is not present.
+<span class="ansi-red-fg">Type:</span>      builtin_function_or_method</pre>
+</div>
+</div>
+</div>
+<div id="8c0e3da5-174b-4b2f-85fe-b700a7294f17" class="cell" data-execution_count="491">
+<div class="sourceCode cell-code" id="cb179"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb179-1"><a href="#cb179-1" aria-hidden="true" tabindex="-1"></a>a.remove(<span class="st">'d'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="0f5c8b2b-a91b-4a34-99e8-e9a93535923b" class="cell" data-execution_count="492">
+<div class="sourceCode cell-code" id="cb180"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb180-1"><a href="#cb180-1" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="492">
+<pre><code>['a', 2, 3]</code></pre>
+</div>
+</div>
+<div id="e8edd85f-2529-41cd-bf9e-d9f6014920e7" class="cell" data-execution_count="493">
+<div class="sourceCode cell-code" id="cb182"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb182-1"><a href="#cb182-1" aria-hidden="true" tabindex="-1"></a>a.remove(<span class="st">'a'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="ed5843ea-0a33-4d52-9f43-58535fb9d39f" class="cell" data-execution_count="494">
+<div class="sourceCode cell-code" id="cb183"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb183-1"><a href="#cb183-1" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="494">
+<pre><code>[2, 3]</code></pre>
+</div>
+</div>
+<p><strong>(reverse)</strong></p>
+<div id="8bc04abd-84cc-45c9-a465-2abe3af5d67c" class="cell" data-execution_count="495">
+<div class="sourceCode cell-code" id="cb185"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb185-1"><a href="#cb185-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span>[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]</span>
+<span id="cb185-2"><a href="#cb185-2" aria-hidden="true" tabindex="-1"></a>a.reverse?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">Signature:</span> a.reverse()
+<span class="ansi-red-fg">Docstring:</span> Reverse *IN PLACE*.
+<span class="ansi-red-fg">Type:</span>      builtin_function_or_method</pre>
+</div>
+</div>
+</div>
+<div id="550e3fb4-1819-4dd8-915b-c551972b4815" class="cell" data-execution_count="496">
+<div class="sourceCode cell-code" id="cb186"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb186-1"><a href="#cb186-1" aria-hidden="true" tabindex="-1"></a>a.reverse()</span>
+<span id="cb186-2"><a href="#cb186-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="496">
+<pre><code>[4, 3, 2, 1]</code></pre>
+</div>
+</div>
+<p><strong>(sort)</strong></p>
+<div id="2ad24951-f833-4059-a56b-473a33954d1a" class="cell" data-execution_count="497">
+<div class="sourceCode cell-code" id="cb188"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb188-1"><a href="#cb188-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span>[<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>]</span>
+<span id="cb188-2"><a href="#cb188-2" aria-hidden="true" tabindex="-1"></a>a.sort?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">Signature:</span> a.sort(*, key=<span style="font-weight:bold;color:rgb(0,135,0)">None</span>, reverse=<span style="font-weight:bold;color:rgb(0,135,0)">False</span>)
+<span class="ansi-red-fg">Docstring:</span>
+Sort the list in ascending order and return None.
+The sort is in-place (i.e. the list itself is modified) and stable (i.e. the
+order of two equal elements is maintained).
+If a key function is given, apply it once to each list item and sort them,
+ascending or descending, according to their function values.
+The reverse flag can be set to sort in descending order.
+<span class="ansi-red-fg">Type:</span>      builtin_function_or_method</pre>
+</div>
+</div>
+</div>
+<div id="62a3ad03-04e8-4a13-9012-bd581e528ab7" class="cell" data-execution_count="498">
+<div class="sourceCode cell-code" id="cb189"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb189-1"><a href="#cb189-1" aria-hidden="true" tabindex="-1"></a>a.sort()</span>
+<span id="cb189-2"><a href="#cb189-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="498">
+<pre><code>[1, 2, 3, 4]</code></pre>
+</div>
+</div>
+<div id="044e6c7c-4d2c-43f6-8d25-3aedee06eb90" class="cell" data-execution_count="501">
+<div class="sourceCode cell-code" id="cb191"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb191-1"><a href="#cb191-1" aria-hidden="true" tabindex="-1"></a>a.sort(reverse<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb191-2"><a href="#cb191-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="501">
+<pre><code>[4, 3, 2, 1]</code></pre>
+</div>
+</div>
+<p>(다른예제들)</p>
+<div id="f8f59b27-b4f9-479f-8fb4-b6ce18cdcb46" class="cell" data-execution_count="506">
+<div class="sourceCode cell-code" id="cb193"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb193-1"><a href="#cb193-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span><span class="bu">list</span>(<span class="st">'guebin'</span>)</span>
+<span id="cb193-2"><a href="#cb193-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="506">
+<pre><code>['g', 'u', 'e', 'b', 'i', 'n']</code></pre>
+</div>
+</div>
+<div id="1ea037e5-824e-4b6d-95f6-3196c7b9eca0" class="cell" data-execution_count="507">
+<div class="sourceCode cell-code" id="cb195"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb195-1"><a href="#cb195-1" aria-hidden="true" tabindex="-1"></a>a.sort()</span>
+<span id="cb195-2"><a href="#cb195-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="507">
+<pre><code>['b', 'e', 'g', 'i', 'n', 'u']</code></pre>
+</div>
+</div>
+<div id="9f2ffcad-f103-42fb-b994-2050a5428c31" class="cell" data-execution_count="508">
+<div class="sourceCode cell-code" id="cb197"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb197-1"><a href="#cb197-1" aria-hidden="true" tabindex="-1"></a>a.sort(reverse<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb197-2"><a href="#cb197-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="508">
+<pre><code>['u', 'n', 'i', 'g', 'e', 'b']</code></pre>
+</div>
+</div>
+</section>
+<section id="j.-중첩리스트" class="level3">
+<h3 class="anchored" data-anchor-id="j.-중첩리스트">J. 중첩리스트</h3>
+<p><code>-</code> 리스트는 리스트를 원소로 받을 수 있으므로 아래와 같이 중첩된 리스트를 만들 수 있다.</p>
+<div id="4212b900-0cb6-4f2d-97fd-63889ebfe0a9" class="cell" data-execution_count="524">
+<div class="sourceCode cell-code" id="cb199"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb199-1"><a href="#cb199-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> [[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],</span>
+<span id="cb199-2"><a href="#cb199-2" aria-hidden="true" tabindex="-1"></a>     [<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>],</span>
+<span id="cb199-3"><a href="#cb199-3" aria-hidden="true" tabindex="-1"></a>     [<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>]]</span>
+<span id="cb199-4"><a href="#cb199-4" aria-hidden="true" tabindex="-1"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="524">
+<pre><code>[[1, 2, 3], [4, 5, 6], [7, 8, 9]]</code></pre>
+</div>
+</div>
+<p><code>-</code> A는 1차원인 벡터가 아니라 2차원인 매트릭스로 이해할 수 있다. 구체적으로는 아래와 같은 매트릭스로 이해할 수 있다</p>
+<p><span class="math display">\[\bf{A}=\begin{bmatrix}
+1 &amp; 2 &amp; 3 \\
+4 &amp; 5 &amp; 6 \\
+7 &amp; 8 &amp; 9
+\end{bmatrix}\]</span></p>
+<p><code>-</code> A에서 (2,1)의 원소를 뽑고싶다 = 4를 뽑고싶다</p>
+<div id="bd3d2edd-c2b1-4e65-b8e7-4367c84dde60" class="cell" data-tags="[]" data-execution_count="532">
+<div class="sourceCode cell-code" id="cb201"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb201-1"><a href="#cb201-1" aria-hidden="true" tabindex="-1"></a>A[<span class="dv">1</span>,<span class="dv">0</span>] <span class="co"># R에서는 이게 가능했죠</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[532]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">A</span><span class="ansi-yellow-bg">[</span><span class="ansi-green-fg ansi-yellow-bg">1</span><span class="ansi-yellow-bg">,</span><span class="ansi-green-fg ansi-yellow-bg">0</span><span class="ansi-yellow-bg">]</span> <span style="font-style:italic;color:rgb(95,135,135)"># R에서는 이게 가능했죠</span>
+
+<span class="ansi-red-fg">TypeError</span>: list indices must be integers or slices, not tuple</pre>
+</div>
+</div>
+</div>
+<ul>
+<li>실패</li>
+</ul>
+<div id="8d45d7ad-916e-49ae-b270-eca3299c349f" class="cell" data-tags="[]" data-execution_count="533">
+<div class="sourceCode cell-code" id="cb202"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb202-1"><a href="#cb202-1" aria-hidden="true" tabindex="-1"></a>A[<span class="dv">1</span>][<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="533">
+<pre><code>4</code></pre>
+</div>
+</div>
+<ul>
+<li>성공</li>
+</ul>
+<p><code>-</code> 성공의 이유를 분석해보자.</p>
+<div id="a0771502-a148-451b-9fcc-7c056ad8f071" class="cell" data-execution_count="534">
+<div class="sourceCode cell-code" id="cb204"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb204-1"><a href="#cb204-1" aria-hidden="true" tabindex="-1"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="534">
+<pre><code>[[1, 2, 3], [4, 5, 6], [7, 8, 9]]</code></pre>
+</div>
+</div>
+<div id="e5d90caa-ca2a-41a5-ba60-4fede3f42383" class="cell" data-execution_count="535">
+<div class="sourceCode cell-code" id="cb206"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb206-1"><a href="#cb206-1" aria-hidden="true" tabindex="-1"></a>A[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="535">
+<pre><code>[4, 5, 6]</code></pre>
+</div>
+</div>
+<div id="866c435f-7f51-4f97-89bd-04e2eaa6951b" class="cell" data-execution_count="536">
+<div class="sourceCode cell-code" id="cb208"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb208-1"><a href="#cb208-1" aria-hidden="true" tabindex="-1"></a>A[<span class="dv">1</span>][<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="536">
+<pre><code>4</code></pre>
+</div>
+</div>
+<p><code>-</code> 매트릭스는 아니지만 매트릭스 같음!</p>
+<ul>
+<li>1차원 배열을 다차원 배열로 확장할 수 있는 기본 아이디어를 제공함</li>
+</ul>
+</section>
+<section id="k.-리스트-컴프리헨션" class="level3">
+<h3 class="anchored" data-anchor-id="k.-리스트-컴프리헨션">K. 리스트 컴프리헨션</h3>
+<p><code>-</code> 개념: 집합에서 <span class="math inline">\(\{10,20,30,40\}=\{10i: i=1,2,3,4\}=\big\{10i: \text{ for } i \in \{1,2,3,4\}\big\}\)</span> 임을 떠올리자.</p>
+<div id="763cf917-e5a3-4406-8e4b-140a46681084" class="cell" data-execution_count="545">
+<div class="sourceCode cell-code" id="cb210"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb210-1"><a href="#cb210-1" aria-hidden="true" tabindex="-1"></a>[<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="545">
+<pre><code>[10, 20, 30, 40]</code></pre>
+</div>
+</div>
+<div id="2f104510-8dfa-4cba-8f43-133c70e91b74" class="cell" data-execution_count="546">
+<div class="sourceCode cell-code" id="cb212"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb212-1"><a href="#cb212-1" aria-hidden="true" tabindex="-1"></a>[<span class="dv">10</span><span class="op">*</span>i <span class="cf">for</span> i <span class="kw">in</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="546">
+<pre><code>[10, 20, 30, 40]</code></pre>
+</div>
+</div>
+<p><code>-</code> 예제1: 리스트 컴프리헨션을 이용하여 아래와 같은 리스트를 만들어라.</p>
+<div id="cfdfc8c4-877a-4c41-a951-0b395edb0a55" class="cell" data-execution_count="143">
+<div class="sourceCode cell-code" id="cb214"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb214-1"><a href="#cb214-1" aria-hidden="true" tabindex="-1"></a>[<span class="st">'SSSS'</span>,<span class="st">'PPPP'</span>,<span class="st">'AAAA'</span>,<span class="st">'MMMM'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="143">
+<pre><code>['SSSS', 'PPPP', 'AAAA', 'MMMM']</code></pre>
+</div>
+</div>
+<p>(풀이)</p>
+<div id="8760f249-f500-445d-b3f1-b4b730314497" class="cell" data-execution_count="553">
+<div class="sourceCode cell-code" id="cb216"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb216-1"><a href="#cb216-1" aria-hidden="true" tabindex="-1"></a>[s<span class="op">*</span><span class="dv">4</span> <span class="cf">for</span> s <span class="kw">in</span> <span class="st">'SPAM'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="553">
+<pre><code>['SSSS', 'PPPP', 'AAAA', 'MMMM']</code></pre>
+</div>
+</div>
+<p><code>-</code> 예제2: 리스트컴프리헨션을 이용하여 아래와 같은 리스트를 만들어라.</p>
+<div id="cf942173-58af-41af-adcc-8c81c0e29dac" class="cell" data-execution_count="145">
+<div class="sourceCode cell-code" id="cb218"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb218-1"><a href="#cb218-1" aria-hidden="true" tabindex="-1"></a>[<span class="st">'X1'</span>,<span class="st">'X2'</span>,<span class="st">'X3'</span>,<span class="st">'Y1'</span>,<span class="st">'Y2'</span>,<span class="st">'Y3'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="145">
+<pre><code>['X1', 'X2', 'X3', 'Y1', 'Y2', 'Y3']</code></pre>
+</div>
+</div>
+<p>(풀이)</p>
+<div id="e7d95b00-33a2-4822-b153-2f741c8ac26b" class="cell" data-tags="[]" data-execution_count="564">
+<div class="sourceCode cell-code" id="cb220"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb220-1"><a href="#cb220-1" aria-hidden="true" tabindex="-1"></a>[i<span class="op">+</span>j <span class="cf">for</span> i <span class="kw">in</span> <span class="st">'XY'</span> <span class="cf">for</span> j <span class="kw">in</span> <span class="st">'123'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="564">
+<pre><code>['X1', 'X2', 'X3', 'Y1', 'Y2', 'Y3']</code></pre>
+</div>
+</div>
+<p><code>-</code> 예제: 리스트컴프리헨션을 이용하여 아래와 같은 리스트를 만들어라.</p>
+<div id="61f24bdb-2a82-4d30-92af-0f209b23f10a" class="cell" data-execution_count="573">
+<div class="sourceCode cell-code" id="cb222"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb222-1"><a href="#cb222-1" aria-hidden="true" tabindex="-1"></a>[<span class="st">'stat1'</span>, <span class="st">'stat2'</span>, <span class="st">'stat3'</span>, <span class="st">'math1'</span>, <span class="st">'math2'</span>, <span class="st">'math3'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="573">
+<pre><code>['stat1', 'stat2', 'stat3', 'math1', 'math2', 'math3']</code></pre>
+</div>
+</div>
+<p>(풀이)</p>
+<div id="a19a8028-6f02-4f50-bda9-2b5f67e297bb" class="cell" data-tags="[]" data-execution_count="574">
+<div class="sourceCode cell-code" id="cb224"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb224-1"><a href="#cb224-1" aria-hidden="true" tabindex="-1"></a>[i<span class="op">+</span>j <span class="cf">for</span> i <span class="kw">in</span> [<span class="st">'stat'</span>,<span class="st">'math'</span>] <span class="cf">for</span> j <span class="kw">in</span> <span class="st">'123'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="574">
+<pre><code>['stat1', 'stat2', 'stat3', 'math1', 'math2', 'math3']</code></pre>
+</div>
+</div>
+<p>(다른풀이) 비어있는 리스트를 만들고 for문을 쓰면 좀 복잡해진다.</p>
+<div id="c326dd82-3c17-4554-a779-26dffb65a3cc" class="cell" data-tags="[]" data-execution_count="575">
+<div class="sourceCode cell-code" id="cb226"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb226-1"><a href="#cb226-1" aria-hidden="true" tabindex="-1"></a>lst <span class="op">=</span> [] </span>
+<span id="cb226-2"><a href="#cb226-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> [<span class="st">'stat'</span>,<span class="st">'math'</span>]: </span>
+<span id="cb226-3"><a href="#cb226-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> y <span class="kw">in</span> <span class="st">'123'</span>: </span>
+<span id="cb226-4"><a href="#cb226-4" aria-hidden="true" tabindex="-1"></a>        lst.append(x<span class="op">+</span>y)</span>
+<span id="cb226-5"><a href="#cb226-5" aria-hidden="true" tabindex="-1"></a>lst</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="575">
+<pre><code>['stat1', 'stat2', 'stat3', 'math1', 'math2', 'math3']</code></pre>
+</div>
+</div>
+<p><code>-</code> 예제: 리스트컴프리헨션과 문자열 <code>'jbnu'</code>를 이용하여 아래와 같은 리스트를 만들어라.</p>
+<div id="63abc3ca-9e50-4d10-9dc0-d41588824ce6" class="cell" data-execution_count="576">
+<div class="sourceCode cell-code" id="cb228"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb228-1"><a href="#cb228-1" aria-hidden="true" tabindex="-1"></a>[<span class="st">'j'</span>,<span class="st">'b'</span>,<span class="st">'n'</span>,<span class="st">'u'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="576">
+<pre><code>['j', 'b', 'n', 'u']</code></pre>
+</div>
+</div>
+<p>(풀이)</p>
+<div id="636686b9-cc9a-4b07-a44f-818707cd56ac" class="cell" data-tags="[]" data-execution_count="585">
+<div class="sourceCode cell-code" id="cb230"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb230-1"><a href="#cb230-1" aria-hidden="true" tabindex="-1"></a>[s <span class="cf">for</span> s <span class="kw">in</span> <span class="st">'jbnu'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="585">
+<pre><code>['j', 'b', 'n', 'u']</code></pre>
+</div>
+</div>
+<p>(다른풀이) 아래와 같이 풀면 된다는것은 알고 있음</p>
+<div id="7a62bd5b-4dd5-4456-9bf0-946b8e52010c" class="cell" data-tags="[]" data-execution_count="586">
+<div class="sourceCode cell-code" id="cb232"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb232-1"><a href="#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(<span class="st">'jbnu'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="586">
+<pre><code>['j', 'b', 'n', 'u']</code></pre>
+</div>
+</div>
+<p><code>-</code> 예제: 리스트컴프리헨션을 이용하여 아래와 같은 리스트를 만들어라.</p>
+<div id="710367db-3b05-44be-9c75-ecdf94547c2d" class="cell" data-execution_count="157">
+<div class="sourceCode cell-code" id="cb234"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb234-1"><a href="#cb234-1" aria-hidden="true" tabindex="-1"></a>[<span class="st">'X1'</span>, <span class="st">'X2'</span>, <span class="st">'X3'</span>, <span class="st">'X4'</span>, <span class="st">'X5'</span>, <span class="st">'X6'</span>, <span class="st">'X7'</span>, <span class="st">'X8'</span>, <span class="st">'X9'</span>, <span class="st">'X10'</span>, <span class="st">'X11'</span>, <span class="st">'X12'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="157">
+<pre><code>['X1', 'X2', 'X3', 'X4', 'X5', 'X6', 'X7', 'X8', 'X9', 'X10', 'X11', 'X12']</code></pre>
+</div>
+</div>
+<p>(풀이)</p>
+<div id="fe6668eb-1c05-498b-9553-0c96d3a00d09" class="cell" data-tags="[]" data-execution_count="600">
+<div class="sourceCode cell-code" id="cb236"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb236-1"><a href="#cb236-1" aria-hidden="true" tabindex="-1"></a>[<span class="st">'X'</span><span class="op">+</span><span class="bu">str</span>(i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">13</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="600">
+<pre><code>['X1', 'X2', 'X3', 'X4', 'X5', 'X6', 'X7', 'X8', 'X9', 'X10', 'X11', 'X12']</code></pre>
+</div>
+</div>
+</section>
+<section id="l.-리스트-컴프리헨션과-for문의-미묘한-차이" class="level3">
+<h3 class="anchored" data-anchor-id="l.-리스트-컴프리헨션과-for문의-미묘한-차이">L. 리스트 컴프리헨션과 for문의 미묘한 차이</h3>
+<p>(경우1)</p>
+<div id="34ec3891-0a72-4c2e-8a70-bd2073754a6a" class="cell" data-tags="[]" data-execution_count="603">
+<div class="sourceCode cell-code" id="cb238"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb238-1"><a href="#cb238-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span><span class="dv">777</span> </span>
+<span id="cb238-2"><a href="#cb238-2" aria-hidden="true" tabindex="-1"></a>lst <span class="op">=</span> [] </span>
+<span id="cb238-3"><a href="#cb238-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> <span class="st">'jbnu'</span>: </span>
+<span id="cb238-4"><a href="#cb238-4" aria-hidden="true" tabindex="-1"></a>    lst <span class="op">=</span> lst <span class="op">+</span> [x]</span>
+<span id="cb238-5"><a href="#cb238-5" aria-hidden="true" tabindex="-1"></a>lst    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="603">
+<pre><code>['j', 'b', 'n', 'u']</code></pre>
+</div>
+</div>
+<div id="6d386ce3-fb40-43d5-9347-6e251908d125" class="cell" data-tags="[]" data-execution_count="604">
+<div class="sourceCode cell-code" id="cb240"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb240-1"><a href="#cb240-1" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="604">
+<pre><code>'u'</code></pre>
+</div>
+</div>
+<p>(경우2)</p>
+<div id="d0c719bc-e4a0-4080-be58-7f1c0041f920" class="cell" data-execution_count="607">
+<div class="sourceCode cell-code" id="cb242"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb242-1"><a href="#cb242-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span><span class="dv">777</span></span>
+<span id="cb242-2"><a href="#cb242-2" aria-hidden="true" tabindex="-1"></a>lst <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> <span class="st">'jbnu'</span>] </span>
+<span id="cb242-3"><a href="#cb242-3" aria-hidden="true" tabindex="-1"></a>lst </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="607">
+<pre><code>['j', 'b', 'n', 'u']</code></pre>
+</div>
+</div>
+<div id="43443c27-1bcb-43bb-a14f-977c79fdb7ca" class="cell" data-execution_count="608">
+<div class="sourceCode cell-code" id="cb244"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb244-1"><a href="#cb244-1" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="608">
+<pre><code>777</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>진짜 미묘하게 다르죠?</p>
+</blockquote>
+</section>
+<section id="m.-연습문제들" class="level3">
+<h3 class="anchored" data-anchor-id="m.-연습문제들">M. 연습문제들</h3>
+<p><code># 문제</code>. 길이가 0인 리스트를 만들어라. (비어있는 리스트를 만들어라)</p>
+<p>(풀이)</p>
+<div id="ac600c0b-c868-4137-9d6b-a70dde391f0e" class="cell" data-execution_count="614">
+<div class="sourceCode cell-code" id="cb246"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb246-1"><a href="#cb246-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> []</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="eea644b9-79b1-43c0-98d5-ec1d1f0a8601" class="cell" data-execution_count="615">
+<div class="sourceCode cell-code" id="cb247"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb247-1"><a href="#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="615">
+<pre><code>0</code></pre>
+</div>
+</div>
+<p><code># 문제</code>. 다음의 실행값 중 가장 큰 숫자가 나오는 보기를 골라라. (에러가 나는 코드는 정답에서 제외함)</p>
+<div class="sourceCode" id="cb249"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb249-1"><a href="#cb249-1" aria-hidden="true" tabindex="-1"></a>(a) <span class="bu">len</span>(<span class="fl">3.14</span>) </span>
+<span id="cb249-2"><a href="#cb249-2" aria-hidden="true" tabindex="-1"></a>(b) <span class="bu">len</span>([<span class="fl">3.14</span>]) </span>
+<span id="cb249-3"><a href="#cb249-3" aria-hidden="true" tabindex="-1"></a>(c) <span class="bu">len</span>(<span class="st">'3.14'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>(풀이)</p>
+<div id="786f80f9-e39c-4ae0-9516-97f266717e41" class="cell" data-execution_count="619">
+<div class="sourceCode cell-code" id="cb250"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb250-1"><a href="#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(<span class="st">'3.14'</span>) <span class="co"># c가 제일큼</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="619">
+<pre><code>4</code></pre>
+</div>
+</div>
+<p><code># 문제</code>. 리스트자료형의 <code>+</code>와 <code>*</code> 연산을 이용하여 아래와 같은 list를 생성하라.</p>
+<div id="2bc05a52-ba2e-4f63-8c4d-1496327855b4" class="cell" data-execution_count="192">
+<div class="sourceCode cell-code" id="cb252"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb252-1"><a href="#cb252-1" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="192">
+<pre><code>[1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5]</code></pre>
+</div>
+</div>
+<p><strong>hint:</strong> 아래의 코드를 관찰해보세요</p>
+<div id="c55a1868-5a6e-419b-a71c-e0f5952de745" class="cell" data-execution_count="620">
+<div class="sourceCode cell-code" id="cb254"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb254-1"><a href="#cb254-1" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>]<span class="op">*</span><span class="dv">1</span><span class="op">+</span>[<span class="dv">2</span>]<span class="op">*</span><span class="dv">2</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="620">
+<pre><code>[1, 2, 2]</code></pre>
+</div>
+</div>
+<p>(풀이)</p>
+<div id="3377cbdd-1391-4662-8872-01da03e93cc4" class="cell" data-execution_count="630">
+<div class="sourceCode cell-code" id="cb256"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb256-1"><a href="#cb256-1" aria-hidden="true" tabindex="-1"></a>lst <span class="op">=</span>[]</span>
+<span id="cb256-2"><a href="#cb256-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">6</span>):</span>
+<span id="cb256-3"><a href="#cb256-3" aria-hidden="true" tabindex="-1"></a>    lst.extend([i]<span class="op">*</span>i)</span>
+<span id="cb256-4"><a href="#cb256-4" aria-hidden="true" tabindex="-1"></a>lst</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="630">
+<pre><code>[1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5]</code></pre>
+</div>
+</div>
+<p><code># 문제</code>. 다음과 같은 리스트를 고려하자.</p>
+<div id="da0231c7-757d-46c7-9564-94e81ca94704" class="cell" data-execution_count="632">
+<div class="sourceCode cell-code" id="cb258"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb258-1"><a href="#cb258-1" aria-hidden="true" tabindex="-1"></a>lst <span class="op">=</span> [<span class="st">'A'</span>,<span class="st">'B'</span>,<span class="st">'C'</span>,<span class="st">'D'</span>,<span class="st">'A'</span>,<span class="st">'A'</span>,<span class="st">'B'</span>,<span class="st">'A'</span>,<span class="st">'F'</span>,<span class="st">'C'</span>,<span class="st">'C'</span>,<span class="st">'C'</span>,<span class="st">'A'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>이 리스트에서 ‘A’ 혹은 ’B’의 숫자는 모두 몇개인가?</p>
+<p>(풀이)</p>
+<div id="283e1a33-2658-4baf-9eb9-f806384bd4fa" class="cell" data-execution_count="633">
+<div class="sourceCode cell-code" id="cb259"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb259-1"><a href="#cb259-1" aria-hidden="true" tabindex="-1"></a>lst.count(<span class="st">"A"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="633">
+<pre><code>5</code></pre>
+</div>
+</div>
+<div id="6d849daf-19c9-449d-a4f1-89d05899226b" class="cell" data-execution_count="634">
+<div class="sourceCode cell-code" id="cb261"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb261-1"><a href="#cb261-1" aria-hidden="true" tabindex="-1"></a>lst.count(<span class="st">"B"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="634">
+<pre><code>2</code></pre>
+</div>
+</div>
+<p><code># 문제</code>. 아래와 같은 문자열이 있다고 하자.</p>
+<div id="cd754b05-3d32-4ccc-872f-5ee54dcd1954" class="cell" data-tags="[]" data-execution_count="637">
+<div class="sourceCode cell-code" id="cb263"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb263-1"><a href="#cb263-1" aria-hidden="true" tabindex="-1"></a>test_arr <span class="op">=</span> <span class="st">'ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom/BWDSUGPl+nafzlHDTYW7hdI4yZ5ew18JH4JW9jbhUFrviQzM7xlELEVf4h9lFX5QVkbPppSwg0cda3Pbv7kOdJ/MTyBlWXFCR+HAo3FXRitBqxiX1nKhXpHAZsMciLq8V6RjsNAQwdsdMFvSlVK/7XAt3FaoJoAsncM1Q9x5+3V0Ww68/eIFmb1zuUFljQJKprrX88XypNDvjYNby6vw/Pb0rwert/EnmZ+AW4OZPnTPI89ZPmVMLuayrD2cE86Z/il8b+gw3r3+1nKatmIkjn2so1d01QraTlMqVSsbxNrRFi9wrf+M7Q== schacon@mylaptop.local'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>이 문자열에서 대문자의 수를 count하라.</p>
+<p><strong>hint: <code>str</code> 자료형의 특수기능 <code>.isupper()</code> 를 이용할 것</strong></p>
+<p>(풀이)</p>
+<div id="99f6e1e7-b54c-42a2-b0ae-98279495cc89" class="cell" data-execution_count="645">
+<div class="sourceCode cell-code" id="cb264"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb264-1"><a href="#cb264-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>([s.isupper() <span class="cf">for</span> s <span class="kw">in</span> test_arr])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="645">
+<pre><code>155</code></pre>
+</div>
+</div>
+<p><code># 문제</code>. 리스트컴프리헨션을 이용하여 아래와 같은 리스트를 생성하라.</p>
+<pre><code>['a',
+ 'aa',
+ 'aaa',
+ 'aaaa',
+ 'aaaaa',
+ 'aaaaaa',
+ 'aaaaaaa',
+ 'aaaaaaaa',
+ 'aaaaaaaaa',
+ 'aaaaaaaaaa'] &lt;- a가 10개있음</code></pre>
+<p>(풀이)</p>
+<div id="2d01562c-8043-4c6e-ac9a-eaf845c6f391" class="cell" data-execution_count="650">
+<div class="sourceCode cell-code" id="cb267"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb267-1"><a href="#cb267-1" aria-hidden="true" tabindex="-1"></a>lst <span class="op">=</span> [<span class="st">'a'</span><span class="op">*</span>i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">11</span>)]</span>
+<span id="cb267-2"><a href="#cb267-2" aria-hidden="true" tabindex="-1"></a>lst</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="650">
+<pre><code>['a',
+ 'aa',
+ 'aaa',
+ 'aaaa',
+ 'aaaaa',
+ 'aaaaaa',
+ 'aaaaaaa',
+ 'aaaaaaaa',
+ 'aaaaaaaaa',
+ 'aaaaaaaaaa']</code></pre>
+</div>
+</div>
+<p><code># 문제</code>. 아래와 같은 리스트를 관찰하라.</p>
+<div id="59ec34a5-7dd0-4604-a24e-832ecd7656db" class="cell" data-tags="[]" data-execution_count="653">
+<div class="sourceCode cell-code" id="cb269"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb269-1"><a href="#cb269-1" aria-hidden="true" tabindex="-1"></a>lst <span class="op">=</span> [<span class="st">'2022/09/21'</span>,<span class="st">'2022/10/30'</span>,<span class="st">'2022/12/25'</span>,<span class="st">'2023/01/01'</span>,<span class="st">'2023/01/31'</span>,<span class="st">'2023/03/20'</span>]</span>
+<span id="cb269-2"><a href="#cb269-2" aria-hidden="true" tabindex="-1"></a>lst</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="653">
+<pre><code>['2022/09/21',
+ '2022/10/30',
+ '2022/12/25',
+ '2023/01/01',
+ '2023/01/31',
+ '2023/03/20']</code></pre>
+</div>
+</div>
+<p>이러한 리스트를 아래와 같은 리스트로 변환하는 코드를 작성하라.</p>
+<div id="8aba55ae-4357-4e33-a35d-ea3bf9683e62" class="cell" data-tags="[]" data-execution_count="654">
+<div class="sourceCode cell-code" id="cb271"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb271-1"><a href="#cb271-1" aria-hidden="true" tabindex="-1"></a>[<span class="st">'2022-09-21'</span>, <span class="st">'2022-10-30'</span>, <span class="st">'2022-12-25'</span>, <span class="st">'2023-01-01'</span>, <span class="st">'2023-01-31'</span>, <span class="st">'2023-03-20'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="654">
+<pre><code>['2022-09-21',
+ '2022-10-30',
+ '2022-12-25',
+ '2023-01-01',
+ '2023-01-31',
+ '2023-03-20']</code></pre>
+</div>
+</div>
+<p><strong>hint: string의 <code>.replace()</code>기능과 리스트 컴프리헨션의 응용</strong></p>
+<p>(풀이)</p>
+<div id="4f3a1e10-6e8d-477e-92d1-14cd887cef56" class="cell" data-execution_count="659">
+<div class="sourceCode cell-code" id="cb273"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb273-1"><a href="#cb273-1" aria-hidden="true" tabindex="-1"></a>[l.replace(<span class="st">'/'</span>,<span class="st">'-'</span>) <span class="cf">for</span> l <span class="kw">in</span> lst]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="659">
+<pre><code>['2022-09-21',
+ '2022-10-30',
+ '2022-12-25',
+ '2023-01-01',
+ '2023-01-31',
+ '2023-03-20']</code></pre>
+</div>
+</div>
+<p><code># 문제</code>. 아래와 같이 하나의 특수문자로 이루어진 리스트를 고려하자.</p>
+<div id="e8a66bd2-179f-4f92-96ea-bd3f6c2b3bc2" class="cell" data-tags="[]" data-execution_count="660">
+<div class="sourceCode cell-code" id="cb275"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb275-1"><a href="#cb275-1" aria-hidden="true" tabindex="-1"></a>block <span class="op">=</span> [<span class="st">'■'</span>] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>이를 이용하여 아래와 같은 결과를 출력하라.</p>
+<div id="e5b3f1e0-8c15-40e3-b29d-72b06344fc02" class="cell" data-tags="[]" data-execution_count="187">
+<div class="sourceCode cell-code" id="cb276"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb276-1"><a href="#cb276-1" aria-hidden="true" tabindex="-1"></a><span class="co">'■-■-■-■-■-■-■-■-■-■'</span> <span class="co"># 여기에서 '■'는 모두 10개 있음</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="187">
+<pre><code>'■-■-■-■-■-■-■-■-■-■'</code></pre>
+</div>
+</div>
+<p>(풀이1)</p>
+<div id="4fe58fa6-0bb6-45c6-963c-58dde60fd751" class="cell" data-execution_count="671">
+<div class="sourceCode cell-code" id="cb278"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb278-1"><a href="#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="co">'-'</span>.join(block<span class="op">*</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="671">
+<pre><code>'■-■-■-■-■-■-■-■-■-■'</code></pre>
+</div>
+</div>
+<p>(풀이2)</p>
+<div id="3815c86d-b2e3-4d59-9758-0958b3f73b67" class="cell" data-execution_count="667">
+<div class="sourceCode cell-code" id="cb280"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb280-1"><a href="#cb280-1" aria-hidden="true" tabindex="-1"></a>((block[<span class="dv">0</span>]<span class="op">+</span><span class="st">'-'</span>)<span class="op">*</span><span class="dv">10</span>)[:<span class="op">-</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="667">
+<pre><code>'■-■-■-■-■-■-■-■-■-■'</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="hw" class="level2">
+<h2 class="anchored" data-anchor-id="hw">3. HW</h2>
+<p><code>1</code>. 아래를 출력하는 코드를 작성하라.</p>
+<div class="sourceCode" id="cb282"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb282-1"><a href="#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="ex">11x1=11</span></span>
+<span id="cb282-2"><a href="#cb282-2" aria-hidden="true" tabindex="-1"></a><span class="ex">11x2=22</span></span>
+<span id="cb282-3"><a href="#cb282-3" aria-hidden="true" tabindex="-1"></a><span class="ex">11x3=33</span></span>
+<span id="cb282-4"><a href="#cb282-4" aria-hidden="true" tabindex="-1"></a><span class="ex">...</span></span>
+<span id="cb282-5"><a href="#cb282-5" aria-hidden="true" tabindex="-1"></a><span class="ex">19x17=323</span></span>
+<span id="cb282-6"><a href="#cb282-6" aria-hidden="true" tabindex="-1"></a><span class="ex">19x18=342</span></span>
+<span id="cb282-7"><a href="#cb282-7" aria-hidden="true" tabindex="-1"></a><span class="ex">19x19=361</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>(풀이)</code></p>
+<div id="c7c373da-09b8-4aca-b4b9-1632b4cb676e" class="cell" data-execution_count="688">
+<div class="sourceCode cell-code" id="cb283"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb283-1"><a href="#cb283-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for j in range(11,20):</span></span>
+<span id="cb283-2"><a href="#cb283-2" aria-hidden="true" tabindex="-1"></a><span class="co">#     for i in range(1,20):</span></span>
+<span id="cb283-3"><a href="#cb283-3" aria-hidden="true" tabindex="-1"></a><span class="co">#         print(f"{j}x{i}={j*i}")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>2</code>. 아래와 같은 리스트를 관찰하라.</p>
+<div id="2a9eb0cd-a682-4337-8174-f494e332ccb0" class="cell" data-execution_count="689">
+<div class="sourceCode cell-code" id="cb284"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb284-1"><a href="#cb284-1" aria-hidden="true" tabindex="-1"></a>lst <span class="op">=</span> [<span class="st">'2022/09/21'</span>,<span class="st">'2022/10/30'</span>,<span class="st">'2022/12/25'</span>,<span class="st">'2023/01/01'</span>,<span class="st">'2023/01/31'</span>,<span class="st">'2023/03/20'</span>]</span>
+<span id="cb284-2"><a href="#cb284-2" aria-hidden="true" tabindex="-1"></a>lst</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="689">
+<pre><code>['2022/09/21',
+ '2022/10/30',
+ '2022/12/25',
+ '2023/01/01',
+ '2023/01/31',
+ '2023/03/20']</code></pre>
+</div>
+</div>
+<p>이러한 리스트를 아래와 같은 리스트로 변환하는 코드를 작성하라.</p>
+<div id="5486929d-b6e0-420b-917d-9f1c01e6fdf6" class="cell" data-execution_count="690">
+<div class="sourceCode cell-code" id="cb286"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb286-1"><a href="#cb286-1" aria-hidden="true" tabindex="-1"></a>[<span class="st">'22-09-21.'</span>,<span class="st">'22-10-30.'</span>,<span class="st">'22-12-25.'</span>,<span class="st">'23-01-01.'</span>,<span class="st">'23-01-31.'</span>,<span class="st">'23-03-20.'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="690">
+<pre><code>['22-09-21.', '22-10-30.', '22-12-25.', '23-01-01.', '23-01-31.', '23-03-20.']</code></pre>
+</div>
+</div>
+<p><code>(풀이)</code></p>
+<div id="e3b78e02-ef93-4794-8ff3-ed04712007d0" class="cell" data-execution_count="697">
+<div class="sourceCode cell-code" id="cb288"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb288-1"><a href="#cb288-1" aria-hidden="true" tabindex="-1"></a>[l[<span class="dv">2</span>:].replace(<span class="st">"/"</span>,<span class="st">"-"</span>)<span class="op">+</span><span class="st">"."</span> <span class="cf">for</span> l <span class="kw">in</span> lst]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="697">
+<pre><code>['22-09-21.', '22-10-30.', '22-12-25.', '23-01-01.', '23-01-31.', '23-03-20.']</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/guebin\.github\.io\/IAB2025-Play\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

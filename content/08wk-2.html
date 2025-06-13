@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="최규빈">
+<meta name="dcterms.date" content="2025-04-24">
+
+<title>08wk-2: [Python] – R복습 / numpy intro – IAB2025</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de84f8d6bb715db06a919283c2d1e787.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-251ce1ae7a9effd692ba97c003cecf85.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">IAB2025</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/guebin/IAB2025"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.youtube.com/channel/UCQk9RyBNgXc7ORIsYlOfQrg/playlists?view=50&amp;sort=dd&amp;shelf_id=2"> <i class="bi bi-youtube" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#수능문제" id="toc-수능문제" class="nav-link active" data-scroll-target="#수능문제">1. 수능문제</a></li>
+  <li><a href="#벡터인덱싱" id="toc-벡터인덱싱" class="nav-link" data-scroll-target="#벡터인덱싱">2. 벡터인덱싱</a></li>
+  <li><a href="#연산" id="toc-연산" class="nav-link" data-scroll-target="#연산">3. 연산</a></li>
+  <li><a href="#반복문" id="toc-반복문" class="nav-link" data-scroll-target="#반복문">4. 반복문</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">08wk-2: [Python] – R복습 / numpy intro</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>최규빈 </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 24, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/playlist?list=PLQqh36zP38-wHrr03GVX5ys0eAHTY-6qY&amp;si=vs898UdljKCTlF68" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<div id="a4270ae5-5995-42c8-b022-0d2258b649f4" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="수능문제" class="level2">
+<h2 class="anchored" data-anchor-id="수능문제">1. 수능문제</h2>
+<p><strong><code>2024수능-19</code>.</strong> 함수 <span class="math inline">\(f(x) = \sin \frac{\pi}{4} x\)</span> 할 때, <span class="math inline">\(0 &lt; x &lt; 16\)</span>에서 부등식</p>
+<p><span class="math display">\[
+f(2+x) f(2-x) &lt; \frac{1}{4}
+\]</span></p>
+<p>을 만족시키는 모든 자연수 <span class="math inline">\(x\)</span>의 값의 합을 구하시오. <strong>[3점]</strong></p>
+<p>(풀이) – R</p>
+<div id="36b295b3-9c76-415f-9a72-6d20de8fde7d" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> function(x){</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>   sin(pi<span class="op">/</span><span class="dv">4</span> <span class="op">*</span>x) </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="32a7f7c5-5111-4160-abbe-eda6f98f2757" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span>:<span class="dv">15</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code> [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15</code></pre>
+</div>
+</div>
+<div id="c7e58d61-b1bc-48f7-a232-f2e207d6bc3f" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>f(<span class="dv">2</span><span class="op">+</span>x) <span class="op">*</span> f(<span class="dv">2</span><span class="op">-</span>x) <span class="op">&lt;</span> <span class="dv">1</span><span class="op">/</span><span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code> [1] FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE
+[13] FALSE  TRUE FALSE</code></pre>
+</div>
+</div>
+<div id="f1bde811-f146-4338-b13a-eb2301a46943" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x[f(<span class="dv">2</span><span class="op">+</span>x) <span class="op">*</span> f(<span class="dv">2</span><span class="op">-</span>x) <span class="op">&lt;</span> <span class="dv">1</span><span class="op">/</span><span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="48">
+<pre><code>[1]  2  6 10 14</code></pre>
+</div>
+</div>
+<div id="f5d99ebf-1c3c-4e6b-82cc-c0a174db8d77" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>(x[f(<span class="dv">2</span><span class="op">+</span>x) <span class="op">*</span> f(<span class="dv">2</span><span class="op">-</span>x) <span class="op">&lt;</span> <span class="dv">1</span><span class="op">/</span><span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>[1] 32</code></pre>
+</div>
+</div>
+<p>(풀이) – Python</p>
+<div id="e0e19f91-63c8-411f-b83b-270048d772ab" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="1585a844-f081-43fa-94aa-87f9b92940d8" class="cell" data-execution_count="61">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: np.sin(np.pi<span class="op">/</span><span class="dv">4</span> <span class="op">*</span>x)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># def f(x):</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">#     return np.sin(np.pi/4 *x)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="45ad448c-5b3b-44c8-a0c2-deb84c9e45f5" class="cell" data-execution_count="62">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array(<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">16</span>))</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># x= np.array(list(range(1,16)))</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="62">
+<pre><code>array([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15])</code></pre>
+</div>
+</div>
+<div id="a54143da-9541-466e-9958-a41ac9457aac" class="cell" data-execution_count="63">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>f(<span class="dv">2</span><span class="op">+</span>x) <span class="op">*</span> f(<span class="dv">2</span><span class="op">-</span>x) <span class="op">&lt;</span> <span class="dv">1</span><span class="op">/</span><span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="63">
+<pre><code>array([False,  True, False, False, False,  True, False, False, False,
+        True, False, False, False,  True, False])</code></pre>
+</div>
+</div>
+<div id="9e8b227e-62d5-4cf5-b570-b6bb586e0b3f" class="cell" data-execution_count="64">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>x[f(<span class="dv">2</span><span class="op">+</span>x) <span class="op">*</span> f(<span class="dv">2</span><span class="op">-</span>x) <span class="op">&lt;</span> <span class="dv">1</span><span class="op">/</span><span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="64">
+<pre><code>array([ 2,  6, 10, 14])</code></pre>
+</div>
+</div>
+<div id="947b6776-d1cb-4a06-9f71-85f835365091" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>(x[f(<span class="dv">2</span><span class="op">+</span>x) <span class="op">*</span> f(<span class="dv">2</span><span class="op">-</span>x) <span class="op">&lt;</span> <span class="dv">1</span><span class="op">/</span><span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="65">
+<pre><code>np.int32(32)</code></pre>
+</div>
+</div>
+<p><strong><code>2025수능-6</code>.</strong> <span class="math inline">\(\cos \left(\frac{\pi}{2} + \theta \right) = -\frac{1}{5}\)</span> 일 때, <span class="math inline">\(\frac{\sin\theta}{1 - \cos^2\theta}\)</span> 의 값은? <strong>[3점]</strong></p>
+<ol type="1">
+<li><span class="math inline">\(-5\)</span><br>
+</li>
+<li><span class="math inline">\(-\sqrt{5}\)</span><br>
+</li>
+<li><span class="math inline">\(0\)</span></li>
+<li><span class="math inline">\(\sqrt{5}\)</span></li>
+<li><span class="math inline">\(5\)</span></li>
+</ol>
+<p><code>(풀이)</code> – R</p>
+<div id="04fc519a-890a-491e-a4fa-ae24e8f47714" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> <span class="fl">2.94</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="d31559bd-c960-4784-8c34-d76999a79e60" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>cos(pi<span class="op">/</span><span class="dv">2</span><span class="op">+</span>theta) <span class="co"># 이 값이 -0.2 정도가 되어야 할텐데?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>[1] -0.20023</code></pre>
+</div>
+</div>
+<p>반복계산을 하다보니까 <span class="math inline">\(\theta \approx 2.94\)</span> 인듯</p>
+<div id="e41878fc-672f-46f7-a14d-2dbd0fdc02a0" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>sin(theta)<span class="op">/</span>(<span class="dv">1</span><span class="op">-</span>cos(theta)<span class="op">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>[1] 4.994257</code></pre>
+</div>
+</div>
+<p><code>(풀이)</code> – Python</p>
+<div id="ea08a47e-6542-4ca2-9d42-545209a9eb33" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="54a7bf3a-23ac-4ef7-8214-2f9fb8894f04" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> <span class="fl">2.94</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="5ba63ef4-956a-4017-8061-2ff5c42d089a" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>np.cos(np.pi<span class="op">/</span><span class="dv">2</span><span class="op">+</span>theta) <span class="co"># 이 값이 -0.2 정도가 되어야 할텐데?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>np.float64(-0.20022998472177103)</code></pre>
+</div>
+</div>
+<p>반복계산을 하다보니까 <span class="math inline">\(\theta \approx 2.94\)</span> 인듯</p>
+<div id="af1f9475-d73a-4284-be4e-24990bd5a429" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>np.sin(theta)<span class="op">/</span>(<span class="dv">1</span><span class="op">-</span>np.cos(theta)<span class="op">**</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>np.float64(4.99425698598313)</code></pre>
+</div>
+</div>
+</section>
+<section id="벡터인덱싱" class="level2">
+<h2 class="anchored" data-anchor-id="벡터인덱싱">2. 벡터인덱싱</h2>
+<div id="84ff3d9a-4d3e-458d-80be-5279ddb8f093" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code># 예제1</code> – 양수의 원소를 뽑는다.</p>
+<div id="09a4eaf4-b904-4194-891f-d54f31ad06c7" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="op">-</span><span class="dv">5</span>,<span class="dv">6</span>])</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>array([ 1,  2, -2,  4,  5, -5,  6])</code></pre>
+</div>
+</div>
+<div id="4efc48f7-dec1-4671-be1e-147b3e2b7a8d" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">&gt;</span><span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>array([ True,  True, False,  True,  True, False,  True])</code></pre>
+</div>
+</div>
+<div id="50e1eabc-09ff-45d4-ad16-226ad2a2d09e" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>x[x<span class="op">&gt;</span><span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>array([1, 2, 4, 5, 6])</code></pre>
+</div>
+</div>
+<p><code>#</code></p>
+<p><code># 예제2</code> – 3보다 큰 원소를 뽑는 방법</p>
+<div id="9522b95a-dd27-4dfe-a11b-292866dfca9f" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="op">-</span><span class="dv">5</span>,<span class="dv">6</span>])</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>array([ 1,  2, -2,  4,  5, -5,  6])</code></pre>
+</div>
+</div>
+<div id="961a9c8b-1be8-45cf-b266-77f260f858ca" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>x[x<span class="op">&gt;</span><span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>array([4, 5, 6])</code></pre>
+</div>
+</div>
+<p><code>#</code></p>
+<p><code># 예제3</code> – 3번째 원소를 뽑는방법</p>
+<div id="d937f5c3-4532-4567-a900-fb7a8f30899d" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="op">-</span><span class="dv">5</span>,<span class="dv">6</span>])</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>array([ 1,  2, -2,  4,  5, -5,  6])</code></pre>
+</div>
+</div>
+<div id="a01d311b-1fa6-453f-ad80-88e8bd4c779e" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> np.array([<span class="va">False</span>, <span class="va">False</span>, <span class="va">True</span>, <span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>])</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>arr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>array([False, False,  True, False, False, False, False])</code></pre>
+</div>
+</div>
+<div id="24800170-e8fb-49c0-a22a-5b55e051de60" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>x[arr]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>array([-2])</code></pre>
+</div>
+</div>
+<p><code>#</code></p>
+<p><code># 예제4</code> – 값이 -2인 원소를 뽑아라.</p>
+<div id="2538edb7-dbf0-48ca-a721-13ec654dd16f" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array((<span class="dv">1</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="op">-</span><span class="dv">5</span>,<span class="dv">6</span>))</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>array([ 1,  2, -2,  4,  5, -5,  6])</code></pre>
+</div>
+</div>
+<div id="ae630ad9-3759-40de-b618-ae68d619f9d1" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>x[x <span class="op">==</span> <span class="op">-</span><span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>array([-2])</code></pre>
+</div>
+</div>
+<p><code>#</code></p>
+<p><code># 예제5</code> – 값이 -1.5와 가장 가까운 원소를 뽑아라.</p>
+<p>(풀이1)</p>
+<div id="e295f40a-5d13-4134-b36e-48412a5cda39" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array((<span class="dv">1</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="op">-</span><span class="dv">5</span>,<span class="dv">6</span>))</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>array([ 1,  2, -2,  4,  5, -5,  6])</code></pre>
+</div>
+</div>
+<div id="2b39f73f-1adf-481c-8d72-6dc315315ee0" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">-</span> (<span class="op">-</span><span class="fl">1.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<pre><code>array([ 2.5,  3.5, -0.5,  5.5,  6.5, -3.5,  7.5])</code></pre>
+</div>
+</div>
+<div id="c723d78c-f0e1-456a-b1cd-98df77e987e3" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="bu">abs</span>(x <span class="op">-</span> (<span class="op">-</span><span class="fl">1.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>array([2.5, 3.5, 0.5, 5.5, 6.5, 3.5, 7.5])</code></pre>
+</div>
+</div>
+<div id="3be1dbf3-fcab-4085-ad0d-938072203f14" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="bu">abs</span>(x <span class="op">-</span> (<span class="op">-</span><span class="fl">1.5</span>)) <span class="op">==</span> <span class="bu">min</span>(<span class="bu">abs</span>(x <span class="op">-</span> (<span class="op">-</span><span class="fl">1.5</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<pre><code>array([False, False,  True, False, False, False, False])</code></pre>
+</div>
+</div>
+<div id="60e19fa4-f0bd-439f-a2b9-1001832636e5" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>x[<span class="bu">abs</span>(x <span class="op">-</span> (<span class="op">-</span><span class="fl">1.5</span>)) <span class="op">==</span> <span class="bu">min</span>(<span class="bu">abs</span>(x <span class="op">-</span> (<span class="op">-</span><span class="fl">1.5</span>)))]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="32">
+<pre><code>array([-2])</code></pre>
+</div>
+</div>
+<p>(풀이2)</p>
+<div id="4144b1c9-af7d-4f2f-b40f-f582219e3cd2" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array((<span class="dv">1</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="op">-</span><span class="dv">5</span>,<span class="dv">6</span>))</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
+<pre><code>array([ 1,  2, -2,  4,  5, -5,  6])</code></pre>
+</div>
+</div>
+<div id="281c154f-c910-43d3-a8c2-c753bd611d9d" class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>np.argmin(<span class="bu">abs</span>(x <span class="op">-</span> (<span class="op">-</span><span class="fl">1.5</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="38">
+<pre><code>np.int32(2)</code></pre>
+</div>
+</div>
+<div id="13af4856-c708-474f-ae15-809775e908f1" class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>x[np.argmin(<span class="bu">abs</span>(x <span class="op">-</span> (<span class="op">-</span><span class="fl">1.5</span>)))]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="39">
+<pre><code>np.int32(-2)</code></pre>
+</div>
+</div>
+<p><code>#</code></p>
+<p><code># 예제6</code> – 값이 0.5와 가장 가까운 원소를 뽑아라.</p>
+<div id="3db67464-8b2f-4480-9fdc-d7ab7ded2ba0" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.normal(size<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="42">
+<pre><code>array([-0.55549182,  1.135786  ,  0.22488222, -0.27828521,  0.31068053,
+       -0.84615565, -1.06123884, -2.31023264, -1.0778794 , -0.66878153,
+        1.64599888,  0.00993931,  1.65980788,  0.96042669, -2.86658526,
+        2.034347  ,  1.80625502, -0.16519044,  1.19241176,  0.38260825,
+       -0.27403661,  1.65076625, -0.40343291, -2.02631684,  0.01365176,
+        1.04271385,  0.92079969, -1.52455003, -1.07817949, -0.03206049,
+        0.32152143, -0.62012408,  0.49889869, -1.01910041,  0.88194355,
+        0.02572674, -0.39642517,  0.50727392, -0.12259257,  1.21927153,
+       -2.1291978 , -0.46889021, -0.67331983, -1.28200754, -0.47672535,
+       -0.50068836, -1.84971734,  1.1355189 ,  0.38128017, -0.42444266,
+        1.45208803, -0.20620405,  0.07597739, -0.07526696, -0.63209592,
+        0.70175138,  0.20299937, -0.91183719, -0.60483135,  0.37805421,
+       -1.19670774,  0.47363231,  0.28659428,  1.00122163, -0.30186951,
+        0.75026228,  1.01250358, -0.34074013,  0.38256699, -0.67904123,
+       -0.58000617, -0.1756565 , -0.6490659 , -0.58708219, -0.09953991,
+       -0.04566179,  0.65090341, -0.19099064, -0.8320224 ,  0.03526678,
+        1.38999487, -2.51090913,  0.4489458 , -0.42371785, -1.1491281 ,
+       -0.91249818, -0.1346099 ,  0.50149025, -1.52023722, -0.1528213 ,
+        0.50149835, -0.27008287, -1.45674315, -0.62041124,  1.62022929,
+       -1.15825033,  0.35336406, -0.13698548, -1.04901816, -0.60020016])</code></pre>
+</div>
+</div>
+<div id="8a1bf0b5-bbf6-47a2-86fd-e2ece053b0b7" class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>x[np.argmin(<span class="bu">abs</span>(x <span class="op">-</span> <span class="fl">0.5</span>))]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="46">
+<pre><code>np.float64(0.4988986892032787)</code></pre>
+</div>
+</div>
+<p><code>#</code></p>
+</section>
+<section id="연산" class="level2">
+<h2 class="anchored" data-anchor-id="연산">3. 연산</h2>
+<p><code># 예제</code> – 아래의 벡터를 고려하자.</p>
+<div id="ff5d2cd3-abe6-4077-b1dd-db3bc671b52c" class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.normal(size<span class="op">=</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>(1)</code> <code>x</code>의 원소중 그 값이 양수인 것은 모두 몇개인가?</p>
+<div id="db931e9c-0b32-4990-8da4-08c7d12ba3fc" class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>(x <span class="op">&gt;</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="52">
+<pre><code>np.int32(53)</code></pre>
+</div>
+</div>
+<p><code>(2)</code> <code>x</code>의 평균을 구하여라.</p>
+<div id="5ba82691-709f-44cd-839a-478357db98ad" class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>np.mean(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="55">
+<pre><code>np.float64(0.03420819894888085)</code></pre>
+</div>
+</div>
+<div id="772cbc6c-74a3-45de-bc37-52e2d828529b" class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>x.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="57">
+<pre><code>np.float64(0.03420819894888085)</code></pre>
+</div>
+</div>
+<p><code>(3)</code> <code>x</code>의 원소중 평균과 가장 가까운 값을 구하여라.</p>
+<div id="9a89c694-5e3c-4f53-b392-0f2f9ef08ba5" class="cell" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>np.argmin(<span class="bu">abs</span>(x <span class="op">-</span> np.mean(x)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="60">
+<pre><code>np.int32(85)</code></pre>
+</div>
+</div>
+<div id="ab8f8ffb-8c07-4d5a-83a9-2cff81bc1c31" class="cell" data-execution_count="61">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">85</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="61">
+<pre><code>np.float64(0.03368043239281483)</code></pre>
+</div>
+</div>
+<p><code># 예제</code> – 아래의 벡터를 고려하자.</p>
+<div id="f5d321f5-63eb-4ae4-a24d-5c2ce2d3c692" class="cell" data-execution_count="73">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.randint(<span class="dv">1</span>,<span class="dv">101</span>,size<span class="op">=</span><span class="dv">50</span>)</span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="73">
+<pre><code>array([70, 23, 57, 34, 32, 62, 77, 56, 98, 13, 97, 95, 67,  7, 40, 89, 35,
+       39, 32,  7,  7, 98, 11, 99, 56, 32, 50,  4, 23, 64, 68, 81, 26, 60,
+       73, 84, 36, 31,  9,  2, 14, 40, 34, 61, 66, 99, 62, 15, 16, 48])</code></pre>
+</div>
+</div>
+<p><code>(1)</code> <code>x</code>의 원소중 짝수는 몇개 있는가?</p>
+<div id="c033685a-ec22-4fef-a5fc-828f138b04b9" class="cell" data-execution_count="98">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>((x<span class="op">%</span> <span class="dv">2</span>) <span class="op">==</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="98">
+<pre><code>np.int32(27)</code></pre>
+</div>
+</div>
+<div id="728b120c-ecb1-4947-8dd3-1334687b58cd" class="cell" data-execution_count="99">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="dv">50</span><span class="op">-</span> <span class="bu">sum</span>(x<span class="op">%</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="99">
+<pre><code>np.int32(27)</code></pre>
+</div>
+</div>
+<p><code>(2)</code> <code>x</code>의 원소중 가장 작은 홀수는 무엇인가?</p>
+<p>(풀이1)</p>
+<div id="9bab5e36-07cd-4878-a8e5-12c7eb08d777" class="cell" data-execution_count="88">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="88">
+<pre><code>array([70, 23, 57, 34, 32, 62, 77, 56, 98, 13, 97, 95, 67,  7, 40, 89, 35,
+       39, 32,  7,  7, 98, 11, 99, 56, 32, 50,  4, 23, 64, 68, 81, 26, 60,
+       73, 84, 36, 31,  9,  2, 14, 40, 34, 61, 66, 99, 62, 15, 16, 48])</code></pre>
+</div>
+</div>
+<div id="52ddadb5-e580-4b5c-a2dd-a6077bc4aa08" class="cell" data-execution_count="101">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="bu">min</span>(x[x<span class="op">%</span><span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="101">
+<pre><code>np.int32(7)</code></pre>
+</div>
+</div>
+<p>(풀이2)</p>
+<div id="6aebd482-2f26-4f7d-b675-c4757d4dae11" class="cell" data-execution_count="106">
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.sort(x)</span>
+<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="106">
+<pre><code>array([ 2,  4,  7,  7,  7,  9, 11, 13, 14, 15, 16, 23, 23, 26, 31, 32, 32,
+       32, 34, 34, 35, 36, 39, 40, 40, 48, 50, 56, 56, 57, 60, 61, 62, 62,
+       64, 66, 67, 68, 70, 73, 77, 81, 84, 89, 95, 97, 98, 98, 99, 99])</code></pre>
+</div>
+</div>
+<div id="9c110474-3fd2-496d-a1fb-94811ef67902" class="cell" data-execution_count="109">
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>x[x<span class="op">%</span><span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="109">
+<pre><code>array([ 7,  7,  7,  9, 11, 13, 15, 23, 23, 31, 35, 39, 57, 61, 67, 73, 77,
+       81, 89, 95, 97, 99, 99])</code></pre>
+</div>
+</div>
+<p>답은 7</p>
+<p><code>2010(나)6월평가원-4</code>. 실수 <span class="math inline">\(a\)</span> 가<br>
+<span class="math display">\[
+\frac{2^a + 2^{-a}}{2^a - 2^{-a}} = -2
+\]</span> 를 만족시킬 때, <span class="math inline">\(4^a + 4^{-a}\)</span> 의 값은?</p>
+<ol type="1">
+<li><span class="math inline">\(\frac{5}{2}\)</span><br>
+</li>
+<li><span class="math inline">\(\frac{10}{3}\)</span><br>
+</li>
+<li><span class="math inline">\(\frac{17}{4}\)</span><br>
+</li>
+<li><span class="math inline">\(\frac{26}{5}\)</span><br>
+</li>
+<li><span class="math inline">\(\frac{37}{6}\)</span></li>
+</ol>
+<p>(풀이) – R</p>
+<div id="5ae6d649-cdb8-4892-949d-0f2d0f1d9ca7" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> seq(<span class="im">from</span><span class="op">=-</span><span class="dv">2</span>, to <span class="op">=-</span><span class="fl">0.1</span>, <span class="fl">0.0001</span>)</span>
+<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a>f<span class="op">&lt;-</span> function(a){</span>
+<span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a>    up <span class="op">=</span> <span class="dv">2</span><span class="op">^</span>(a) <span class="op">+</span> <span class="dv">2</span><span class="op">^</span>(<span class="op">-</span>a)</span>
+<span id="cb98-4"><a href="#cb98-4" aria-hidden="true" tabindex="-1"></a>    down <span class="op">=</span> <span class="dv">2</span><span class="op">^</span>(a) <span class="op">-</span> <span class="dv">2</span><span class="op">^</span>(<span class="op">-</span>a) </span>
+<span id="cb98-5"><a href="#cb98-5" aria-hidden="true" tabindex="-1"></a>    up<span class="op">/</span>down </span>
+<span id="cb98-6"><a href="#cb98-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb98-7"><a href="#cb98-7" aria-hidden="true" tabindex="-1"></a>plot(a,f(a))</span>
+<span id="cb98-8"><a href="#cb98-8" aria-hidden="true" tabindex="-1"></a>abline(h<span class="op">=-</span><span class="dv">2</span>,col<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="08wk-2_files/figure-html/cell-55-output-1.png" width="756" height="567" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="5b40b63d-46b4-4227-a1ef-bbb08c535756" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>a[which.<span class="bu">min</span>(<span class="bu">abs</span>(f(a) <span class="op">-</span>(<span class="op">-</span><span class="dv">2</span>)))]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>[1] -0.7925</code></pre>
+</div>
+</div>
+<div id="bd22459f-052b-41b4-81b6-fa8c49d89ce4" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>f(<span class="op">-</span><span class="fl">0.7925</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>[1] -1.999961</code></pre>
+</div>
+</div>
+<div id="aaae103d-cb57-4855-be5c-b914074d13e7" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="op">^</span>(<span class="op">-</span><span class="fl">0.7925</span>) <span class="op">+</span> <span class="dv">4</span><span class="op">^</span>(<span class="fl">0.7925</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>[1] 3.333403</code></pre>
+</div>
+</div>
+<p>(풀이) – Python</p>
+<div id="8118d1a8-b4ee-440e-87f3-77de2354f78a" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Matplotlib is building the font cache; this may take a moment.</code></pre>
+</div>
+</div>
+<div id="c6522e63-719b-41cc-9657-6e0a5b595973" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>,<span class="op">-</span><span class="fl">0.1</span>,<span class="dv">10001</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="e166b7cf-dce6-4b1c-919f-0fc135b0f6e1" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(a):</span>
+<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a>    up <span class="op">=</span> <span class="dv">2</span><span class="op">**</span>(a) <span class="op">+</span> <span class="dv">2</span><span class="op">**</span>(<span class="op">-</span>a)</span>
+<span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a>    down <span class="op">=</span> <span class="dv">2</span><span class="op">**</span>(a) <span class="op">-</span> <span class="dv">2</span><span class="op">**</span>(<span class="op">-</span>a) </span>
+<span id="cb108-4"><a href="#cb108-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> up<span class="op">/</span>down </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="34a8ba49-5fbd-4932-a519-dec2291613f7" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a>plt.plot(a,f(a))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="08wk-2_files/figure-html/cell-62-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="2a3fb19b-641a-4ca1-b3d0-6e4d00dfd3bf" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a>np.argmin(<span class="bu">abs</span>(f(a) <span class="op">-</span> (<span class="op">-</span><span class="dv">2</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>np.int32(6355)</code></pre>
+</div>
+</div>
+<div id="b0b18d84-83c2-4805-b695-4eab2767fcec" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a>a[<span class="dv">6355</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<pre><code>np.float64(-0.7925500000000001)</code></pre>
+</div>
+</div>
+<div id="4aaec8f8-df08-4828-a512-8aaf8cc451d6" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="op">**</span>(<span class="op">-</span><span class="fl">0.79255</span>) <span class="op">+</span> <span class="dv">4</span><span class="op">**</span>(<span class="fl">0.79255</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>3.3335875011060594</code></pre>
+</div>
+</div>
+<p><code>2024수능-16</code>. 방정식 <span class="math inline">\(3^{x-8} = \left(\frac{1}{27}\right)^x\)</span> 을 만족시키는 실수 <span class="math inline">\(x\)</span>의 값을 구하시오. <strong>[3점]</strong></p>
+<p>(풀이) – R</p>
+<div id="21897ff9-f20d-431e-8469-71f965125e7c" class="cell" data-execution_count="133">
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> seq(<span class="im">from</span> <span class="op">=</span> <span class="op">-</span><span class="dv">5</span>, to<span class="op">=</span><span class="dv">5</span>, by <span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> <span class="dv">3</span><span class="op">^</span>(x<span class="op">-</span><span class="dv">8</span>) <span class="op">-</span> (<span class="dv">1</span><span class="op">/</span><span class="dv">27</span>)<span class="op">^</span>x</span>
+<span id="cb116-3"><a href="#cb116-3" aria-hidden="true" tabindex="-1"></a>x[which.<span class="bu">min</span>(<span class="bu">abs</span>(l))]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="133">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+<p>(풀이) – Python</p>
+<div id="4f55843a-5f5d-4d62-be04-18222819f257" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">101</span>)</span>
+<span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> <span class="dv">3</span><span class="op">**</span>(x<span class="op">-</span><span class="dv">8</span>) <span class="op">-</span> (<span class="dv">1</span><span class="op">/</span><span class="dv">27</span>)<span class="op">**</span>x </span>
+<span id="cb118-3"><a href="#cb118-3" aria-hidden="true" tabindex="-1"></a>np.argmin(<span class="bu">abs</span>(l))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<pre><code>np.int32(70)</code></pre>
+</div>
+</div>
+<div id="a50df398-d6a6-4894-8255-ed7a162c503d" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">70</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="32">
+<pre><code>np.float64(2.0)</code></pre>
+</div>
+</div>
+</section>
+<section id="반복문" class="level2">
+<h2 class="anchored" data-anchor-id="반복문">4. 반복문</h2>
+<p><code>2021(가)9월평가원-10</code>. 수열 <span class="math inline">\(\{a_n\}\)</span>은 <span class="math inline">\(a_1 = 12\)</span>이고, 모든 자연수 <span class="math inline">\(n\)</span>에 대하여<br>
+<span class="math display">\[
+a_{n+1} + a_n = (-1)^{n+1} \times n
+\]</span> 을 만족시킨다. <span class="math inline">\(a_k &gt; a_1\)</span>인 자연수 <span class="math inline">\(k\)</span>의 최소값은?</p>
+<ol type="1">
+<li><span class="math inline">\(2\)</span><br>
+</li>
+<li><span class="math inline">\(4\)</span><br>
+</li>
+<li><span class="math inline">\(6\)</span><br>
+</li>
+<li><span class="math inline">\(8\)</span></li>
+<li><span class="math inline">\(10\)</span></li>
+</ol>
+<p>(풀이) – R</p>
+<div id="76ce34ef-19af-45ff-a187-3dd38a048a02" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> c()</span>
+<span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>NULL</code></pre>
+</div>
+</div>
+<div id="8db11171-b3ee-40a7-80f1-1fbcae6e5b75" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> c() </span>
+<span id="cb124-2"><a href="#cb124-2" aria-hidden="true" tabindex="-1"></a>a[<span class="dv">1</span>] <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb124-3"><a href="#cb124-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(n <span class="kw">in</span> <span class="dv">1</span>:<span class="dv">100</span>){</span>
+<span id="cb124-4"><a href="#cb124-4" aria-hidden="true" tabindex="-1"></a>    a[n<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> <span class="op">-</span> a[n] <span class="op">+</span> (<span class="op">-</span><span class="dv">1</span>)<span class="op">^</span>(n<span class="op">+</span><span class="dv">1</span>) <span class="op">*</span> n </span>
+<span id="cb124-5"><a href="#cb124-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="5eb0efcf-41b8-45ff-be94-9f7255fd38c7" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span>:<span class="dv">100</span>)[a <span class="op">&gt;</span> a[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code> [1]   8  10  12  14  16  18  20  22  24  26  28  30  32  34  36  38  40  42  44
+[20]  46  48  50  52  54  56  58  60  62  64  66  68  70  72  74  76  78  80  82
+[39]  84  86  88  90  92  94  96  98 100</code></pre>
+</div>
+</div>
+<p>답은 8</p>
+<div id="e9d39e32-ada1-47dd-919d-64ed83a94ae8" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>  [1]    12   -11     9    -6     2     3    -9    16   -24    33   -43    54
+ [13]   -66    79   -93   108  -124   141  -159   178  -198   219  -241   264
+ [25]  -288   313  -339   366  -394   423  -453   484  -516   549  -583   618
+ [37]  -654   691  -729   768  -808   849  -891   934  -978  1023 -1069  1116
+ [49] -1164  1213 -1263  1314 -1366  1419 -1473  1528 -1584  1641 -1699  1758
+ [61] -1818  1879 -1941  2004 -2068  2133 -2199  2266 -2334  2403 -2473  2544
+ [73] -2616  2689 -2763  2838 -2914  2991 -3069  3148 -3228  3309 -3391  3474
+ [85] -3558  3643 -3729  3816 -3904  3993 -4083  4174 -4266  4359 -4453  4548
+ [97] -4644  4741 -4839  4938 -5038</code></pre>
+</div>
+</div>
+<p>(풀이) – Python</p>
+<div id="a73f88ad-5329-492c-acdc-a369ba91142f" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="f0a38b67-3592-48c1-9b68-e4ad8ad929be" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> []</span>
+<span id="cb130-2"><a href="#cb130-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> a <span class="op">+</span> [<span class="dv">12</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="83cce771-0ea0-48dc-9f4b-e33626ab638b" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">101</span>):</span>
+<span id="cb131-2"><a href="#cb131-2" aria-hidden="true" tabindex="-1"></a>    a.append(<span class="op">-</span>a[<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> (<span class="op">-</span><span class="dv">1</span>)<span class="op">**</span>(n<span class="op">+</span><span class="dv">1</span>) <span class="op">*</span> n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="b03018b9-1bcc-427e-982c-534bf7a85d79" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>np.array(<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">102</span>))[np.array(a) <span class="op">&gt;</span> a[<span class="dv">0</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>array([  8,  10,  12,  14,  16,  18,  20,  22,  24,  26,  28,  30,  32,
+        34,  36,  38,  40,  42,  44,  46,  48,  50,  52,  54,  56,  58,
+        60,  62,  64,  66,  68,  70,  72,  74,  76,  78,  80,  82,  84,
+        86,  88,  90,  92,  94,  96,  98, 100])</code></pre>
+</div>
+</div>
+<p><code>2007(나)6월평가원-14</code>. 다음은 어느 회사의 연봉에 대한 규정이다.</p>
+<p>(가) 입사 첫째 해 연봉은 <span class="math inline">\(a\)</span>원이고, 입사 19년째 해까지의 연봉은 해마다 직전 연봉에서 8%씩 인상된다.</p>
+<p>(나) 입사 20년째 해부터의 연봉은 입사 19년째 해 연봉의 <span class="math inline">\(2/3\)</span>로 한다.</p>
+<p>이 회사에 입사한 사람이 28년 동안 근무하여 받는 연봉의 총합은? (단, <span class="math inline">\(1.08^{18} = 4\)</span>로 계산한다.)</p>
+<ol type="1">
+<li><span class="math inline">\(\frac{101}{2} a\)</span><br>
+</li>
+<li><span class="math inline">\(\frac{111}{2} a\)</span><br>
+</li>
+<li><span class="math inline">\(\frac{121}{2} a\)</span><br>
+</li>
+<li><span class="math inline">\(\frac{131}{2} a\)</span></li>
+<li><span class="math inline">\(\frac{141}{2} a\)</span></li>
+</ol>
+<p>(풀이) – R</p>
+<div id="26852ba0-0626-461f-83df-3ddaffeeb08d" class="cell" data-execution_count="151">
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb134-2"><a href="#cb134-2" aria-hidden="true" tabindex="-1"></a>sal <span class="op">=</span> c()</span>
+<span id="cb134-3"><a href="#cb134-3" aria-hidden="true" tabindex="-1"></a>sal[<span class="dv">1</span>] <span class="op">=</span> a</span>
+<span id="cb134-4"><a href="#cb134-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(y <span class="kw">in</span> <span class="dv">2</span>:<span class="dv">19</span>){</span>
+<span id="cb134-5"><a href="#cb134-5" aria-hidden="true" tabindex="-1"></a>    sal[y] <span class="op">&lt;-</span> sal[y<span class="op">-</span><span class="dv">1</span>] <span class="op">*</span> <span class="fl">1.08</span> </span>
+<span id="cb134-6"><a href="#cb134-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb134-7"><a href="#cb134-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(y <span class="kw">in</span> <span class="dv">20</span>:<span class="dv">28</span>){</span>
+<span id="cb134-8"><a href="#cb134-8" aria-hidden="true" tabindex="-1"></a>    sal[y] <span class="op">&lt;-</span> sal[<span class="dv">19</span>] <span class="op">*</span> <span class="dv">2</span><span class="op">/</span><span class="dv">3</span> </span>
+<span id="cb134-9"><a href="#cb134-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb134-10"><a href="#cb134-10" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>(sal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="151">
+<pre><code>[1] 65.42238</code></pre>
+</div>
+</div>
+<p>(풀이) – Python</p>
+<div id="560d0d3a-5d73-453b-af5c-41f6f693d625" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a>sal <span class="op">=</span> [<span class="dv">1</span>] </span>
+<span id="cb136-2"><a href="#cb136-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">18</span>):</span>
+<span id="cb136-3"><a href="#cb136-3" aria-hidden="true" tabindex="-1"></a>    sal.append(sal[<span class="op">-</span><span class="dv">1</span>]<span class="op">*</span><span class="fl">1.08</span>)</span>
+<span id="cb136-4"><a href="#cb136-4" aria-hidden="true" tabindex="-1"></a>s19 <span class="op">=</span> sal[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb136-5"><a href="#cb136-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">9</span>):</span>
+<span id="cb136-6"><a href="#cb136-6" aria-hidden="true" tabindex="-1"></a>    sal.append(s19<span class="op">*</span><span class="dv">2</span><span class="op">/</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="f1cc6812-46c2-4418-9eb1-f9bc6bc91deb" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>(sal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
+<pre><code>65.42238023410619</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/guebin\.github\.io\/IAB2025-Play\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
