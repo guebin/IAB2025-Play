@@ -189,13 +189,6 @@
     "text": "3. 숙제\n아래와 같은 리스트가 있다고 하자.\n\nlst = list('abcd'*2+'bbb')\nlst\n\n['a', 'b', 'c', 'd', 'a', 'b', 'c', 'd', 'b', 'b', 'b']\n\n\n(1) 아래의 규칙에 의하여 lst의 각 원소의 값을 바꾸고 싶다고 하자. 이를 구현하는 코드를 작성하라.\n\n\n\n변환전\n변환후\n\n\n\n\n‘a’\n[1,0,0,0]\n\n\n‘b’\n[0,1,0,0]\n\n\n‘c’\n[0,0,1,0]\n\n\n‘d’\n[0,0,0,1]\n\n\n\n(2) (1)을 역변환하라. 즉 아래의 리스트를\n\nlst2= [\n    [1, 0, 0, 0],\n    [0, 1, 0, 0],\n    [0, 0, 1, 0],\n    [0, 0, 0, 1],\n    [1, 0, 0, 0],\n    [0, 1, 0, 0],\n    [0, 0, 1, 0],\n    [0, 0, 0, 1],\n    [0, 1, 0, 0],\n    [0, 1, 0, 0],\n    [0, 1, 0, 0]\n]\n\n아래와 같이 바꾸라.\n\nlst\n\n['a', 'b', 'c', 'd', 'a', 'b', 'c', 'd', 'b', 'b', 'b']"
   },
   {
-    "objectID": "content/15wk-1.html",
-    "href": "content/15wk-1.html",
-    "title": "15wk-1: [시각화] – mpg자료 시각화",
-    "section": "",
-    "text": "# {{&lt;video https://youtu.be/playlist?list=PLQqh36zP38-xL9_gg11A8st3V9nFualx5&si=WwlBF9TCYEsEg16c&gt;}}"
-  },
-  {
     "objectID": "content/15wk-1.html#mpg자료",
     "href": "content/15wk-1.html#mpg자료",
     "title": "15wk-1: [시각화] – mpg자료 시각화",
