@@ -5,7 +5,7 @@ rm index.html
 git add .
 git commit -m .
 git switch main 
-quarto publish gh-pages --no-browser --no-prompt --force
+quarto publish gh-pages --no-browser --no-prompt 
 rm -rf _site
 git add .
 git commit -m .
