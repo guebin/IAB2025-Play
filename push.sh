@@ -10,5 +10,4 @@ rm -rf _site
 git add .
 git commit -m .
 git push origin main 
-#git push second gh-pages
-git push second gh-pages --force
+git push second gh-pages 
