@@ -2,6 +2,8 @@
   {
     "listing": "/index.html",
     "items": [
+      "/content/fin-R.html",
+      "/content/fin-python.html",
       "/content/15wk-1.html",
       "/content/14wk-2.html",
       "/content/13wk-2.html",
@@ -10,10 +12,8 @@
       "/content/12wk-1.html",
       "/content/11wk-2.html",
       "/content/11wk-1.html",
-      "/content/fin-R.html",
       "/content/mid-python.html",
       "/content/mid-R.html",
-      "/content/fin-python.html",
       "/content/09wk-1.html",
       "/content/08wk-2.html",
       "/content/08wk-1.html",
