@@ -9,7 +9,7 @@
 <meta name="author" content="최규빈">
 <meta name="dcterms.date" content="2025-06-15">
 
-<title>기말고사 - Python // 예상문제 – IAB2025</title>
+<title>기말고사 - Python – IAB2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -163,7 +163,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">기말고사 - Python // 예상문제</h1>
+<h1 class="title">기말고사 - Python</h1>
 </div>
 
 
@@ -396,87 +396,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p><code>(1)</code> Fare의 평균을 구하여라.</p>
-<p><code>(풀이)</code></p>
-<div id="5ae85a40-842c-4c88-bbac-784a24747de9" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Fare'</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
-<pre><code>np.float64(32.204207968574636)</code></pre>
-</div>
-</div>
-<p><code>(2)</code> 아래의 그룹중 가장 생존률이 높은 그룹은?</p>
+<p><code>(1)</code> 전체생존률을 구하여라.</p>
+<p><code>(2)</code> 남성과 여성, 어떤 성별의 생존률이 더 높은가?</p>
+<p><code>(3)</code> 아래를 잘 읽고 데이터를 올바르게 분석한 이를 모두 고르라.</p>
 <ul>
-<li>여성, Fare &gt;= 32</li>
-<li>여성, Fare &lt; 32</li>
-<li>남성, Fare &gt;= 32</li>
-<li>남성, Fare &lt; 32</li>
+<li>다호: 남성은 562명, 여성은 294명 탑승했어.</li>
+<li>소윤: 항구(Embarked)별로 남성과 여성의 탑승비율을 살펴보는것도 흥미로워. 항구 C,Q는 남성과 여성이 비슷하게 탑승한 반면, 항구 S에서는 남성이 더 많이 탑승했지.</li>
+<li>수호: 성별에 따라 생존률이 차이가 나는데, Pclass에 따라서도 생존률이 차이가 나. 특히 1등석과 3등석 탑승자는 생존률은 40% 이상 차이나.</li>
+<li>사라: “나는 SibSp(함께 탑승한 형제자매나 배우자 수)와 Parch(함께 탑승한 부모나 자녀 수)에 주목했어. 이 둘을 더한 다음 본인을 포함하면 SibSp + Parch + 1, 즉 Family Size를 구할 수 있지. 이걸 기준으로 생존률을 살펴봤는데, Family Size가 4인 경우에 생존률이 가장 높았어. 너무 많지도, 너무 적지도 않은 가족 규모가 생존에 유리했던 것 같아.”</li>
+<li>줄리: 난 연령별 생존률을 조사했지. <code>pd.qcut(df.Age, q=8)</code>을 이용해서 연령을 8개의 구간으로 나누고 조사해봤는데, 가장 나이가 어린 그룹의 생존률이 높았어. 그리고 그다음으로 생존률이 높은 그룹은 가장 나이가 많은 그룹이었지. 아무래도 노약자를 배려한것이 아닐까?</li>
 </ul>
-<p><code>(풀이)</code></p>
-<div id="887c748f-d5cf-4f7e-ac2c-0d025c469e0d" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"titanic.csv"</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Fare&gt;=32'</span>]  <span class="op">=</span> df[<span class="st">'Fare'</span>] <span class="op">&gt;=</span> <span class="dv">32</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>df.groupby([<span class="st">'Sex'</span>,<span class="st">'Fare&gt;=32'</span>])[[<span class="st">'Survived'</span>]].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="19">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Survived</th>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">Sex</th>
-<th data-quarto-table-cell-role="th">Fare&gt;=32</th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td rowspan="2" data-quarto-table-cell-role="th" data-valign="top">female</td>
-<td data-quarto-table-cell-role="th">False</td>
-<td>0.666667</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">True</td>
-<td>0.894231</td>
-</tr>
-<tr class="odd">
-<td rowspan="2" data-quarto-table-cell-role="th" data-valign="top">male</td>
-<td data-quarto-table-cell-role="th">False</td>
-<td>0.161702</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">True</td>
-<td>0.308411</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-<p><code>(3)</code> 아래를 잘 읽고 데이터를 올바르게 분석한 이를 모두 고르라. (단, 분석시 Fare=0인 데이터는 제외한다)</p>
-<ul>
-<li>다호: Pclass 숫자가 작을수록 평균 요금(Fare)이 더 높은 경향이 있어.</li>
-<li>소윤: 맞아. 예를 들어 Pclass=1과 Pclass=3 집단 사이에는 평균 요금이 70 이상 차이 나.</li>
-<li>수호: 그런데 흥미로운 건, Pclass=2와 Pclass=3 사이보다 Pclass=1과 Pclass=2 사이의 평균 요금 차이가 더 크다는 거야. 즉, Pclass가 한 단계 올라갈 때 요금이 균등하게 증가하는 게 아니라, 1등급으로 올라갈 때 요금이 훨씬 더 급격히 증가한다는 뜻이야. 이건 1등석이 단순히 한 단계 높은 수준이 아니라, 완전히 다른 가격대를 가진 특별한 계층이라는 걸 보여주는 것 같아.</li>
-<li>사라: Pclass=3이라도 여유 있는 사람이 있었던 걸까? max Fare가 꽤 높더라고. 실제로 3등석 승객 중에서 2등급 평균 요금을 넘는 요금을 낸 사람도 12명이나 있었어. 대략 10명 정도는 2등석의 평균요금보다 비싼 요금을 내고도 3등석을 이용한 셈이지.</li>
-<li>줄리: 슬픈 사실은, 이 Pclass가 단순히 요금만이 아니라 생존률에도 큰 영향을 줬다는 점이야. 실제로 Pclass=1 승객의 생존률은 63%나 되는데, Pclass=3 승객은 겨우 24%밖에 안 돼. 1등석은 절반 이상이 살아남았고, 3등석은 4명 중 1명만 살아남은 거야. 즉, 배 안에서도 ’돈이 많을수록 더 많이 살아남았다’는 사실이 숫자로도 뚜렷하게 드러나는 거지.</li>
-</ul>
-<p><code>(풀이)</code></p>
-<div id="ffa5a9e9-049b-413c-a576-142f1f379954" class="cell" data-execution_count="38">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"titanic.csv"</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[df[<span class="st">'Fare'</span>] <span class="op">!=</span> <span class="dv">0</span>]</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">'Pclass'</span>).agg({<span class="st">"Fare"</span>:[np.mean, np.<span class="bu">max</span>], <span class="st">"Survived"</span>:[np.mean]})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_846463/575476726.py:3: FutureWarning: The provided callable &lt;function mean at 0x790ba80d4e00&gt; is currently using SeriesGroupBy.mean. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "mean" instead.
-  df.groupby('Pclass').agg({"Fare":[np.mean, np.max], "Survived":[np.mean]})
-/tmp/ipykernel_846463/575476726.py:3: FutureWarning: The provided callable &lt;function max at 0x790ba80d4400&gt; is currently using SeriesGroupBy.max. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "max" instead.
-  df.groupby('Pclass').agg({"Fare":[np.mean, np.max], "Survived":[np.mean]})</code></pre>
-</div>
+</section>
+<section id="fifa" class="level2">
+<h2 class="anchored" data-anchor-id="fifa">2. FIFA</h2>
+<div id="dcf72ec1-10e7-41c0-a4a4-65b39275d833" class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"FIFA22_official_data.csv"</span>).drop([<span class="st">'Loaned From'</span>,<span class="st">'Marking'</span>],axis<span class="op">=</span><span class="dv">1</span>).dropna().reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
 <div>
 
@@ -485,149 +420,149 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
-<th colspan="2" data-quarto-table-cell-role="th" data-halign="left">Fare</th>
-<th data-quarto-table-cell-role="th">Survived</th>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">mean</th>
-<th data-quarto-table-cell-role="th">max</th>
-<th data-quarto-table-cell-role="th">mean</th>
-</tr>
-<tr class="header">
-<th data-quarto-table-cell-role="th">Pclass</th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">1</td>
-<td>86.148874</td>
-<td>512.3292</td>
-<td>0.644550</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">2</td>
-<td>21.358661</td>
-<td>73.5000</td>
-<td>0.488764</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">3</td>
-<td>13.787875</td>
-<td>69.5500</td>
-<td>0.242300</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-<ul>
-<li>다호, 소윤, 수호, 줄리가 맞음</li>
-</ul>
-<div id="94f6b1f3-e2b2-44cf-9ff8-83df589a9ce4" class="cell" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">"Fare &gt; 21.358661 &amp; Pclass ==3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="37">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">PassengerId</th>
-<th data-quarto-table-cell-role="th">Survived</th>
-<th data-quarto-table-cell-role="th">Pclass</th>
+<th data-quarto-table-cell-role="th">ID</th>
 <th data-quarto-table-cell-role="th">Name</th>
-<th data-quarto-table-cell-role="th">Sex</th>
 <th data-quarto-table-cell-role="th">Age</th>
-<th data-quarto-table-cell-role="th">SibSp</th>
-<th data-quarto-table-cell-role="th">Parch</th>
-<th data-quarto-table-cell-role="th">Ticket</th>
-<th data-quarto-table-cell-role="th">Fare</th>
-<th data-quarto-table-cell-role="th">Cabin</th>
-<th data-quarto-table-cell-role="th">Embarked</th>
+<th data-quarto-table-cell-role="th">Photo</th>
+<th data-quarto-table-cell-role="th">Nationality</th>
+<th data-quarto-table-cell-role="th">Flag</th>
+<th data-quarto-table-cell-role="th">Overall</th>
+<th data-quarto-table-cell-role="th">Potential</th>
+<th data-quarto-table-cell-role="th">Club</th>
+<th data-quarto-table-cell-role="th">Club Logo</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">SlidingTackle</th>
+<th data-quarto-table-cell-role="th">GKDiving</th>
+<th data-quarto-table-cell-role="th">GKHandling</th>
+<th data-quarto-table-cell-role="th">GKKicking</th>
+<th data-quarto-table-cell-role="th">GKPositioning</th>
+<th data-quarto-table-cell-role="th">GKReflexes</th>
+<th data-quarto-table-cell-role="th">Best Position</th>
+<th data-quarto-table-cell-role="th">Best Overall Rating</th>
+<th data-quarto-table-cell-role="th">Release Clause</th>
+<th data-quarto-table-cell-role="th">DefensiveAwareness</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">13</td>
-<td>14</td>
-<td>0</td>
-<td>3</td>
-<td>Andersson, Mr. Anders Johan</td>
-<td>male</td>
-<td>39.0</td>
-<td>1</td>
-<td>5</td>
-<td>347082</td>
-<td>31.2750</td>
-<td>NaN</td>
-<td>S</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">16</td>
-<td>17</td>
-<td>0</td>
-<td>3</td>
-<td>Rice, Master. Eugene</td>
-<td>male</td>
-<td>2.0</td>
-<td>4</td>
-<td>1</td>
-<td>382652</td>
-<td>29.1250</td>
-<td>NaN</td>
-<td>Q</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">25</td>
+<td data-quarto-table-cell-role="th">0</td>
+<td>212198</td>
+<td>Bruno Fernandes</td>
 <td>26</td>
-<td>1</td>
-<td>3</td>
-<td>Asplund, Mrs. Carl Oscar (Selma Augusta Emilia...</td>
-<td>female</td>
-<td>38.0</td>
-<td>1</td>
-<td>5</td>
-<td>347077</td>
-<td>31.3875</td>
-<td>NaN</td>
-<td>S</td>
+<td>https://cdn.sofifa.com/players/212/198/22_60.png</td>
+<td>Portugal</td>
+<td>https://cdn.sofifa.com/flags/pt.png</td>
+<td>88</td>
+<td>89</td>
+<td>Manchester United</td>
+<td>https://cdn.sofifa.com/teams/11/30.png</td>
+<td>...</td>
+<td>65.0</td>
+<td>12.0</td>
+<td>14.0</td>
+<td>15.0</td>
+<td>8.0</td>
+<td>14.0</td>
+<td>CAM</td>
+<td>88.0</td>
+<td>€206.9M</td>
+<td>72.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">48</td>
-<td>49</td>
-<td>0</td>
-<td>3</td>
-<td>Samaan, Mr. Youssef</td>
-<td>male</td>
-<td>NaN</td>
-<td>2</td>
-<td>0</td>
-<td>2662</td>
-<td>21.6792</td>
-<td>NaN</td>
-<td>C</td>
+<td data-quarto-table-cell-role="th">1</td>
+<td>209658</td>
+<td>L. Goretzka</td>
+<td>26</td>
+<td>https://cdn.sofifa.com/players/209/658/22_60.png</td>
+<td>Germany</td>
+<td>https://cdn.sofifa.com/flags/de.png</td>
+<td>87</td>
+<td>88</td>
+<td>FC Bayern München</td>
+<td>https://cdn.sofifa.com/teams/21/30.png</td>
+<td>...</td>
+<td>77.0</td>
+<td>13.0</td>
+<td>8.0</td>
+<td>15.0</td>
+<td>11.0</td>
+<td>9.0</td>
+<td>CM</td>
+<td>87.0</td>
+<td>€160.4M</td>
+<td>74.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">50</td>
-<td>51</td>
-<td>0</td>
-<td>3</td>
-<td>Panula, Master. Juha Niilo</td>
-<td>male</td>
-<td>7.0</td>
-<td>4</td>
-<td>1</td>
-<td>3101295</td>
-<td>39.6875</td>
-<td>NaN</td>
-<td>S</td>
+<td data-quarto-table-cell-role="th">2</td>
+<td>176580</td>
+<td>L. Suárez</td>
+<td>34</td>
+<td>https://cdn.sofifa.com/players/176/580/22_60.png</td>
+<td>Uruguay</td>
+<td>https://cdn.sofifa.com/flags/uy.png</td>
+<td>88</td>
+<td>88</td>
+<td>Atlético de Madrid</td>
+<td>https://cdn.sofifa.com/teams/240/30.png</td>
+<td>...</td>
+<td>38.0</td>
+<td>27.0</td>
+<td>25.0</td>
+<td>31.0</td>
+<td>33.0</td>
+<td>37.0</td>
+<td>ST</td>
+<td>88.0</td>
+<td>€91.2M</td>
+<td>42.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>192985</td>
+<td>K. De Bruyne</td>
+<td>30</td>
+<td>https://cdn.sofifa.com/players/192/985/22_60.png</td>
+<td>Belgium</td>
+<td>https://cdn.sofifa.com/flags/be.png</td>
+<td>91</td>
+<td>91</td>
+<td>Manchester City</td>
+<td>https://cdn.sofifa.com/teams/10/30.png</td>
+<td>...</td>
+<td>53.0</td>
+<td>15.0</td>
+<td>13.0</td>
+<td>5.0</td>
+<td>10.0</td>
+<td>13.0</td>
+<td>CM</td>
+<td>91.0</td>
+<td>€232.2M</td>
+<td>68.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>224334</td>
+<td>M. Acuña</td>
+<td>29</td>
+<td>https://cdn.sofifa.com/players/224/334/22_60.png</td>
+<td>Argentina</td>
+<td>https://cdn.sofifa.com/flags/ar.png</td>
+<td>84</td>
+<td>84</td>
+<td>Sevilla FC</td>
+<td>https://cdn.sofifa.com/teams/481/30.png</td>
+<td>...</td>
+<td>82.0</td>
+<td>8.0</td>
+<td>14.0</td>
+<td>13.0</td>
+<td>13.0</td>
+<td>14.0</td>
+<td>LB</td>
+<td>84.0</td>
+<td>€77.7M</td>
+<td>80.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">...</td>
@@ -643,98 +578,156 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>...</td>
 <td>...</td>
 <td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">846</td>
-<td>847</td>
-<td>0</td>
-<td>3</td>
-<td>Sage, Mr. Douglas Bullen</td>
-<td>male</td>
-<td>NaN</td>
-<td>8</td>
-<td>2</td>
-<td>CA. 2343</td>
-<td>69.5500</td>
-<td>NaN</td>
-<td>S</td>
+<td data-quarto-table-cell-role="th">14393</td>
+<td>259718</td>
+<td>F. Gebhardt</td>
+<td>19</td>
+<td>https://cdn.sofifa.com/players/259/718/22_60.png</td>
+<td>Germany</td>
+<td>https://cdn.sofifa.com/flags/de.png</td>
+<td>52</td>
+<td>66</td>
+<td>FC Basel 1893</td>
+<td>https://cdn.sofifa.com/teams/896/30.png</td>
+<td>...</td>
+<td>10.0</td>
+<td>53.0</td>
+<td>45.0</td>
+<td>47.0</td>
+<td>52.0</td>
+<td>57.0</td>
+<td>GK</td>
+<td>52.0</td>
+<td>€361K</td>
+<td>6.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">850</td>
-<td>851</td>
-<td>0</td>
-<td>3</td>
-<td>Andersson, Master. Sigvard Harald Elias</td>
-<td>male</td>
-<td>4.0</td>
-<td>4</td>
-<td>2</td>
-<td>347082</td>
-<td>31.2750</td>
-<td>NaN</td>
-<td>S</td>
+<td data-quarto-table-cell-role="th">14394</td>
+<td>251433</td>
+<td>B. Voll</td>
+<td>20</td>
+<td>https://cdn.sofifa.com/players/251/433/22_60.png</td>
+<td>Germany</td>
+<td>https://cdn.sofifa.com/flags/de.png</td>
+<td>58</td>
+<td>69</td>
+<td>F.C. Hansa Rostock</td>
+<td>https://cdn.sofifa.com/teams/27/30.png</td>
+<td>...</td>
+<td>10.0</td>
+<td>59.0</td>
+<td>60.0</td>
+<td>56.0</td>
+<td>55.0</td>
+<td>61.0</td>
+<td>GK</td>
+<td>58.0</td>
+<td>€656K</td>
+<td>5.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">863</td>
-<td>864</td>
-<td>0</td>
-<td>3</td>
-<td>Sage, Miss. Dorothy Edith "Dolly"</td>
-<td>female</td>
-<td>NaN</td>
-<td>8</td>
-<td>2</td>
-<td>CA. 2343</td>
-<td>69.5500</td>
-<td>NaN</td>
-<td>S</td>
+<td data-quarto-table-cell-role="th">14395</td>
+<td>262846</td>
+<td>�. Dobre</td>
+<td>20</td>
+<td>https://cdn.sofifa.com/players/262/846/22_60.png</td>
+<td>Romania</td>
+<td>https://cdn.sofifa.com/flags/ro.png</td>
+<td>53</td>
+<td>63</td>
+<td>FC Academica Clinceni</td>
+<td>https://cdn.sofifa.com/teams/113391/30.png</td>
+<td>...</td>
+<td>12.0</td>
+<td>57.0</td>
+<td>52.0</td>
+<td>53.0</td>
+<td>48.0</td>
+<td>58.0</td>
+<td>GK</td>
+<td>53.0</td>
+<td>€279K</td>
+<td>5.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">885</td>
-<td>886</td>
-<td>0</td>
-<td>3</td>
-<td>Rice, Mrs. William (Margaret Norton)</td>
-<td>female</td>
+<td data-quarto-table-cell-role="th">14396</td>
+<td>241317</td>
+<td>21&nbsp;Xue Qinghao</td>
+<td>19</td>
+<td>https://cdn.sofifa.com/players/241/317/21_60.png</td>
+<td>China PR</td>
+<td>https://cdn.sofifa.com/flags/cn.png</td>
+<td>47</td>
+<td>60</td>
+<td>Shanghai Shenhua FC</td>
+<td>https://cdn.sofifa.com/teams/110955/30.png</td>
+<td>...</td>
+<td>9.0</td>
+<td>49.0</td>
+<td>48.0</td>
+<td>45.0</td>
+<td>38.0</td>
+<td>52.0</td>
+<td>GK</td>
+<td>47.0</td>
+<td>€223K</td>
+<td>21.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14397</td>
+<td>259646</td>
+<td>A. Shaikh</td>
+<td>18</td>
+<td>https://cdn.sofifa.com/players/259/646/22_60.png</td>
+<td>India</td>
+<td>https://cdn.sofifa.com/flags/in.png</td>
+<td>47</td>
+<td>67</td>
+<td>ATK Mohun Bagan FC</td>
+<td>https://cdn.sofifa.com/teams/113146/30.png</td>
+<td>...</td>
+<td>13.0</td>
+<td>49.0</td>
+<td>41.0</td>
 <td>39.0</td>
-<td>0</td>
-<td>5</td>
-<td>382652</td>
-<td>29.1250</td>
-<td>NaN</td>
-<td>Q</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">888</td>
-<td>889</td>
-<td>0</td>
-<td>3</td>
-<td>Johnston, Miss. Catherine Helen "Carrie"</td>
-<td>female</td>
-<td>NaN</td>
-<td>1</td>
-<td>2</td>
-<td>W./C. 6607</td>
-<td>23.4500</td>
-<td>NaN</td>
-<td>S</td>
+<td>45.0</td>
+<td>49.0</td>
+<td>GK</td>
+<td>47.0</td>
+<td>€259K</td>
+<td>7.0</td>
 </tr>
 </tbody>
 </table>
 
-<p>73 rows × 12 columns</p>
+<p>14398 rows × 63 columns</p>
 </div>
 </div>
 </div>
-<ul>
-<li>사라도 맞음</li>
-</ul>
-<blockquote class="blockquote">
-<p>모두 맞음</p>
-</blockquote>
-</section>
-<section id="fifa" class="level2">
-<h2 class="anchored" data-anchor-id="fifa">2. FIFA</h2>
+<p><code>(1)</code> 아래는 {소속대륙:국가} 정보를 담은 딕셔너리이다.</p>
+<div id="e064014d-a0bb-463c-8ec6-901b97580d3a" class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>continent_dict <span class="op">=</span> {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Asia'</span>: [<span class="st">'Afghanistan'</span>, <span class="st">'Japan'</span>, <span class="st">'Macau'</span>, <span class="st">'Chinese Taipei'</span>, <span class="st">'Indonesia'</span>, <span class="st">'Korea Republic'</span>, <span class="st">'Kazakhstan'</span>, <span class="st">'Kyrgyzstan'</span>, <span class="st">'Bhutan'</span>, <span class="st">'Philippines'</span>, <span class="st">'Syria'</span>, <span class="st">'China PR'</span>, <span class="st">'Oman'</span>, <span class="st">'Guam'</span>, <span class="st">'Vietnam'</span>, <span class="st">'Jordan'</span>, <span class="st">'Palestine'</span>, <span class="st">'Malaysia'</span>, <span class="st">'Hong Kong'</span>, <span class="st">'Korea DPR'</span>, <span class="st">'Lebanon'</span>, <span class="st">'Uzbekistan'</span>, <span class="st">'India'</span>,<span class="st">'Iraq'</span>, <span class="st">'Iran'</span>, <span class="st">'Saudi Arabia'</span>, <span class="st">'United Arab Emirates'</span>,<span class="st">'Australia'</span>,<span class="st">'Qatar'</span>],</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Europe'</span>: [<span class="st">'Portugal'</span>, <span class="st">'Germany'</span>, <span class="st">'Belgium'</span>, <span class="st">'Netherlands'</span>, <span class="st">'Croatia'</span>, <span class="st">'Spain'</span>, <span class="st">'Austria'</span>, <span class="st">'Italy'</span>, <span class="st">'France'</span>, <span class="st">'Serbia'</span>, <span class="st">'England'</span>, <span class="st">'Poland'</span>, <span class="st">'Ukraine'</span>, <span class="st">'Wales'</span>, <span class="st">'Scotland'</span>, <span class="st">'Czech Republic'</span>, <span class="st">'Slovakia'</span>, <span class="st">'Romania'</span>, <span class="st">'Bosnia and Herzegovina'</span>, <span class="st">'Republic of Ireland'</span>, <span class="st">'Norway'</span>, <span class="st">'Sweden'</span>, <span class="st">'Bulgaria'</span>, <span class="st">'Lithuania'</span>, <span class="st">'Estonia'</span>, <span class="st">'Latvia'</span>, <span class="st">'Liechtenstein'</span>,<span class="st">'Albania'</span>,<span class="st">'Denmark'</span>,<span class="st">'Finland'</span>,<span class="st">'Greece'</span>,<span class="st">'Hungary'</span>,<span class="st">'Iceland'</span>,<span class="st">'Luxembourg'</span>,<span class="st">'Northern Ireland'</span>,<span class="st">'Slovenia'</span>,<span class="st">'Switzerland'</span>,<span class="st">'Andorra'</span>,<span class="st">'Azerbaijan'</span>,<span class="st">'Belarus'</span>,<span class="st">'Cyprus'</span>,<span class="st">'Faroe Islands'</span>,<span class="st">'Georgia'</span>,<span class="st">'Kosovo'</span>,<span class="st">'Malta'</span>,<span class="st">'Moldova'</span>,<span class="st">'Montenegro'</span>,<span class="st">'North Macedonia'</span>,<span class="st">'Armenia'</span>,<span class="st">'Gibraltar'</span>,<span class="st">'Russia'</span>,<span class="st">'Turkey'</span>,<span class="st">'Israel'</span>],</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'South America'</span>: [<span class="st">'Uruguay'</span>, <span class="st">'Argentina'</span>, <span class="st">'Brazil'</span>, <span class="st">'Chile'</span>, <span class="st">'Colombia'</span>, <span class="st">'Ecuador'</span>, <span class="st">'Paraguay'</span>, <span class="st">'Venezuela'</span>, <span class="st">'Suriname'</span>, <span class="st">'Bolivia'</span>,<span class="st">'Peru'</span>,<span class="st">'Guyana'</span>],</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Africa'</span>: [<span class="st">'Egypt'</span>, <span class="st">"Côte d'Ivoire"</span>, <span class="st">'Senegal'</span>, <span class="st">'Morocco'</span>, <span class="st">'Ghana'</span>, <span class="st">'Algeria'</span>, <span class="st">'Guinea'</span>, <span class="st">'Mali'</span>, <span class="st">'Congo DR'</span>, <span class="st">'Liberia'</span>, <span class="st">'Cameroon'</span>, <span class="st">'Tunisia'</span>, <span class="st">'Comoros'</span>, <span class="st">'Kenya'</span>, <span class="st">'South Africa'</span>, <span class="st">'Zimbabwe'</span>, <span class="st">'Madagascar'</span>, <span class="st">'Mozambique'</span>, <span class="st">'Equatorial Guinea'</span>, <span class="st">'Congo'</span>, <span class="st">'Burundi'</span>, <span class="st">'Grenada'</span>, <span class="st">'Thailand'</span>, <span class="st">'Togo'</span>, <span class="st">'Sudan'</span>, <span class="st">'Mauritania'</span>,<span class="st">'Guinea Bissau'</span>,<span class="st">'Libya'</span>,<span class="st">'Nigeria'</span>,<span class="st">'Zambia'</span>,<span class="st">'Angola'</span>,<span class="st">'Benin'</span>,<span class="st">'Burkina Faso'</span>,<span class="st">'Cape Verde Islands'</span>,<span class="st">'Central African Republic'</span>,<span class="st">'Chad'</span>,<span class="st">'Eritrea'</span>,<span class="st">'Gabon'</span>,<span class="st">'Gambia'</span>,<span class="st">'Mauritius'</span>,<span class="st">'Namibia'</span>,<span class="st">'Rwanda'</span>,<span class="st">'Sierra Leone'</span>,<span class="st">'South Sudan'</span>,<span class="st">'São Tomé e Príncipe'</span>,<span class="st">'Uganda'</span>,<span class="st">'Niger'</span>, <span class="st">'Tanzania'</span>],</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'North and Central America'</span>: [<span class="st">'Antigua and Barbuda'</span>, <span class="st">'Barbados'</span>, <span class="st">'Belize'</span>, <span class="st">'Bermuda'</span>, <span class="st">'Canada'</span>, <span class="st">'Costa Rica'</span>, <span class="st">'Cuba'</span>, <span class="st">'Curacao'</span>, <span class="st">'Dominican Republic'</span>, <span class="st">'El Salvador'</span>, <span class="st">'Guatemala'</span>, <span class="st">'Haiti'</span>, <span class="st">'Honduras'</span>, <span class="st">'Jamaica'</span>, <span class="st">'Mexico'</span>, <span class="st">'Montserrat'</span>, <span class="st">'Panama'</span>, <span class="st">'Puerto Rico'</span>, <span class="st">'Saint Kitts and Nevis'</span>, <span class="st">'Saint Lucia'</span>, <span class="st">'Trinidad and Tobago'</span>, <span class="st">'United States'</span>],</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Oceania'</span>: [<span class="st">'New Zealand'</span>, <span class="st">'Fiji'</span>, <span class="st">'Papua New Guinea'</span>,<span class="st">'New Caledonia'</span>],</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>이 딕셔너리를 활용하여, 각 국가의 대륙(Continent)을 나타내는 새로운 열 Continent를 생성하시오.</p>
+<p><code>(2)</code> 대륙별로 평균연봉을 계산하라. (즉 ’Wage’의 평균값을 계산하라)</p>
 
 
 </section>
